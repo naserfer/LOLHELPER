@@ -140,3 +140,8 @@ ul.g { margin: 3px 0 0 1.1em; } ul.g li { margin-top: 2px; }
 .status span { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .btn { background: #ffffff0a; border: 1px solid var(--gold-d); color: var(--gold-l); font: inherit; font-size: .85em; padding: 4px 10px; border-radius: 3px; cursor: pointer; }
 .btn:hover { background: var(--gold); color: var(--bg); }
+/* plan de bot */
+.bot .pill { vertical-align: 1px; }
+.bot-why { margin-top: calc(6px * var(--u)); }
+.bot-why li { overflow-wrap: anywhere; }
+.bot .g-l b { color: var(--gold-l); }

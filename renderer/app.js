@@ -55,6 +55,31 @@ function guideCard(g, enemy, myLevel, role) {
   return `${h}<div class="small muted sp8">Fuente: ${esc(g.por || '')}</div></div>`;
 }
 
+/* ------------------------------------------------------------------ plan de bot (support) */
+const SRC_PILL = { DATOS: ['DATOS', 'gray'], 'ANÁLISIS': ['ANÁLISIS', 'dark'], HISTORIAL: ['TU HISTORIAL', 'gray'], PRO: ['PRO', 'gold'] };
+const srcPill = (src) => pill(...(SRC_PILL[src] || [src, 'dark']));
+// En partida (game = true) no hay números: ni winrates, ni sinergias, ni tu récord.
+function botCard(bp, ally, game, level) {
+  if (!bp) return '';
+  const who = ally ? ` con ${esc(ally)}` : '';
+  let h = `<div class="card hi bot"><div class="row wrap"><span class="k" style="color:var(--gold)">Plan de bot${who}</span><span class="right">${pill(bp.label, 'gold')}</span></div>`;
+  h += `<div class="t sp4">${esc(bp.head)}</div>`;
+  if (!game && bp.why && bp.why.length) {
+    h += `<ul class="g bot-why">${bp.why.map((w) => `<li>${srcPill(w.src)} ${esc(w.txt)}</li>`).join('')}</ul>`;
+  }
+  if (bp.combo) h += `<div class="g-h">Combo con tu ADC ${srcPill(bp.combo.src)}</div><div class="g-l">${esc(bp.combo.txt)}</div>`;
+  if (bp.threats && bp.threats.length) {
+    h += `<div class="g-h red">Respetá ${srcPill('ANÁLISIS')}</div>${bp.threats.map((t) => `<div class="g-l"><b>${esc(t.who)}:</b> ${esc(t.txt)}</div>`).join('')}`;
+  }
+  if (bp.post6 && bp.post6.length) {
+    const off = game && level !== undefined && level < 6;
+    h += `<div class="g-h${off ? ' off' : ''}">${game && level >= 6 ? 'Ya sos 6' : 'Desde el 6'} ${srcPill('ANÁLISIS')}</div>${bp.post6.map((t) => `<div class="g-l${off ? ' off' : ''}"><b>${esc(t.who)}:</b> ${esc(t.txt)}</div>`).join('')}`;
+  }
+  if (!game && bp.missing && bp.missing.length) h += `<div class="small muted sp8">Falta: ${esc(bp.missing.join(' · '))}</div>`;
+  if (!game) h += '<div class="small muted sp8">Fuentes: op.gg (vs support, sinergia) · Lolalytics (vs ADC) · Data Dragon · kits de la wiki (ANÁLISIS) · tu historial. No hay guías PRO de support.</div>';
+  return `${h}</div>`;
+}
+
 /* ------------------------------------------------------------------ champ select */
 function drawSelect(v) {
   const sup = v.mode === 'support';
@@ -83,7 +108,8 @@ function drawSelect(v) {
     A += '</div></div>';
   }
 
-  if (v.win_line) A += `<div class="card hi"><div class="t">${esc(v.win_line)}</div></div>`;
+  if (sup && v.focus && v.focus.bot) A += botCard(v.focus.bot, v.ally_adc, false);
+  else if (v.win_line) A += `<div class="card hi"><div class="t">${esc(v.win_line)}</div></div>`;
   if (v.scout) A += `<div class="card"><div class="small">${esc(v.scout)}</div></div>`;
   A += sec(sup ? 'Tu support' : 'Tu pick', sup ? 'mejores 5' : '');
   v.recs.forEach((r, i) => {
@@ -178,6 +204,7 @@ function drawGame(v) {
   }
 
   const l = v.lane;
+  if (v.bot_plan && v.time < 14 * 60) B += botCard(v.bot_plan, v.ally_adc, true, me.level);
   if (l && v.guide && v.time < 16 * 60) B += guideCard(v.guide, l.champ, me.level, v.role);
   A += sec(v.support_mode ? 'Support rival' : v.role === 'jungle' ? 'Jungla rival' : 'Tu rival');
   if (l) {
@@ -311,6 +338,10 @@ function drawCoach(status) {
   const role = (S.settings || {}).rol_por_defecto;
   const roles = (S.profile || {}).roles || { utility: 'Support', top: 'Top' };
   B += `${sec('Ajustes')}<div class="pad row"><span class="small dim grow">Rol cuando no hay rol asignado (normales, blind)</span><span class="seg">${Object.entries(roles).map(([k, lab]) => `<button data-role="${k}" class="${role === k ? 'on' : ''}">${esc(lab)}</button>`).join('')}</span></div>`;
+  const pid = (S.profile || {}).id;
+  const other = pid === 'bitty' ? 'naser' : 'bitty';
+  const NAMES = { naser: 'Naser', bitty: 'Bitty' };
+  if (pid) B += `<div class="pad row sp8"><span class="small dim grow">Jugador: <b style="color:var(--gold-l)">${esc(NAMES[pid] || pid)}</b> (cada uno con sus datos)</span><button class="btn" data-switch="${other}">Cambiar a ${NAMES[other]}</button></div>`;
   B += hudSettings();
   return cols(A, B);
 }
@@ -353,6 +384,7 @@ function render() {
   $('#app').innerHTML = html;
   scroll.scrollTop = keep;
   for (const b of document.querySelectorAll('[data-role]')) b.onclick = () => window.ph.settings({ rol_por_defecto: b.dataset.role });
+  for (const b of document.querySelectorAll('[data-switch]')) b.onclick = () => window.ph.switchPlayer(b.dataset.switch);
   for (const b of document.querySelectorAll('[data-hud]')) b.onclick = () => window.ph.settings({ hud_enabled: b.dataset.hud === 'on' });
   for (const b of document.querySelectorAll('[data-hudcmd]')) b.onclick = () => window.ph.hud(b.dataset.hudcmd);
   applyLive(S.live);

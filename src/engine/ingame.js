@@ -541,7 +541,7 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
       kda: kdaOf(lane), cs: (lane.scores || {}).creepScore || 0, dead: !!lane.isDead,
       ult: ULT_NOTES[laneName] || null, item_ids: itemsOf(lane),
     },
-    buy, guide, support_mode: !!supCfg, ally_adc: allyAdcName,
+    buy, guide, support_mode: !!supCfg, ally_adc: allyAdcName, enemy_sup: enemySupName,
     enemy_adc: enemyAdcP ? { champ: pc(enemyAdcP), level: enemyAdcP.level || 1,
       items: itemsOf(enemyAdcP).map((i) => db.name(i)).filter((n) => !TRINKETS.has(n)), kda: kdaOf(enemyAdcP) } : null,
     queue, reasons, cond_src: condSrc, ap_share: apShare, threats: threats.slice(0, 5),

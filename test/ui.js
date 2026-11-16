@@ -8,11 +8,11 @@ const electron = path.join(root, 'node_modules', '.bin', 'electron');
 let failed = 0, passed = 0;
 const ok = (c, msg) => { if (c) passed++; else failed++; console.log(`${c ? 'OK   ' : 'FALLA'} ${msg}`); };
 const SCREENS = [
-  { name: 'champ select support', demo: 'support', expect: ['TU SUPPORT', 'Jinx', 'RECOMENDADO', 'CÓMO JUGAR LA LÍNEA', 'PLAN', 'BANEÁ'] },
+  { name: 'champ select support', demo: 'support', expect: ['TU SUPPORT', 'Jinx', 'RECOMENDADO', 'CÓMO JUGAR LA LÍNEA', 'PLAN', 'BANEÁ', 'PLAN DE BOT CON JINX', 'Fuentes: op.gg', 'Lolalytics'] },
   { name: 'champ select top', demo: 'select', expect: ['TU PICK', 'RIVAL DE TOP', 'RECOMENDADO', 'PLAN'] },
   { name: 'partida top', demo: 'game', expect: ['COMPRÁ AHORA', 'TU RIVAL', 'EQUIPO RIVAL'] },
-  { name: 'partida support', demo: 'gamesup', expect: ['COMPRÁ AHORA', 'SUPPORT RIVAL', 'ADC rival', 'ALERTAS'] },
-  { name: 'partida con muerte + plan del 14', demo: 'gamedeath', extra: ['--coach-fixture=full'], expect: ['MORISTE', 'TU PLAN HASTA EL 14', 'Muertes antes del 14', 'no te podés pasar'] },
+  { name: 'partida support', demo: 'gamesup', expect: ['COMPRÁ AHORA', 'SUPPORT RIVAL', 'ADC rival', 'ALERTAS', 'PLAN DE BOT'], absent: ['%', 'sinergia', 'pts', 'partidas)'], absentIn: 'bot' },
+  { name: 'partida con muerte + plan del 14', demo: 'gamedeath', extra: ['--coach-fixture=full'], expect: ['MORISTE', 'TU PLAN HASTA EL 14', 'Muertes antes del 14', 'te pasaste: jugá a no morir'] },
   { name: 'repaso (con 26 partidas)', demo: 'idle', extra: ['--coach-fixture=full'], expect: ['TU ÚLTIMA PARTIDA', 'AUTOPSIA', 'POR QUÉ MORÍS', 'TU PLAN HASTA EL MINUTO 14', 'CON QUIÉN MÁS JUGASTE', 'menos confiables'] },
   { name: 'repaso (con 7 partidas)', demo: 'idle', extra: ['--coach-fixture=few'], expect: ['Faltan 13 partidas completas', 'POR QUÉ MORÍS'] },
   { name: 'sin cliente', demo: null, expect: ['Sin conexión', 'Faltan 20 partidas', 'se carga cuando abras el cliente'] },
@@ -31,6 +31,14 @@ for (const s of SCREENS) {
     const miss = s.expect.filter((t) => !res.text.toLowerCase().includes(t.toLowerCase()));
     const bad = [];
     if (miss.length) bad.push(`falta: ${miss.join(', ')}`);
+    if (s.absent) {
+      const scope = s.absentIn ? (res.texts || {})[s.absentIn] : res.text;
+      if (scope === undefined) bad.push(`no encontré la tarjeta "${s.absentIn}"`);
+      else {
+        const there = s.absent.filter((t) => scope.toLowerCase().includes(t.toLowerCase()));
+        if (there.length) bad.push(`en partida no debería mostrar: ${there.join(', ')}`);
+      }
+    }
     if (res.overflow || res.wide.length) bad.push(`se sale de la ventana: ${res.wide.join(' ')}`);
     if (!res.buttonsVisible) bad.push('botones de la barra cortados');
     const wantCols = res.vw >= 760 ? 2 : 1;

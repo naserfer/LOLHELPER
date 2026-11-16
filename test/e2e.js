@@ -105,12 +105,12 @@ const offline = JSON.parse(fs.readFileSync(path.join(__dirname, 'offline.json'),
   const coach = eng.computeCoach(true);
   ok(coach.last && coach.last.win === false, `une la grabación con el resultado (${coach.last && coach.last.win === false ? 'derrota' : '?'})`);
   ok(coach.last.deaths.length === 2 && coach.last.deaths[0].primary === 'jungla', `autopsia de la última partida: ${coach.last.deaths.map((d) => d.title).join(' / ')}`);
-  ok(coach.early.have === 1 && !coach.early.ready && coach.early.need === 20, `progreso del plan del 14: ${coach.early.have}/${coach.early.need}`);
+  ok(coach.early.have === 1 && !coach.early.ready && coach.early.need === 31, `progreso del plan del 14: ${coach.early.have}/${coach.early.need}`);
   ok(coach.autopsy.deaths === 2, 'el resumen de "por qué morís" suma las muertes grabadas');
 
-  // 7) 21 partidas más con un patrón real (morir 2+ antes del 14 hace perder) → aparecen las reglas del 14
+  // 7) 34 partidas más con un patrón real (morir 2+ antes del 14 hace perder) → aparecen las reglas del 14 (mínimo 31 por rol)
   let gid = 800;
-  for (let k = 0; k < 21; k++) {
+  for (let k = 0; k < 34; k++) {
     gid++;
     riot.state.gameId = gid;
     riot.state.phase = 'InProgress';
@@ -130,8 +130,8 @@ const offline = JSON.parse(fs.readFileSync(path.join(__dirname, 'offline.json'),
   }
   await eng.history.refresh(0);
   const c2 = eng.computeCoach(true);
-  ok(c2.early.have === 22 && c2.early.ready, `con ${c2.early.have} partidas completas se activan las reglas del 14`);
-  ok(c2.early.rules.some((x) => x.key === 'd14' || x.key === 'dg14'), `aprende la regla real: ${c2.early_rules_text.map((x) => `${x.text} (${x.conf})`).join('; ')}`);
+  ok(c2.early.have === 35 && c2.early.ready, `con ${c2.early.have} partidas completas se activan las reglas del 14`);
+  ok(c2.early.rules.some((x) => x.key === 'd14' || x.key === 'dg14'), `aprende la regla real: ${(c2.early_rules_text[c2.early.role] || []).map((x) => `${x.text} (${x.conf})`).join('; ')}`);
 
   // 8) La partida siguiente muestra tu plan hasta el 14 en vivo
   riot.state.gameId = 999;

@@ -1,6 +1,7 @@
 'use strict';
 // Champ select: análisis para top (pool.json) y para support (pool_support.json).
 const { norm, sortBy, round1, clamp } = require('./util');
+const botlane = require('./botlane');
 
 const ADCS = new Set(["Aphelios", "Ashe", "Caitlyn", "Draven", "Ezreal", "Jhin", "Jinx", "Kai'Sa", "Kalista", "Kog'Maw",
   "Lucian", "Miss Fortune", "Nilah", "Samira", "Senna", "Sivir", "Smolder", "Tristana", "Twitch", "Varus",
@@ -230,7 +231,14 @@ function analyzeSupport(session, champs, pool, dyn, archLabel, adcArch, personal
   if (!focus) focus = recs.find((r) => r.status === 'ok') || recs[0] || null;
   const index = {};
   for (const c of pool) index[norm(c.name)] = c;
-  if (focus) focus.guide = supportGuide(focus.cfg, enemySup, index, dyn);
+  if (focus) {
+    focus.guide = supportGuide(focus.cfg, enemySup, index, dyn);
+    focus.bot = botlane.plan({
+      me: focus.cfg, allyAdc, enemySup, enemySupCfg: enemySup ? index[norm(enemySup)] || null : null, enemyAdc,
+      mu: focus.lane ? focus.lane[1] : null, syn: focus.syn ? focus.syn[1] : null,
+      pair: focus.mine && focus.mine.pair ? focus.mine.pair : null,
+    });
+  }
   const shown = recs.filter((r) => r.status === 'ok').slice(0, 5);
   if (focus && !shown.includes(focus)) shown.push(focus);
   return {
@@ -249,6 +257,7 @@ function gamePlan(v) {
   const f = v.focus;
   const mu = f.lane ? f.lane[1].score : null;
   if (v.mode === 'support') {
+    if (f.bot && f.bot.known) return f.bot.hud;
     const syn = f.syn ? f.syn[1].delta : null;
     const arch = (f.cfg && f.cfg.arch) || f.arch || '';
     const starts = arch === 'engage' || arch === 'roamer' || arch === 'mage';
@@ -259,5 +268,23 @@ function gamePlan(v) {
   return mu > 0 ? 'Ganás peleando: presioná la línea.' : 'Aguantá: no pelees hasta igualar nivel.';
 }
 
+// Plan de bot en partida (cuando no pasó por champ select con la app abierta). Sin historial: en partida no hay números.
+function botPlanLive(pool, adcArch, myChamp, allyAdc, enemySup, enemyAdc) {
+  const index = {};
+  for (const c of pool) index[norm(c.name)] = c;
+  const me = index[norm(myChamp)];
+  if (!me) return null;
+  const hit = (obj, n) => (n ? Object.entries(obj || {}).find(([k]) => norm(k) === norm(n)) : null);
+  const mu = hit(me.matchups, enemySup);
+  let syn = hit(me.synergy, allyAdc);
+  syn = syn ? syn[1] : null;
+  if (!syn && allyAdc && adcArch) {
+    const k = Object.keys(adcArch).find((key) => key.slice(key.lastIndexOf('|') + 1) === me.arch && norm(key.slice(0, key.lastIndexOf('|'))) === norm(allyAdc));
+    if (k !== undefined) syn = { delta: adcArch[k], est: true };
+  }
+  return botlane.forGame(botlane.plan({ me, allyAdc, enemySup, enemySupCfg: enemySup ? index[norm(enemySup)] || null : null, enemyAdc,
+    mu: mu ? mu[1] : null, syn }));
+}
+
 const analyzeTop = (s, c, p) => analyzeLane(s, c, p, 'top');
-module.exports = { ADCS, analyzeTop, analyzeLane, analyzeSupport, supportGuide, planFor, gamePlan, BUILD_LABEL };
+module.exports = { ADCS, analyzeTop, analyzeLane, analyzeSupport, supportGuide, planFor, gamePlan, botPlanLive, BUILD_LABEL };

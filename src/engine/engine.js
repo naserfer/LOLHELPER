@@ -169,6 +169,17 @@ class Engine {
     gv.orders = this.heldOrders.concat(standing);
     if (gv.time < 25 && this.scoutLine) gv.orders.push({ pri: 7, text: this.scoutLine });
     if (gv.time < 25 && this.lastView && this.lastView.win_line) gv.win_line = this.lastView.win_line;
+    // Support: plan de bot con los picks reales de la partida. En el overlay, una línea corta al empezar
+    // (hasta 1:30, cuando llegan a la línea) y otra 20 s al llegar al 6, si el 6 cambia algo.
+    if (gv.support_mode) {
+      gv.bot_plan = select.botPlanLive(this.supPool, this.supAdcArch, gv.me.champ, gv.ally_adc, gv.enemy_sup,
+        gv.enemy_adc ? gv.enemy_adc.champ : null);
+      const bp = gv.bot_plan;
+      if (bp && (gv.me.level || 1) >= 6 && this.gamePrev.lvl6_at == null) this.gamePrev.lvl6_at = gv.time;
+      const at6 = this.gamePrev.lvl6_at;
+      if (bp && bp.hud && gv.time < 90) { gv.win_line = bp.hud; gv.win_until = 90; }
+      else if (bp && bp.hud6 && at6 != null && gv.time - at6 < 20) { gv.win_line = bp.hud6; gv.win_until = at6 + 20; }
+    }
     const t = gv.time;
     for (const ev of gv.events) this.gameEvents.push([t, ev]);
     this.gameEvents = this.gameEvents.filter(([et]) => t - et < 75 && et <= t);

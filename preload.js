@@ -9,4 +9,8 @@ contextBridge.exposeInMainWorld('ph', {
   hudLayout: (l) => ipcRenderer.send('hud-layout', l),
   hud: (cmd) => ipcRenderer.send('hud', cmd),
   hudGrabCapture: (on) => ipcRenderer.send('hud-grab-capture', !!on),
+  players: () => ipcRenderer.invoke('players'),
+  choosePlayer: (id) => ipcRenderer.send('choose-player', id),
+  chooseClose: () => ipcRenderer.send('choose-close'),
+  switchPlayer: (id) => ipcRenderer.send('switch-player', id),
 });

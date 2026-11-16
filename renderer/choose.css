@@ -1,0 +1,11 @@
+.who { padding: 18px 16px; overflow: auto; height: calc(100% - 40px); }
+.who .q { font-size: 20px; font-weight: 700; color: var(--gold-l); margin-bottom: 4px; }
+.players { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.players button { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; background: var(--card); border: 1px solid var(--line);
+  border-radius: 4px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; }
+.players button:hover, .players button:focus-visible { border-color: var(--gold); background: var(--card-hi); }
+.players .ini { width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center; border: 1px solid var(--gold);
+  color: var(--gold); font-weight: 800; font-size: 18px; transform: rotate(45deg); }
+.players .ini span { transform: rotate(-45deg); }
+.players .nm { font-size: 16px; font-weight: 700; color: var(--gold-l); }
+.players .rl { font-size: 12px; color: var(--dim); overflow-wrap: anywhere; }

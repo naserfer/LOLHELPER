@@ -40,12 +40,14 @@ renderer/               Interfaz: index.html + app.js + style.css (ventana princ
 src/sig.js              Firma de la vista: si no cambia, no se redibuja (evita titileo)
 src/hud.js              Qué muestra el HUD y posiciones por defecto (% de pantalla)
 src/keywatch.js         Lee si Tab está apretada (PowerShell + GetAsyncKeyState), sin quedarse con la tecla
+src/player.js           Quién usa la app (Naser o Bitty): se elige la primera vez; cada uno con su carpeta de datos
 src/engine/
   engine.js             Orquesta todo: perfil, cliente, partida, historial, grabador, coach
   lcu.js                Credenciales del cliente (PowerShell o lockfile; LOL_PATH lo pisa) y HTTPS a 127.0.0.1
   ddragon.js            Data Dragon (campeones, ítems, runas) con caché; íconos de ítems desde el cliente
   itemdb.js             Recetas y "qué comprar con X de oro" (planPurchase)
   select.js             Champ select: analyzeLane (top/jungla/mid) y analyzeSupport (+ sinergia ADC)
+  botlane.js            Plan de bot lane para support: estilo de línea, combo, amenaza y post-6 (ver "Plan de bot")
   ingame.js             Partida en vivo: rival, compra adaptativa (BUILD_RULES, supportRules), alertas, guía
   history.js            Historial desde el cliente (últimas 100 partidas, en historial/)
   wincons.js            Reglas "si cumplís X ganás Y%" con prueba de permutación (Westfall-Young)
@@ -57,6 +59,7 @@ data/
   profiles/*.json       Roles, pools y demos de cada perfil
   pool*.json            Datos por campeón (ver "Formato de datos")
   items.json            Lista fija de ítems vigentes (ver "Lista de ítems"); se actualiza a mano
+  bot_lane.json         Plan de bot: perfiles de ADC, aportes de cada support, combos y support vs ADC (Lolalytics)
   demo_*.json           Sesiones y partidas de ejemplo para --demo
 tools/datos/            Scripts que generan pool*.json a partir de datos crudos (top, support, bitty)
 test/                   Todas las pruebas (ver "Pruebas")
@@ -73,6 +76,13 @@ build_win.sh            Arma el .exe desde Linux con Wine
 5. `viewSig` decide si se redibuja todo o solo se actualizan números (oro, tiempo, faltante).
 6. Al terminar la partida se recalcula el coach, se refresca el historial y la grabación se une con el resultado: por `gameId`, o si no, por campeón y hora.
 
+## Un solo .exe: elegir jugador
+- La primera vez, `main.js` muestra `renderer/choose.html` ("¿Quién sos?") y guarda `%APPDATA%\Pick Helper\jugador.json`.
+- Cada jugador usa su carpeta de siempre: Naser `%APPDATA%\Pick Helper`, Bitty `%APPDATA%\Pick Helper Bitty` (se le pasa como `userDir` al motor). Así no se toca `productName` ni `appId`.
+- Orden: `PH_PROFILE` > lo elegido > el perfil con el que se armó el .exe si no es naser (un `PickHelper-Bitty.exe` viejo sigue siendo de Bitty) > preguntar.
+- En Ajustes: "Cambiar a …" guarda y reinicia. El .exe portable corre desde una copia temporal que se borra al cerrar, por eso se relanza `PORTABLE_EXECUTABLE_FILE`.
+- En pruebas (`--demo`, `--userdir`, `--selftest`, `--hudtest`) no se pregunta. `--choose --appdata=DIR --choosetest=out.json --choosepick=bitty` prueba la ventana; `--appdata=DIR` solo simula `%APPDATA%`.
+
 ## Perfiles y roles
 - La posición asignada en champ select (`top|jungle|middle|bottom|utility`) elige el pool, si el perfil tiene ese rol. Si no, usa `rol_por_defecto` de los ajustes.
 - `kind: "support"` usa `analyzeSupport` (con ADC aliado y sinergia). `kind: "lane"` usa `analyzeLane`.
@@ -88,6 +98,14 @@ build_win.sh            Arma el .exe desde Linux con Wine
   - Los recuadros vacíos (por ejemplo el aviso de muerte) aparecen como fantasma para poder moverlos.
   - Al soltar Tab, el recuadro queda donde estaba y se guarda en `hud_layout`.
   - Se apaga con `hud_tab_drag: false` en `settings.json`. En `--demo` no se lanza el PowerShell; `--hudgrab` simula Tab apretado en `--hudtest`.
+
+## Plan de bot (support)
+- `botlane.plan()` suma: support vs support (op.gg), **support vs ADC rival (Lolalytics, Δ2)**, sinergia con tu ADC (op.gg o estimada por tipo), perfil de los dos ADCs (`fuerte|medio|debil`, ANÁLISIS) y tu historial con la dupla.
+  - Los números de op.gg/Lolalytics pesan entero desde 1000 partidas. Tu historial se muestra siempre, pero pesa solo con 5+ partidas, encogido hacia 50% (5/5) y como mucho ±0,5.
+  - Estilo: `allin | poke | hold | protect` según el puntaje y tu tipo de support. Si no hay rivales elegidos: plan general, sin amenazas.
+- Combo: solo interacciones de kit verificadas en la wiki (Braum + ADC de autos, Jhin W con tu daño, plasma de Kai'Sa, R de Kalista, trampa de Caitlyn con control de más de 1 s…). Si no hay, no se muestra. Todo es `ANÁLISIS`; **no hay material PRO de support**. Si alguna vez se agrega, va con `pro: { fuente }`.
+- En partida (`botPlanLive` + `forGame`): sin números. El overlay muestra una línea hasta 1:30 y otra 20 s al llegar al 6 (`win_until`).
+- Para actualizar: bajar de Lolalytics `.../counters/?lane=support&vslane=bottom&tier=emerald_plus` (se lee desde un navegador: carga con JS), pegar en `tools/datos/support/raw_vs_adc.txt` y correr `node tools/datos/support/build_bot_lane.js`.
 
 ## Formato de datos (pool*.json)
 `{ patch, source, pool: [campeón] }`. Cada campeón tiene:
@@ -129,6 +147,8 @@ Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo p
 - `test/golden/compare.js`: la versión JS da exactamente lo mismo que la Python (395 casos). Usa `items_golden.json` congelado; **no lo modifiques**. Para agregar ítems de prueba usá `test/items_test.json`.
 - `test/items_list.js`: la lista de ítems es coherente y no se recomienda nada que ya no se compre.
 - `test/keywatch.js`: lectura de Tab (sin mandar teclas ni leer memoria) y que se suelte si PowerShell se cae.
+- `test/botlane.js`: plan de bot (fuentes, fallbacks, combos solo con kit, historial con muestra chica, sin números en partida).
+- `test/player.js`: elegir jugador la primera vez y que cada uno use su carpeta.
 - `test/new_features.js`: pruebas pensadas para fallar si la idea está mal: causa al revés, autopsia, grabación con cortes y que no titile.
 - `test/e2e.js` y `test/bitty_test.js`: de punta a punta contra un cliente y un juego simulados por HTTPS (`test/fake_riot.js`; la API en vivo usa el puerto 2999 de verdad).
 - `test/ui.js` y `test/ui_bitty.js`: cada pantalla a 340, 460, 800 y 1600 px. Verifica que no haya errores JS, que nada se salga de la ventana, cuántas columnas hay y el texto esperado.
@@ -173,7 +193,6 @@ Flags útiles de la app:
 - Que el `gameId` de `/lol-gameflow/v1/session` coincida con el del historial; si no, se une por campeón y hora.
 - Posiciones por defecto del HUD con la interfaz de League a escala normal. El usuario las puede mover con Alt+Shift+E o con Tab + arrastrar.
 - Arrastre con Tab probado solo con eventos simulados en Xvfb: falta confirmar en Windows con el juego en Sin bordes que `forward: true` deja pasar los clics fuera de los recuadros.
-- `test/e2e.js` (plan del 14) y `test/ui.js` ("no te podés pasar") fallan desde antes: las pruebas quedaron viejas cuando el mínimo pasó a 31 partidas por rol.
 - Íconos reales: en las pruebas se usan placeholders.
 - Bitty: no hay guías específicas para los campeones nuevos Locke y Zaahen, porque no se conocen sus kits.
 - Idea pendiente: una foto extra al minuto 8 para junglas (primer recorrido y ganks).

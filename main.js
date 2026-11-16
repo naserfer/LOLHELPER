@@ -7,9 +7,21 @@ const { Engine } = require('./src/engine/engine');
 const { viewSig } = require('./src/sig');
 const { hudPayload, hudSig, DEFAULT_LAYOUT } = require('./src/hud');
 const { watchKey } = require('./src/keywatch');
+const player = require('./src/player');
 
 const arg = (name) => { const a = process.argv.find((x) => x.startsWith(`--${name}`)); return a ? (a.split('=')[1] || true) : null; };
 const COMMON_DEMOS = { idle: { idle: true }, gamedeath: { game: '../test/demo_game_death.json' }, jgdeath: { game: '../test/demo_game_jungle_death.json' } };
+
+// Jugador (Naser o Bitty). En pruebas (--demo, --userdir…) no se pregunta: manda PH_PROFILE o data/profile.json.
+const APPDATA = arg('appdata') ? String(arg('appdata')) : app.getPath('appData');
+const TESTING = ['demo', 'userdir', 'selftest', 'hudtest'].some((a) => arg(a)) && !arg('choose') && !arg('appdata');
+let PLAYER = { id: null, ask: false };
+if (!TESTING) {
+  let builtId = null;
+  try { builtId = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'profile.json'), 'utf8')).id; } catch (e) { /* sin perfil */ }
+  PLAYER = arg('choose') ? { id: null, ask: true } : player.resolve({ appData: APPDATA, env: process.env, builtId });
+  if (PLAYER.id) process.env.PH_PROFILE = PLAYER.id;
+}
 
 protocol.registerSchemesAsPrivileged([{ scheme: 'pickhelper', privileges: { standard: true, secure: true, supportFetchAPI: true } }]);
 if (!app.requestSingleInstanceLock() && !arg('demo')) app.quit();
@@ -155,10 +167,54 @@ async function tick() {
   } finally { busy = false; }
 }
 
-app.whenReady().then(() => {
+// Primera vez: ventanita "¿Quién sos?". Devuelve el id elegido.
+function chooseplayer() {
+  return new Promise((resolve) => {
+    const w = new BrowserWindow({ width: 440, height: 420, minWidth: 340, minHeight: 300, frame: false, backgroundColor: '#010A13', show: false,
+      title: 'Pick Helper', icon: path.join(__dirname, 'renderer', 'icon.png'),
+      webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false } });
+    if (arg('size')) { const [sw, sh] = String(arg('size')).split('x').map(Number); w.setBounds({ x: 0, y: 0, width: sw, height: sh }); }
+    w.loadFile(path.join(__dirname, 'renderer', 'choose.html'));
+    w.once('ready-to-show', () => w.show());
+    const onPick = (e, id) => {
+      if (!player.PLAYERS[id]) return;
+      ipcMain.removeListener('choose-player', onPick);
+      player.saveChoice(APPDATA, id);
+      resolve({ id, win: w });
+    };
+    ipcMain.on('choose-player', onPick);
+    ipcMain.on('choose-close', () => app.quit());
+    ipcMain.handle('players', () => Object.keys(player.PLAYERS).map((id) => {
+      const pr = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'profiles', `${id}.json`), 'utf8'));
+      const order = [pr.default_role, ...Object.keys(pr.roles).filter((k) => k !== pr.default_role)];
+      return { id, title: pr.title, roles: order.map((k) => pr.roles[k].label), default_role: pr.default_role };
+    }));
+    if (arg('choosetest')) {   // autoprueba: lee la pantalla, elige y termina
+      w.webContents.once('did-finish-load', () => setTimeout(async () => {
+        const r = await w.webContents.executeJavaScript(`({ text: document.body.innerText, vw: innerWidth,
+          wide: [...document.querySelectorAll('body *')].filter((el) => { const b = el.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 1 || b.left < -1); }).length,
+          buttons: [...document.querySelectorAll('[data-pick]')].map((b) => b.dataset.pick) })`);
+        await w.webContents.executeJavaScript(`document.querySelector('[data-pick="${String(arg('choosepick') || 'bitty')}"]').click()`);
+        await new Promise((ok) => setTimeout(ok, 500));
+        r.saved = player.readChoice(APPDATA);
+        fs.writeFileSync(String(arg('choosetest')), JSON.stringify(r, null, 1));
+        app.exit(0);
+      }, 800));
+    }
+  });
+}
+
+let chooserWin = null;
+app.whenReady().then(async () => {
+  if (PLAYER.ask) {
+    const { id, win: w } = await chooseplayer();
+    process.env.PH_PROFILE = id;
+    PLAYER = { id, ask: false };
+    chooserWin = w;   // se cierra recién cuando abre la ventana principal (si no, la app se cerraría sola)
+  }
   const demoName = arg('demo');
-  engine = new Engine({ dataDir: path.join(__dirname, 'data'), userDir: arg('userdir') ? String(arg('userdir')) : app.getPath('userData'),
-    demo: null });
+  const userDir = arg('userdir') ? String(arg('userdir')) : PLAYER.id ? player.userDataFor(APPDATA, PLAYER.id) : app.getPath('userData');
+  engine = new Engine({ dataDir: path.join(__dirname, 'data'), userDir, demo: null });
   if (demoName) {
     const demos = Object.assign({}, engine.profile.demos || {}, COMMON_DEMOS);
     engine.demo = demos[demoName] || Object.values(engine.profile.demos)[0];
@@ -174,6 +230,7 @@ app.whenReady().then(() => {
     return new Response('', { status: 404 });
   });
   createWindow();
+  if (chooserWin) { chooserWin.destroy(); chooserWin = null; }
   ipcMain.on('win', (e, cmd) => {
     if (!win) return;
     if (cmd === 'min') win.minimize();
@@ -198,6 +255,15 @@ app.whenReady().then(() => {
     send('win', { pinned: win.isAlwaysOnTop(), maximized: win.isMaximized(), hudEdit });
   });
   ipcMain.on('hud-layout', (e, layout) => { engine.saveSettings({ hud_layout: layout }); });
+  ipcMain.on('switch-player', (e, id) => {
+    if (!player.PLAYERS[id] || id === engine.profile.id) return;
+    player.saveChoice(APPDATA, id);
+    // El .exe portable corre desde una copia temporal que se borra al cerrar: se relanza el .exe original.
+    const exe = process.env.PORTABLE_EXECUTABLE_FILE;
+    if (exe) app.relaunch({ execPath: exe, args: [] });
+    else app.relaunch();
+    app.exit(0);
+  });
   ipcMain.on('hud-grab-capture', (e, on) => { if (hudGrab && hud) hud.setIgnoreMouseEvents(!on, { forward: true }); });
   ipcMain.on('hud', (e, cmd) => {
     if (cmd === 'edit') setHudEdit(!hudEdit);
@@ -242,7 +308,7 @@ function runSelftest(out) {
     const cols = getComputedStyle(document.querySelector('.cols') || document.body).gridTemplateColumns || '';
     const bar = document.getElementById('bar');
     const btns = [...bar.querySelectorAll('button')].map((b) => { const r = b.getBoundingClientRect(); return r.right <= vw + 1 && r.width > 10; });
-    return { vw, text: document.getElementById('app').innerText, overflow: sc.scrollWidth > sc.clientWidth + 1, wide,
+    return { vw, text: document.getElementById('app').innerText, texts: { bot: (document.querySelector('.card.bot') || {}).innerText }, overflow: sc.scrollWidth > sc.clientWidth + 1, wide,
       cols: cols.split(' ').filter(Boolean).length, buttonsVisible: btns.every(Boolean), status: document.querySelector('#status span').textContent,
       brand: document.querySelector('.brand .name').textContent,
       imgs: document.querySelectorAll('#app .ic').length };

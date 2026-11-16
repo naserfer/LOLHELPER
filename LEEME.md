@@ -28,3 +28,14 @@ La app solo te recomienda comprar ítems que estén en `data/items.json` (parche
 
 ## Mover el overlay
 En partida, **mantené Tab y arrastrá** cualquier recuadro (la compra, el plan del 14 o el aviso de muerte) con el mouse. Mientras tengas Tab apretado, los recuadros que no se están mostrando aparecen como un recuadro punteado para que también los puedas mover. Al soltar, quedan donde los dejaste. El marcador del juego sigue abriendo normal. También está **Alt+Shift+E** para acomodar todo con calma y **Alt+Shift+R** para volver a las posiciones de fábrica.
+
+## Plan de bot (support)
+En champ select, con tu support elegido, aparece **Plan de bot con tu ADC**:
+- **Cómo jugar la línea:** all-in, poke, aguantar o proteger, según tu support y tu ADC contra los dos rivales.
+- **Por qué:** cada número dice de dónde sale: op.gg (vs support y sinergia), Lolalytics (vs el ADC rival) y tu historial. Si jugaste menos de 5 partidas con esa dupla, tu récord se muestra pero no cambia el plan.
+- **Combo con tu ADC, qué respetar y qué cambia en el 6:** salen de los kits (`ANÁLISIS`). No hay guías de profesionales de support, así que nada se marca `PRO`.
+
+En partida ves el mismo plan sin números. En el overlay aparece una línea corta al empezar (hasta 1:30) y otra al llegar al 6.
+
+## Quién sos
+La primera vez que abrís la app te pregunta si sos **Naser** (support) o **Bitty** (jungla). Cada uno tiene sus propios datos. Para cambiar, andá a Ajustes → "Cambiar a …".

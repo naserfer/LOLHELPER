@@ -9,7 +9,8 @@ function topLine(v) {
   const list = (v.orders || []).filter((o) => o && o.text && (o.until == null || v.time <= o.until));
   list.sort((a, b) => a.pri - b.pri);
   if (list.length) return { call: true, text: list[0].text };
-  if (v.win_line && v.time < 25) return { call: true, text: v.win_line };
+  // Por defecto el plan se ve hasta los 25 s; el plan de bot trae su propio límite (inicio de la línea, llegada al 6).
+  if (v.win_line && v.time < (v.win_until != null ? v.win_until : 25)) return { call: true, text: v.win_line };
   if (v.death) return { death: true, title: v.death.title, text: v.death.text, t: v.death.t };
   return null;
 }
