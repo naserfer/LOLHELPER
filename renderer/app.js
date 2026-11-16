@@ -75,8 +75,25 @@ function botCard(bp, ally, game, level) {
     const off = game && level !== undefined && level < 6;
     h += `<div class="g-h${off ? ' off' : ''}">${game && level >= 6 ? 'Ya sos 6' : 'Desde el 6'} ${srcPill('ANÁLISIS')}</div>${bp.post6.map((t) => `<div class="g-l${off ? ' off' : ''}"><b>${esc(t.who)}:</b> ${esc(t.txt)}</div>`).join('')}`;
   }
-  if (!game && bp.missing && bp.missing.length) h += `<div class="small muted sp8">Falta: ${esc(bp.missing.join(' · '))}</div>`;
+  if (!game && bp.missing && bp.missing.length) h += `<div class="small muted sp8">${esc(bp.missing.join(' · ').replace(/^./, (c) => c.toUpperCase()))}</div>`;
   if (!game) h += '<div class="small muted sp8">Fuentes: op.gg (vs support, sinergia) · Lolalytics (vs ADC) · Data Dragon · kits de la wiki (ANÁLISIS) · tu historial. No hay guías PRO de support.</div>';
+  return `${h}</div>`;
+}
+
+// Plan de jungla / mid (Bitty). Mismo criterio: en partida, sin números.
+function jgCard(jp, game, level) {
+  if (!jp) return '';
+  const title = jp.role === 'jungle' ? 'Plan de jungla' : 'Plan de mid';
+  let h = `<div class="card hi bot"><div class="row wrap"><span class="k" style="color:var(--gold)">${title}</span><span class="right">${pill(jp.label, 'gold')}</span></div>`;
+  h += `<div class="t sp4">${esc(jp.head)}</div>`;
+  if (!game && jp.why && jp.why.length) h += `<ul class="g bot-why">${jp.why.map((w) => `<li>${srcPill(w.src)} ${esc(w.txt)}</li>`).join('')}</ul>`;
+  if (jp.threats && jp.threats.length) h += `<div class="g-h red">Respetá</div>${jp.threats.map((t) => `<div class="g-l">${srcPill(t.src)} <b>${esc(t.who)}:</b> ${esc(t.txt)}</div>`).join('')}`;
+  if (jp.post6 && jp.post6.length) {
+    const off = game && level !== undefined && level < 6;
+    h += `<div class="g-h${off ? ' off' : ''}">${game && level >= 6 ? 'Ya sos 6' : 'Desde el 6'} ${srcPill('ANÁLISIS')}</div>${jp.post6.map((t) => `<div class="g-l${off ? ' off' : ''}">${esc(t.txt)}</div>`).join('')}`;
+  }
+  if (!game && jp.missing && jp.missing.length) h += `<div class="small muted sp8">${esc(jp.missing.join(' · ').replace(/^./, (c) => c.toUpperCase()))}</div>`;
+  if (!game) h += '<div class="small muted sp8">Fuentes: op.gg Master+ y Lolalytics (Master+ y Emerald+, este último a mitad de peso) · kits (ANÁLISIS). No hay guías PRO para estos campeones.</div>';
   return `${h}</div>`;
 }
 
@@ -109,6 +126,7 @@ function drawSelect(v) {
   }
 
   if (sup && v.focus && v.focus.bot) A += botCard(v.focus.bot, v.ally_adc, false);
+  else if (v.focus && v.focus.jg) A += jgCard(v.focus.jg, false);
   else if (v.win_line) A += `<div class="card hi"><div class="t">${esc(v.win_line)}</div></div>`;
   if (v.scout) A += `<div class="card"><div class="small">${esc(v.scout)}</div></div>`;
   A += sec(sup ? 'Tu support' : 'Tu pick', sup ? 'mejores 5' : '');
@@ -118,7 +136,11 @@ function drawSelect(v) {
     let mid = `<div class="row"><span class="nm">${esc(r.name)}</span>${best ? pill('RECOMENDADO', 'gold') : ''}${!ok ? pill(r.status, r.status === 'BANEADO' ? 'red' : 'gray') : ''}</div>`;
     if (r.lane) {
       const m = r.lane[1];
-      mid += `<div class="row small"><b class="${wrc(m.wr)}">${m.wr.toFixed(1)}%</b><span class="dim">vs ${esc(r.lane[0])}${sup ? '' : ` · ${m.games.toLocaleString('es')} partidas`}</span>${m.pro ? pill(DIFF[m.pro.diff][0], DIFF[m.pro.diff][1]) : ''}</div>${wrBar(m.wr)}`;
+      // Bitty: WR mezclado de op.gg y Lolalytics (partidas efectivas: Emerald+ cuenta a mitad de peso).
+      const mwr = m.wr_mix != null ? m.wr_mix : m.wr;
+      const mg = m.games_mix != null ? m.games_mix : m.games;
+      mid += `<div class="row small"><b class="${wrc(mwr)}">${mwr.toFixed(1)}%</b><span class="dim">vs ${esc(r.lane[0])}${sup ? '' : ` · ${mg.toLocaleString('es')} partidas`}</span>${m.pro ? pill(DIFF[m.pro.diff][0], DIFF[m.pro.diff][1]) : ''}</div>${wrBar(mwr)}`;
+      if (m.sources) mid += `<div class="small muted">${esc(m.sources.map((x) => `${x.name.replace('Lolalytics', 'Lola')} ${x.wr.toFixed(1)}%`).join(' · '))}</div>`;
     } else if (!sup) mid += `<div class="small dim">${(r.cfg.blind || 0) >= 1 ? 'Seguro a ciegas' : 'Mejor si ves al rival'}</div>`;
     if (sup) {
       const ch = [];
@@ -205,6 +227,7 @@ function drawGame(v) {
 
   const l = v.lane;
   if (v.bot_plan && v.time < 14 * 60) B += botCard(v.bot_plan, v.ally_adc, true, me.level);
+  if (v.jg_plan && v.time < 14 * 60) B += jgCard(v.jg_plan, true, me.level);
   if (l && v.guide && v.time < 16 * 60) B += guideCard(v.guide, l.champ, me.level, v.role);
   A += sec(v.support_mode ? 'Support rival' : v.role === 'jungle' ? 'Jungla rival' : 'Tu rival');
   if (l) {

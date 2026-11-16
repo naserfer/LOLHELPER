@@ -1204,12 +1204,14 @@
       "por": "análisis de kits · números de op.gg Master+",
       "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
       "pre6": [
+       "Le gana el duelo largo a Nocturne: no lo peleés 1v1 en su jungla. Pelealo con tu línea al lado o cuando use su habilidad de engage.",
        "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
        "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
-       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Zaahen: Su E lo acerca, su W te stunea un instante y te tira hacia él si la punta te pega, y su Q lo cura. No le des peleas largas."
       ],
       "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
-      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "evitar": "Pelear dentro del alcance de su W, o tirarle tu control cuando lanza la R: es inmune mientras la tira.",
       "labels": [
        "Inicio",
        "Hasta el 6",
@@ -2215,12 +2217,14 @@
       "por": "análisis de kits · números de op.gg Master+",
       "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
       "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
        "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
        "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
-       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Zaahen: Su E lo acerca, su W te stunea un instante y te tira hacia él si la punta te pega, y su Q lo cura. No le des peleas largas."
       ],
       "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
-      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "evitar": "Pelear dentro del alcance de su W, o tirarle tu control cuando lanza la R: es inmune mientras la tira.",
       "labels": [
        "Inicio",
        "Hasta el 6",
@@ -2398,12 +2402,14 @@
       "por": "análisis de kits · números de op.gg Master+",
       "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
       "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
        "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
        "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
-       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Locke: Sus autos pegan más cuanto menos vida tenés y su W le da velocidad de ataque y movimiento. Con 2 marcas de su Q, el ralentizado es fuerte."
       ],
       "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
-      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "evitar": "Quedar con poca vida cerca de su R: el tótem te ralentiza casi por completo y te remata por debajo de un % de vida.",
       "labels": [
        "Inicio",
        "Hasta el 6",

@@ -6,9 +6,9 @@ const root = path.join(__dirname, '..');
 let failed = 0, passed = 0;
 const ok = (c, msg) => { if (c) passed++; else failed++; console.log(`${c ? 'OK   ' : 'FALLA'} ${msg}`); };
 const SCREENS = [
-  { name: 'champ select jungla', demo: 'select', expect: ['PICK HELPER · BITTY', 'JUNGLA RIVAL', 'Lee Sin', 'Nocturne', 'Diana', 'CÓMO JUGARLE AL JUNGLA', 'INICIO', 'HECHIZOS', 'BUILD', 'Conqueror']  },
-  { name: 'champ select mid', demo: 'mid', expect: ['RIVAL DE MID', 'Ahri', 'Diana', 'CÓMO JUGAR LA LÍNEA', 'Electrocute'] },
-  { name: 'partida Nocturne', demo: 'game', expect: ['Nocturne', 'JUNGLA RIVAL', 'Lee Sin', 'COMPRÁ'] },
+  { name: 'champ select jungla', demo: 'select', expect: ['PICK HELPER · BITTY', 'JUNGLA RIVAL', 'Lee Sin', 'Nocturne', 'Diana', 'CÓMO JUGARLE AL JUNGLA', 'INICIO', 'HECHIZOS', 'BUILD', 'Conqueror', 'PLAN DE JUNGLA', 'Lolalytics', 'op.gg Master+'] },
+  { name: 'champ select mid', demo: 'mid', expect: ['RIVAL DE MID', 'Ahri', 'Diana', 'CÓMO JUGAR LA LÍNEA', 'Electrocute', 'PLAN DE MID'] },
+  { name: 'partida Nocturne', demo: 'game', expect: ['Nocturne', 'JUNGLA RIVAL', 'Lee Sin', 'COMPRÁ', 'PLAN DE JUNGLA'], absent: ['%', 'partidas', 'pts'] },
   { name: 'partida con muerte', demo: 'jgdeath', expect: ['MORISTE'] },
   { name: 'repaso sin cliente', demo: null, expect: ['Sin conexión', 'Jungla', 'Mid', 'Faltan 20'] },
 ];
@@ -27,6 +27,11 @@ for (const s of SCREENS) {
     const miss = s.expect.filter((t) => !text.toLowerCase().includes(t.toLowerCase()));
     const bad = [];
     if (miss.length) bad.push(`falta: ${miss.join(', ')}`);
+    if (s.absent) {   // en partida, la tarjeta del plan no muestra números
+      const card = (res.texts || {}).bot;
+      if (card === undefined) bad.push('no está la tarjeta del plan');
+      else { const there = s.absent.filter((t) => card.includes(t)); if (there.length) bad.push(`en partida muestra: ${there.join(', ')}`); }
+    }
     if (res.overflow || res.wide.length) bad.push('se sale de la ventana');
     if (!res.buttonsVisible) bad.push('botones cortados');
     ok(!bad.length, `${s.name} a ${res.width}px: ${bad.length ? bad.join('; ') : 'bien'}`);

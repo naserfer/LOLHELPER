@@ -6,12 +6,13 @@ const { norm } = require('./util');
 const { LCU, liveGame } = require('./lcu');
 const { DataDragon } = require('./ddragon');
 const select = require('./select');
+const jgplan = require('./jgplan');
 const ingame = require('./ingame');
 const { History } = require('./history');
 const wincons = require('./wincons');
 const autopsy = require('./autopsy');
 const scout = require('./scout');
-const { Recorder, completeEarly, earlyRow, T14 } = require('./recorder');
+const { Recorder, completeEarly, earlyRow, T14, T8 } = require('./recorder');
 
 function migrateHistory(oldDir, newDir) {
   try {
@@ -44,7 +45,7 @@ class Engine {
     this.supPool = []; this.supDyn = {}; this.supLabels = {}; this.supAdcArch = {};
     for (const [role, cfg] of Object.entries(this.profile.roles)) {
       const d = JSON.parse(fs.readFileSync(path.join(dataDir, cfg.pool), 'utf8'));
-      const pool = d.pool.map((c) => Object.assign({ role: role === 'utility' ? 'utility' : role === 'middle' ? 'mid' : role }, c));
+      const pool = jgplan.mix(d.pool.map((c) => Object.assign({ role: role === 'utility' ? 'utility' : role === 'middle' ? 'mid' : role }, c)));
       this.roles[role] = { kind: cfg.kind, label: cfg.label, pool, meta: `${d.source || '?'} · parche ${d.patch || '?'}` };
       this.pool = this.pool.concat(pool);
       if (cfg.kind === 'support') {
@@ -171,6 +172,16 @@ class Engine {
     if (gv.time < 25 && this.lastView && this.lastView.win_line) gv.win_line = this.lastView.win_line;
     // Support: plan de bot con los picks reales de la partida. En el overlay, una línea corta al empezar
     // (hasta 1:30, cuando llegan a la línea) y otra 20 s al llegar al 6, si el 6 cambia algo.
+    // Jungla/mid (Bitty): mismo esquema que el plan de bot.
+    if (!gv.support_mode && (gv.role === 'jungle' || gv.role === 'mid')) {
+      const me = ingame.findMe(g);
+      gv.jg_plan = select.jgPlanLive(this.pool, gv.me.champ, gv.role, g.allPlayers, me && me.team);
+      const jp = gv.jg_plan;
+      if (jp && (gv.me.level || 1) >= 6 && this.gamePrev.lvl6_at == null) this.gamePrev.lvl6_at = gv.time;
+      const at6 = this.gamePrev.lvl6_at;
+      if (jp && jp.hud && gv.time < 90) { gv.win_line = jp.hud; gv.win_until = 90; }
+      else if (jp && jp.hud6 && at6 != null && gv.time - at6 < 20) { gv.win_line = jp.hud6; gv.win_until = at6 + 20; }
+    }
     if (gv.support_mode) {
       gv.bot_plan = select.botPlanLive(this.supPool, this.supAdcArch, gv.me.champ, gv.ally_adc, gv.enemy_sup,
         gv.enemy_adc ? gv.enemy_adc.champ : null);
@@ -210,11 +221,15 @@ class Engine {
         cw14: r.cw_bought, vis14: now.ward, gold14: now.inv_value + now.gold,
         kp14: now.team_kills ? Math.min(100, 100 * (now.k + now.a) / now.team_kills) : null,
         item1: r.item1 !== null ? r.item1 : t / 60,
+        // jungla (foto del 8): en vivo hasta el 8, después queda fija
+        cs8: r.snap8 ? r.snap8.cs8 : now.cs, lvl8: r.snap8 ? r.snap8.lvl8 : now.level,
+        kp8: r.snap8 ? r.snap8.kp8 : now.team_kills ? Math.min(100, 100 * (now.k + now.a) / now.team_kills) : null,
+        d8: r.deaths.filter((d) => d.t < T8).length,
       };
       for (const rule of early.rules) {
         const v = vals[rule.key];
         if (v === null || v === undefined) continue;
-        const sp = wincons.EARLY[rule.key];
+        const sp = wincons.EARLY_JG[rule.key];
         let ok, note;
         if (rule.key === 'item1') {
           ok = v <= rule.t;
@@ -224,11 +239,12 @@ class Engine {
           const left = Math.floor(rule.t - v);
           note = left > 0 ? `te quedan ${left}` : left === 0 ? 'no te podés pasar' : 'te pasaste: jugá a no morir';
         } else {
-          const goal = rule.t * pace;
+          const at8 = /8$/.test(rule.key);
+          const goal = rule.t * (at8 ? Math.min(1, t / T8) : pace);
           ok = v >= goal;
-          note = `meta al 14: ${wincons.fmtNum(rule.t, sp.fmt)}${sp.unit} · ${ok ? 'vas bien' : 'vas atrás'}`;
+          note = `meta al ${at8 ? 8 : 14}: ${wincons.fmtNum(rule.t, sp.fmt)}${sp.unit} · ${ok ? 'vas bien' : 'vas atrás'}`;
         }
-        out.push({ key: rule.key, rule: wincons.ruleText(rule, wincons.EARLY), value: wincons.fmtNum(v, sp.fmt) + sp.unit,
+        out.push({ key: rule.key, rule: wincons.ruleText(rule, wincons.EARLY_JG), value: wincons.fmtNum(v, sp.fmt) + sp.unit,
           ok, note, wr_ok: Math.round(wincons.wrOf(rule.ok)), wr_no: Math.round(wincons.wrOf(rule.no)), early: true });
       }
       return out;
@@ -270,7 +286,8 @@ class Engine {
       const role = canonicalRole(configuredRole);
       const roleRows = usable.filter((r) => this.coachRoleForRec(r) === role)
         .slice().sort((a, b) => (a.start_wall || 0) - (b.start_wall || 0));
-      const model = wincons.learnValidated(roleRows.map(earlyRow), wincons.EARLY, 7);
+      const rows = roleRows.map(earlyRow);
+      const model = wincons.learnValidated(rows, wincons.earlySpec(role, rows), 7);
       earlyByRole[role] = Object.assign({ role, label: cfg.label }, model);
     }
     const early = earlyByRole[canonicalRole(this.settings.rol_por_defecto)] || Object.values(earlyByRole)[0]
@@ -285,12 +302,12 @@ class Engine {
       last = { champ: lastRec.champ, role, role_label: roleModel && roleModel.label, win: lastRec.win, deaths, complete: completeEarly(lastRec),
         snap14: lastRec.snap14, item1: lastRec.item1, review_early: null };
       if (roleModel && roleModel.ready && roleModel.rules.length && completeEarly(lastRec)) {
-        last.review_early = wincons.review(roleModel.rules, earlyRow(lastRec), wincons.EARLY);
+        last.review_early = wincons.review(roleModel.rules, earlyRow(lastRec), wincons.EARLY_JG);
       }
     }
     this.coach = { early, earlyByRole, autopsy: aut, last, recorded: recs.length,
       early_rules_text: Object.fromEntries(Object.entries(earlyByRole).map(([role, model]) => [role,
-        model.rules.map((r) => Object.assign({ text: wincons.ruleText(r, wincons.EARLY),
+        model.rules.map((r) => Object.assign({ text: wincons.ruleText(r, wincons.EARLY_JG),
           wr_ok: wincons.wrOf(r.ok), wr_no: wincons.wrOf(r.no) }, r))])) };
     this.coachKey = key;
     return this.coach;

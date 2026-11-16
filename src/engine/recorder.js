@@ -9,6 +9,7 @@ const { ADCS } = require('./select');
 const autopsy = require('./autopsy');
 
 const T14 = 840;
+const T8 = 480;   // jungla: primer recorrido y primeros ganks
 const MAX_GAP = 60;        // si el overlay no leyó la partida por más de esto antes del 14, no sirve para reglas
 const MAX_FIRST_SEEN = 120;
 const CONTROL_WARD = 2055;
@@ -56,7 +57,7 @@ class Recorder {
     r.cw_prev = cwNow;
     if (r.item1 === null && items.some((i) => db.isLegendary(i))) r.item1 = Math.round(t / 6) / 10;
 
-    const sample = { t, gold, level: me.level || 1, k: sc.kills || 0, d: sc.deaths || 0, a: sc.assists || 0,
+    const sample = { t, gold, level: me.level || 1, cs: sc.creepScore || 0, k: sc.kills || 0, d: sc.deaths || 0, a: sc.assists || 0,
       ward: sc.wardScore || 0, inv_value: items.reduce((s, i) => s + db.total(i), 0),
       team_kills: team.reduce((s, p) => s + ((p.scores || {}).kills || 0), 0) };
     this.buffer.push(sample);
@@ -85,6 +86,15 @@ class Recorder {
       d.objective_near = r.objectives.some((o) => o >= d.t - autopsy.OBJ_AFTER && o <= d.t + autopsy.OBJ_BEFORE);
     }
 
+    // Foto del minuto 8 (solo la usan las reglas de jungla). Las grabaciones viejas no la tienen.
+    if (!r.snap8 && t >= T8 && r.first_t <= MAX_FIRST_SEEN) {
+      const s = sample;
+      r.snap8 = {
+        cs8: s.cs, lvl8: s.level,
+        kp8: s.team_kills ? Math.min(100, 100 * (s.k + s.a) / s.team_kills) : 0,
+        d8: r.deaths.filter((d) => d.t < T8).length,
+      };
+    }
     if (!r.snap14 && t >= T14) {
       const s = sample;
       r.snap14 = {
@@ -115,7 +125,7 @@ class Recorder {
       v: 1, id: ctx.gameId ? `g${ctx.gameId}` : `w${now}`, gameId: ctx.gameId || null, champ,
       role: null,
       start_wall: now - Math.round(t * 1000), first_t: t, last_t: t, last_wall: now, max_gap: 0,
-      cw_prev: 0, cw_bought: 0, item1: null, snap14: null, saved14: false, saved_at: 0,
+      cw_prev: 0, cw_bought: 0, item1: null, snap8: null, snap14: null, saved14: false, saved_at: 0,
       deaths: [], adc_deaths: [], objectives: [], seen: [], win: null, duration: null,
     };
   }
@@ -193,7 +203,7 @@ function completeEarly(r) {
 // Fila para las reglas tempranas.
 function earlyRow(r) {
   const item1 = r.item1 !== null && r.item1 !== undefined ? r.item1 : Math.max(30, (r.last_t || 0) / 60 + 5);
-  return { win: r.win, champ: r.champ, id: r.id, f: Object.assign({}, r.snap14, { item1 }) };
+  return { win: r.win, champ: r.champ, id: r.id, f: Object.assign({}, r.snap14, r.snap8 || {}, { item1 }) };
 }
 
-module.exports = { Recorder, completeEarly, earlyRow, T14 };
+module.exports = { Recorder, completeEarly, earlyRow, T14, T8 };

@@ -14,7 +14,7 @@ Hay **dos builds**, que comparten el mismo código y se separan por *perfil*:
 | Perfil | Jugador | Roles | Campeones | Datos | Ejecutable / carpeta de datos |
 |---|---|---|---|---|---|
 | `naser` | Naser (dueño del proyecto), Plat 3 | support (+ top) | 31 supports; top: Malphite, Garen, Illaoi | op.gg Emerald+ | `PickHelper.exe` · `%APPDATA%\Pick Helper` |
-| `bitty` | Bitty (amigo), Master | jungla, mid | Nocturne y Diana (jungla), Diana (mid) | op.gg Master+ | `PickHelper-Bitty.exe` · `%APPDATA%\Pick Helper Bitty` |
+| `bitty` | Bitty (amigo), Master | jungla, mid | Nocturne y Diana (jungla), Diana (mid) | op.gg Master+ + Lolalytics (Master+ y Emerald+) | `PickHelper-Bitty.exe` · `%APPDATA%\Pick Helper Bitty` |
 
 ## Preferencias del usuario (importan)
 - Todo en **español rioplatense/paraguayo con voseo** ("comprá", "jugá"). Textos cortos y concretos.
@@ -48,6 +48,7 @@ src/engine/
   itemdb.js             Recetas y "qué comprar con X de oro" (planPurchase)
   select.js             Champ select: analyzeLane (top/jungla/mid) y analyzeSupport (+ sinergia ADC)
   botlane.js            Plan de bot lane para support: estilo de línea, combo, amenaza y post-6 (ver "Plan de bot")
+  jgplan.js             Bitty: mezcla op.gg + Lolalytics y plan de jungla/mid (ver "Bitty")
   ingame.js             Partida en vivo: rival, compra adaptativa (BUILD_RULES, supportRules), alertas, guía
   history.js            Historial desde el cliente (últimas 100 partidas, en historial/)
   wincons.js            Reglas "si cumplís X ganás Y%" con prueba de permutación (Westfall-Young)
@@ -60,6 +61,7 @@ data/
   pool*.json            Datos por campeón (ver "Formato de datos")
   items.json            Lista fija de ítems vigentes (ver "Lista de ítems"); se actualiza a mano
   bot_lane.json         Plan de bot: perfiles de ADC, aportes de cada support, combos y support vs ADC (Lolalytics)
+  bitty_lolalytics.json Bitty: matchups de Lolalytics (mismo rol, por tier) y su campeón contra cada línea rival
   demo_*.json           Sesiones y partidas de ejemplo para --demo
 tools/datos/            Scripts que generan pool*.json a partir de datos crudos (top, support, bitty)
 test/                   Todas las pruebas (ver "Pruebas")
@@ -107,6 +109,16 @@ build_win.sh            Arma el .exe desde Linux con Wine
 - En partida (`botPlanLive` + `forGame`): sin números. El overlay muestra una línea hasta 1:30 y otra 20 s al llegar al 6 (`win_until`).
 - Para actualizar: bajar de Lolalytics `.../counters/?lane=support&vslane=bottom&tier=emerald_plus` (se lee desde un navegador: carga con JS), pegar en `tools/datos/support/raw_vs_adc.txt` y correr `node tools/datos/support/build_bot_lane.js`.
 
+## Bitty: dos fuentes y plan de jungla/mid
+- **Por qué:** op.gg Master+ da ~110 partidas de mediana por matchup. `jgplan.mix()` (se aplica al cargar los pools) mezcla el WR de op.gg Master+ con Lolalytics Master+ (mismo peso) y Lolalytics Emerald+ (mitad de peso, otro nivel), ponderado por partidas. `score` usa la mezcla; quedan `score_opgg`, `wr_mix`, `games_mix` y `sources` para mostrar. Si Lolalytics no tiene el cruce, todo queda igual. El top de Naser no se toca.
+- **Plan de jungla** (`jgplan.plan`): con qué línea jugar según su jungla contra el que juega cada línea (Lolalytics Emerald+, Δ2, 300+ partidas y |Δ2| ≥ 1), dónde no gastar ganks, cómo le va contra el jungla rival y qué cambia en el 6 (guía).
+  - El WR es de **toda la partida**: la frase de datos no da órdenes de early ("invadí"); eso lo dice la guía del kit, que puede decir lo contrario (Lee Sin gana el 2-3 aunque la partida larga favorezca a Nocturne).
+- **Diana mid:** cuánto respetar al jungla rival (Lolalytics Diana mid vs jungla).
+- En partida (`jgPlanLive` + `forGame`): sin números ni la palabra "partidas"; overlay hasta 1:30 y 20 s al llegar al 6, igual que el de support.
+- **Locke y Zaahen:** guías con los kits leídos en la wiki (16.22), en `tools/datos/bitty/knowledge.py`.
+- **Foto del minuto 8** (`recorder.snap8`: `cs8`, `lvl8`, `kp8`, `d8`): se graba siempre, pero `wincons.earlySpec` la usa solo en jungla y solo si **todas** las partidas del rol la tienen (las viejas no la traen; rellenarlas con 0 inventaría reglas).
+- Para actualizar: Lolalytics `.../counters/?lane=jungle&vslane=<jungle|top|middle|bottom>&tier=<master_plus|emerald_plus>` (y `lane=middle` para Diana mid) → `tools/datos/bitty/raw_lolalytics.txt` → `node tools/datos/bitty/build_lolalytics.js`.
+
 ## Formato de datos (pool*.json)
 `{ patch, source, pool: [campeón] }`. Cada campeón tiene:
 - `name`, `role`, `start`, `boots`, `builds{default,vs_ad,vs_ap}`, `runes`, `spells`, `skills`, `general`.
@@ -149,6 +161,7 @@ Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo p
 - `test/keywatch.js`: lectura de Tab (sin mandar teclas ni leer memoria) y que se suelte si PowerShell se cae.
 - `test/botlane.js`: plan de bot (fuentes, fallbacks, combos solo con kit, historial con muestra chica, sin números en partida).
 - `test/player.js`: elegir jugador la primera vez y que cada uno use su carpeta.
+- `test/bitty_plus.js`: mezcla de fuentes, plan de jungla/mid, guías de Locke y Zaahen y foto del minuto 8.
 - `test/new_features.js`: pruebas pensadas para fallar si la idea está mal: causa al revés, autopsia, grabación con cortes y que no titile.
 - `test/e2e.js` y `test/bitty_test.js`: de punta a punta contra un cliente y un juego simulados por HTTPS (`test/fake_riot.js`; la API en vivo usa el puerto 2999 de verdad).
 - `test/ui.js` y `test/ui_bitty.js`: cada pantalla a 340, 460, 800 y 1600 px. Verifica que no haya errores JS, que nada se salga de la ventana, cuántas columnas hay y el texto esperado.
@@ -194,5 +207,5 @@ Flags útiles de la app:
 - Posiciones por defecto del HUD con la interfaz de League a escala normal. El usuario las puede mover con Alt+Shift+E o con Tab + arrastrar.
 - Arrastre con Tab probado solo con eventos simulados en Xvfb: falta confirmar en Windows con el juego en Sin bordes que `forward: true` deja pasar los clics fuera de los recuadros.
 - Íconos reales: en las pruebas se usan placeholders.
-- Bitty: no hay guías específicas para los campeones nuevos Locke y Zaahen, porque no se conocen sus kits.
-- Idea pendiente: una foto extra al minuto 8 para junglas (primer recorrido y ganks).
+- Que `scores.creepScore` de la Live API cuente los campamentos de jungla (el marcador del juego los cuenta).
+- Stream: el overlay sale con "Captura de pantalla" pero no con "Captura de juego" de OBS. Idea: servirlo como fuente de navegador (o esconderlo de las capturas con `setContentProtection`).

@@ -12,13 +12,14 @@ JG_ARCH = {
     # tanques de engage
     "tank": ["Sejuani", "Zac", "Amumu", "Rammus", "Nunu & Willump", "Skarner", "Cho'Gath", "Gragas", "Ivern"],
     # peleadores de cuerpo a cuerpo que ganan duelos largos
-    "bruiser": ["Viego", "Hecarim", "Wukong", "Darius", "Aatrox", "Ambessa", "Udyr", "Warwick", "Briar", "Sylas", "Volibear", "Trundle", "Olaf", "Jax"],
+    "bruiser": ["Viego", "Hecarim", "Wukong", "Darius", "Aatrox", "Ambessa", "Udyr", "Warwick", "Briar", "Sylas", "Volibear", "Trundle", "Olaf", "Jax",
+                "Zaahen", "Locke"],  # campeones nuevos: kits leídos en la wiki de LoL (16.22)
 }
 MID_ARCH = {
     "mage": ["Syndra", "Viktor", "Orianna", "Xerath", "Lux", "Anivia", "Azir", "Hwei", "Vel'Koz", "Mel", "Aurelion Sol",
              "Cassiopeia", "Malzahar", "Veigar", "Annie", "Taliyah", "Vex", "Lissandra", "Ryze", "Twisted Fate", "Zoe", "Ahri", "Aurora"],
     "assassin": ["Zed", "Talon", "Akali", "Katarina", "Fizz", "Qiyana", "LeBlanc", "Kassadin", "Ekko", "Akshan", "Naafiri"],
-    "fighter": ["Yasuo", "Yone", "Sylas", "Irelia", "Galio", "Pantheon", "Jayce", "Kayle", "Vladimir"],
+    "fighter": ["Yasuo", "Yone", "Sylas", "Irelia", "Galio", "Pantheon", "Jayce", "Kayle", "Vladimir", "Locke"],
 }
 
 # ---------------------------------------------------------------- plan de cada campeón
@@ -69,6 +70,11 @@ DYN = {
 
 # Qué respetar de cada rival puntual (respect) y qué no hacer (avoid).
 THREAT = {
+    # campeones nuevos (kits de la wiki de LoL, 16.22)
+    "Zaahen": ("Su E lo acerca, su W te stunea un instante y te tira hacia él si la punta te pega, y su Q lo cura. No le des peleas largas.",
+               "Pelear dentro del alcance de su W, o tirarle tu control cuando lanza la R: es inmune mientras la tira."),
+    "Locke": ("Sus autos pegan más cuanto menos vida tenés y su W le da velocidad de ataque y movimiento. Con 2 marcas de su Q, el ralentizado es fuerte.",
+              "Quedar con poca vida cerca de su R: el tótem te ralentiza casi por completo y te remata por debajo de un % de vida."),
     # junglas
     "Lee Sin": ("Gana el nivel 2-3 y puede invadirte con Q: ward en tu buff y no le regales el primer duelo.", "Pelear en un pasillo donde te pueda patear con R hacia su equipo."),
     "Jarvan IV": ("Gankea fuerte nivel 3 con E-Q (knockup): ward el río antes del minuto 3.", "Quedarte en el borde de su R (te encierra)."),

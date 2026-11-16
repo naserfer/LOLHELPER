@@ -2,6 +2,7 @@
 // Champ select: análisis para top (pool.json) y para support (pool_support.json).
 const { norm, sortBy, round1, clamp } = require('./util');
 const botlane = require('./botlane');
+const jgplan = require('./jgplan');
 
 const ADCS = new Set(["Aphelios", "Ashe", "Caitlyn", "Draven", "Ezreal", "Jhin", "Jinx", "Kai'Sa", "Kalista", "Kog'Maw",
   "Lucian", "Miss Fortune", "Nilah", "Samira", "Senna", "Sivir", "Smolder", "Tristana", "Twitch", "Varus",
@@ -94,6 +95,12 @@ function analyzeLane(session, champs, pool, role = 'top') {
   let focus = recs.find((r) => hoverName && norm(r.name) === norm(hoverName)) || null;
   if (!focus) focus = recs.find((r) => r.status === 'ok') || recs[0] || null;
   if (focus && focus.lane && focus.lane[1].guide) focus.guide = focus.lane[1].guide;
+  if (focus && (role === 'jungle' || role === 'middle' || role === 'mid')) {
+    const enemiesByPos = {};
+    for (const p of theirTeam) if (p.assignedPosition && p.championId) enemiesByPos[p.assignedPosition] = cname(p.championId);
+    if (role === 'jungle' && laneEnemy) enemiesByPos.jungle = laneEnemy;
+    focus.jg = jgplan.plan({ me: focus.cfg, mu: focus.lane ? focus.lane[1] : null, laneEnemy, enemies: enemiesByPos });
+  }
   return {
     mode: role, phase: (session.timer || {}).phase || '', enemies: enemyList, lane_enemy: laneEnemy,
     ad, ap, build_key: buildKey, recs, ban_sugg: banSugg, focus,
@@ -265,6 +272,7 @@ function gamePlan(v) {
     const who = v.ally_adc ? ` con ${v.ally_adc}` : '';
     return fight ? `Ganás peleando${who}. Buscá el all-in.` : `Aguantá${who}. No pelees hasta el 6.`;
   }
+  if (f.jg && f.jg.known) return f.jg.hud;
   return mu > 0 ? 'Ganás peleando: presioná la línea.' : 'Aguantá: no pelees hasta igualar nivel.';
 }
 
@@ -286,5 +294,17 @@ function botPlanLive(pool, adcArch, myChamp, allyAdc, enemySup, enemyAdc) {
     mu: mu ? mu[1] : null, syn }));
 }
 
+// Plan de jungla/mid en partida con las posiciones reales (Live API).
+function jgPlanLive(pool, myChamp, role, players, myTeam) {
+  const me = pool.find((c) => norm(c.name) === norm(myChamp) && c.role === role) || null;
+  if (!me) return null;
+  const POS = { TOP: 'top', JUNGLE: 'jungle', MIDDLE: 'middle', BOTTOM: 'bottom', UTILITY: 'utility' };
+  const enemies = {};
+  for (const p of players || []) if (p.team !== myTeam && POS[p.position]) enemies[POS[p.position]] = p.championName;
+  const rival = role === 'jungle' ? enemies.jungle : enemies.middle;
+  const hit = rival ? Object.entries(me.matchups).find(([k]) => norm(k) === norm(rival)) : null;
+  return jgplan.forGame(jgplan.plan({ me, mu: hit ? hit[1] : null, laneEnemy: rival, enemies }));
+}
+
 const analyzeTop = (s, c, p) => analyzeLane(s, c, p, 'top');
-module.exports = { ADCS, analyzeTop, analyzeLane, analyzeSupport, supportGuide, planFor, gamePlan, botPlanLive, BUILD_LABEL };
+module.exports = { ADCS, analyzeTop, analyzeLane, analyzeSupport, supportGuide, planFor, gamePlan, botPlanLive, jgPlanLive, BUILD_LABEL };

@@ -241,12 +241,14 @@
       "por": "análisis de kits · números de op.gg Master+",
       "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
       "pre6": [
+       "Pelea larga: Electrocute y ganchos cortos con Q-E y salí. No le des la pelea extendida.",
        "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
        "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
-       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Locke: Sus autos pegan más cuanto menos vida tenés y su W le da velocidad de ataque y movimiento. Con 2 marcas de su Q, el ralentizado es fuerte."
       ],
       "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
-      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "evitar": "Quedar con poca vida cerca de su R: el tótem te ralentiza casi por completo y te remata por debajo de un % de vida.",
       "labels": [
        "Nivel 1",
        "Hasta el 6",

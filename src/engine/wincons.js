@@ -39,6 +39,16 @@ const EARLY = {
   dg14: { label: 'Muertes con +1000 de oro antes del 14', unit: '', fmt: 0, dirs: ['<='], live: true },
 };
 
+// Jungla: además de lo del 14, la foto del minuto 8. Solo se usa si TODAS las partidas del rol la tienen
+// (las grabaciones viejas no la traen y rellenarlas con 0 inventaría reglas).
+const EARLY_JG = Object.assign({}, EARLY, {
+  cs8: { label: 'Campamentos y minions al minuto 8', unit: '', fmt: 0, dirs: ['>='], live: true },
+  lvl8: { label: 'Nivel al minuto 8', unit: '', fmt: 0, dirs: ['>='], live: true },
+  kp8: { label: 'Participación en kills al 8', unit: '%', fmt: 0, dirs: ['>='], live: true },
+  d8: { label: 'Muertes antes del 8', unit: '', fmt: 0, dirs: ['<='], live: true },
+});
+const earlySpec = (role, rows) => (role === 'jungle' && rows.length && rows.every((r) => r.f && r.f.cs8 !== undefined) ? EARLY_JG : EARLY);
+
 function features(me, team, minutes) {
   const s = me.stats || {};
   const tk = team.reduce((a, p) => a + ((p.stats || {}).kills || 0), 0) || 1;
@@ -223,5 +233,5 @@ function review(rules, row, spec = FULL) {
   return { win: row.win, champ: row.champ, items, met: items.filter((i) => i.ok).length, total: items.length, key_miss: key };
 }
 
-module.exports = { FULL, EARLY, MIN_SIDE, TRAIN_RATIO, TRAIN_MIN, VALIDATION_MIN_SIDE, VALIDATED_NEED,
+module.exports = { FULL, EARLY, EARLY_JG, earlySpec, MIN_SIDE, TRAIN_RATIO, TRAIN_MIN, VALIDATION_MIN_SIDE, VALIDATED_NEED,
   features, learn, learnValidated, ruleText, wrOf, check, review, fmtNum };

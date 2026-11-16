@@ -39,3 +39,10 @@ En partida ves el mismo plan sin números. En el overlay aparece una línea cort
 
 ## Quién sos
 La primera vez que abrís la app te pregunta si sos **Naser** (support) o **Bitty** (jungla). Cada uno tiene sus propios datos. Para cambiar, andá a Ajustes → "Cambiar a …".
+
+## Bitty (jungla y mid)
+- **Más datos:** cada matchup mezcla op.gg Master+ con Lolalytics (Master+ y Emerald+, este último a mitad de peso). Antes había ~110 partidas por matchup; ahora suelen ser miles. Debajo de cada campeón ves el número de cada fuente.
+- **Plan de jungla:** con qué línea jugar (dónde rinde mejor tu jungla contra cada rival), dónde no gastar ganks, cómo te va contra el jungla rival y qué cambia en el 6. En partida aparece sin números, y en el overlay al empezar y al llegar al 6.
+- **Diana mid:** cuánto respetar al jungla rival.
+- **Locke y Zaahen:** guías armadas con sus kits reales.
+- **Coach de jungla:** además del minuto 14 graba el **minuto 8** (campamentos, nivel, participación y muertes). Lo usa cuando todas tus partidas de jungla grabadas lo tengan.

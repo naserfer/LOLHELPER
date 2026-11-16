@@ -14,7 +14,7 @@ function viewSig(view, status, coachKey) {
     view.threats.map((t) => [t.name, t.kda, t.level]), ea.items, ea.level, ea.kda,
     (view.rules_live || []).map((r) => [r.key, r.ok, r.note]), view.death ? view.death.t : null, view.time >= 16 * 60,
     view.sup_upgrade && [view.sup_upgrade.item, view.sup_upgrade.ready], view.win_line,
-    view.bot_plan && [view.bot_plan.label, view.bot_plan.hud], view.time >= 14 * 60,
+    view.bot_plan && [view.bot_plan.label, view.bot_plan.hud], view.jg_plan && [view.jg_plan.label, view.jg_plan.hud], view.time >= 14 * 60,
     (view.orders || []).map((o) => [o.pri, o.text])]);
 }
 module.exports = { viewSig };
