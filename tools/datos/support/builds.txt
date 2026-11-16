@@ -1,0 +1,248 @@
+#Thresh
+BOOTS: Boots of Swiftness
+CORE: Locket of the Iron Solari > Knight's Vow > Zeke's Convergence
+KEYSTONE: Aftershock | SECONDARY TREE: Inspiration
+RUNES: Font of Life, Unflinching, Bone Plating, Cosmic Insight, Biscuit Delivery
+SPELLS: Flash + Ignite
+SKILLS: Q > E > W
+LEVEL1: Q
+#Leona
+BOOTS: Plated Steelcaps
+CORE: Locket of the Iron Solari > Knight's Vow > Bandlepipes
+KEYSTONE: Aftershock | SECONDARY TREE: Inspiration
+RUNES: Font of Life, Overgrowth, Second Wind, Unflinching, Bone Plating
+SPELLS: Flash + Ignite
+SKILLS: W > E > Q
+LEVEL1: W
+#Nami
+BOOTS: Ionian Boots of Lucidity
+CORE: Echoes of Helia > Moonstone Renewer > Ardent Censer
+KEYSTONE: Summon Aery | SECONDARY TREE: Resolve
+RUNES: Manaflow Band, Transcendence, Scorch, Revitalize, Bone Plating
+SPELLS: Flash + Heal
+SKILLS: W > E > Q
+LEVEL1: W
+#Blitzcrank
+BOOTS: Boots of Swiftness
+CORE: Locket of the Iron Solari > Zeke's Convergence > Bandlepipes
+KEYSTONE: Glacial Augment | SECONDARY TREE: Sorcery
+RUNES: Cosmic Insight, Biscuit Delivery, Hextech Flashtraption, Celerity, Nimbus Cloak
+SPELLS: Flash + Ignite
+SKILLS: Q > E > W
+LEVEL1: Q
+#Lulu
+BOOTS: Ionian Boots of Lucidity
+CORE: Ardent Censer > Moonstone Renewer > Shurelya's Battlesong
+KEYSTONE: Summon Aery | SECONDARY TREE: Resolve
+RUNES: Transcendence, Scorch, Manaflow Band
+SPELLS: Flash + Heal
+SKILLS: E > W > Q
+LEVEL1: E
+#Alistar
+BOOTS: Boots of Swiftness
+CORE: Locket of the Iron Solari > Zeke's Convergence > Knight's Vow
+KEYSTONE: Aftershock | SECONDARY TREE: Inspiration
+RUNES: Font of Life, Unflinching, Bone Plating
+SPELLS: Flash + Ignite
+SKILLS: Q > W > E
+LEVEL1: Q
+#Senna
+BOOTS: Boots of Swiftness
+CORE: Black Cleaver > Statikk Shiv > Rapid Firecannon
+KEYSTONE: Deathfire Touch | SECONDARY TREE: Inspiration
+RUNES: Manaflow Band, Celerity, Gathering Storm, Magical Footwear, Jack Of All Trades
+SPELLS: Flash + Heal
+SKILLS: Q > W > E
+LEVEL1: Q
+#Braum
+BOOTS: Plated Steelcaps
+CORE: Locket of the Iron Solari > Knight's Vow > Bandlepipes
+KEYSTONE: Guardian | SECONDARY TREE: Inspiration
+RUNES: Font of Life, Unflinching, Bone Plating, Cosmic Insight, Biscuit Delivery
+SPELLS: Flash + Heal
+SKILLS: Q > E > W
+LEVEL1: Q
+#Seraphine
+BOOTS: Ionian Boots of Lucidity
+CORE: Echoes of Helia > Diadem of Songs > Moonstone Renewer
+KEYSTONE: Summon Aery | SECONDARY TREE: Resolve
+RUNES: Transcendence, Manaflow Band, Revitalize, Gathering Storm, Font of Life
+SPELLS: Flash + Heal
+SKILLS: Q > W > E
+LEVEL1: Q
+#Rell
+BOOTS: Plated Steelcaps
+CORE: Zeke's Convergence > Locket of the Iron Solari > Knight's Vow
+KEYSTONE: Aftershock | SECONDARY TREE: Inspiration
+RUNES: Unflinching, Shield Bash, Bone Plating, Cosmic Insight
+SPELLS: Flash + Ignite
+SKILLS: W > E > Q
+LEVEL1: W
+#Rakan
+BOOTS: Ionian Boots of Lucidity
+CORE: Zeke's Convergence > Locket of the Iron Solari > Knight's Vow
+KEYSTONE: Guardian | SECONDARY TREE: Domination
+RUNES: Bone Plating, Font of Life, Ultimate Hunter
+SPELLS: Flash + Heal
+SKILLS: W > E > Q
+LEVEL1: W
+#Nautilus
+BOOTS: Plated Steelcaps
+CORE: Locket of the Iron Solari > Knight's Vow > Bandlepipes
+KEYSTONE: Aftershock | SECONDARY TREE: Inspiration
+RUNES: Shield Bash, Unflinching, Biscuit Delivery, Cosmic Insight
+SPELLS: Flash + Ignite
+SKILLS: Q > W > E
+LEVEL1: Q
+#Janna
+BOOTS: Boots of Swiftness
+CORE: Moonstone Renewer > Redemption > Shurelya's Battlesong
+KEYSTONE: Summon Aery | SECONDARY TREE: Resolve
+RUNES: Celerity, Manaflow Band, Revitalize, Gathering Storm
+SPELLS: Flash + Heal
+SKILLS: W > E > Q
+LEVEL1: W
+#Zilean
+BOOTS: Ionian Boots of Lucidity
+CORE: Shurelya's Battlesong > Imperial Mandate > Bandlepipes
+KEYSTONE: Summon Aery | SECONDARY TREE: Domination
+RUNES: Manaflow Band, Transcendence, Cheap Shot, Relentless Hunter
+SPELLS: Flash + Heal
+SKILLS: Q > E > W
+LEVEL1: Q
+#Soraka
+BOOTS: Ionian Boots of Lucidity
+CORE: Moonstone Renewer > Redemption > Dawncore
+KEYSTONE: Summon Aery | SECONDARY TREE: Resolve
+RUNES: Revitalize, Transcendence, Scorch, Bone Plating
+SPELLS: Flash + Heal
+SKILLS: Q > W > E
+LEVEL1: W
+#Milio
+BOOTS: Ionian Boots of Lucidity
+CORE: Echoes of Helia > Moonstone Renewer > Ardent Censer
+KEYSTONE: Summon Aery | SECONDARY TREE: Resolve
+RUNES: Manaflow Band, Transcendence, Scorch, Revitalize
+SPELLS: Flash + Heal
+SKILLS: E > W > Q
+LEVEL1: E
+#Sona
+BOOTS: Ionian Boots of Lucidity
+CORE: Echoes of Helia > Diadem of Songs > Moonstone Renewer
+KEYSTONE: Summon Aery | SECONDARY TREE: Resolve
+RUNES: Manaflow Band, Gathering Storm, Transcendence, Revitalize
+SPELLS: Flash + Heal
+SKILLS: W > Q > E
+LEVEL1: Q
+#Vel'Koz
+BOOTS: Sorcerer's Shoes
+CORE: Luden's Echo > Shadowflame > Zhonya's Hourglass
+KEYSTONE: Arcane Comet | SECONDARY TREE: Domination
+RUNES: Manaflow Band, Transcendence, Scorch, Cheap Shot, Ultimate Hunter
+SPELLS: Flash + Heal
+SKILLS: Q > W > E
+LEVEL1: Q
+#Pyke
+BOOTS: Boots of Swiftness
+CORE: Umbral Glaive > Youmuu's Ghostblade > Edge of Night
+KEYSTONE: Hail of Blades | SECONDARY TREE: Resolve
+RUNES: Cheap Shot, Sixth Sense, Ultimate Hunter, Bone Plating, Unflinching
+SPELLS: Flash + Ignite
+SKILLS: Q > E > W
+LEVEL1: Q
+#Zyra
+BOOTS: Sorcerer's Shoes
+CORE: Liandry's Torment > Rylai's Crystal Scepter > Zhonya's Hourglass
+KEYSTONE: Arcane Comet | SECONDARY TREE: Domination
+RUNES: Manaflow Band, Transcendence, Scorch, Taste of Blood, Relentless Hunter
+SPELLS: Flash + Ignite
+SKILLS: E > Q > W
+LEVEL1: E
+#Karma
+BOOTS: Ionian Boots of Lucidity
+CORE: Echoes of Helia > Moonstone Renewer > Redemption
+KEYSTONE: Summon Aery | SECONDARY TREE: Resolve
+RUNES: Transcendence, Manaflow Band, Gathering Storm, Revitalize, Font of Life
+SPELLS: Flash + Heal
+SKILLS: Q > E > W
+LEVEL1: Q
+#Morgana
+BOOTS: Ionian Boots of Lucidity
+CORE: Liandry's Torment > Zhonya's Hourglass > Rylai's Crystal Scepter
+KEYSTONE: Arcane Comet | SECONDARY TREE: Domination
+RUNES: Manaflow Band, Transcendence, Scorch, Cheap Shot, Ultimate Hunter
+SPELLS: Flash + Ignite
+SKILLS: Q > W > E
+LEVEL1: Q
+#Lux
+BOOTS: Sorcerer's Shoes
+CORE: Luden's Echo > Stormsurge > Shadowflame
+KEYSTONE: Arcane Comet | SECONDARY TREE: Domination
+RUNES: Manaflow Band, Transcendence, Scorch, Cheap Shot, Ultimate Hunter
+SPELLS: Flash + Heal
+SKILLS: E > Q > W
+LEVEL1: E
+#Bard
+BOOTS: Boots of Swiftness
+CORE: Dead Man's Plate > Locket of the Iron Solari > Bandlepipes
+KEYSTONE: Electrocute | SECONDARY TREE: Inspiration
+RUNES: Cheap Shot, Deep Ward, Relentless Hunter, Magical Footwear, Cosmic Insight
+SPELLS: Flash + Ignite
+SKILLS: Q > W > E
+LEVEL1: Q
+#Yuumi
+BOOTS: Ionian Boots of Lucidity
+CORE: Mikael's Blessing > Ardent Censer > Moonstone Renewer
+KEYSTONE: Summon Aery | SECONDARY TREE: Resolve
+RUNES: Manaflow Band, Transcendence, Scorch, Font of Life, Revitalize
+SPELLS: Exhaust + Heal
+SKILLS: Q > E > W
+LEVEL1: Q
+#Xerath
+BOOTS: Sorcerer's Shoes
+CORE: Luden's Echo > Horizon Focus > Shadowflame
+KEYSTONE: Arcane Comet | SECONDARY TREE: Precision
+RUNES: Manaflow Band, Transcendence, Scorch, Presence of Mind, Coup de Grace
+SPELLS: Flash + Heal
+SKILLS: Q > W > E
+LEVEL1: W
+#Swain
+BOOTS: Plated Steelcaps
+CORE: Rylai's Crystal Scepter > Liandry's Torment > Zhonya's Hourglass
+KEYSTONE: Conqueror | SECONDARY TREE: Resolve
+RUNES: Legend: Haste, Presence of Mind, Last Stand, Overgrowth
+SPELLS: Flash + Ignite
+SKILLS: Q > W > E
+LEVEL1: E
+#Pantheon
+BOOTS: Plated Steelcaps
+CORE: Umbral Glaive > Eclipse > Black Cleaver
+KEYSTONE: Press the Attack | SECONDARY TREE: Domination
+RUNES: Triumph, Legend: Haste, Coup de Grace, Relentless Hunter, Cheap Shot
+SPELLS: Flash + Ignite
+SKILLS: Q > W > E
+LEVEL1: W
+#Renata Glasc
+BOOTS: Ionian Boots of Lucidity
+CORE: Locket of the Iron Solari > Shurelya's Battlesong > Redemption
+KEYSTONE: Guardian | SECONDARY TREE: Domination
+RUNES: Bone Plating, Shield Bash, Unflinching, Sixth Sense, Relentless Hunter
+SPELLS: Flash + Heal
+SKILLS: E > W > Q
+LEVEL1: E
+#Tahm Kench
+BOOTS: Plated Steelcaps
+CORE: Heartsteel > Thornmail > Spirit Visage
+KEYSTONE: Grasp of the Undying | SECONDARY TREE: Precision
+RUNES: Second Wind, Shield Bash, Unflinching, Legend: Alacrity, Triumph
+SPELLS: Flash + Ignite
+SKILLS: Q > W > E
+LEVEL1: Q
+#Brand
+BOOTS: Sorcerer's Shoes
+CORE: Rylai's Crystal Scepter > Liandry's Torment > Morellonomicon
+KEYSTONE: Deathfire Touch | SECONDARY TREE: Precision
+RUNES: Manaflow Band, Transcendence, Scorch, Presence of Mind, Cut Down
+SPELLS: Flash + Ignite
+SKILLS: W > Q > E
+LEVEL1: W

@@ -1,6 +1,6 @@
 # Corre la versión Python sobre fixtures y guarda resultados para comparar con la versión JS.
 import sys, json, random, copy
-sys.path.insert(0, "/home/claude/lol_overlay"); sys.path.insert(0, "/home/claude/testkit")
+import os; _R = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(_R, "..", "..", "legacy", "python")); sys.path.insert(0, "/home/claude/testkit")
 import overlay, support, ingame, history, wincons
 from collections import Counter
 OUT = {}

@@ -1,0 +1,208 @@
+##C Nautilus
+Thresh|46.78|12662
+Lulu|50.04|10987
+Leona|46.59|8187
+Braum|45.44|7949
+Alistar|46.17|7789
+Nami|49.42|7029
+Karma|52.46|6912
+Blitzcrank|48.84|5643
+Seraphine|47.15|5485
+Yuumi|55.85|4911
+Rell|44.91|4888
+Pyke|51.75|4806
+Senna|49.27|4766
+Lux|51.73|4684
+Milio|50.22|4534
+Rakan|45.59|4194
+Morgana|48.71|4133
+Bard|49.96|3699
+Janna|48.88|3631
+Soraka|48.59|3305
+Vel'Koz|50.60|2739
+Pantheon|49.24|2689
+Swain|49.29|2408
+Xerath|52.48|2258
+Sona|49.37|2228
+Zilean|47.58|2148
+Renata Glasc|46.26|1885
+Tahm Kench|50.03|1877
+Brand|49.61|1651
+Poppy|49.01|1616
+##S Nautilus
+Kai'Sa|48.65|53435
+Jhin|49.21|18497
+Samira|51.80|11243
+Ezreal|45.40|9744
+Miss Fortune|50.21|9146
+Caitlyn|46.49|8510
+Jinx|50.82|8434
+Yunara|48.01|7973
+Tristana|48.78|7715
+Xayah|51.52|7552
+##C Janna
+Lulu|51.13|4766
+Thresh|48.17|4409
+Nami|49.67|4041
+Nautilus|51.09|3631
+Leona|49.97|3096
+Karma|53.39|2776
+Blitzcrank|48.94|2511
+Alistar|53.43|2510
+Seraphine|50.26|2278
+Milio|51.24|2254
+Senna|49.00|2102
+Rakan|51.72|1889
+Yuumi|52.11|1798
+Pyke|52.14|1728
+Soraka|49.27|1654
+Bard|54.61|1637
+Rell|50.89|1629
+Lux|53.47|1612
+Sona|50.07|1400
+Braum|50.98|1375
+Zilean|51.39|1220
+Vel'Koz|52.47|991
+Morgana|54.47|907
+Pantheon|56.65|849
+Renata Glasc|54.51|798
+Swain|53.89|733
+Zyra|48.21|728
+Neeko|54.59|632
+Maokai|52.81|570
+Brand|47.70|566
+##S Janna
+Jhin|53.05|1297
+Kai'Sa|52.44|1047
+Jinx|53.29|1032
+Caitlyn|49.64|834
+Ezreal|47.48|813
+Yunara|52.50|619
+Miss Fortune|51.41|605
+Aphelios|47.89|522
+Tristana|50.39|514
+Draven|53.49|501
+##C Zilean
+Thresh|49.44|2935
+Lulu|51.94|2809
+Nami|48.89|2262
+Nautilus|50.94|1816
+Janna|48.91|1599
+Karma|50.85|1589
+Milio|50.62|1543
+Seraphine|52.05|1366
+Leona|51.28|1365
+Blitzcrank|48.51|1313
+Senna|52.64|1252
+Yuumi|55.53|1212
+Lux|52.14|1189
+Bard|55.32|1155
+Soraka|50.97|1134
+Pyke|48.91|959
+Braum|53.10|951
+Alistar|49.72|893
+Rakan|53.58|825
+Sona|47.72|811
+Rell|53.20|765
+Morgana|52.88|711
+Vel'Koz|53.98|565
+Zyra|55.19|540
+Pantheon|53.00|534
+Xerath|52.94|510
+Swain|60.26|468
+Tahm Kench|49.01|455
+Renata Glasc|50.48|414
+Brand|53.54|396
+##S Zilean
+Jhin|53.03|7262
+Kai'Sa|51.18|4676
+Ezreal|50.75|3748
+Jinx|51.14|2886
+Caitlyn|49.68|2669
+Yunara|51.38|2565
+Miss Fortune|50.91|1860
+Xayah|53.07|1709
+Aphelios|54.48|1628
+Smolder|51.72|1628
+##C Soraka
+Lulu|47.88|800
+Thresh|50.71|775
+Nami|50.42|712
+Nautilus|50.67|521
+Blitzcrank|47.96|465
+Karma|55.86|435
+Leona|52.57|428
+Milio|51.17|426
+Senna|49.46|370
+Seraphine|51.38|362
+Pyke|51.67|360
+Yuumi|54.09|342
+Janna|46.15|338
+Lux|51.10|317
+Bard|46.54|260
+Sona|54.02|224
+Braum|49.77|219
+Alistar|51.21|207
+Zilean|49.75|199
+Rakan|45.41|196
+Vel'Koz|48.45|194
+Pantheon|53.72|188
+Rell|50.56|180
+Zyra|49.14|175
+Morgana|50.92|163
+Brand|46.36|151
+Xerath|54.26|129
+Swain|53.60|125
+Tahm Kench|47.27|110
+##S Soraka
+Kai'Sa|48.04|993
+Jinx|49.55|989
+Jhin|52.30|977
+Ezreal|49.23|776
+Caitlyn|50.49|721
+Aphelios|45.86|580
+Yunara|47.27|531
+Tristana|55.96|495
+Miss Fortune|48.91|458
+Smolder|50.72|418
+##C Milio
+Lulu|49.67|8780
+Nami|49.66|6106
+Thresh|48.60|6039
+Nautilus|49.76|4534
+Seraphine|49.80|4494
+Karma|50.88|4057
+Leona|48.55|3677
+Blitzcrank|46.06|3339
+Senna|46.57|2740
+Lux|53.82|2568
+Yuumi|52.59|2563
+Soraka|49.35|2480
+Alistar|49.07|2364
+Braum|46.01|2293
+Janna|48.76|2254
+Rakan|49.37|2153
+Pyke|51.03|2128
+Bard|50.89|1747
+Sona|47.85|1672
+Morgana|53.58|1663
+Rell|46.01|1656
+Zilean|48.39|1401
+Vel'Koz|49.46|1377
+Pantheon|58.87|1223
+Zyra|51.79|1176
+Renata Glasc|54.80|1124
+Swain|55.16|1095
+Brand|51.31|877
+Xerath|52.82|869
+##S Milio
+Lucian|50.04|28490
+Jinx|51.94|10940
+Yunara|49.52|9137
+Caitlyn|49.04|7724
+Kai'Sa|48.84|7512
+Aphelios|49.99|4605
+Ashe|51.32|4063
+Jhin|49.84|4017
+Twitch|52.19|3696
+Smolder|51.73|3489
