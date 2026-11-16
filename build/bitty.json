@@ -1,0 +1,9 @@
+{
+ "appId": "py.naser.pickhelper.bitty",
+ "productName": "Pick Helper Bitty",
+ "extraMetadata": { "name": "pick-helper-bitty", "productName": "Pick Helper Bitty" },
+ "files": ["main.js", "preload.js", "src/**", "renderer/**", "data/**", "package.json"],
+ "win": { "target": ["portable"], "icon": "build/icon_bitty.ico", "signAndEditExecutable": false },
+ "portable": { "artifactName": "PickHelper-Bitty.exe" },
+ "directories": { "output": "dist-bitty", "buildResources": "build" }
+}

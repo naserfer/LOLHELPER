@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://ddragon.leagueoflegends.com pickhelper: file: data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>Pick Helper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="bar">
+    <div class="brand"><span class="gem"></span><span class="name">PICK HELPER</span></div>
+    <div id="status" class="status"><i></i><span>Conectando…</span></div>
+    <div class="ctl">
+      <button id="b-pin" title="Siempre arriba"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h4l-.7 4 2.7 2.5H4L6.7 6z"/><path d="M8 8.5V14"/></svg></button>
+      <button id="b-min" title="Minimizar"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5h10"/></svg></button>
+      <button id="b-max" title="Pantalla completa en este monitor"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="10" height="10" rx="1"/></svg></button>
+      <button id="b-close" class="x" title="Cerrar"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+    </div>
+  </header>
+  <main id="scroll"><div id="app"></div></main>
+  <div id="tip" class="tip"></div>
+  <script src="app.js"></script>
+</body>
+</html>

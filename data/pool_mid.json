@@ -1,0 +1,1080 @@
+{
+ "patch": "26.22",
+ "source": "op.gg Master+",
+ "_info": "Winrate por matchup de op.gg Master+ (16.22 = 26.22). score = (wr-50)/2.5, reducido con menos de 300 partidas. Guías: análisis de kits.",
+ "pool": [
+  {
+   "name": "Diana",
+   "role": "mid",
+   "blind": 0.7,
+   "tier_wr": 51.03,
+   "pick": 2.88,
+   "comp_bonus": {},
+   "start": [
+    "Doran's Ring",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "runes": {
+    "keystone": "Electrocute",
+    "primary": [
+     "Sudden Impact",
+     "Grisly Mementos",
+     "Treasure Hunter"
+    ],
+    "secondary": [
+     "Shield Bash",
+     "Bone Plating"
+    ],
+    "alt": "Alternativa: Stormraider's Surge (Sorcery) + Resolve (26% de pick)"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "E",
+    "W"
+   ],
+   "boots": "Sorcerer's Shoes",
+   "builds": {
+    "default": {
+     "items": [
+      "Stormsurge",
+      "Shadowflame",
+      "Zhonya's Hourglass"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Stormsurge",
+      "Shadowflame",
+      "Zhonya's Hourglass"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Stormsurge",
+      "Shadowflame",
+      "Banshee's Veil"
+     ],
+     "boots": "Mercury's Treads"
+    }
+   },
+   "general": "Diana mid gana con all-ins al 3 y al 6. Contra magos de poke, sobreviví la línea y ganá con roams. Contra asesinos, la que gaste primero pierde.",
+   "matchups": {
+    "Ahri": {
+     "wr": 52.23,
+     "games": 404,
+     "score": 0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Ahri: Su E (encantamiento) corta tu all-in: entrá cuando la gaste."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Usar E de Diana con su E lista.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Syndra": {
+     "wr": 49.75,
+     "games": 400,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Syndra: Mucho poke y su E te stunea: entrá desde el costado."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Caminar en línea recta hacia ella.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Zed": {
+     "wr": 53.96,
+     "games": 391,
+     "score": 1.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Línea de quién gasta primero: no uses E sin Q marcada. W absorbe su burst; al 6 ganás el all-in si la Q pega.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Zed: Su R te marca: W de Diana justo cuando reaparece detrás tuyo."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear con media vida cuando tiene R.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Sylas": {
+     "wr": 49.4,
+     "games": 336,
+     "score": -0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Pelea larga: Electrocute y ganchos cortos con Q-E y salí. No le des la pelea extendida.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Sylas: Puede robar tu R; pelea fuerte a corto plazo."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Usar tu R cuando Sylas la puede robar contra tu equipo.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Katarina": {
+     "wr": 48.05,
+     "games": 333,
+     "score": -0.8,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Línea de quién gasta primero: no uses E sin Q marcada. W absorbe su burst; al 6 ganás el all-in si la Q pega.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Katarina: Resetea con kills: guardá tu R para cortar su R."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Dejar que use R sin interrumpir.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Galio": {
+     "wr": 49.69,
+     "games": 322,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Pelea larga: Electrocute y ganchos cortos con Q-E y salí. No le des la pelea extendida.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Galio: Te gana la línea con escudo mágico y roamea con R."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelearlo cuando tiene escudo pasivo.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Akali": {
+     "wr": 50.5,
+     "games": 303,
+     "score": 0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Línea de quién gasta primero: no uses E sin Q marcada. W absorbe su burst; al 6 ganás el all-in si la Q pega.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Akali: Se esconde en su humo: el Control Ward la revela."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Perseguirla dentro del humo.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Locke": {
+     "wr": 50.35,
+     "games": 282,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Viktor": {
+     "wr": 52.69,
+     "games": 260,
+     "score": 0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Viktor: Mucho daño a distancia y escala: entrá al 3/6 cuando gastó su W."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pararte en su campo de gravedad.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Orianna": {
+     "wr": 49.8,
+     "games": 253,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Orianna: Su bola marca dónde pega: no te quedes cerca de la bola."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Entrar al rango de su R con tu equipo junto.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Yone": {
+     "wr": 49.4,
+     "games": 251,
+     "score": -0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Pelea larga: Electrocute y ganchos cortos con Q-E y salí. No le des la pelea extendida.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Yone: Gana peleas largas y su R te junta: guardá Zhonya."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear en línea recta contra su R.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "LeBlanc": {
+     "wr": 49.8,
+     "games": 247,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Línea de quién gasta primero: no uses E sin Q marcada. W absorbe su burst; al 6 ganás el all-in si la Q pega.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a LeBlanc: Daño explosivo y vuelve atrás: entrá después de su W."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Gastar todo antes de que regrese.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Yasuo": {
+     "wr": 42.13,
+     "games": 235,
+     "score": -2.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Pelea larga: Electrocute y ganchos cortos con Q-E y salí. No le des la pelea extendida.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Yasuo: Su muro bloquea tu Q: esperá a que lo gaste."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Tirar Q cuando tiene el muro listo.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Lissandra": {
+     "wr": 50.48,
+     "games": 208,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Lissandra: Te congela y te corta el all-in."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Entrar primera contra su R.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Ekko": {
+     "wr": 52.4,
+     "games": 208,
+     "score": 0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Línea de quién gasta primero: no uses E sin Q marcada. W absorbe su burst; al 6 ganás el all-in si la Q pega.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Ekko: Daño explosivo y vuelve atrás con R: guardá algo para después de su R."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Gastar todo antes de que use R.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Twisted Fate": {
+     "wr": 54.27,
+     "games": 199,
+     "score": 1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Twisted Fate: Roamea al 6: avisá a tus líneas cuando falta."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Seguirlo sin visión.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Akshan": {
+     "wr": 50.64,
+     "games": 156,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Línea de quién gasta primero: no uses E sin Q marcada. W absorbe su burst; al 6 ganás el all-in si la Q pega.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Taliyah": {
+     "wr": 52.9,
+     "games": 155,
+     "score": 0.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Fizz": {
+     "wr": 55.63,
+     "games": 151,
+     "score": 1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Línea de quién gasta primero: no uses E sin Q marcada. W absorbe su burst; al 6 ganás el all-in si la Q pega.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Fizz: Esquiva tu combo con E: entrá después de que la use."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear de cerca cuando tiene E.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Zoe": {
+     "wr": 56.12,
+     "games": 139,
+     "score": 1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Kassadin": {
+     "wr": 47.41,
+     "games": 135,
+     "score": -0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Línea de quién gasta primero: no uses E sin Q marcada. W absorbe su burst; al 6 ganás el all-in si la Q pega.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Kassadin: Débil antes del 6, fuerte después: ganale la línea temprano."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Dejarlo farmear libre.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Hwei": {
+     "wr": 58.96,
+     "games": 134,
+     "score": 1.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Vladimir": {
+     "wr": 50.38,
+     "games": 133,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Pelea larga: Electrocute y ganchos cortos con Q-E y salí. No le des la pelea extendida.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Aurora": {
+     "wr": 52.31,
+     "games": 130,
+     "score": 0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Xerath": {
+     "wr": 45.83,
+     "games": 120,
+     "score": -0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Xerath: Poke enorme: farmeá con Q y entrá al 6 por el costado."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Quedarte en su rango largo.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Lux": {
+     "wr": 49.15,
+     "games": 118,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Qiyana": {
+     "wr": 45.3,
+     "games": 117,
+     "score": -0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Línea de quién gasta primero: no uses E sin Q marcada. W absorbe su burst; al 6 ganás el all-in si la Q pega.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Qiyana: Mucho daño explosivo y su R contra paredes: no pelees cerca de muros."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Agruparte en un pasillo donde su R pegue a varios.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Anivia": {
+     "wr": 50.93,
+     "games": 108,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Anivia: Su pared te corta el all-in."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Entrar cuando tiene el muro listo.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Talon": {
+     "wr": 48.15,
+     "games": 108,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Línea de quién gasta primero: no uses E sin Q marcada. W absorbe su burst; al 6 ganás el all-in si la Q pega.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Talon: Gankea por encima de los muros: ward en lugares raros."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Quedarte en el río sin visión.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Malzahar": {
+     "wr": 56.86,
+     "games": 102,
+     "score": 0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6.",
+       "Respetá a Malzahar: Su R te suprime: Zhonya o W después."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear sin tu equipo cuando tiene R.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Irelia": {
+     "wr": 56.57,
+     "games": 99,
+     "score": 0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Pelea larga: Electrocute y ganchos cortos con Q-E y salí. No le des la pelea extendida.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Aurelion Sol": {
+     "wr": 45.78,
+     "games": 83,
+     "score": -0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Vex": {
+     "wr": 52.56,
+     "games": 78,
+     "score": 0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Ryze": {
+     "wr": 60.0,
+     "games": 75,
+     "score": 1.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Cassiopeia": {
+     "wr": 53.73,
+     "games": 67,
+     "score": 0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Azir": {
+     "wr": 43.08,
+     "games": 65,
+     "score": -0.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Veigar": {
+     "wr": 46.55,
+     "games": 58,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Annie": {
+     "wr": 59.26,
+     "games": 54,
+     "score": 0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Pantheon": {
+     "wr": 56.86,
+     "games": 51,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Pelea larga: Electrocute y ganchos cortos con Q-E y salí. No le des la pelea extendida.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Vel'Koz": {
+     "wr": 57.45,
+     "games": 47,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Mel": {
+     "wr": 57.14,
+     "games": 42,
+     "score": 0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "El mago te gana con poke antes del 3: farmeá con Q, no te expongas, y al 3 o al 6 entrá cuando gaste su habilidad principal.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Jayce": {
+     "wr": 47.5,
+     "games": 40,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Pelea larga: Electrocute y ganchos cortos con Q-E y salí. No le des la pelea extendida.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    },
+    "Kayle": {
+     "wr": 60.0,
+     "games": 30,
+     "score": 0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y farmeá con Q a distancia; tu primer pico es el nivel 3 (Q-E-W con Electrocute).",
+      "pre6": [
+       "Pelea larga: Electrocute y ganchos cortos con Q-E y salí. No le des la pelea extendida.",
+       "Antes del 3 no pelees: muchos mid te ganan el intercambio corto.",
+       "Al 3, si la Q marca al rival: E, W y autoataques. Si la Q falla, retirate.",
+       "Empujá la ola y avisá a tu jungla antes de moverte; Diana roamea bien después del 6."
+      ],
+      "post6": "Al 6 tenés all-in: Q, E, R y Flash si hace falta. Con Zhonya podés entrar a 2 rivales. Ayudá en dragón y heraldo con tu R.",
+      "evitar": "Pelear antes del 3 o quedarte en línea larga contra un mago que te gasta con poke a distancia.",
+      "labels": [
+       "Nivel 1",
+       "Hasta el 6",
+       "Desde el 6"
+      ]
+     }
+    }
+   }
+  }
+ ]
+}

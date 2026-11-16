@@ -1,0 +1,132 @@
+{
+ "_champs": {
+  "222": {
+   "name": "Jinx",
+   "dmg": "AD"
+  },
+  "145": {
+   "name": "Kai'Sa",
+   "dmg": "MIX"
+  },
+  "89": {
+   "name": "Leona",
+   "dmg": "AD"
+  },
+  "412": {
+   "name": "Thresh",
+   "dmg": "AD"
+  },
+  "117": {
+   "name": "Lulu",
+   "dmg": "AP"
+  },
+  "267": {
+   "name": "Nami",
+   "dmg": "AP"
+  },
+  "902": {
+   "name": "Milio",
+   "dmg": "AP"
+  },
+  "64": {
+   "name": "Lee Sin",
+   "dmg": "AD"
+  },
+  "103": {
+   "name": "Ahri",
+   "dmg": "AP"
+  },
+  "86": {
+   "name": "Garen",
+   "dmg": "AD"
+  },
+  "122": {
+   "name": "Darius",
+   "dmg": "AD"
+  },
+  "11": {
+   "name": "Master Yi",
+   "dmg": "AD"
+  },
+  "61": {
+   "name": "Orianna",
+   "dmg": "AP"
+  },
+  "111": {
+   "name": "Nautilus",
+   "dmg": "AD"
+  },
+  "350": {
+   "name": "Yuumi",
+   "dmg": "AP"
+  }
+ },
+ "localPlayerCellId": 4,
+ "timer": {
+  "phase": "BAN_PICK"
+ },
+ "myTeam": [
+  {
+   "cellId": 0,
+   "championId": 86,
+   "assignedPosition": "top"
+  },
+  {
+   "cellId": 1,
+   "championId": 64,
+   "assignedPosition": "jungle"
+  },
+  {
+   "cellId": 2,
+   "championId": 103,
+   "assignedPosition": "middle"
+  },
+  {
+   "cellId": 3,
+   "championId": 222,
+   "assignedPosition": "bottom"
+  },
+  {
+   "cellId": 4,
+   "championId": 0,
+   "championPickIntent": 0,
+   "assignedPosition": "utility"
+  }
+ ],
+ "theirTeam": [
+  {
+   "cellId": 5,
+   "championId": 122
+  },
+  {
+   "cellId": 6,
+   "championId": 11
+  },
+  {
+   "cellId": 7,
+   "championId": 61
+  },
+  {
+   "cellId": 8,
+   "championId": 145
+  },
+  {
+   "cellId": 9,
+   "championId": 89
+  }
+ ],
+ "actions": [
+  [
+   {
+    "type": "ban",
+    "completed": true,
+    "championId": 111
+   },
+   {
+    "type": "ban",
+    "completed": true,
+    "championId": 350
+   }
+  ]
+ ]
+}

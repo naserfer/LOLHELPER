@@ -1,0 +1,401 @@
+{
+ "activePlayer": {
+  "riotId": "Naser#LAS",
+  "summonerName": "Naser",
+  "currentGold": 1450,
+  "level": 7
+ },
+ "allPlayers": [
+  {
+   "championName": "Nocturne",
+   "rawChampionName": "game_character_displayname_Nocturne",
+   "riotId": "Naser#LAS",
+   "summonerName": "Naser",
+   "team": "ORDER",
+   "position": "JUNGLE",
+   "level": 7,
+   "isDead": false,
+   "respawnTimer": 0.0,
+   "items": [
+    {
+     "itemID": 1102
+    },
+    {
+     "itemID": 3077
+    },
+    {
+     "itemID": 2055
+    }
+   ],
+   "scores": {
+    "kills": 0,
+    "deaths": 1,
+    "assists": 3,
+    "creepScore": 12
+   },
+   "summonerSpells": {
+    "summonerSpellOne": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+    },
+    "summonerSpellTwo": {
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerSmite_DisplayName",
+     "displayName": "Smite"
+    }
+   }
+  },
+  {
+   "championName": "Thresh",
+   "rawChampionName": "game_character_displayname_Thresh",
+   "riotId": "Aliado1#LAS",
+   "summonerName": "Aliado1",
+   "team": "ORDER",
+   "position": "UTILITY",
+   "level": 7,
+   "isDead": false,
+   "respawnTimer": 0.0,
+   "items": [
+    {
+     "itemID": 1036,
+     "displayName": "",
+     "count": 1,
+     "slot": 0
+    }
+   ],
+   "scores": {
+    "kills": 1,
+    "deaths": 1,
+    "assists": 2,
+    "creepScore": 40
+   },
+   "summonerSpells": {
+    "summonerSpellOne": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+    },
+    "summonerSpellTwo": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerSmite_DisplayName"
+    }
+   }
+  },
+  {
+   "championName": "Ahri",
+   "rawChampionName": "game_character_displayname_Ahri",
+   "riotId": "Aliado2#LAS",
+   "summonerName": "Aliado2",
+   "team": "ORDER",
+   "position": "MIDDLE",
+   "level": 8,
+   "isDead": false,
+   "respawnTimer": 0.0,
+   "items": [
+    {
+     "itemID": 1056,
+     "displayName": "",
+     "count": 1,
+     "slot": 0
+    },
+    {
+     "itemID": 3020,
+     "displayName": "",
+     "count": 1,
+     "slot": 1
+    }
+   ],
+   "scores": {
+    "kills": 2,
+    "deaths": 0,
+    "assists": 1,
+    "creepScore": 70
+   },
+   "summonerSpells": {
+    "summonerSpellOne": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+    },
+    "summonerSpellTwo": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
+    }
+   }
+  },
+  {
+   "championName": "Jinx",
+   "rawChampionName": "game_character_displayname_Jinx",
+   "riotId": "Aliado3#LAS",
+   "summonerName": "Aliado3",
+   "team": "ORDER",
+   "position": "BOTTOM",
+   "level": 7,
+   "isDead": false,
+   "respawnTimer": 0.0,
+   "items": [
+    {
+     "itemID": 1055
+    },
+    {
+     "itemID": 3006
+    },
+    {
+     "itemID": 1037
+    }
+   ],
+   "scores": {
+    "kills": 2,
+    "deaths": 1,
+    "assists": 0,
+    "creepScore": 66
+   },
+   "summonerSpells": {
+    "summonerSpellOne": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+    },
+    "summonerSpellTwo": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerHeal_DisplayName"
+    }
+   }
+  },
+  {
+   "championName": "Garen",
+   "rawChampionName": "game_character_displayname_Garen",
+   "riotId": "Aliado4#LAS",
+   "summonerName": "Aliado4",
+   "team": "ORDER",
+   "position": "TOP",
+   "level": 7,
+   "isDead": false,
+   "respawnTimer": 0.0,
+   "items": [
+    {
+     "itemID": 1055
+    }
+   ],
+   "scores": {
+    "kills": 1,
+    "deaths": 1,
+    "assists": 3,
+    "creepScore": 8
+   },
+   "summonerSpells": {
+    "summonerSpellOne": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+    },
+    "summonerSpellTwo": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+    }
+   }
+  },
+  {
+   "championName": "Darius",
+   "rawChampionName": "game_character_displayname_Darius",
+   "riotId": "Rival1#LAS",
+   "summonerName": "Rival1",
+   "team": "CHAOS",
+   "position": "TOP",
+   "level": 8,
+   "isDead": false,
+   "respawnTimer": 0.0,
+   "items": [
+    {
+     "itemID": 1055
+    },
+    {
+     "itemID": 6631
+    }
+   ],
+   "scores": {
+    "kills": 2,
+    "deaths": 0,
+    "assists": 0,
+    "creepScore": 72
+   },
+   "summonerSpells": {
+    "summonerSpellOne": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+    },
+    "summonerSpellTwo": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
+    }
+   }
+  },
+  {
+   "championName": "Lee Sin",
+   "rawChampionName": "game_character_displayname_LeeSin",
+   "riotId": "Rival2#LAS",
+   "summonerName": "Rival2",
+   "team": "CHAOS",
+   "position": "JUNGLE",
+   "level": 8,
+   "isDead": false,
+   "respawnTimer": 0.0,
+   "items": [
+    {
+     "itemID": 1036
+    },
+    {
+     "itemID": 3077
+    }
+   ],
+   "scores": {
+    "kills": 4,
+    "deaths": 1,
+    "assists": 1,
+    "creepScore": 55
+   },
+   "summonerSpells": {
+    "summonerSpellOne": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+    },
+    "summonerSpellTwo": {
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerSmite_DisplayName",
+     "displayName": "Smite"
+    }
+   }
+  },
+  {
+   "championName": "Seraphine",
+   "rawChampionName": "game_character_displayname_Seraphine",
+   "riotId": "Rival3#LAS",
+   "summonerName": "Rival3",
+   "team": "CHAOS",
+   "position": "MIDDLE",
+   "level": 7,
+   "isDead": false,
+   "respawnTimer": 0.0,
+   "items": [
+    {
+     "itemID": 1056,
+     "displayName": "",
+     "count": 1,
+     "slot": 0
+    },
+    {
+     "itemID": 3020,
+     "displayName": "",
+     "count": 1,
+     "slot": 1
+    }
+   ],
+   "scores": {
+    "kills": 1,
+    "deaths": 2,
+    "assists": 2,
+    "creepScore": 62
+   },
+   "summonerSpells": {
+    "summonerSpellOne": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+    },
+    "summonerSpellTwo": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+    }
+   }
+  },
+  {
+   "championName": "Kai'Sa",
+   "rawChampionName": "game_character_displayname_Kaisa",
+   "riotId": "Rival4#LAS",
+   "summonerName": "Rival4",
+   "team": "CHAOS",
+   "position": "BOTTOM",
+   "level": 7,
+   "isDead": false,
+   "respawnTimer": 0.0,
+   "items": [
+    {
+     "itemID": 1055
+    },
+    {
+     "itemID": 3006
+    },
+    {
+     "itemID": 3124
+    }
+   ],
+   "scores": {
+    "kills": 3,
+    "deaths": 1,
+    "assists": 1,
+    "creepScore": 70
+   },
+   "summonerSpells": {
+    "summonerSpellOne": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+    },
+    "summonerSpellTwo": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerHeal_DisplayName"
+    }
+   }
+  },
+  {
+   "championName": "Leona",
+   "rawChampionName": "game_character_displayname_Leona",
+   "riotId": "Rival5#LAS",
+   "summonerName": "Rival5",
+   "team": "CHAOS",
+   "position": "UTILITY",
+   "level": 6,
+   "isDead": false,
+   "respawnTimer": 0.0,
+   "items": [
+    {
+     "itemID": 3867
+    },
+    {
+     "itemID": 3047
+    },
+    {
+     "itemID": 3340
+    }
+   ],
+   "scores": {
+    "kills": 0,
+    "deaths": 1,
+    "assists": 2,
+    "creepScore": 10
+   },
+   "summonerSpells": {
+    "summonerSpellOne": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+    },
+    "summonerSpellTwo": {
+     "displayName": "",
+     "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerExhaust_DisplayName"
+    }
+   }
+  }
+ ],
+ "events": {
+  "Events": [
+   {
+    "EventID": 0,
+    "EventName": "GameStart",
+    "EventTime": 0
+   },
+   {
+    "EventID": 1,
+    "EventName": "ChampionKill",
+    "EventTime": 515.0,
+    "VictimName": "Naser",
+    "KillerName": "Rival2#LAS",
+    "Assisters": []
+   }
+  ]
+ },
+ "gameData": {
+  "gameTime": 520
+ }
+}

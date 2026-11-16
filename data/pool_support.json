@@ -1,0 +1,9446 @@
+{
+ "adc_arch": {
+  "Kai'Sa|engage": 0.24,
+  "Jinx|engage": 0.27,
+  "Jhin|engage": -0.99,
+  "Aphelios|engage": 0.42,
+  "Caitlyn|engage": -0.66,
+  "Ezreal|engage": -1.11,
+  "Yunara|engage": 0.41,
+  "Xayah|engage": 0.35,
+  "Miss Fortune|engage": 0.68,
+  "Kalista|engage": -0.13,
+  "Kog'Maw|engage": -1.2,
+  "Vayne|engage": -2.11,
+  "Zeri|engage": -1.01,
+  "Varus|engage": -0.28,
+  "Draven|engage": 0.08,
+  "Samira|engage": 0.08,
+  "Twitch|engage": -1.04,
+  "Sivir|engage": 1.05,
+  "Smolder|engage": 1.16,
+  "Lucian|engage": -0.11,
+  "Ashe|engage": -2.1,
+  "Tristana|engage": -0.41,
+  "Nilah|engage": 0.51,
+  "Corki|engage": 0.02,
+  "Ziggs|engage": 0.61,
+  "Lucian|enchanter": 0.3,
+  "Jinx|enchanter": -0.09,
+  "Caitlyn|enchanter": -0.05,
+  "Jhin|enchanter": 0.11,
+  "Kai'Sa|enchanter": -0.65,
+  "Yunara|enchanter": -0.32,
+  "Tristana|enchanter": 0.95,
+  "Ezreal|enchanter": 0.6,
+  "Twitch|enchanter": 0.49,
+  "Smolder|enchanter": 0.2,
+  "Kog'Maw|enchanter": 0.34,
+  "Vayne|enchanter": 1.06,
+  "Zeri|enchanter": 0.24,
+  "Varus|enchanter": 0.83,
+  "Draven|enchanter": -0.19,
+  "Sivir|enchanter": -0.05,
+  "Xayah|enchanter": -1.36,
+  "Ashe|enchanter": 0.88,
+  "Aphelios|enchanter": -0.66,
+  "Miss Fortune|enchanter": -1.18,
+  "Nilah|enchanter": -0.72,
+  "Corki|enchanter": -0.04,
+  "Kalista|enchanter": -0.03,
+  "Jhin|marksman": 2.35,
+  "Caitlyn|marksman": -1.27,
+  "Ezreal|marksman": -0.47,
+  "Kai'Sa|marksman": -0.16,
+  "Jinx|marksman": -0.83,
+  "Tristana|marksman": -0.49,
+  "Smolder|marksman": -3.88,
+  "Lucian|marksman": -2.53,
+  "Yunara|marksman": -3.53,
+  "Ashe|marksman": -0.68,
+  "Lucian|warden": -0.7,
+  "Jinx|warden": 1.25,
+  "Kai'Sa|warden": -1.66,
+  "Yunara|warden": 3.63,
+  "Ashe|warden": -1.83,
+  "Caitlyn|warden": -1.01,
+  "Aphelios|warden": 1.29,
+  "Tristana|warden": 0.05,
+  "Jhin|mage": 1.25,
+  "Ezreal|mage": 0.8,
+  "Caitlyn|mage": 0.7,
+  "Kai'Sa|mage": 0.97,
+  "Jinx|mage": -0.79,
+  "Yunara|mage": -2.11,
+  "Tristana|mage": -0.82,
+  "Ashe|mage": -0.02,
+  "Miss Fortune|mage": -1.09,
+  "Xayah|mage": -0.27,
+  "Jhin|roamer": -0.38,
+  "Caitlyn|roamer": 1.55,
+  "Ezreal|roamer": 1.1,
+  "Kai'Sa|roamer": -0.03,
+  "Jinx|roamer": -1.7,
+  "Tristana|roamer": 0.23,
+  "Yunara|roamer": -0.23,
+  "Aphelios|roamer": -0.68,
+  "Smolder|roamer": -1.67,
+  "Sivir|roamer": -2.62,
+  "Jhin|warden": 0.76
+ },
+ "dyn": {
+  "engage|engage": "Carrera al nivel 2: el que llega primero entra. Mirá la barra de experiencia y no te dejes engage.",
+  "engage|enchanter": "Ganás el all-in: llegá al nivel 2 primero y entrá. Te pokean si no entrás.",
+  "engage|mage": "Te pokean mucho; entrá apenas tengas el nivel 2 y una línea limpia.",
+  "engage|warden": "Ellos juegan reactivo: entrá cuando gasten su escudo o control.",
+  "engage|roamer": "Si se va a rotar, presioná a su ADC solo.",
+  "engage|marksman": "Entrá cuando use su poke: no tiene escape.",
+  "enchanter|engage": "Jugá detrás de tu ADC y de los minions. Si llegan al 2 primero, retrocedé. Guardá tu control para su engage.",
+  "enchanter|enchanter": "Línea de poke: pegá cuando el support rival se acerca a wardear o farmear.",
+  "enchanter|mage": "Te superan en poke: mantené vida con tus curas y no tradees sin escudo.",
+  "enchanter|warden": "Línea tranquila: pokeá libremente.",
+  "enchanter|roamer": "Cuando rote, avisá y empujá con tu ADC.",
+  "enchanter|marksman": "Te pokea: tus escudos ganan los trades cortos.",
+  "mage|engage": "Mantené distancia máxima; tu control (raíz/stun) es para cuando entren.",
+  "mage|enchanter": "Ganás el poke: presioná y quitales vida antes de su nivel 6.",
+  "mage|mage": "Duelo de poke: esquivá y no te quedes sin maná.",
+  "mage|warden": "Pokeá; su escudo bloquea, esperá a que lo gaste.",
+  "mage|roamer": "Si rota, empujá la línea.",
+  "mage|marksman": "Duelo de poke: mantené distancia.",
+  "warden|engage": "Jugá detrás de tu ADC y de los minions. Si llegan al 2 primero, retrocedé. Guardá tu control para su engage.",
+  "warden|enchanter": "Línea de poke: pegá cuando el support rival se acerca a wardear o farmear.",
+  "warden|mage": "Te superan en poke: mantené vida con tus curas y no tradees sin escudo.",
+  "warden|warden": "Línea tranquila: pokeá libremente.",
+  "warden|roamer": "Cuando rote, avisá y empujá con tu ADC.",
+  "warden|marksman": "Te pokea: tus escudos ganan los trades cortos.",
+  "roamer|engage": "Jugá detrás de tu ADC y de los minions. Si llegan al 2 primero, retrocedé. Guardá tu control para su engage.",
+  "roamer|enchanter": "Línea de poke: pegá cuando el support rival se acerca a wardear o farmear.",
+  "roamer|mage": "Te superan en poke: mantené vida con tus curas y no tradees sin escudo.",
+  "roamer|warden": "Línea tranquila: pokeá libremente.",
+  "roamer|roamer": "Cuando rote, avisá y empujá con tu ADC.",
+  "roamer|marksman": "Te pokea: tus escudos ganan los trades cortos.",
+  "marksman|engage": "Mantené distancia máxima; tu control (raíz/stun) es para cuando entren.",
+  "marksman|enchanter": "Ganás el poke: presioná y quitales vida antes de su nivel 6.",
+  "marksman|mage": "Duelo de poke: esquivá y no te quedes sin maná.",
+  "marksman|warden": "Pokeá; su escudo bloquea, esperá a que lo gaste.",
+  "marksman|roamer": "Si rota, empujá la línea.",
+  "marksman|marksman": "Duelo de poke: mantené distancia."
+ },
+ "arch_label": {
+  "engage": "ENGAGE",
+  "warden": "PROTECTOR",
+  "enchanter": "ENCANTADOR",
+  "roamer": "ROAMER",
+  "mage": "MAGO",
+  "marksman": "TIRADOR"
+ },
+ "_info": "Supports: op.gg Emerald+ parche 16.22 (26.22). matchups = WR vs support rival; synergy = WR con ese ADC (delta vs su promedio). Guías = análisis de kits.",
+ "patch": "26.22",
+ "source": "op.gg Emerald+ (support)",
+ "role": "utility",
+ "pool": [
+  {
+   "name": "Thresh",
+   "role": "support",
+   "arch": "engage",
+   "tier_wr": 51.11,
+   "pick": 13.84,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Boots of Swiftness",
+   "runes": {
+    "keystone": "Aftershock",
+    "primary": [
+     "Font of Life",
+     "Unflinching",
+     "Bone Plating"
+    ],
+    "secondary": [
+     "Cosmic Insight",
+     "Biscuit Delivery"
+    ],
+    "alt": "Secundaria: Inspiration"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "E",
+    "W"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Zeke's Convergence"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Zeke's Convergence"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Zeke's Convergence"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Buscá el gancho cuando el ADC rival va a farmear un minion.",
+   "plan": {
+    "lv1": "Q. Buscá el gancho cuando el ADC rival va a farmear un minion.",
+    "pre6": [
+     "Gancho solo con línea limpia, desde costado o desde arbusto.",
+     "Si no hay gancho, E para empujarlos lejos de tu ADC.",
+     "Linterna (W) para salvar a tu ADC o traer al jungla."
+    ],
+    "post6": "Q + R: la caja corta la huida. Guardá la linterna para el engage rival."
+   },
+   "threat": {
+    "respect": "Su gancho (Q). No te pares en línea recta con minions despejados.",
+    "avoid": "Quedarte sin minions entre vos y él."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 51.54,
+     "games": 13322,
+     "score": 0.62
+    },
+    "Nautilus": {
+     "wr": 53.22,
+     "games": 12662,
+     "score": 1.29
+    },
+    "Leona": {
+     "wr": 49.95,
+     "games": 9251,
+     "score": -0.02
+    },
+    "Nami": {
+     "wr": 50.82,
+     "games": 8755,
+     "score": 0.33
+    },
+    "Blitzcrank": {
+     "wr": 50.56,
+     "games": 8642,
+     "score": 0.22
+    },
+    "Karma": {
+     "wr": 53.23,
+     "games": 8012,
+     "score": 1.29
+    },
+    "Alistar": {
+     "wr": 48.86,
+     "games": 7686,
+     "score": -0.46
+    },
+    "Braum": {
+     "wr": 49.36,
+     "games": 6998,
+     "score": -0.26
+    },
+    "Seraphine": {
+     "wr": 49.89,
+     "games": 6843,
+     "score": -0.04
+    },
+    "Milio": {
+     "wr": 51.4,
+     "games": 6039,
+     "score": 0.56
+    },
+    "Pyke": {
+     "wr": 50.66,
+     "games": 5928,
+     "score": 0.26
+    },
+    "Lux": {
+     "wr": 50.77,
+     "games": 5813,
+     "score": 0.31
+    },
+    "Rakan": {
+     "wr": 50.36,
+     "games": 5453,
+     "score": 0.14
+    },
+    "Senna": {
+     "wr": 49.08,
+     "games": 5391,
+     "score": -0.37
+    },
+    "Morgana": {
+     "wr": 50.3,
+     "games": 5179,
+     "score": 0.12
+    },
+    "Yuumi": {
+     "wr": 54.34,
+     "games": 5063,
+     "score": 1.74
+    },
+    "Janna": {
+     "wr": 51.83,
+     "games": 4409,
+     "score": 0.73
+    },
+    "Bard": {
+     "wr": 52.8,
+     "games": 4371,
+     "score": 1.12
+    },
+    "Rell": {
+     "wr": 50.46,
+     "games": 4217,
+     "score": 0.18
+    },
+    "Soraka": {
+     "wr": 50.52,
+     "games": 4123,
+     "score": 0.21
+    },
+    "Vel'Koz": {
+     "wr": 48.73,
+     "games": 3353,
+     "score": -0.51
+    },
+    "Swain": {
+     "wr": 50.56,
+     "games": 3101,
+     "score": 0.22
+    },
+    "Pantheon": {
+     "wr": 53.82,
+     "games": 2930,
+     "score": 1.53
+    },
+    "Zilean": {
+     "wr": 51.63,
+     "games": 2609,
+     "score": 0.65
+    },
+    "Xerath": {
+     "wr": 51.23,
+     "games": 2553,
+     "score": 0.49
+    },
+    "Sona": {
+     "wr": 51.31,
+     "games": 2483,
+     "score": 0.52
+    },
+    "Zyra": {
+     "wr": 49.66,
+     "games": 2388,
+     "score": -0.14
+    },
+    "Renata Glasc": {
+     "wr": 49.44,
+     "games": 2320,
+     "score": -0.22
+    },
+    "Tahm Kench": {
+     "wr": 52.15,
+     "games": 2278,
+     "score": 0.86
+    },
+    "Brand": {
+     "wr": 50.92,
+     "games": 2117,
+     "score": 0.37
+    },
+    "Neeko": {
+     "wr": 48.76,
+     "games": 2055,
+     "score": -0.5
+    },
+    "Maokai": {
+     "wr": 49.24,
+     "games": 1919,
+     "score": -0.3
+    },
+    "Poppy": {
+     "wr": 50.23,
+     "games": 1497,
+     "score": 0.09
+    },
+    "Taric": {
+     "wr": 48.03,
+     "games": 1345,
+     "score": -0.79
+    }
+   },
+   "synergy": {
+    "Kai'Sa": {
+     "wr": 50.16,
+     "games": 38932,
+     "delta": -0.36
+    },
+    "Jinx": {
+     "wr": 52.92,
+     "games": 24145,
+     "delta": 0.51
+    },
+    "Jhin": {
+     "wr": 49.8,
+     "games": 22140,
+     "delta": -1.76
+    },
+    "Aphelios": {
+     "wr": 52.58,
+     "games": 20254,
+     "delta": 1.36
+    },
+    "Caitlyn": {
+     "wr": 50.02,
+     "games": 15594,
+     "delta": 0.06
+    },
+    "Ezreal": {
+     "wr": 46.19,
+     "games": 13541,
+     "delta": -1.59
+    },
+    "Yunara": {
+     "wr": 50.82,
+     "games": 12793,
+     "delta": -0.02
+    },
+    "Xayah": {
+     "wr": 54.31,
+     "games": 11695,
+     "delta": 1.05
+    },
+    "Miss Fortune": {
+     "wr": 51.86,
+     "games": 10012,
+     "delta": 0.18
+    },
+    "Kalista": {
+     "wr": 50.85,
+     "games": 9128,
+     "delta": 0.46
+    },
+    "Kog'Maw": {
+     "wr": 52.34,
+     "games": 1941,
+     "delta": -2.21
+    },
+    "Vayne": {
+     "wr": 48.07,
+     "games": 4179,
+     "delta": -2.54
+    },
+    "Zeri": {
+     "wr": 50.72,
+     "games": 3535,
+     "delta": -2.52
+    },
+    "Varus": {
+     "wr": 51.64,
+     "games": 4613,
+     "delta": 0.72
+    },
+    "Draven": {
+     "wr": 52.13,
+     "games": 7846,
+     "delta": 1.07
+    },
+    "Samira": {
+     "wr": 51.54,
+     "games": 5572,
+     "delta": -0.55
+    },
+    "Twitch": {
+     "wr": 51.14,
+     "games": 5186,
+     "delta": -1.56
+    },
+    "Sivir": {
+     "wr": 53.55,
+     "games": 5653,
+     "delta": 1.26
+    },
+    "Smolder": {
+     "wr": 54.26,
+     "games": 6098,
+     "delta": 1.62
+    },
+    "Lucian": {
+     "wr": 50.53,
+     "games": 8823,
+     "delta": 0.2
+    },
+    "Ashe": {
+     "wr": 49.34,
+     "games": 6025,
+     "delta": -1.65
+    },
+    "Tristana": {
+     "wr": 50.58,
+     "games": 8393,
+     "delta": -0.93
+    },
+    "Nilah": {
+     "wr": 53.27,
+     "games": 1286,
+     "delta": 0.24
+    },
+    "Corki": {
+     "wr": 51.23,
+     "games": 5557,
+     "delta": -1.23
+    },
+    "Ziggs": {
+     "wr": 52.19,
+     "games": 1280,
+     "delta": 0.31
+    }
+   }
+  },
+  {
+   "name": "Leona",
+   "role": "support",
+   "arch": "engage",
+   "tier_wr": 51.65,
+   "pick": 8.63,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Plated Steelcaps",
+   "runes": {
+    "keystone": "Aftershock",
+    "primary": [
+     "Font of Life",
+     "Overgrowth",
+     "Second Wind"
+    ],
+    "secondary": [
+     "Unflinching",
+     "Bone Plating"
+    ],
+    "alt": "Secundaria: Inspiration"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "W",
+    "E",
+    "Q"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Bandlepipes"
+     ]
+    }
+   },
+   "general": "Nivel 1: W. Llegá al nivel 2 primero y entrá con E + Q.",
+   "plan": {
+    "lv1": "W. Llegá al nivel 2 primero y entrá con E + Q.",
+    "pre6": [
+     "El nivel 2 es tu ventana: empujá la primera wave con tu ADC.",
+     "E (lanza) solo si tu ADC puede seguirte.",
+     "Pasiva: tu ADC tiene que pegar al objetivo marcado."
+    ],
+    "post6": "R + E + Q encadena 4 segundos de control: entrá cuando tu ADC esté en rango."
+   },
+   "threat": {
+    "respect": "Su nivel 2 y su E. Retrocedé si llega al 2 primero.",
+    "avoid": "Estar en rango de E cuando llegó al nivel 2."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 50.83,
+     "games": 3083,
+     "score": 0.33
+    },
+    "Nautilus": {
+     "wr": 46.78,
+     "games": 2144,
+     "score": -1.29
+    },
+    "Lulu": {
+     "wr": 47.06,
+     "games": 2038,
+     "score": -1.18
+    },
+    "Blitzcrank": {
+     "wr": 47.25,
+     "games": 1729,
+     "score": -1.1
+    },
+    "Nami": {
+     "wr": 48.01,
+     "games": 1606,
+     "score": -0.8
+    },
+    "Alistar": {
+     "wr": 48.42,
+     "games": 1547,
+     "score": -0.63
+    },
+    "Braum": {
+     "wr": 52.04,
+     "games": 1522,
+     "score": 0.82
+    },
+    "Milio": {
+     "wr": 48.34,
+     "games": 1202,
+     "score": -0.66
+    },
+    "Pyke": {
+     "wr": 46.48,
+     "games": 1192,
+     "score": -1.41
+    },
+    "Yuumi": {
+     "wr": 41.1,
+     "games": 1129,
+     "score": -3
+    },
+    "Morgana": {
+     "wr": 49.91,
+     "games": 1112,
+     "score": -0.04
+    },
+    "Janna": {
+     "wr": 50.37,
+     "games": 1074,
+     "score": 0.15
+    },
+    "Karma": {
+     "wr": 47.06,
+     "games": 1020,
+     "score": -1.18
+    },
+    "Seraphine": {
+     "wr": 50.31,
+     "games": 982,
+     "score": 0.12
+    },
+    "Lux": {
+     "wr": 47.02,
+     "games": 923,
+     "score": -1.19
+    },
+    "Senna": {
+     "wr": 49.11,
+     "games": 900,
+     "score": -0.36
+    },
+    "Rell": {
+     "wr": 51.82,
+     "games": 853,
+     "score": 0.73
+    },
+    "Bard": {
+     "wr": 45.69,
+     "games": 823,
+     "score": -1.72
+    },
+    "Soraka": {
+     "wr": 53.07,
+     "games": 799,
+     "score": 1.23
+    },
+    "Rakan": {
+     "wr": 48.2,
+     "games": 776,
+     "score": -0.72
+    },
+    "Pantheon": {
+     "wr": 43.92,
+     "games": 617,
+     "score": -2.43
+    },
+    "Vel'Koz": {
+     "wr": 54.97,
+     "games": 593,
+     "score": 1.99
+    },
+    "Swain": {
+     "wr": 51.55,
+     "games": 516,
+     "score": 0.62
+    },
+    "Poppy": {
+     "wr": 49.4,
+     "games": 504,
+     "score": -0.24
+    },
+    "Tahm Kench": {
+     "wr": 49.57,
+     "games": 468,
+     "score": -0.17
+    },
+    "Zyra": {
+     "wr": 50.11,
+     "games": 467,
+     "score": 0.04
+    },
+    "Xerath": {
+     "wr": 46.58,
+     "games": 453,
+     "score": -1.37
+    },
+    "Zilean": {
+     "wr": 49.77,
+     "games": 438,
+     "score": -0.09
+    },
+    "Sona": {
+     "wr": 49.25,
+     "games": 402,
+     "score": -0.3
+    },
+    "Brand": {
+     "wr": 48.86,
+     "games": 395,
+     "score": -0.46
+    },
+    "Renata Glasc": {
+     "wr": 44.97,
+     "games": 338,
+     "score": -2.01
+    },
+    "Maokai": {
+     "wr": 49.23,
+     "games": 323,
+     "score": -0.31
+    },
+    "Taric": {
+     "wr": 51.42,
+     "games": 282,
+     "score": 0.53
+    },
+    "Neeko": {
+     "wr": 48.5,
+     "games": 266,
+     "score": -0.53
+    }
+   },
+   "synergy": {
+    "Kai'Sa": {
+     "wr": 51.2,
+     "games": 27709,
+     "delta": 0.14
+    },
+    "Jhin": {
+     "wr": 51.18,
+     "games": 16761,
+     "delta": -0.92
+    },
+    "Tristana": {
+     "wr": 52.91,
+     "games": 7245,
+     "delta": 0.86
+    },
+    "Jinx": {
+     "wr": 52.92,
+     "games": 7511,
+     "delta": -0.03
+    },
+    "Caitlyn": {
+     "wr": 48.42,
+     "games": 8821,
+     "delta": -2.08
+    },
+    "Yunara": {
+     "wr": 51.57,
+     "games": 6849,
+     "delta": 0.19
+    },
+    "Samira": {
+     "wr": 53.96,
+     "games": 8045,
+     "delta": 1.33
+    },
+    "Miss Fortune": {
+     "wr": 53.01,
+     "games": 12479,
+     "delta": 0.79
+    },
+    "Ezreal": {
+     "wr": 47.8,
+     "games": 10916,
+     "delta": -0.52
+    },
+    "Aphelios": {
+     "wr": 50.91,
+     "games": 4274,
+     "delta": -0.85
+    },
+    "Kog'Maw": {
+     "wr": 54.73,
+     "games": 1226,
+     "delta": -0.36
+    },
+    "Vayne": {
+     "wr": 49.73,
+     "games": 2184,
+     "delta": -1.42
+    },
+    "Kalista": {
+     "wr": 49.82,
+     "games": 4205,
+     "delta": -1.11
+    },
+    "Zeri": {
+     "wr": 53.36,
+     "games": 2232,
+     "delta": -0.42
+    },
+    "Varus": {
+     "wr": 50.58,
+     "games": 2748,
+     "delta": -0.88
+    },
+    "Draven": {
+     "wr": 49.72,
+     "games": 4777,
+     "delta": -1.88
+    },
+    "Twitch": {
+     "wr": 52.71,
+     "games": 3045,
+     "delta": -0.53
+    },
+    "Smolder": {
+     "wr": 53.54,
+     "games": 3319,
+     "delta": 0.36
+    },
+    "Lucian": {
+     "wr": 51.27,
+     "games": 4956,
+     "delta": 0.4
+    },
+    "Xayah": {
+     "wr": 52.85,
+     "games": 6403,
+     "delta": -0.95
+    },
+    "Ashe": {
+     "wr": 49.83,
+     "games": 3612,
+     "delta": -1.7
+    },
+    "Nilah": {
+     "wr": 53.62,
+     "games": 925,
+     "delta": 0.05
+    },
+    "Corki": {
+     "wr": 53.27,
+     "games": 4027,
+     "delta": 0.27
+    },
+    "Ziggs": {
+     "wr": 54.19,
+     "games": 1218,
+     "delta": 1.77
+    }
+   }
+  },
+  {
+   "name": "Nami",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 51.03,
+   "pick": 9.04,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Summon Aery",
+    "primary": [
+     "Manaflow Band",
+     "Transcendence",
+     "Scorch"
+    ],
+    "secondary": [
+     "Revitalize",
+     "Bone Plating"
+    ],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "W",
+    "E",
+    "Q"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Echoes of Helia",
+      "Moonstone Renewer",
+      "Ardent Censer"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Echoes of Helia",
+      "Moonstone Renewer",
+      "Ardent Censer"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Echoes of Helia",
+      "Moonstone Renewer",
+      "Ardent Censer"
+     ]
+    }
+   },
+   "general": "Nivel 1: W. Pokeá con autos + W rebote.",
+   "plan": {
+    "lv1": "W. Pokeá con autos + W rebote.",
+    "pre6": [
+     "E en tu ADC antes de que tradee (ralentiza y suma daño).",
+     "Burbuja (Q) cuando el rival entra o tras un dash.",
+     "W rebota entre tu ADC y el rival: trade gratis."
+    ],
+    "post6": "R (ola) para empezar o cortar el engage rival."
+   },
+   "threat": {
+    "respect": "Burbuja (Q) y su poke con W.",
+    "avoid": "Dash cuando ella tiene la burbuja."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 50.75,
+     "games": 1068,
+     "score": 0.3
+    },
+    "Thresh": {
+     "wr": 47.98,
+     "games": 988,
+     "score": -0.81
+    },
+    "Nautilus": {
+     "wr": 45.95,
+     "games": 629,
+     "score": -1.62
+    },
+    "Karma": {
+     "wr": 46.73,
+     "games": 627,
+     "score": -1.31
+    },
+    "Milio": {
+     "wr": 48.23,
+     "games": 622,
+     "score": -0.71
+    },
+    "Seraphine": {
+     "wr": 52.99,
+     "games": 551,
+     "score": 1.2
+    },
+    "Janna": {
+     "wr": 46.73,
+     "games": 535,
+     "score": -1.31
+    },
+    "Leona": {
+     "wr": 44.08,
+     "games": 515,
+     "score": -2.37
+    },
+    "Senna": {
+     "wr": 52.89,
+     "games": 484,
+     "score": 1.16
+    },
+    "Blitzcrank": {
+     "wr": 48.6,
+     "games": 463,
+     "score": -0.56
+    },
+    "Soraka": {
+     "wr": 50.34,
+     "games": 439,
+     "score": 0.14
+    },
+    "Yuumi": {
+     "wr": 49.61,
+     "games": 385,
+     "score": -0.16
+    },
+    "Lux": {
+     "wr": 47.12,
+     "games": 382,
+     "score": -1.15
+    },
+    "Pyke": {
+     "wr": 52.15,
+     "games": 349,
+     "score": 0.86
+    },
+    "Bard": {
+     "wr": 54.6,
+     "games": 337,
+     "score": 1.84
+    },
+    "Braum": {
+     "wr": 53.37,
+     "games": 326,
+     "score": 1.35
+    },
+    "Alistar": {
+     "wr": 53.66,
+     "games": 287,
+     "score": 1.4
+    },
+    "Sona": {
+     "wr": 46.27,
+     "games": 268,
+     "score": -1.33
+    },
+    "Vel'Koz": {
+     "wr": 47.08,
+     "games": 257,
+     "score": -1.0
+    },
+    "Rakan": {
+     "wr": 50.2,
+     "games": 253,
+     "score": 0.07
+    },
+    "Zilean": {
+     "wr": 51.29,
+     "games": 232,
+     "score": 0.4
+    },
+    "Rell": {
+     "wr": 52.53,
+     "games": 217,
+     "score": 0.73
+    },
+    "Morgana": {
+     "wr": 48.73,
+     "games": 197,
+     "score": -0.33
+    },
+    "Zyra": {
+     "wr": 51.79,
+     "games": 195,
+     "score": 0.47
+    },
+    "Pantheon": {
+     "wr": 48.02,
+     "games": 177,
+     "score": -0.47
+    },
+    "Brand": {
+     "wr": 46.25,
+     "games": 160,
+     "score": -0.8
+    },
+    "Xerath": {
+     "wr": 45.65,
+     "games": 138,
+     "score": -0.8
+    },
+    "Swain": {
+     "wr": 57.14,
+     "games": 133,
+     "score": 1.27
+    },
+    "Tahm Kench": {
+     "wr": 55.65,
+     "games": 115,
+     "score": 0.87
+    },
+    "Maokai": {
+     "wr": 51.89,
+     "games": 106,
+     "score": 0.27
+    }
+   },
+   "synergy": {
+    "Lucian": {
+     "wr": 49.33,
+     "games": 28422,
+     "delta": -0.92
+    },
+    "Jinx": {
+     "wr": 52.65,
+     "games": 11183,
+     "delta": 0.32
+    },
+    "Caitlyn": {
+     "wr": 49.55,
+     "games": 9710,
+     "delta": -0.33
+    },
+    "Jhin": {
+     "wr": 50.77,
+     "games": 9576,
+     "delta": -0.71
+    },
+    "Kai'Sa": {
+     "wr": 50.45,
+     "games": 14913,
+     "delta": 0.01
+    },
+    "Yunara": {
+     "wr": 48.02,
+     "games": 8831,
+     "delta": -2.74
+    },
+    "Tristana": {
+     "wr": 53.55,
+     "games": 7729,
+     "delta": 2.12
+    },
+    "Ezreal": {
+     "wr": 47.72,
+     "games": 11021,
+     "delta": 0.02
+    },
+    "Twitch": {
+     "wr": 53.58,
+     "games": 4423,
+     "delta": 0.96
+    },
+    "Smolder": {
+     "wr": 53.15,
+     "games": 6858,
+     "delta": 0.59
+    },
+    "Kog'Maw": {
+     "wr": 53.37,
+     "games": 2104,
+     "delta": -1.1
+    },
+    "Vayne": {
+     "wr": 52.15,
+     "games": 3488,
+     "delta": 1.62
+    },
+    "Zeri": {
+     "wr": 52.34,
+     "games": 2843,
+     "delta": -0.82
+    },
+    "Varus": {
+     "wr": 50.17,
+     "games": 2416,
+     "delta": -0.67
+    },
+    "Draven": {
+     "wr": 49.37,
+     "games": 3579,
+     "delta": -1.61
+    },
+    "Samira": {
+     "wr": 49.58,
+     "games": 1418,
+     "delta": -2.43
+    },
+    "Sivir": {
+     "wr": 53.26,
+     "games": 3748,
+     "delta": 1.05
+    },
+    "Xayah": {
+     "wr": 51.98,
+     "games": 4967,
+     "delta": -1.2
+    },
+    "Ashe": {
+     "wr": 49.57,
+     "games": 3343,
+     "delta": -1.34
+    },
+    "Aphelios": {
+     "wr": 50.55,
+     "games": 4449,
+     "delta": -0.59
+    },
+    "Miss Fortune": {
+     "wr": 50.95,
+     "games": 5101,
+     "delta": -0.65
+    },
+    "Nilah": {
+     "wr": 50.44,
+     "games": 906,
+     "delta": -2.27
+    },
+    "Corki": {
+     "wr": 52.76,
+     "games": 7848,
+     "delta": 0.38
+    },
+    "Ziggs": {
+     "wr": 51.47,
+     "games": 1119,
+     "delta": -0.33
+    }
+   }
+  },
+  {
+   "name": "Blitzcrank",
+   "role": "support",
+   "arch": "engage",
+   "tier_wr": 51.19,
+   "pick": 7.38,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Boots of Swiftness",
+   "runes": {
+    "keystone": "Glacial Augment",
+    "primary": [
+     "Cosmic Insight",
+     "Biscuit Delivery",
+     "Hextech Flashtraption"
+    ],
+    "secondary": [
+     "Celerity",
+     "Nimbus Cloak"
+    ],
+    "alt": "Secundaria: Sorcery"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "E",
+    "W"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Zeke's Convergence",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Zeke's Convergence",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Zeke's Convergence",
+      "Bandlepipes"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. El gancho es todo: no lo tires al azar.",
+   "plan": {
+    "lv1": "Q. El gancho es todo: no lo tires al azar.",
+    "pre6": [
+     "Pararte en arbusto lateral para que no vean el gancho.",
+     "Gancho + E (levanta) + tu ADC = kill.",
+     "Si fallás el gancho, retrocedé: no tenés nada por 20 s."
+    ],
+    "post6": "R silencia y rompe escudos: usala después del gancho."
+   },
+   "threat": {
+    "respect": "Gancho desde los arbustos. Mirá dónde está.",
+    "avoid": "Pararte en línea recta desde un arbusto."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 49.1,
+     "games": 2990,
+     "score": -0.36
+    },
+    "Lulu": {
+     "wr": 54.18,
+     "games": 2283,
+     "score": 1.67
+    },
+    "Nautilus": {
+     "wr": 49.38,
+     "games": 1440,
+     "score": -0.25
+    },
+    "Leona": {
+     "wr": 46.02,
+     "games": 1256,
+     "score": -1.59
+    },
+    "Nami": {
+     "wr": 51.93,
+     "games": 1165,
+     "score": 0.77
+    },
+    "Milio": {
+     "wr": 53.95,
+     "games": 1075,
+     "score": 1.58
+    },
+    "Lux": {
+     "wr": 53.76,
+     "games": 1051,
+     "score": 1.5
+    },
+    "Braum": {
+     "wr": 45.45,
+     "games": 1032,
+     "score": -1.82
+    },
+    "Karma": {
+     "wr": 56.25,
+     "games": 1024,
+     "score": 2.5
+    },
+    "Alistar": {
+     "wr": 49.56,
+     "games": 1015,
+     "score": -0.18
+    },
+    "Seraphine": {
+     "wr": 51.12,
+     "games": 935,
+     "score": 0.45
+    },
+    "Janna": {
+     "wr": 50.7,
+     "games": 929,
+     "score": 0.28
+    },
+    "Pyke": {
+     "wr": 52.1,
+     "games": 833,
+     "score": 0.84
+    },
+    "Morgana": {
+     "wr": 52.69,
+     "games": 818,
+     "score": 1.08
+    },
+    "Yuumi": {
+     "wr": 56.56,
+     "games": 808,
+     "score": 2.62
+    },
+    "Senna": {
+     "wr": 52.04,
+     "games": 784,
+     "score": 0.82
+    },
+    "Soraka": {
+     "wr": 52.62,
+     "games": 745,
+     "score": 1.05
+    },
+    "Bard": {
+     "wr": 50.82,
+     "games": 730,
+     "score": 0.33
+    },
+    "Xerath": {
+     "wr": 54.03,
+     "games": 559,
+     "score": 1.61
+    },
+    "Rakan": {
+     "wr": 45.59,
+     "games": 544,
+     "score": -1.76
+    },
+    "Rell": {
+     "wr": 45.95,
+     "games": 531,
+     "score": -1.62
+    },
+    "Pantheon": {
+     "wr": 51.84,
+     "games": 461,
+     "score": 0.74
+    },
+    "Vel'Koz": {
+     "wr": 54.17,
+     "games": 456,
+     "score": 1.67
+    },
+    "Zilean": {
+     "wr": 49.05,
+     "games": 420,
+     "score": -0.38
+    },
+    "Tahm Kench": {
+     "wr": 57.43,
+     "games": 350,
+     "score": 2.97
+    },
+    "Swain": {
+     "wr": 53.29,
+     "games": 334,
+     "score": 1.32
+    },
+    "Sona": {
+     "wr": 50.61,
+     "games": 330,
+     "score": 0.24
+    },
+    "Zyra": {
+     "wr": 54.7,
+     "games": 287,
+     "score": 1.8
+    },
+    "Brand": {
+     "wr": 52.73,
+     "games": 275,
+     "score": 1.0
+    },
+    "Neeko": {
+     "wr": 55.14,
+     "games": 214,
+     "score": 1.47
+    },
+    "Poppy": {
+     "wr": 45.89,
+     "games": 207,
+     "score": -1.13
+    },
+    "Maokai": {
+     "wr": 45.32,
+     "games": 203,
+     "score": -1.27
+    },
+    "Renata Glasc": {
+     "wr": 52.97,
+     "games": 185,
+     "score": 0.73
+    },
+    "Taric": {
+     "wr": 46.21,
+     "games": 145,
+     "score": -0.73
+    }
+   },
+   "synergy": {
+    "Kai'Sa": {
+     "wr": 51.49,
+     "games": 27254,
+     "delta": 0.89
+    },
+    "Jhin": {
+     "wr": 50.26,
+     "games": 11059,
+     "delta": -1.38
+    },
+    "Ezreal": {
+     "wr": 46.07,
+     "games": 9394,
+     "delta": -1.79
+    },
+    "Jinx": {
+     "wr": 53.36,
+     "games": 7698,
+     "delta": 0.87
+    },
+    "Caitlyn": {
+     "wr": 50.34,
+     "games": 7471,
+     "delta": 0.3
+    },
+    "Xayah": {
+     "wr": 55.16,
+     "games": 7118,
+     "delta": 1.82
+    },
+    "Yunara": {
+     "wr": 50.35,
+     "games": 6729,
+     "delta": -0.57
+    },
+    "Miss Fortune": {
+     "wr": 53.69,
+     "games": 5934,
+     "delta": 1.93
+    },
+    "Tristana": {
+     "wr": 51.4,
+     "games": 5714,
+     "delta": -0.19
+    },
+    "Lucian": {
+     "wr": 49.65,
+     "games": 5003,
+     "delta": -0.76
+    },
+    "Vayne": {
+     "wr": 48.08,
+     "games": 2057,
+     "delta": -2.61
+    },
+    "Kalista": {
+     "wr": 51.34,
+     "games": 3695,
+     "delta": 0.87
+    },
+    "Varus": {
+     "wr": 50.85,
+     "games": 2456,
+     "delta": -0.15
+    },
+    "Draven": {
+     "wr": 51.85,
+     "games": 4798,
+     "delta": 0.71
+    },
+    "Samira": {
+     "wr": 50.26,
+     "games": 3269,
+     "delta": -1.91
+    },
+    "Twitch": {
+     "wr": 52.32,
+     "games": 2691,
+     "delta": -0.46
+    },
+    "Aphelios": {
+     "wr": 53.07,
+     "games": 4466,
+     "delta": 1.77
+    },
+    "Nilah": {
+     "wr": 54.19,
+     "games": 681,
+     "delta": 0.74
+    },
+    "Corki": {
+     "wr": 53.62,
+     "games": 4237,
+     "delta": 1.08
+    }
+   }
+  },
+  {
+   "name": "Lulu",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 49.85,
+   "pick": 13.11,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Summon Aery",
+    "primary": [
+     "Transcendence",
+     "Scorch",
+     "Manaflow Band"
+    ],
+    "secondary": [],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "E",
+    "W",
+    "Q"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Ardent Censer",
+      "Moonstone Renewer",
+      "Shurelya's Battlesong"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Ardent Censer",
+      "Moonstone Renewer",
+      "Shurelya's Battlesong"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Ardent Censer",
+      "Moonstone Renewer",
+      "Shurelya's Battlesong"
+     ]
+    }
+   },
+   "general": "Nivel 1: E. Escudo en tu ADC y pokeá con Q.",
+   "plan": {
+    "lv1": "E. Escudo en tu ADC y pokeá con Q.",
+    "pre6": [
+     "W polimorfo para cortar engage (Leona, Naut, etc.).",
+     "E en el enemigo para pokear con Q desde Pix.",
+     "No entres primero: protegé."
+    ],
+    "post6": "R cuando tu ADC está a punto de ser all-ineado: levanta a los que están cerca."
+   },
+   "threat": {
+    "respect": "Polimorfo (W) corta tu engage. Q a distancia.",
+    "avoid": "Entrar cuando su W está disponible."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 47.88,
+     "games": 12539,
+     "score": -0.85
+    },
+    "Nami": {
+     "wr": 49.71,
+     "games": 8993,
+     "score": -0.12
+    },
+    "Milio": {
+     "wr": 50.67,
+     "games": 7981,
+     "score": 0.27
+    },
+    "Nautilus": {
+     "wr": 50.48,
+     "games": 7829,
+     "score": 0.19
+    },
+    "Janna": {
+     "wr": 50.48,
+     "games": 7056,
+     "score": 0.19
+    },
+    "Karma": {
+     "wr": 51.55,
+     "games": 7030,
+     "score": 0.62
+    },
+    "Yuumi": {
+     "wr": 52.92,
+     "games": 6527,
+     "score": 1.17
+    },
+    "Blitzcrank": {
+     "wr": 47.31,
+     "games": 6421,
+     "score": -1.08
+    },
+    "Seraphine": {
+     "wr": 48.72,
+     "games": 6295,
+     "score": -0.51
+    },
+    "Leona": {
+     "wr": 47.28,
+     "games": 5524,
+     "score": -1.09
+    },
+    "Senna": {
+     "wr": 48.19,
+     "games": 4912,
+     "score": -0.72
+    },
+    "Lux": {
+     "wr": 50.97,
+     "games": 4791,
+     "score": 0.39
+    },
+    "Soraka": {
+     "wr": 50.89,
+     "games": 4643,
+     "score": 0.36
+    },
+    "Bard": {
+     "wr": 50.13,
+     "games": 4255,
+     "score": 0.05
+    },
+    "Braum": {
+     "wr": 48.75,
+     "games": 4230,
+     "score": -0.5
+    },
+    "Pyke": {
+     "wr": 49.75,
+     "games": 4155,
+     "score": -0.1
+    },
+    "Alistar": {
+     "wr": 49.64,
+     "games": 3521,
+     "score": -0.14
+    },
+    "Rell": {
+     "wr": 48.57,
+     "games": 3288,
+     "score": -0.57
+    },
+    "Rakan": {
+     "wr": 50.17,
+     "games": 2924,
+     "score": 0.07
+    },
+    "Zilean": {
+     "wr": 50.15,
+     "games": 2588,
+     "score": 0.06
+    },
+    "Morgana": {
+     "wr": 51.94,
+     "games": 2526,
+     "score": 0.78
+    },
+    "Sona": {
+     "wr": 49.24,
+     "games": 2516,
+     "score": -0.3
+    },
+    "Pantheon": {
+     "wr": 55.92,
+     "games": 2330,
+     "score": 2.37
+    },
+    "Vel'Koz": {
+     "wr": 48.09,
+     "games": 1988,
+     "score": -0.76
+    },
+    "Xerath": {
+     "wr": 52.86,
+     "games": 1907,
+     "score": 1.14
+    },
+    "Zyra": {
+     "wr": 48.51,
+     "games": 1781,
+     "score": -0.6
+    },
+    "Swain": {
+     "wr": 55.63,
+     "games": 1742,
+     "score": 2.25
+    },
+    "Renata Glasc": {
+     "wr": 51.35,
+     "games": 1663,
+     "score": 0.54
+    },
+    "Brand": {
+     "wr": 49.93,
+     "games": 1472,
+     "score": -0.03
+    },
+    "Tahm Kench": {
+     "wr": 52.65,
+     "games": 1375,
+     "score": 1.06
+    },
+    "Neeko": {
+     "wr": 55.27,
+     "games": 1272,
+     "score": 2.11
+    },
+    "Maokai": {
+     "wr": 52.83,
+     "games": 1060,
+     "score": 1.13
+    },
+    "Poppy": {
+     "wr": 53.08,
+     "games": 989,
+     "score": 1.23
+    },
+    "Taric": {
+     "wr": 51.24,
+     "games": 888,
+     "score": 0.5
+    }
+   },
+   "synergy": {
+    "Jinx": {
+     "wr": 51.04,
+     "games": 31805,
+     "delta": -0.11
+    },
+    "Yunara": {
+     "wr": 49.62,
+     "games": 74576,
+     "delta": 0.04
+    },
+    "Kai'Sa": {
+     "wr": 47.07,
+     "games": 18350,
+     "delta": -2.19
+    },
+    "Twitch": {
+     "wr": 51.89,
+     "games": 17104,
+     "delta": 0.45
+    },
+    "Zeri": {
+     "wr": 51.61,
+     "games": 11586,
+     "delta": -0.37
+    },
+    "Vayne": {
+     "wr": 49.52,
+     "games": 7542,
+     "delta": 0.17
+    },
+    "Aphelios": {
+     "wr": 48.54,
+     "games": 13392,
+     "delta": -1.42
+    },
+    "Kog'Maw": {
+     "wr": 54.44,
+     "games": 12826,
+     "delta": 1.15
+    },
+    "Tristana": {
+     "wr": 49.3,
+     "games": 8966,
+     "delta": -0.95
+    },
+    "Caitlyn": {
+     "wr": 48.65,
+     "games": 3011,
+     "delta": -0.05
+    },
+    "Kalista": {
+     "wr": 47.66,
+     "games": 2226,
+     "delta": -1.47
+    },
+    "Varus": {
+     "wr": 50.76,
+     "games": 3840,
+     "delta": 1.1
+    },
+    "Draven": {
+     "wr": 49.05,
+     "games": 2530,
+     "delta": -0.75
+    },
+    "Sivir": {
+     "wr": 51.02,
+     "games": 6393,
+     "delta": -0.01
+    },
+    "Xayah": {
+     "wr": 50.22,
+     "games": 7009,
+     "delta": -1.78
+    },
+    "Ashe": {
+     "wr": 48.18,
+     "games": 6347,
+     "delta": -1.55
+    },
+    "Nilah": {
+     "wr": 51.29,
+     "games": 967,
+     "delta": -0.46
+    },
+    "Corki": {
+     "wr": 48.7,
+     "games": 1998,
+     "delta": -2.5
+    }
+   }
+  },
+  {
+   "name": "Alistar",
+   "role": "support",
+   "arch": "engage",
+   "tier_wr": 51.3,
+   "pick": 6.82,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Boots of Swiftness",
+   "runes": {
+    "keystone": "Aftershock",
+    "primary": [
+     "Font of Life",
+     "Unflinching",
+     "Bone Plating"
+    ],
+    "secondary": [],
+    "alt": "Secundaria: Inspiration"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Zeke's Convergence",
+      "Knight's Vow"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Zeke's Convergence",
+      "Knight's Vow"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Zeke's Convergence",
+      "Knight's Vow"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. W + Q a nivel 2 es kill con tu ADC.",
+   "plan": {
+    "lv1": "Q. W + Q a nivel 2 es kill con tu ADC.",
+    "pre6": [
+     "W + Q (empuje y lanzar): hacelo desde cerca, que no fallás.",
+     "Si te pokean, usá E para curar a los dos.",
+     "No entres solo si tu ADC no está pegado."
+    ],
+    "post6": "R te deja entrar a cualquier pelea: bajás 55-75% del daño recibido."
+   },
+   "threat": {
+    "respect": "W + Q desde cerca. Mantené distancia.",
+    "avoid": "Dejar que se acerque a 300 unidades."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 49.98,
+     "games": 6500,
+     "score": -0.01
+    },
+    "Nautilus": {
+     "wr": 56.2,
+     "games": 4518,
+     "score": 2.48
+    },
+    "Leona": {
+     "wr": 49.64,
+     "games": 4124,
+     "score": -0.14
+    },
+    "Lulu": {
+     "wr": 51.14,
+     "games": 3948,
+     "score": 0.46
+    },
+    "Blitzcrank": {
+     "wr": 52.13,
+     "games": 3167,
+     "score": 0.85
+    },
+    "Braum": {
+     "wr": 50.06,
+     "games": 2609,
+     "score": 0.02
+    },
+    "Rell": {
+     "wr": 50.94,
+     "games": 2609,
+     "score": 0.38
+    },
+    "Nami": {
+     "wr": 51.64,
+     "games": 2506,
+     "score": 0.66
+    },
+    "Pyke": {
+     "wr": 51.47,
+     "games": 2285,
+     "score": 0.59
+    },
+    "Janna": {
+     "wr": 48.67,
+     "games": 2147,
+     "score": -0.53
+    },
+    "Yuumi": {
+     "wr": 57.2,
+     "games": 2119,
+     "score": 2.88
+    },
+    "Karma": {
+     "wr": 49.35,
+     "games": 2081,
+     "score": -0.26
+    },
+    "Rakan": {
+     "wr": 49.71,
+     "games": 1901,
+     "score": -0.12
+    },
+    "Milio": {
+     "wr": 50.66,
+     "games": 1885,
+     "score": 0.26
+    },
+    "Senna": {
+     "wr": 47.2,
+     "games": 1642,
+     "score": -1.12
+    },
+    "Seraphine": {
+     "wr": 50.65,
+     "games": 1613,
+     "score": 0.26
+    },
+    "Pantheon": {
+     "wr": 55.09,
+     "games": 1474,
+     "score": 2.04
+    },
+    "Bard": {
+     "wr": 51.7,
+     "games": 1474,
+     "score": 0.68
+    },
+    "Lux": {
+     "wr": 50.66,
+     "games": 1435,
+     "score": 0.26
+    },
+    "Morgana": {
+     "wr": 48.66,
+     "games": 1377,
+     "score": -0.54
+    },
+    "Poppy": {
+     "wr": 50.45,
+     "games": 1348,
+     "score": 0.18
+    },
+    "Soraka": {
+     "wr": 49.7,
+     "games": 1328,
+     "score": -0.12
+    },
+    "Swain": {
+     "wr": 46.57,
+     "games": 1080,
+     "score": -1.37
+    },
+    "Tahm Kench": {
+     "wr": 53.28,
+     "games": 929,
+     "score": 1.31
+    },
+    "Zilean": {
+     "wr": 50.22,
+     "games": 894,
+     "score": 0.09
+    },
+    "Renata Glasc": {
+     "wr": 52.36,
+     "games": 762,
+     "score": 0.94
+    },
+    "Sona": {
+     "wr": 52.1,
+     "games": 737,
+     "score": 0.84
+    },
+    "Vel'Koz": {
+     "wr": 48.19,
+     "games": 691,
+     "score": -0.72
+    },
+    "Brand": {
+     "wr": 46.85,
+     "games": 683,
+     "score": -1.26
+    },
+    "Xerath": {
+     "wr": 52.64,
+     "games": 682,
+     "score": 1.06
+    },
+    "Neeko": {
+     "wr": 55.64,
+     "games": 674,
+     "score": 2.26
+    },
+    "Zyra": {
+     "wr": 54.79,
+     "games": 657,
+     "score": 1.92
+    },
+    "Maokai": {
+     "wr": 52.53,
+     "games": 632,
+     "score": 1.01
+    },
+    "Taric": {
+     "wr": 48.29,
+     "games": 584,
+     "score": -0.68
+    }
+   },
+   "synergy": {
+    "Kai'Sa": {
+     "wr": 51.34,
+     "games": 23204,
+     "delta": 0.63
+    },
+    "Jhin": {
+     "wr": 51.07,
+     "games": 15601,
+     "delta": -0.68
+    },
+    "Ezreal": {
+     "wr": 48.7,
+     "games": 7335,
+     "delta": 0.73
+    },
+    "Jinx": {
+     "wr": 51.83,
+     "games": 6077,
+     "delta": -0.77
+    },
+    "Yunara": {
+     "wr": 51.66,
+     "games": 5776,
+     "delta": 0.63
+    },
+    "Xayah": {
+     "wr": 53.49,
+     "games": 5371,
+     "delta": 0.04
+    },
+    "Miss Fortune": {
+     "wr": 50.04,
+     "games": 5292,
+     "delta": -1.83
+    },
+    "Caitlyn": {
+     "wr": 47.4,
+     "games": 4534,
+     "delta": -2.75
+    },
+    "Tristana": {
+     "wr": 50.72,
+     "games": 4838,
+     "delta": -0.98
+    },
+    "Samira": {
+     "wr": 51.88,
+     "games": 4219,
+     "delta": -0.4
+    },
+    "Kalista": {
+     "wr": 49.5,
+     "games": 3616,
+     "delta": -1.08
+    },
+    "Zeri": {
+     "wr": 53.54,
+     "games": 2273,
+     "delta": 0.11
+    },
+    "Varus": {
+     "wr": 51.73,
+     "games": 2026,
+     "delta": 0.62
+    },
+    "Draven": {
+     "wr": 51.24,
+     "games": 2611,
+     "delta": -0.01
+    },
+    "Aphelios": {
+     "wr": 50.61,
+     "games": 3675,
+     "delta": -0.8
+    },
+    "Corki": {
+     "wr": 52.2,
+     "games": 3498,
+     "delta": -0.45
+    },
+    "Ziggs": {
+     "wr": 52.93,
+     "games": 956,
+     "delta": 0.82
+    }
+   }
+  },
+  {
+   "name": "Senna",
+   "role": "support",
+   "arch": "marksman",
+   "tier_wr": 51.62,
+   "pick": 5.71,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Boots of Swiftness",
+   "runes": {
+    "keystone": "Deathfire Touch",
+    "primary": [
+     "Manaflow Band",
+     "Celerity",
+     "Gathering Storm"
+    ],
+    "secondary": [
+     "Magical Footwear",
+     "Jack Of All Trades"
+    ],
+    "alt": "Secundaria: Inspiration"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Black Cleaver",
+      "Statikk Shiv",
+      "Rapid Firecannon"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Black Cleaver",
+      "Statikk Shiv",
+      "Rapid Firecannon"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Black Cleaver",
+      "Statikk Shiv",
+      "Rapid Firecannon"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Pokeá y juntá almas.",
+   "plan": {
+    "lv1": "Q. Pokeá y juntá almas.",
+    "pre6": [
+     "Q cura a tu ADC y daña al rival.",
+     "W enraíza: buscala detrás de su ADC.",
+     "Juntá almas de minions muertos para escalar."
+    ],
+    "post6": "R global: escudo para tu equipo, daño a los rivales."
+   },
+   "threat": {
+    "respect": "Poke y sustain largo; frágil.",
+    "avoid": "Dejarla juntar almas libre."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 51.79,
+     "games": 4912,
+     "score": 0.72
+    },
+    "Thresh": {
+     "wr": 47.68,
+     "games": 4249,
+     "score": -0.93
+    },
+    "Nami": {
+     "wr": 49.42,
+     "games": 3357,
+     "score": -0.23
+    },
+    "Nautilus": {
+     "wr": 49.56,
+     "games": 3180,
+     "score": -0.18
+    },
+    "Janna": {
+     "wr": 49.7,
+     "games": 2805,
+     "score": -0.12
+    },
+    "Karma": {
+     "wr": 51.54,
+     "games": 2309,
+     "score": 0.62
+    },
+    "Milio": {
+     "wr": 52.0,
+     "games": 2302,
+     "score": 0.8
+    },
+    "Seraphine": {
+     "wr": 50.93,
+     "games": 2205,
+     "score": 0.37
+    },
+    "Leona": {
+     "wr": 50.42,
+     "games": 2122,
+     "score": 0.17
+    },
+    "Blitzcrank": {
+     "wr": 49.3,
+     "games": 2063,
+     "score": -0.28
+    },
+    "Lux": {
+     "wr": 50.76,
+     "games": 1907,
+     "score": 0.3
+    },
+    "Yuumi": {
+     "wr": 51.27,
+     "games": 1812,
+     "score": 0.51
+    },
+    "Soraka": {
+     "wr": 50.67,
+     "games": 1719,
+     "score": 0.27
+    },
+    "Braum": {
+     "wr": 53.94,
+     "games": 1635,
+     "score": 1.58
+    },
+    "Pyke": {
+     "wr": 49.22,
+     "games": 1595,
+     "score": -0.31
+    },
+    "Bard": {
+     "wr": 51.13,
+     "games": 1549,
+     "score": 0.45
+    },
+    "Alistar": {
+     "wr": 50.22,
+     "games": 1368,
+     "score": 0.09
+    },
+    "Morgana": {
+     "wr": 53.91,
+     "games": 1215,
+     "score": 1.56
+    },
+    "Zilean": {
+     "wr": 47.04,
+     "games": 1048,
+     "score": -1.18
+    },
+    "Rell": {
+     "wr": 49.33,
+     "games": 1048,
+     "score": -0.27
+    },
+    "Rakan": {
+     "wr": 50.64,
+     "games": 1023,
+     "score": 0.26
+    },
+    "Sona": {
+     "wr": 51.6,
+     "games": 936,
+     "score": 0.64
+    },
+    "Xerath": {
+     "wr": 51.3,
+     "games": 885,
+     "score": 0.52
+    },
+    "Pantheon": {
+     "wr": 54.29,
+     "games": 816,
+     "score": 1.72
+    },
+    "Swain": {
+     "wr": 50.56,
+     "games": 797,
+     "score": 0.22
+    },
+    "Vel'Koz": {
+     "wr": 47.99,
+     "games": 773,
+     "score": -0.8
+    },
+    "Zyra": {
+     "wr": 52.48,
+     "games": 747,
+     "score": 0.99
+    },
+    "Brand": {
+     "wr": 48.71,
+     "games": 659,
+     "score": -0.52
+    },
+    "Tahm Kench": {
+     "wr": 50.4,
+     "games": 623,
+     "score": 0.16
+    },
+    "Renata Glasc": {
+     "wr": 49.28,
+     "games": 556,
+     "score": -0.29
+    }
+   },
+   "synergy": {
+    "Jhin": {
+     "wr": 54.42,
+     "games": 14371,
+     "delta": 2.35
+    },
+    "Caitlyn": {
+     "wr": 49.2,
+     "games": 10049,
+     "delta": -1.27
+    },
+    "Ezreal": {
+     "wr": 47.82,
+     "games": 9929,
+     "delta": -0.47
+    },
+    "Kai'Sa": {
+     "wr": 50.87,
+     "games": 7955,
+     "delta": -0.16
+    },
+    "Jinx": {
+     "wr": 52.09,
+     "games": 7710,
+     "delta": -0.83
+    },
+    "Tristana": {
+     "wr": 51.53,
+     "games": 4543,
+     "delta": -0.49
+    },
+    "Smolder": {
+     "wr": 49.27,
+     "games": 4031,
+     "delta": -3.88
+    },
+    "Lucian": {
+     "wr": 48.31,
+     "games": 3790,
+     "delta": -2.53
+    },
+    "Yunara": {
+     "wr": 47.82,
+     "games": 3781,
+     "delta": -3.53
+    },
+    "Ashe": {
+     "wr": 50.82,
+     "games": 3715,
+     "delta": -0.68
+    },
+    "Nilah": {
+     "wr": 55.47,
+     "games": 795,
+     "delta": 1.54
+    },
+    "Ziggs": {
+     "wr": 53.72,
+     "games": 1668,
+     "delta": 1.33
+    }
+   }
+  },
+  {
+   "name": "Braum",
+   "role": "support",
+   "arch": "warden",
+   "tier_wr": 51.73,
+   "pick": 5.12,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Plated Steelcaps",
+   "runes": {
+    "keystone": "Guardian",
+    "primary": [
+     "Font of Life",
+     "Unflinching",
+     "Bone Plating"
+    ],
+    "secondary": [
+     "Cosmic Insight",
+     "Biscuit Delivery"
+    ],
+    "alt": "Secundaria: Inspiration"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "Q",
+    "E",
+    "W"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Bandlepipes"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Pasiva: tu ADC y vos completan el stun.",
+   "plan": {
+    "lv1": "Q. Pasiva: tu ADC y vos completan el stun.",
+    "pre6": [
+     "Q + autos rápidos = 4 stacks y stun.",
+     "E (escudo) bloquea proyectiles: ponete adelante del ADC.",
+     "Mejor jugando reactivo que entrando primero."
+    ],
+    "post6": "R levanta en línea: buena para el engage o para pelear su all-in."
+   },
+   "threat": {
+    "respect": "Pasiva (4 golpes = stun). Su E bloquea tu poke.",
+    "avoid": "Pelear largo: cada golpe le suma pasiva."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 50.33,
+     "games": 7546,
+     "score": 0.13
+    },
+    "Nautilus": {
+     "wr": 54.96,
+     "games": 6356,
+     "score": 1.98
+    },
+    "Lulu": {
+     "wr": 51.48,
+     "games": 4705,
+     "score": 0.59
+    },
+    "Leona": {
+     "wr": 49.7,
+     "games": 3728,
+     "score": -0.12
+    },
+    "Blitzcrank": {
+     "wr": 54.36,
+     "games": 3002,
+     "score": 1.74
+    },
+    "Nami": {
+     "wr": 53.83,
+     "games": 2965,
+     "score": 1.53
+    },
+    "Janna": {
+     "wr": 50.0,
+     "games": 2376,
+     "score": 0.0
+    },
+    "Milio": {
+     "wr": 51.42,
+     "games": 2353,
+     "score": 0.57
+    },
+    "Alistar": {
+     "wr": 50.62,
+     "games": 2335,
+     "score": 0.25
+    },
+    "Pyke": {
+     "wr": 53.87,
+     "games": 2276,
+     "score": 1.55
+    },
+    "Karma": {
+     "wr": 54.85,
+     "games": 2124,
+     "score": 1.94
+    },
+    "Seraphine": {
+     "wr": 49.53,
+     "games": 1928,
+     "score": -0.19
+    },
+    "Senna": {
+     "wr": 46.49,
+     "games": 1824,
+     "score": -1.4
+    },
+    "Yuumi": {
+     "wr": 56.35,
+     "games": 1677,
+     "score": 2.54
+    },
+    "Rakan": {
+     "wr": 47.43,
+     "games": 1651,
+     "score": -1.03
+    },
+    "Rell": {
+     "wr": 50.61,
+     "games": 1648,
+     "score": 0.24
+    },
+    "Soraka": {
+     "wr": 53.93,
+     "games": 1450,
+     "score": 1.57
+    },
+    "Lux": {
+     "wr": 52.57,
+     "games": 1362,
+     "score": 1.03
+    },
+    "Morgana": {
+     "wr": 52.11,
+     "games": 1353,
+     "score": 0.84
+    },
+    "Bard": {
+     "wr": 53.04,
+     "games": 1333,
+     "score": 1.22
+    },
+    "Pantheon": {
+     "wr": 56.98,
+     "games": 1239,
+     "score": 2.79
+    },
+    "Zilean": {
+     "wr": 47.66,
+     "games": 940,
+     "score": -0.94
+    },
+    "Swain": {
+     "wr": 52.27,
+     "games": 750,
+     "score": 0.91
+    },
+    "Vel'Koz": {
+     "wr": 48.91,
+     "games": 691,
+     "score": -0.44
+    },
+    "Tahm Kench": {
+     "wr": 54.28,
+     "games": 689,
+     "score": 1.71
+    },
+    "Sona": {
+     "wr": 49.48,
+     "games": 679,
+     "score": -0.21
+    },
+    "Brand": {
+     "wr": 52.36,
+     "games": 678,
+     "score": 0.94
+    },
+    "Renata Glasc": {
+     "wr": 52.4,
+     "games": 647,
+     "score": 0.96
+    },
+    "Xerath": {
+     "wr": 54.15,
+     "games": 615,
+     "score": 1.66
+    },
+    "Zyra": {
+     "wr": 51.77,
+     "games": 566,
+     "score": 0.71
+    }
+   },
+   "synergy": {
+    "Lucian": {
+     "wr": 50.25,
+     "games": 12016,
+     "delta": -0.7
+    },
+    "Jinx": {
+     "wr": 54.67,
+     "games": 7467,
+     "delta": 1.64
+    },
+    "Kai'Sa": {
+     "wr": 49.83,
+     "games": 11381,
+     "delta": -1.31
+    },
+    "Yunara": {
+     "wr": 55.61,
+     "games": 9498,
+     "delta": 4.15
+    },
+    "Ashe": {
+     "wr": 49.67,
+     "games": 6630,
+     "delta": -1.94
+    },
+    "Caitlyn": {
+     "wr": 47.7,
+     "games": 893,
+     "delta": -2.57
+    },
+    "Aphelios": {
+     "wr": 54.06,
+     "games": 3816,
+     "delta": 2.22
+    },
+    "Tristana": {
+     "wr": 52.71,
+     "games": 3212,
+     "delta": 0.58
+    },
+    "Ezreal": {
+     "wr": 50.45,
+     "games": 773,
+     "delta": 1.59
+    },
+    "Miss Fortune": {
+     "wr": 51.89,
+     "games": 636,
+     "delta": -0.26
+    },
+    "Kog'Maw": {
+     "wr": 53.63,
+     "games": 1322,
+     "delta": -1.54
+    },
+    "Kalista": {
+     "wr": 52.91,
+     "games": 2304,
+     "delta": 1.9
+    }
+   }
+  },
+  {
+   "name": "Seraphine",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 50.81,
+   "pick": 7.16,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Summon Aery",
+    "primary": [
+     "Transcendence",
+     "Manaflow Band",
+     "Revitalize"
+    ],
+    "secondary": [
+     "Gathering Storm",
+     "Font of Life"
+    ],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Echoes of Helia",
+      "Diadem of Songs",
+      "Moonstone Renewer"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Echoes of Helia",
+      "Diadem of Songs",
+      "Moonstone Renewer"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Echoes of Helia",
+      "Diadem of Songs",
+      "Moonstone Renewer"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Pokeá con Q.",
+   "plan": {
+    "lv1": "Q. Pokeá con Q.",
+    "pre6": [
+     "Cada 3 hechizos se repite (pasiva): usa W/E dobles.",
+     "E ralentiza y si está ralentizado, enraíza.",
+     "W cura y escuda a tu ADC."
+    ],
+    "post6": "R encanta en línea: más largo si atraviesa aliados."
+   },
+   "threat": {
+    "respect": "Doble poke por la pasiva; E enraíza si estás ralentizado.",
+    "avoid": "Agruparte con aliados contra su R."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 53.02,
+     "games": 8003,
+     "score": 1.21
+    },
+    "Thresh": {
+     "wr": 50.09,
+     "games": 6843,
+     "score": 0.04
+    },
+    "Nami": {
+     "wr": 48.86,
+     "games": 5780,
+     "score": -0.46
+    },
+    "Nautilus": {
+     "wr": 52.82,
+     "games": 5485,
+     "score": 1.13
+    },
+    "Karma": {
+     "wr": 52.1,
+     "games": 4714,
+     "score": 0.84
+    },
+    "Milio": {
+     "wr": 50.18,
+     "games": 4494,
+     "score": 0.07
+    },
+    "Blitzcrank": {
+     "wr": 49.96,
+     "games": 3667,
+     "score": -0.02
+    },
+    "Lux": {
+     "wr": 52.48,
+     "games": 3609,
+     "score": 0.99
+    },
+    "Leona": {
+     "wr": 50.35,
+     "games": 3555,
+     "score": 0.14
+    },
+    "Senna": {
+     "wr": 50.26,
+     "games": 3052,
+     "score": 0.1
+    },
+    "Yuumi": {
+     "wr": 50.19,
+     "games": 2698,
+     "score": 0.08
+    },
+    "Pyke": {
+     "wr": 50.29,
+     "games": 2444,
+     "score": 0.12
+    },
+    "Soraka": {
+     "wr": 51.53,
+     "games": 2424,
+     "score": 0.61
+    },
+    "Alistar": {
+     "wr": 51.08,
+     "games": 2400,
+     "score": 0.43
+    },
+    "Janna": {
+     "wr": 49.74,
+     "games": 2278,
+     "score": -0.1
+    },
+    "Rakan": {
+     "wr": 50.62,
+     "games": 2262,
+     "score": 0.25
+    },
+    "Braum": {
+     "wr": 48.99,
+     "games": 2133,
+     "score": -0.4
+    },
+    "Bard": {
+     "wr": 50.58,
+     "games": 1991,
+     "score": 0.23
+    },
+    "Sona": {
+     "wr": 49.17,
+     "games": 1814,
+     "score": -0.33
+    },
+    "Vel'Koz": {
+     "wr": 50.19,
+     "games": 1805,
+     "score": 0.08
+    },
+    "Morgana": {
+     "wr": 51.34,
+     "games": 1790,
+     "score": 0.54
+    },
+    "Rell": {
+     "wr": 49.23,
+     "games": 1763,
+     "score": -0.31
+    },
+    "Zilean": {
+     "wr": 47.63,
+     "games": 1543,
+     "score": -0.95
+    },
+    "Zyra": {
+     "wr": 48.81,
+     "games": 1514,
+     "score": -0.48
+    },
+    "Xerath": {
+     "wr": 50.74,
+     "games": 1344,
+     "score": 0.3
+    },
+    "Swain": {
+     "wr": 53.4,
+     "games": 1309,
+     "score": 1.36
+    },
+    "Pantheon": {
+     "wr": 52.24,
+     "games": 1296,
+     "score": 0.9
+    },
+    "Renata Glasc": {
+     "wr": 53.14,
+     "games": 1212,
+     "score": 1.26
+    },
+    "Brand": {
+     "wr": 51.89,
+     "games": 1004,
+     "score": 0.76
+    },
+    "Tahm Kench": {
+     "wr": 48.95,
+     "games": 909,
+     "score": -0.42
+    }
+   },
+   "synergy": {
+    "Ashe": {
+     "wr": 52.18,
+     "games": 33946,
+     "delta": 1.49
+    },
+    "Jhin": {
+     "wr": 50.71,
+     "games": 12898,
+     "delta": -0.55
+    },
+    "Jinx": {
+     "wr": 51.3,
+     "games": 4680,
+     "delta": -0.81
+    },
+    "Kai'Sa": {
+     "wr": 51.56,
+     "games": 4515,
+     "delta": 1.34
+    },
+    "Caitlyn": {
+     "wr": 48.78,
+     "games": 4514,
+     "delta": -0.88
+    },
+    "Ezreal": {
+     "wr": 47.2,
+     "games": 10856,
+     "delta": -0.28
+    },
+    "Yunara": {
+     "wr": 50.32,
+     "games": 3148,
+     "delta": -0.22
+    },
+    "Miss Fortune": {
+     "wr": 50.3,
+     "games": 8042,
+     "delta": -1.08
+    },
+    "Tristana": {
+     "wr": 52.01,
+     "games": 2440,
+     "delta": 0.8
+    },
+    "Sivir": {
+     "wr": 51.92,
+     "games": 3199,
+     "delta": -0.07
+    },
+    "Kog'Maw": {
+     "wr": 53.39,
+     "games": 1135,
+     "delta": -0.86
+    },
+    "Varus": {
+     "wr": 50.7,
+     "games": 2059,
+     "delta": 0.08
+    },
+    "Smolder": {
+     "wr": 51.56,
+     "games": 3922,
+     "delta": -0.78
+    },
+    "Xayah": {
+     "wr": 51.66,
+     "games": 4108,
+     "delta": -1.3
+    },
+    "Ziggs": {
+     "wr": 45.88,
+     "games": 885,
+     "delta": -5.05
+    }
+   }
+  },
+  {
+   "name": "Rell",
+   "role": "support",
+   "arch": "engage",
+   "tier_wr": 51.86,
+   "pick": 4.06,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Plated Steelcaps",
+   "runes": {
+    "keystone": "Aftershock",
+    "primary": [
+     "Unflinching",
+     "Shield Bash",
+     "Bone Plating"
+    ],
+    "secondary": [
+     "Cosmic Insight"
+    ],
+    "alt": "Secundaria: Inspiration"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "W",
+    "E",
+    "Q"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Zeke's Convergence",
+      "Locket of the Iron Solari",
+      "Knight's Vow"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Zeke's Convergence",
+      "Locket of the Iron Solari",
+      "Knight's Vow"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Zeke's Convergence",
+      "Locket of the Iron Solari",
+      "Knight's Vow"
+     ]
+    }
+   },
+   "general": "Nivel 1: W. Bajá del caballo con W en el nivel 2.",
+   "plan": {
+    "lv1": "W. Bajá del caballo con W en el nivel 2.",
+    "pre6": [
+     "W (desmontar) + E es tu engage; después quedás lento.",
+     "Montada (sin W) tenés velocidad: rotá y wardeá.",
+     "No entres si te pueden kitear."
+    ],
+    "post6": "R atrae a todos: combinala con el AoE de tu equipo."
+   },
+   "threat": {
+    "respect": "W (desmontar) + E. Su velocidad montada.",
+    "avoid": "Estar cerca cuando él tiene W."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 49.25,
+     "games": 4134,
+     "score": -0.3
+    },
+    "Nautilus": {
+     "wr": 55.79,
+     "games": 3454,
+     "score": 2.32
+    },
+    "Lulu": {
+     "wr": 51.57,
+     "games": 3442,
+     "score": 0.63
+    },
+    "Alistar": {
+     "wr": 49.28,
+     "games": 2488,
+     "score": -0.29
+    },
+    "Leona": {
+     "wr": 51.73,
+     "games": 2105,
+     "score": 0.69
+    },
+    "Nami": {
+     "wr": 50.97,
+     "games": 1911,
+     "score": 0.39
+    },
+    "Janna": {
+     "wr": 49.29,
+     "games": 1842,
+     "score": -0.28
+    },
+    "Karma": {
+     "wr": 54.27,
+     "games": 1780,
+     "score": 1.71
+    },
+    "Blitzcrank": {
+     "wr": 54.08,
+     "games": 1714,
+     "score": 1.63
+    },
+    "Braum": {
+     "wr": 51.06,
+     "games": 1700,
+     "score": 0.42
+    },
+    "Yuumi": {
+     "wr": 56.49,
+     "games": 1588,
+     "score": 2.6
+    },
+    "Pyke": {
+     "wr": 53.12,
+     "games": 1540,
+     "score": 1.25
+    },
+    "Milio": {
+     "wr": 51.65,
+     "games": 1516,
+     "score": 0.66
+    },
+    "Seraphine": {
+     "wr": 50.48,
+     "games": 1353,
+     "score": 0.19
+    },
+    "Rakan": {
+     "wr": 53.33,
+     "games": 1187,
+     "score": 1.33
+    },
+    "Senna": {
+     "wr": 50.94,
+     "games": 1176,
+     "score": 0.38
+    },
+    "Bard": {
+     "wr": 51.97,
+     "games": 1143,
+     "score": 0.79
+    },
+    "Soraka": {
+     "wr": 50.59,
+     "games": 1099,
+     "score": 0.24
+    },
+    "Lux": {
+     "wr": 52.61,
+     "games": 1093,
+     "score": 1.04
+    },
+    "Morgana": {
+     "wr": 55.03,
+     "games": 994,
+     "score": 2.01
+    },
+    "Poppy": {
+     "wr": 48.11,
+     "games": 952,
+     "score": -0.76
+    },
+    "Tahm Kench": {
+     "wr": 53.37,
+     "games": 772,
+     "score": 1.35
+    },
+    "Pantheon": {
+     "wr": 53.32,
+     "games": 739,
+     "score": 1.33
+    },
+    "Zilean": {
+     "wr": 45.97,
+     "games": 720,
+     "score": -1.61
+    },
+    "Swain": {
+     "wr": 49.04,
+     "games": 624,
+     "score": -0.38
+    },
+    "Sona": {
+     "wr": 51.14,
+     "games": 612,
+     "score": 0.46
+    },
+    "Vel'Koz": {
+     "wr": 53.45,
+     "games": 550,
+     "score": 1.38
+    },
+    "Zyra": {
+     "wr": 53.14,
+     "games": 510,
+     "score": 1.26
+    },
+    "Renata Glasc": {
+     "wr": 50.21,
+     "games": 478,
+     "score": 0.08
+    },
+    "Xerath": {
+     "wr": 54.22,
+     "games": 450,
+     "score": 1.69
+    },
+    "Brand": {
+     "wr": 51.67,
+     "games": 418,
+     "score": 0.67
+    }
+   },
+   "synergy": {
+    "Kai'Sa": {
+     "wr": 51.83,
+     "games": 14458,
+     "delta": 0.56
+    },
+    "Jhin": {
+     "wr": 50.34,
+     "games": 4589,
+     "delta": -1.97
+    },
+    "Tristana": {
+     "wr": 50.15,
+     "games": 4377,
+     "delta": -2.11
+    },
+    "Jinx": {
+     "wr": 53.51,
+     "games": 4287,
+     "delta": 0.35
+    },
+    "Miss Fortune": {
+     "wr": 53.73,
+     "games": 8293,
+     "delta": 1.3
+    },
+    "Samira": {
+     "wr": 52.66,
+     "games": 4493,
+     "delta": -0.18
+    },
+    "Caitlyn": {
+     "wr": 49.82,
+     "games": 2987,
+     "delta": -0.89
+    },
+    "Yunara": {
+     "wr": 53.01,
+     "games": 2707,
+     "delta": 1.42
+    },
+    "Aphelios": {
+     "wr": 51.11,
+     "games": 2305,
+     "delta": -0.86
+    },
+    "Ezreal": {
+     "wr": 48.39,
+     "games": 2230,
+     "delta": -0.14
+    },
+    "Kalista": {
+     "wr": 51.51,
+     "games": 2048,
+     "delta": 0.37
+    }
+   }
+  },
+  {
+   "name": "Rakan",
+   "role": "support",
+   "arch": "engage",
+   "tier_wr": 51.28,
+   "pick": 4.92,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Guardian",
+    "primary": [
+     "Bone Plating",
+     "Font of Life",
+     "Ultimate Hunter"
+    ],
+    "secondary": [],
+    "alt": "Secundaria: Domination"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "W",
+    "E",
+    "Q"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Zeke's Convergence",
+      "Locket of the Iron Solari",
+      "Knight's Vow"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Zeke's Convergence",
+      "Locket of the Iron Solari",
+      "Knight's Vow"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Zeke's Convergence",
+      "Locket of the Iron Solari",
+      "Knight's Vow"
+     ]
+    }
+   },
+   "general": "Nivel 1: W. W + Q para el all-in nivel 2.",
+   "plan": {
+    "lv1": "W. W + Q para el all-in nivel 2.",
+    "pre6": [
+     "E a tu ADC para el escudo y volvé (dash doble).",
+     "W (salto) es el engage; entrá cuando tu ADC esté cerca.",
+     "Pasiva escudo: tradeá cuando la tenés."
+    ],
+    "post6": "R + W + Flash: encantás a varios; E a tu ADC para salir."
+   },
+   "threat": {
+    "respect": "W + Q: su engage es muy rápido.",
+    "avoid": "Pelear cuando su pasiva escudo está activa."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 49.64,
+     "games": 5453,
+     "score": -0.14
+    },
+    "Lulu": {
+     "wr": 50.04,
+     "games": 4638,
+     "score": 0.02
+    },
+    "Nautilus": {
+     "wr": 54.41,
+     "games": 4194,
+     "score": 1.76
+    },
+    "Alistar": {
+     "wr": 50.06,
+     "games": 3234,
+     "score": 0.02
+    },
+    "Nami": {
+     "wr": 50.67,
+     "games": 3138,
+     "score": 0.27
+    },
+    "Leona": {
+     "wr": 50.15,
+     "games": 3091,
+     "score": 0.06
+    },
+    "Karma": {
+     "wr": 54.19,
+     "games": 2877,
+     "score": 1.68
+    },
+    "Pyke": {
+     "wr": 51.85,
+     "games": 2619,
+     "score": 0.74
+    },
+    "Blitzcrank": {
+     "wr": 52.48,
+     "games": 2521,
+     "score": 0.99
+    },
+    "Seraphine": {
+     "wr": 49.38,
+     "games": 2262,
+     "score": -0.25
+    },
+    "Milio": {
+     "wr": 50.63,
+     "games": 2153,
+     "score": 0.25
+    },
+    "Braum": {
+     "wr": 51.2,
+     "games": 2045,
+     "score": 0.48
+    },
+    "Senna": {
+     "wr": 45.87,
+     "games": 1949,
+     "score": -1.65
+    },
+    "Janna": {
+     "wr": 48.28,
+     "games": 1889,
+     "score": -0.69
+    },
+    "Yuumi": {
+     "wr": 55.93,
+     "games": 1879,
+     "score": 2.37
+    },
+    "Bard": {
+     "wr": 53.35,
+     "games": 1747,
+     "score": 1.34
+    },
+    "Lux": {
+     "wr": 49.72,
+     "games": 1597,
+     "score": -0.11
+    },
+    "Rell": {
+     "wr": 50.38,
+     "games": 1451,
+     "score": 0.15
+    },
+    "Soraka": {
+     "wr": 51.19,
+     "games": 1387,
+     "score": 0.48
+    },
+    "Morgana": {
+     "wr": 50.04,
+     "games": 1131,
+     "score": 0.02
+    },
+    "Poppy": {
+     "wr": 49.78,
+     "games": 1113,
+     "score": -0.09
+    },
+    "Pantheon": {
+     "wr": 56.26,
+     "games": 1038,
+     "score": 2.5
+    },
+    "Zilean": {
+     "wr": 49.76,
+     "games": 1021,
+     "score": -0.1
+    },
+    "Vel'Koz": {
+     "wr": 48.36,
+     "games": 947,
+     "score": -0.66
+    },
+    "Sona": {
+     "wr": 49.57,
+     "games": 934,
+     "score": -0.17
+    },
+    "Renata Glasc": {
+     "wr": 51.57,
+     "games": 892,
+     "score": 0.63
+    },
+    "Swain": {
+     "wr": 50.23,
+     "games": 882,
+     "score": 0.09
+    },
+    "Zyra": {
+     "wr": 49.49,
+     "games": 778,
+     "score": -0.2
+    },
+    "Xerath": {
+     "wr": 51.99,
+     "games": 704,
+     "score": 0.8
+    },
+    "Tahm Kench": {
+     "wr": 57.12,
+     "games": 702,
+     "score": 2.85
+    },
+    "Brand": {
+     "wr": 52.17,
+     "games": 506,
+     "score": 0.87
+    }
+   },
+   "synergy": {
+    "Xayah": {
+     "wr": 53.75,
+     "games": 34291,
+     "delta": 0.32
+    },
+    "Kai'Sa": {
+     "wr": 48.99,
+     "games": 2811,
+     "delta": -1.7
+    },
+    "Yunara": {
+     "wr": 54.16,
+     "games": 1876,
+     "delta": 3.15
+    },
+    "Jhin": {
+     "wr": 49.21,
+     "games": 1640,
+     "delta": -2.52
+    },
+    "Tristana": {
+     "wr": 51.5,
+     "games": 1633,
+     "delta": -0.18
+    },
+    "Jinx": {
+     "wr": 50.77,
+     "games": 1625,
+     "delta": -1.81
+    },
+    "Ezreal": {
+     "wr": 44.82,
+     "games": 1294,
+     "delta": -3.13
+    },
+    "Caitlyn": {
+     "wr": 50.62,
+     "games": 1122,
+     "delta": 0.49
+    },
+    "Aphelios": {
+     "wr": 48.68,
+     "games": 1064,
+     "delta": -2.71
+    },
+    "Twitch": {
+     "wr": 53.55,
+     "games": 719,
+     "delta": 0.49
+    },
+    "Samira": {
+     "wr": 51.08,
+     "games": 1392,
+     "delta": -1.18
+    }
+   }
+  },
+  {
+   "name": "Nautilus",
+   "role": "support",
+   "arch": "engage",
+   "tier_wr": 49.31,
+   "pick": 11.81,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Plated Steelcaps",
+   "runes": {
+    "keystone": "Aftershock",
+    "primary": [
+     "Shield Bash",
+     "Unflinching",
+     "Biscuit Delivery"
+    ],
+    "secondary": [
+     "Cosmic Insight"
+    ],
+    "alt": "Secundaria: Inspiration"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Knight's Vow",
+      "Bandlepipes"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Gancho al ADC rival en el nivel 2.",
+   "plan": {
+    "lv1": "Q. Gancho al ADC rival en el nivel 2.",
+    "pre6": [
+     "El gancho también sirve contra paredes para escapar.",
+     "Pasiva: tu primer auto enraíza: alterná objetivos.",
+     "W escudo para aguantar el trade."
+    ],
+    "post6": "R al carry, gancho al segundo: dos controles garantizados."
+   },
+   "threat": {
+    "respect": "Su gancho y su pasiva (primer auto enraíza).",
+    "avoid": "Pararte en línea recta contra pared."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 46.78,
+     "games": 12662,
+     "score": -1.29
+    },
+    "Lulu": {
+     "wr": 50.04,
+     "games": 10987,
+     "score": 0.02
+    },
+    "Leona": {
+     "wr": 46.59,
+     "games": 8187,
+     "score": -1.36
+    },
+    "Braum": {
+     "wr": 45.44,
+     "games": 7949,
+     "score": -1.82
+    },
+    "Alistar": {
+     "wr": 46.17,
+     "games": 7789,
+     "score": -1.53
+    },
+    "Nami": {
+     "wr": 49.42,
+     "games": 7029,
+     "score": -0.23
+    },
+    "Karma": {
+     "wr": 52.46,
+     "games": 6912,
+     "score": 0.98
+    },
+    "Blitzcrank": {
+     "wr": 48.84,
+     "games": 5643,
+     "score": -0.46
+    },
+    "Seraphine": {
+     "wr": 47.15,
+     "games": 5485,
+     "score": -1.14
+    },
+    "Yuumi": {
+     "wr": 55.85,
+     "games": 4911,
+     "score": 2.34
+    },
+    "Rell": {
+     "wr": 44.91,
+     "games": 4888,
+     "score": -2.04
+    },
+    "Pyke": {
+     "wr": 51.75,
+     "games": 4806,
+     "score": 0.7
+    },
+    "Senna": {
+     "wr": 49.27,
+     "games": 4766,
+     "score": -0.29
+    },
+    "Lux": {
+     "wr": 51.73,
+     "games": 4684,
+     "score": 0.69
+    },
+    "Milio": {
+     "wr": 50.22,
+     "games": 4534,
+     "score": 0.09
+    },
+    "Rakan": {
+     "wr": 45.59,
+     "games": 4194,
+     "score": -1.76
+    },
+    "Morgana": {
+     "wr": 48.71,
+     "games": 4133,
+     "score": -0.52
+    },
+    "Bard": {
+     "wr": 49.96,
+     "games": 3699,
+     "score": -0.02
+    },
+    "Janna": {
+     "wr": 48.88,
+     "games": 3631,
+     "score": -0.45
+    },
+    "Soraka": {
+     "wr": 48.59,
+     "games": 3305,
+     "score": -0.56
+    },
+    "Vel'Koz": {
+     "wr": 50.6,
+     "games": 2739,
+     "score": 0.24
+    },
+    "Pantheon": {
+     "wr": 49.24,
+     "games": 2689,
+     "score": -0.3
+    },
+    "Swain": {
+     "wr": 49.29,
+     "games": 2408,
+     "score": -0.28
+    },
+    "Xerath": {
+     "wr": 52.48,
+     "games": 2258,
+     "score": 0.99
+    },
+    "Sona": {
+     "wr": 49.37,
+     "games": 2228,
+     "score": -0.25
+    },
+    "Zilean": {
+     "wr": 47.58,
+     "games": 2148,
+     "score": -0.97
+    },
+    "Renata Glasc": {
+     "wr": 46.26,
+     "games": 1885,
+     "score": -1.5
+    },
+    "Tahm Kench": {
+     "wr": 50.03,
+     "games": 1877,
+     "score": 0.01
+    },
+    "Brand": {
+     "wr": 49.61,
+     "games": 1651,
+     "score": -0.16
+    },
+    "Poppy": {
+     "wr": 49.01,
+     "games": 1616,
+     "score": -0.4
+    }
+   },
+   "synergy": {
+    "Kai'Sa": {
+     "wr": 48.65,
+     "games": 59465,
+     "delta": -0.07
+    },
+    "Jhin": {
+     "wr": 49.47,
+     "games": 20873,
+     "delta": -0.29
+    },
+    "Samira": {
+     "wr": 51.84,
+     "games": 12667,
+     "delta": 1.55
+    },
+    "Ezreal": {
+     "wr": 44.43,
+     "games": 10838,
+     "delta": -1.55
+    },
+    "Miss Fortune": {
+     "wr": 50.92,
+     "games": 10175,
+     "delta": 1.04
+    },
+    "Caitlyn": {
+     "wr": 46.74,
+     "games": 9592,
+     "delta": -1.42
+    },
+    "Jinx": {
+     "wr": 50.39,
+     "games": 9573,
+     "delta": -0.22
+    },
+    "Yunara": {
+     "wr": 48.56,
+     "games": 8927,
+     "delta": -0.48
+    },
+    "Tristana": {
+     "wr": 47.92,
+     "games": 8604,
+     "delta": -1.79
+    },
+    "Xayah": {
+     "wr": 51.21,
+     "games": 8456,
+     "delta": -0.25
+    },
+    "Kog'Maw": {
+     "wr": 52.2,
+     "games": 1408,
+     "delta": -0.55
+    },
+    "Vayne": {
+     "wr": 47.25,
+     "games": 2432,
+     "delta": -1.56
+    },
+    "Kalista": {
+     "wr": 48.14,
+     "games": 6022,
+     "delta": -0.45
+    },
+    "Zeri": {
+     "wr": 50.95,
+     "games": 2793,
+     "delta": -0.49
+    },
+    "Varus": {
+     "wr": 47.36,
+     "games": 3448,
+     "delta": -1.76
+    },
+    "Draven": {
+     "wr": 49.17,
+     "games": 7190,
+     "delta": -0.09
+    },
+    "Twitch": {
+     "wr": 50.05,
+     "games": 3305,
+     "delta": -0.85
+    },
+    "Sivir": {
+     "wr": 51.19,
+     "games": 3491,
+     "delta": 0.7
+    },
+    "Smolder": {
+     "wr": 51.95,
+     "games": 3804,
+     "delta": 1.11
+    },
+    "Lucian": {
+     "wr": 49.8,
+     "games": 5703,
+     "delta": 1.27
+    },
+    "Ashe": {
+     "wr": 45.95,
+     "games": 3628,
+     "delta": -3.24
+    },
+    "Aphelios": {
+     "wr": 49.15,
+     "games": 5752,
+     "delta": -0.27
+    },
+    "Nilah": {
+     "wr": 53.43,
+     "games": 1136,
+     "delta": 2.2
+    },
+    "Corki": {
+     "wr": 50.78,
+     "games": 5561,
+     "delta": 0.12
+    },
+    "Ziggs": {
+     "wr": 51.47,
+     "games": 1325,
+     "delta": 1.39
+    }
+   }
+  },
+  {
+   "name": "Janna",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 51.36,
+   "pick": 4.5,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Boots of Swiftness",
+   "runes": {
+    "keystone": "Summon Aery",
+    "primary": [
+     "Celerity",
+     "Manaflow Band",
+     "Revitalize"
+    ],
+    "secondary": [
+     "Gathering Storm"
+    ],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "W",
+    "E",
+    "Q"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Moonstone Renewer",
+      "Redemption",
+      "Shurelya's Battlesong"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Moonstone Renewer",
+      "Redemption",
+      "Shurelya's Battlesong"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Moonstone Renewer",
+      "Redemption",
+      "Shurelya's Battlesong"
+     ]
+    }
+   },
+   "general": "Nivel 1: W. Pokeá con W + autos, escudo en tu ADC.",
+   "plan": {
+    "lv1": "W. Pokeá con W + autos, escudo en tu ADC.",
+    "pre6": [
+     "Q (tornado) cargada corta el engage rival.",
+     "E también da daño a tu ADC: usala en trades.",
+     "Movete mucho: tu pasiva te da velocidad."
+    ],
+    "post6": "R empuja y cura: usala para cortar el all-in rival."
+   },
+   "threat": {
+    "respect": "Tornado (Q) corta engage. Su escudo anula trades.",
+    "avoid": "Entrar en línea recta con su tornado."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 51.13,
+     "games": 4766,
+     "score": 0.45
+    },
+    "Thresh": {
+     "wr": 48.17,
+     "games": 4409,
+     "score": -0.73
+    },
+    "Nami": {
+     "wr": 49.67,
+     "games": 4041,
+     "score": -0.13
+    },
+    "Nautilus": {
+     "wr": 51.09,
+     "games": 3631,
+     "score": 0.44
+    },
+    "Leona": {
+     "wr": 49.97,
+     "games": 3096,
+     "score": -0.01
+    },
+    "Karma": {
+     "wr": 53.39,
+     "games": 2776,
+     "score": 1.36
+    },
+    "Blitzcrank": {
+     "wr": 48.94,
+     "games": 2511,
+     "score": -0.42
+    },
+    "Alistar": {
+     "wr": 53.43,
+     "games": 2510,
+     "score": 1.37
+    },
+    "Seraphine": {
+     "wr": 50.26,
+     "games": 2278,
+     "score": 0.1
+    },
+    "Milio": {
+     "wr": 51.24,
+     "games": 2254,
+     "score": 0.5
+    },
+    "Senna": {
+     "wr": 49.0,
+     "games": 2102,
+     "score": -0.4
+    },
+    "Rakan": {
+     "wr": 51.72,
+     "games": 1889,
+     "score": 0.69
+    },
+    "Yuumi": {
+     "wr": 52.11,
+     "games": 1798,
+     "score": 0.84
+    },
+    "Pyke": {
+     "wr": 52.14,
+     "games": 1728,
+     "score": 0.86
+    },
+    "Soraka": {
+     "wr": 49.27,
+     "games": 1654,
+     "score": -0.29
+    },
+    "Bard": {
+     "wr": 54.61,
+     "games": 1637,
+     "score": 1.84
+    },
+    "Rell": {
+     "wr": 50.89,
+     "games": 1629,
+     "score": 0.36
+    },
+    "Lux": {
+     "wr": 53.47,
+     "games": 1612,
+     "score": 1.39
+    },
+    "Sona": {
+     "wr": 50.07,
+     "games": 1400,
+     "score": 0.03
+    },
+    "Braum": {
+     "wr": 50.98,
+     "games": 1375,
+     "score": 0.39
+    },
+    "Zilean": {
+     "wr": 51.39,
+     "games": 1220,
+     "score": 0.56
+    },
+    "Vel'Koz": {
+     "wr": 52.47,
+     "games": 991,
+     "score": 0.99
+    },
+    "Morgana": {
+     "wr": 54.47,
+     "games": 907,
+     "score": 1.79
+    },
+    "Pantheon": {
+     "wr": 56.65,
+     "games": 849,
+     "score": 2.66
+    },
+    "Renata Glasc": {
+     "wr": 54.51,
+     "games": 798,
+     "score": 1.8
+    },
+    "Swain": {
+     "wr": 53.89,
+     "games": 733,
+     "score": 1.56
+    },
+    "Zyra": {
+     "wr": 48.21,
+     "games": 728,
+     "score": -0.72
+    },
+    "Neeko": {
+     "wr": 54.59,
+     "games": 632,
+     "score": 1.84
+    },
+    "Maokai": {
+     "wr": 52.81,
+     "games": 570,
+     "score": 1.12
+    },
+    "Brand": {
+     "wr": 47.7,
+     "games": 566,
+     "score": -0.92
+    }
+   },
+   "synergy": {
+    "Jhin": {
+     "wr": 53.05,
+     "games": 1297,
+     "delta": 1.24
+    },
+    "Kai'Sa": {
+     "wr": 52.44,
+     "games": 1047,
+     "delta": 1.67
+    },
+    "Jinx": {
+     "wr": 53.29,
+     "games": 1032,
+     "delta": 0.63
+    },
+    "Caitlyn": {
+     "wr": 49.64,
+     "games": 834,
+     "delta": -0.48
+    },
+    "Ezreal": {
+     "wr": 47.48,
+     "games": 813,
+     "delta": -0.44
+    },
+    "Yunara": {
+     "wr": 52.5,
+     "games": 619,
+     "delta": 0.87
+    },
+    "Miss Fortune": {
+     "wr": 51.41,
+     "games": 605,
+     "delta": -0.32
+    },
+    "Aphelios": {
+     "wr": 47.89,
+     "games": 522,
+     "delta": -1.87
+    },
+    "Tristana": {
+     "wr": 50.39,
+     "games": 514,
+     "delta": -0.71
+    },
+    "Draven": {
+     "wr": 52.09,
+     "games": 2828,
+     "delta": 0.78
+    },
+    "Zeri": {
+     "wr": 51.76,
+     "games": 2160,
+     "delta": -1.73
+    },
+    "Sivir": {
+     "wr": 52.23,
+     "games": 3077,
+     "delta": -0.31
+    },
+    "Smolder": {
+     "wr": 53.16,
+     "games": 3435,
+     "delta": 0.27
+    },
+    "Corki": {
+     "wr": 52.68,
+     "games": 1974,
+     "delta": -0.03
+    }
+   }
+  },
+  {
+   "name": "Zilean",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 51.89,
+   "pick": 2.79,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Summon Aery",
+    "primary": [
+     "Manaflow Band",
+     "Transcendence",
+     "Cheap Shot"
+    ],
+    "secondary": [
+     "Relentless Hunter"
+    ],
+    "alt": "Secundaria: Domination"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "Q",
+    "E",
+    "W"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Shurelya's Battlesong",
+      "Imperial Mandate",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Shurelya's Battlesong",
+      "Imperial Mandate",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Shurelya's Battlesong",
+      "Imperial Mandate",
+      "Bandlepipes"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Dos Q seguidas = stun.",
+   "plan": {
+    "lv1": "Q. Dos Q seguidas = stun.",
+    "pre6": [
+     "Q + W + Q: bomba doble aturde.",
+     "E acelera a tu ADC o ralentiza al enemigo.",
+     "Pokeá desde lejos; sos frágil."
+    ],
+    "post6": "R revive a tu ADC: guardala para el que está por morir."
+   },
+   "threat": {
+    "respect": "Doble Q = stun. R revive.",
+    "avoid": "Pararte al lado de la bomba."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 49.44,
+     "games": 2935,
+     "score": -0.22
+    },
+    "Lulu": {
+     "wr": 51.94,
+     "games": 2809,
+     "score": 0.78
+    },
+    "Nami": {
+     "wr": 48.89,
+     "games": 2262,
+     "score": -0.44
+    },
+    "Nautilus": {
+     "wr": 50.94,
+     "games": 1816,
+     "score": 0.38
+    },
+    "Janna": {
+     "wr": 48.91,
+     "games": 1599,
+     "score": -0.44
+    },
+    "Karma": {
+     "wr": 50.85,
+     "games": 1589,
+     "score": 0.34
+    },
+    "Milio": {
+     "wr": 50.62,
+     "games": 1543,
+     "score": 0.25
+    },
+    "Seraphine": {
+     "wr": 52.05,
+     "games": 1366,
+     "score": 0.82
+    },
+    "Leona": {
+     "wr": 51.28,
+     "games": 1365,
+     "score": 0.51
+    },
+    "Blitzcrank": {
+     "wr": 48.51,
+     "games": 1313,
+     "score": -0.6
+    },
+    "Senna": {
+     "wr": 52.64,
+     "games": 1252,
+     "score": 1.06
+    },
+    "Yuumi": {
+     "wr": 55.53,
+     "games": 1212,
+     "score": 2.21
+    },
+    "Lux": {
+     "wr": 52.14,
+     "games": 1189,
+     "score": 0.86
+    },
+    "Bard": {
+     "wr": 55.32,
+     "games": 1155,
+     "score": 2.13
+    },
+    "Soraka": {
+     "wr": 50.97,
+     "games": 1134,
+     "score": 0.39
+    },
+    "Pyke": {
+     "wr": 48.91,
+     "games": 959,
+     "score": -0.44
+    },
+    "Braum": {
+     "wr": 53.1,
+     "games": 951,
+     "score": 1.24
+    },
+    "Alistar": {
+     "wr": 49.72,
+     "games": 893,
+     "score": -0.11
+    },
+    "Rakan": {
+     "wr": 53.58,
+     "games": 825,
+     "score": 1.43
+    },
+    "Sona": {
+     "wr": 47.72,
+     "games": 811,
+     "score": -0.91
+    },
+    "Rell": {
+     "wr": 53.2,
+     "games": 765,
+     "score": 1.28
+    },
+    "Morgana": {
+     "wr": 52.88,
+     "games": 711,
+     "score": 1.15
+    },
+    "Vel'Koz": {
+     "wr": 53.98,
+     "games": 565,
+     "score": 1.59
+    },
+    "Zyra": {
+     "wr": 55.19,
+     "games": 540,
+     "score": 2.08
+    },
+    "Pantheon": {
+     "wr": 53.0,
+     "games": 534,
+     "score": 1.2
+    },
+    "Xerath": {
+     "wr": 52.94,
+     "games": 510,
+     "score": 1.18
+    },
+    "Swain": {
+     "wr": 60.26,
+     "games": 468,
+     "score": 3
+    },
+    "Tahm Kench": {
+     "wr": 49.01,
+     "games": 455,
+     "score": -0.4
+    },
+    "Renata Glasc": {
+     "wr": 50.48,
+     "games": 414,
+     "score": 0.19
+    },
+    "Brand": {
+     "wr": 53.54,
+     "games": 396,
+     "score": 1.42
+    }
+   },
+   "synergy": {
+    "Jhin": {
+     "wr": 53.03,
+     "games": 7262,
+     "delta": 0.69
+    },
+    "Kai'Sa": {
+     "wr": 51.18,
+     "games": 4676,
+     "delta": -0.12
+    },
+    "Ezreal": {
+     "wr": 50.75,
+     "games": 3748,
+     "delta": 2.19
+    },
+    "Jinx": {
+     "wr": 51.14,
+     "games": 2886,
+     "delta": -2.05
+    },
+    "Caitlyn": {
+     "wr": 49.68,
+     "games": 2669,
+     "delta": -1.06
+    },
+    "Yunara": {
+     "wr": 51.38,
+     "games": 2565,
+     "delta": -0.24
+    },
+    "Miss Fortune": {
+     "wr": 50.91,
+     "games": 1860,
+     "delta": -1.55
+    },
+    "Xayah": {
+     "wr": 53.07,
+     "games": 1709,
+     "delta": -0.97
+    },
+    "Aphelios": {
+     "wr": 54.48,
+     "games": 1628,
+     "delta": 2.48
+    },
+    "Smolder": {
+     "wr": 51.72,
+     "games": 1628,
+     "delta": -1.7
+    }
+   }
+  },
+  {
+   "name": "Soraka",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 50.87,
+   "pick": 4.47,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Summon Aery",
+    "primary": [
+     "Revitalize",
+     "Transcendence",
+     "Scorch"
+    ],
+    "secondary": [
+     "Bone Plating"
+    ],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Moonstone Renewer",
+      "Redemption",
+      "Dawncore"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Moonstone Renewer",
+      "Redemption",
+      "Dawncore"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Moonstone Renewer",
+      "Redemption",
+      "Dawncore"
+     ]
+    }
+   },
+   "general": "Nivel 1: W. Q para curarte y pokear.",
+   "plan": {
+    "lv1": "W. Q para curarte y pokear.",
+    "pre6": [
+     "Q a los rivales te da cura; después W a tu ADC.",
+     "E silencia: guardala para el engage.",
+     "No uses W bajo de vida: cuesta HP."
+    ],
+    "post6": "R global: salvá a cualquier aliado en peligro en el mapa."
+   },
+   "threat": {
+    "respect": "Su cura. Antiheal la rompe.",
+    "avoid": "Pelear largo contra su sustain."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 47.88,
+     "games": 800,
+     "score": -0.85
+    },
+    "Thresh": {
+     "wr": 50.71,
+     "games": 775,
+     "score": 0.28
+    },
+    "Nami": {
+     "wr": 50.42,
+     "games": 712,
+     "score": 0.17
+    },
+    "Nautilus": {
+     "wr": 50.67,
+     "games": 521,
+     "score": 0.27
+    },
+    "Blitzcrank": {
+     "wr": 47.96,
+     "games": 465,
+     "score": -0.82
+    },
+    "Karma": {
+     "wr": 55.86,
+     "games": 435,
+     "score": 2.34
+    },
+    "Leona": {
+     "wr": 52.57,
+     "games": 428,
+     "score": 1.03
+    },
+    "Milio": {
+     "wr": 51.17,
+     "games": 426,
+     "score": 0.47
+    },
+    "Senna": {
+     "wr": 49.46,
+     "games": 370,
+     "score": -0.22
+    },
+    "Seraphine": {
+     "wr": 51.38,
+     "games": 362,
+     "score": 0.55
+    },
+    "Pyke": {
+     "wr": 51.67,
+     "games": 360,
+     "score": 0.67
+    },
+    "Yuumi": {
+     "wr": 54.09,
+     "games": 342,
+     "score": 1.64
+    },
+    "Janna": {
+     "wr": 46.15,
+     "games": 338,
+     "score": -1.54
+    },
+    "Lux": {
+     "wr": 51.1,
+     "games": 317,
+     "score": 0.44
+    },
+    "Bard": {
+     "wr": 46.54,
+     "games": 260,
+     "score": -1.2
+    },
+    "Sona": {
+     "wr": 54.02,
+     "games": 224,
+     "score": 1.2
+    },
+    "Braum": {
+     "wr": 49.77,
+     "games": 219,
+     "score": -0.07
+    },
+    "Alistar": {
+     "wr": 51.21,
+     "games": 207,
+     "score": 0.33
+    },
+    "Zilean": {
+     "wr": 49.75,
+     "games": 199,
+     "score": -0.07
+    },
+    "Rakan": {
+     "wr": 45.41,
+     "games": 196,
+     "score": -1.2
+    },
+    "Vel'Koz": {
+     "wr": 48.45,
+     "games": 194,
+     "score": -0.4
+    },
+    "Pantheon": {
+     "wr": 53.72,
+     "games": 188,
+     "score": 0.93
+    },
+    "Rell": {
+     "wr": 50.56,
+     "games": 180,
+     "score": 0.13
+    },
+    "Zyra": {
+     "wr": 49.14,
+     "games": 175,
+     "score": -0.2
+    },
+    "Morgana": {
+     "wr": 50.92,
+     "games": 163,
+     "score": 0.2
+    },
+    "Brand": {
+     "wr": 46.36,
+     "games": 151,
+     "score": -0.73
+    },
+    "Xerath": {
+     "wr": 54.26,
+     "games": 129,
+     "score": 0.73
+    },
+    "Swain": {
+     "wr": 53.6,
+     "games": 125,
+     "score": 0.6
+    },
+    "Tahm Kench": {
+     "wr": 47.27,
+     "games": 110,
+     "score": -0.4
+    }
+   },
+   "synergy": {
+    "Kai'Sa": {
+     "wr": 48.04,
+     "games": 993,
+     "delta": -2.23
+    },
+    "Jinx": {
+     "wr": 49.55,
+     "games": 989,
+     "delta": -2.59
+    },
+    "Jhin": {
+     "wr": 52.3,
+     "games": 977,
+     "delta": 0.95
+    },
+    "Ezreal": {
+     "wr": 49.23,
+     "games": 776,
+     "delta": 1.31
+    },
+    "Caitlyn": {
+     "wr": 50.49,
+     "games": 721,
+     "delta": 0.55
+    },
+    "Aphelios": {
+     "wr": 45.86,
+     "games": 580,
+     "delta": -2.97
+    },
+    "Yunara": {
+     "wr": 47.27,
+     "games": 531,
+     "delta": -1.77
+    },
+    "Tristana": {
+     "wr": 55.96,
+     "games": 495,
+     "delta": 2.32
+    },
+    "Miss Fortune": {
+     "wr": 48.91,
+     "games": 458,
+     "delta": -1.16
+    },
+    "Smolder": {
+     "wr": 51.61,
+     "games": 3637,
+     "delta": -0.79
+    },
+    "Kog'Maw": {
+     "wr": 52.3,
+     "games": 1111,
+     "delta": -2.01
+    },
+    "Vayne": {
+     "wr": 53.37,
+     "games": 2415,
+     "delta": 3.0
+    },
+    "Draven": {
+     "wr": 52.38,
+     "games": 1976,
+     "delta": 1.56
+    },
+    "Sivir": {
+     "wr": 51.24,
+     "games": 3111,
+     "delta": -0.81
+    },
+    "Nilah": {
+     "wr": 52.7,
+     "games": 1203,
+     "delta": -0.09
+    }
+   }
+  },
+  {
+   "name": "Milio",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 50.06,
+   "pick": 6.44,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Summon Aery",
+    "primary": [
+     "Manaflow Band",
+     "Transcendence",
+     "Scorch"
+    ],
+    "secondary": [
+     "Revitalize"
+    ],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "E",
+    "W",
+    "Q"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Echoes of Helia",
+      "Moonstone Renewer",
+      "Ardent Censer"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Echoes of Helia",
+      "Moonstone Renewer",
+      "Ardent Censer"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Echoes of Helia",
+      "Moonstone Renewer",
+      "Ardent Censer"
+     ]
+    }
+   },
+   "general": "Nivel 1: E. Escudo en tu ADC antes de los trades.",
+   "plan": {
+    "lv1": "E. Escudo en tu ADC antes de los trades.",
+    "pre6": [
+     "Q empuja y ralentiza: cortá el engage.",
+     "W (campamento) aumenta el rango de tu ADC.",
+     "Mantenete atrás de tu ADC."
+    ],
+    "post6": "R limpia controles y cura: guardala para el CC rival."
+   },
+   "threat": {
+    "respect": "Su Q empuja y ralentiza; R limpia controles.",
+    "avoid": "Tirar CC importante antes de su R."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 49.67,
+     "games": 8780,
+     "score": -0.13
+    },
+    "Nami": {
+     "wr": 49.66,
+     "games": 6106,
+     "score": -0.14
+    },
+    "Thresh": {
+     "wr": 48.6,
+     "games": 6039,
+     "score": -0.56
+    },
+    "Nautilus": {
+     "wr": 49.76,
+     "games": 4534,
+     "score": -0.1
+    },
+    "Seraphine": {
+     "wr": 49.8,
+     "games": 4494,
+     "score": -0.08
+    },
+    "Karma": {
+     "wr": 50.88,
+     "games": 4057,
+     "score": 0.35
+    },
+    "Leona": {
+     "wr": 48.55,
+     "games": 3677,
+     "score": -0.58
+    },
+    "Blitzcrank": {
+     "wr": 46.06,
+     "games": 3339,
+     "score": -1.58
+    },
+    "Senna": {
+     "wr": 46.57,
+     "games": 2740,
+     "score": -1.37
+    },
+    "Lux": {
+     "wr": 53.82,
+     "games": 2568,
+     "score": 1.53
+    },
+    "Yuumi": {
+     "wr": 52.59,
+     "games": 2563,
+     "score": 1.04
+    },
+    "Soraka": {
+     "wr": 49.35,
+     "games": 2480,
+     "score": -0.26
+    },
+    "Alistar": {
+     "wr": 49.07,
+     "games": 2364,
+     "score": -0.37
+    },
+    "Braum": {
+     "wr": 46.01,
+     "games": 2293,
+     "score": -1.6
+    },
+    "Janna": {
+     "wr": 48.76,
+     "games": 2254,
+     "score": -0.5
+    },
+    "Rakan": {
+     "wr": 49.37,
+     "games": 2153,
+     "score": -0.25
+    },
+    "Pyke": {
+     "wr": 51.03,
+     "games": 2128,
+     "score": 0.41
+    },
+    "Bard": {
+     "wr": 50.89,
+     "games": 1747,
+     "score": 0.36
+    },
+    "Sona": {
+     "wr": 47.85,
+     "games": 1672,
+     "score": -0.86
+    },
+    "Morgana": {
+     "wr": 53.58,
+     "games": 1663,
+     "score": 1.43
+    },
+    "Rell": {
+     "wr": 46.01,
+     "games": 1656,
+     "score": -1.6
+    },
+    "Zilean": {
+     "wr": 48.39,
+     "games": 1401,
+     "score": -0.64
+    },
+    "Vel'Koz": {
+     "wr": 49.46,
+     "games": 1377,
+     "score": -0.22
+    },
+    "Pantheon": {
+     "wr": 58.87,
+     "games": 1223,
+     "score": 3
+    },
+    "Zyra": {
+     "wr": 51.79,
+     "games": 1176,
+     "score": 0.72
+    },
+    "Renata Glasc": {
+     "wr": 54.8,
+     "games": 1124,
+     "score": 1.92
+    },
+    "Swain": {
+     "wr": 55.16,
+     "games": 1095,
+     "score": 2.06
+    },
+    "Brand": {
+     "wr": 51.31,
+     "games": 877,
+     "score": 0.52
+    },
+    "Xerath": {
+     "wr": 52.82,
+     "games": 869,
+     "score": 1.13
+    }
+   },
+   "synergy": {
+    "Lucian": {
+     "wr": 49.62,
+     "games": 31733,
+     "delta": 0.34
+    },
+    "Jinx": {
+     "wr": 52.32,
+     "games": 12328,
+     "delta": 0.96
+    },
+    "Yunara": {
+     "wr": 49.54,
+     "games": 10127,
+     "delta": -0.25
+    },
+    "Caitlyn": {
+     "wr": 49.31,
+     "games": 8540,
+     "delta": 0.4
+    },
+    "Kai'Sa": {
+     "wr": 48.84,
+     "games": 7512,
+     "delta": -0.63
+    },
+    "Aphelios": {
+     "wr": 49.95,
+     "games": 5131,
+     "delta": -0.22
+    },
+    "Ashe": {
+     "wr": 51.6,
+     "games": 4490,
+     "delta": 1.66
+    },
+    "Jhin": {
+     "wr": 49.84,
+     "games": 4017,
+     "delta": -0.67
+    },
+    "Twitch": {
+     "wr": 51.89,
+     "games": 4126,
+     "delta": 0.24
+    },
+    "Smolder": {
+     "wr": 52.95,
+     "games": 4098,
+     "delta": 1.36
+    },
+    "Kog'Maw": {
+     "wr": 52.55,
+     "games": 3684,
+     "delta": -0.95
+    },
+    "Vayne": {
+     "wr": 49.89,
+     "games": 2852,
+     "delta": 0.33
+    },
+    "Zeri": {
+     "wr": 50.52,
+     "games": 2195,
+     "delta": -1.67
+    },
+    "Sivir": {
+     "wr": 50.58,
+     "games": 3100,
+     "delta": -0.66
+    }
+   }
+  },
+  {
+   "name": "Sona",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 51.61,
+   "pick": 2.93,
+   "blind": 1,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Summon Aery",
+    "primary": [
+     "Manaflow Band",
+     "Gathering Storm",
+     "Transcendence"
+    ],
+    "secondary": [
+     "Revitalize"
+    ],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "W",
+    "Q",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Echoes of Helia",
+      "Diadem of Songs",
+      "Moonstone Renewer"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Echoes of Helia",
+      "Diadem of Songs",
+      "Moonstone Renewer"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Echoes of Helia",
+      "Diadem of Songs",
+      "Moonstone Renewer"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Pokeá con Q + auto potenciado.",
+   "plan": {
+    "lv1": "Q. Pokeá con Q + auto potenciado.",
+    "pre6": [
+     "Nivel 1-5 jugás defensivo: sos frágil.",
+     "Alterná auras: Q para pokear, W para curar.",
+     "E (velocidad) para escapar de engage."
+    ],
+    "post6": "R stunea en línea: usala cuando se agrupan."
+   },
+   "threat": {
+    "respect": "Poke de Q y su R (stun). Frágil temprano.",
+    "avoid": "Darle tiempo de escalar."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 50.76,
+     "games": 2516,
+     "score": 0.3
+    },
+    "Janna": {
+     "wr": 50.72,
+     "games": 2167,
+     "score": 0.29
+    },
+    "Nami": {
+     "wr": 49.7,
+     "games": 2004,
+     "score": -0.12
+    },
+    "Thresh": {
+     "wr": 48.81,
+     "games": 1846,
+     "score": -0.48
+    },
+    "Nautilus": {
+     "wr": 49.92,
+     "games": 1248,
+     "score": -0.03
+    },
+    "Milio": {
+     "wr": 51.61,
+     "games": 1242,
+     "score": 0.64
+    },
+    "Seraphine": {
+     "wr": 53.05,
+     "games": 1212,
+     "score": 1.22
+    },
+    "Karma": {
+     "wr": 51.75,
+     "games": 1198,
+     "score": 0.7
+    },
+    "Soraka": {
+     "wr": 49.77,
+     "games": 1073,
+     "score": -0.09
+    },
+    "Yuumi": {
+     "wr": 52.92,
+     "games": 1009,
+     "score": 1.17
+    },
+    "Leona": {
+     "wr": 51.0,
+     "games": 951,
+     "score": 0.4
+    },
+    "Blitzcrank": {
+     "wr": 46.6,
+     "games": 940,
+     "score": -1.36
+    },
+    "Senna": {
+     "wr": 48.29,
+     "games": 936,
+     "score": -0.68
+    },
+    "Lux": {
+     "wr": 53.9,
+     "games": 820,
+     "score": 1.56
+    },
+    "Bard": {
+     "wr": 53.92,
+     "games": 727,
+     "score": 1.57
+    },
+    "Pyke": {
+     "wr": 48.28,
+     "games": 667,
+     "score": -0.69
+    },
+    "Zilean": {
+     "wr": 51.45,
+     "games": 620,
+     "score": 0.58
+    },
+    "Braum": {
+     "wr": 49.92,
+     "games": 609,
+     "score": -0.03
+    },
+    "Rell": {
+     "wr": 49.14,
+     "games": 521,
+     "score": -0.34
+    },
+    "Alistar": {
+     "wr": 50.49,
+     "games": 515,
+     "score": 0.2
+    },
+    "Rakan": {
+     "wr": 51.71,
+     "games": 497,
+     "score": 0.68
+    },
+    "Morgana": {
+     "wr": 50.84,
+     "games": 478,
+     "score": 0.34
+    },
+    "Pantheon": {
+     "wr": 52.51,
+     "games": 379,
+     "score": 1.0
+    },
+    "Vel'Koz": {
+     "wr": 53.53,
+     "games": 368,
+     "score": 1.41
+    },
+    "Zyra": {
+     "wr": 48.43,
+     "games": 351,
+     "score": -0.63
+    },
+    "Xerath": {
+     "wr": 51.53,
+     "games": 326,
+     "score": 0.61
+    },
+    "Swain": {
+     "wr": 52.65,
+     "games": 302,
+     "score": 1.06
+    },
+    "Brand": {
+     "wr": 51.77,
+     "games": 282,
+     "score": 0.67
+    },
+    "Renata Glasc": {
+     "wr": 51.03,
+     "games": 243,
+     "score": 0.33
+    },
+    "Tahm Kench": {
+     "wr": 48.72,
+     "games": 234,
+     "score": -0.4
+    }
+   },
+   "synergy": {
+    "Ezreal": {
+     "wr": 49.54,
+     "games": 5373,
+     "delta": 1.26
+    },
+    "Jhin": {
+     "wr": 53.49,
+     "games": 4595,
+     "delta": 1.43
+    },
+    "Kai'Sa": {
+     "wr": 49.17,
+     "games": 4478,
+     "delta": -1.85
+    },
+    "Yunara": {
+     "wr": 49.66,
+     "games": 3067,
+     "delta": -1.68
+    },
+    "Jinx": {
+     "wr": 52.85,
+     "games": 2785,
+     "delta": -0.06
+    },
+    "Caitlyn": {
+     "wr": 50.54,
+     "games": 2669,
+     "delta": 0.08
+    },
+    "Miss Fortune": {
+     "wr": 49.58,
+     "games": 2390,
+     "delta": -2.6
+    },
+    "Smolder": {
+     "wr": 53.68,
+     "games": 2271,
+     "delta": 0.54
+    },
+    "Lucian": {
+     "wr": 50.33,
+     "games": 2116,
+     "delta": -0.5
+    },
+    "Sivir": {
+     "wr": 52.11,
+     "games": 1971,
+     "delta": -0.68
+    }
+   }
+  },
+  {
+   "name": "Vel'Koz",
+   "role": "support",
+   "arch": "mage",
+   "tier_wr": 50.94,
+   "pick": 3.29,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Sorcerer's Shoes",
+   "runes": {
+    "keystone": "Arcane Comet",
+    "primary": [
+     "Manaflow Band",
+     "Transcendence",
+     "Scorch"
+    ],
+    "secondary": [
+     "Cheap Shot",
+     "Ultimate Hunter"
+    ],
+    "alt": "Secundaria: Domination"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Luden's Echo",
+      "Shadowflame",
+      "Zhonya's Hourglass"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Luden's Echo",
+      "Shadowflame",
+      "Zhonya's Hourglass"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Luden's Echo",
+      "Shadowflame",
+      "Zhonya's Hourglass"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Pokeá con Q dividida.",
+   "plan": {
+    "lv1": "Q. Pokeá con Q dividida.",
+    "pre6": [
+     "Tu E levanta: combo E + Q + W.",
+     "Pasiva: 3 golpes = daño verdadero.",
+     "Mantené distancia: si te enganchan, morís."
+    ],
+    "post6": "R hace daño verdadero continuo: usala desde lejos."
+   },
+   "threat": {
+    "respect": "Poke de Q y E (levanta). Frágil.",
+    "avoid": "Pelear en su rango sin engage."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 48.4,
+     "games": 2182,
+     "score": -0.64
+    },
+    "Lulu": {
+     "wr": 51.91,
+     "games": 1988,
+     "score": 0.76
+    },
+    "Nautilus": {
+     "wr": 50.26,
+     "games": 1524,
+     "score": 0.1
+    },
+    "Nami": {
+     "wr": 46.29,
+     "games": 1497,
+     "score": -1.48
+    },
+    "Blitzcrank": {
+     "wr": 44.07,
+     "games": 1205,
+     "score": -2.37
+    },
+    "Lux": {
+     "wr": 50.08,
+     "games": 1178,
+     "score": 0.03
+    },
+    "Karma": {
+     "wr": 49.02,
+     "games": 1122,
+     "score": -0.39
+    },
+    "Seraphine": {
+     "wr": 49.91,
+     "games": 1088,
+     "score": -0.04
+    },
+    "Janna": {
+     "wr": 49.67,
+     "games": 1053,
+     "score": -0.13
+    },
+    "Leona": {
+     "wr": 52.31,
+     "games": 996,
+     "score": 0.92
+    },
+    "Milio": {
+     "wr": 48.27,
+     "games": 926,
+     "score": -0.69
+    },
+    "Pyke": {
+     "wr": 44.42,
+     "games": 788,
+     "score": -2.23
+    },
+    "Senna": {
+     "wr": 52.01,
+     "games": 773,
+     "score": 0.8
+    },
+    "Soraka": {
+     "wr": 49.07,
+     "games": 756,
+     "score": -0.37
+    },
+    "Yuumi": {
+     "wr": 49.8,
+     "games": 747,
+     "score": -0.08
+    },
+    "Bard": {
+     "wr": 52.21,
+     "games": 745,
+     "score": 0.88
+    },
+    "Morgana": {
+     "wr": 50.93,
+     "games": 644,
+     "score": 0.37
+    },
+    "Braum": {
+     "wr": 50.16,
+     "games": 626,
+     "score": 0.06
+    },
+    "Xerath": {
+     "wr": 48.43,
+     "games": 572,
+     "score": -0.63
+    },
+    "Alistar": {
+     "wr": 51.14,
+     "games": 571,
+     "score": 0.46
+    },
+    "Rell": {
+     "wr": 50.75,
+     "games": 469,
+     "score": 0.3
+    },
+    "Rakan": {
+     "wr": 48.03,
+     "games": 458,
+     "score": -0.79
+    },
+    "Zilean": {
+     "wr": 50.84,
+     "games": 419,
+     "score": 0.34
+    },
+    "Pantheon": {
+     "wr": 52.25,
+     "games": 400,
+     "score": 0.9
+    },
+    "Zyra": {
+     "wr": 50.0,
+     "games": 396,
+     "score": 0.0
+    },
+    "Swain": {
+     "wr": 59.52,
+     "games": 378,
+     "score": 3
+    },
+    "Sona": {
+     "wr": 46.47,
+     "games": 368,
+     "score": -1.41
+    },
+    "Brand": {
+     "wr": 53.17,
+     "games": 363,
+     "score": 1.27
+    },
+    "Tahm Kench": {
+     "wr": 50.96,
+     "games": 314,
+     "score": 0.38
+    }
+   },
+   "synergy": {
+    "Jhin": {
+     "wr": 52.48,
+     "games": 4848,
+     "delta": 1.09
+    },
+    "Ezreal": {
+     "wr": 45.46,
+     "games": 2686,
+     "delta": -2.15
+    },
+    "Caitlyn": {
+     "wr": 49.39,
+     "games": 2634,
+     "delta": -0.4
+    },
+    "Kai'Sa": {
+     "wr": 50.81,
+     "games": 2155,
+     "delta": 0.46
+    },
+    "Jinx": {
+     "wr": 50.73,
+     "games": 1997,
+     "delta": -1.51
+    },
+    "Yunara": {
+     "wr": 52.49,
+     "games": 1185,
+     "delta": 1.82
+    },
+    "Tristana": {
+     "wr": 51.06,
+     "games": 1183,
+     "delta": -0.28
+    },
+    "Ashe": {
+     "wr": 52.41,
+     "games": 996,
+     "delta": 1.58
+    },
+    "Miss Fortune": {
+     "wr": 49.16,
+     "games": 958,
+     "delta": -2.25
+    },
+    "Sivir": {
+     "wr": 52.95,
+     "games": 729,
+     "delta": 0.6
+    }
+   }
+  },
+  {
+   "name": "Pyke",
+   "role": "support",
+   "arch": "engage",
+   "tier_wr": 49.28,
+   "pick": 5.69,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Boots of Swiftness",
+   "runes": {
+    "keystone": "Hail of Blades",
+    "primary": [
+     "Cheap Shot",
+     "Sixth Sense",
+     "Ultimate Hunter"
+    ],
+    "secondary": [
+     "Bone Plating",
+     "Unflinching"
+    ],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "E",
+    "W"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Umbral Glaive",
+      "Youmuu's Ghostblade",
+      "Edge of Night"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Umbral Glaive",
+      "Youmuu's Ghostblade",
+      "Edge of Night"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Umbral Glaive",
+      "Youmuu's Ghostblade",
+      "Edge of Night"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Q cargada (gancho) al ADC rival nivel 2.",
+   "plan": {
+    "lv1": "Q. Q cargada (gancho) al ADC rival nivel 2.",
+    "pre6": [
+     "Recuperás vida al no ser visto: salí de visión para curarte.",
+     "E (dash) atraviesa y aturde: úsala para salir o entrar.",
+     "No tradees largo: sos frágil."
+    ],
+    "post6": "R ejecuta y da oro a tu ADC: dejá a los enemigos bajos y terminalos."
+   },
+   "threat": {
+    "respect": "Q cargada (gancho corto) y E (dash) aturde.",
+    "avoid": "Quedarte bajo de vida: su R ejecuta."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 48.24,
+     "games": 910,
+     "score": -0.7
+    },
+    "Lulu": {
+     "wr": 51.64,
+     "games": 581,
+     "score": 0.66
+    },
+    "Nautilus": {
+     "wr": 46.89,
+     "games": 546,
+     "score": -1.24
+    },
+    "Leona": {
+     "wr": 52.27,
+     "games": 375,
+     "score": 0.91
+    },
+    "Nami": {
+     "wr": 53.52,
+     "games": 355,
+     "score": 1.41
+    },
+    "Blitzcrank": {
+     "wr": 47.98,
+     "games": 346,
+     "score": -0.81
+    },
+    "Karma": {
+     "wr": 48.98,
+     "games": 343,
+     "score": -0.41
+    },
+    "Lux": {
+     "wr": 54.84,
+     "games": 341,
+     "score": 1.94
+    },
+    "Rakan": {
+     "wr": 43.24,
+     "games": 340,
+     "score": -2.7
+    },
+    "Yuumi": {
+     "wr": 51.47,
+     "games": 307,
+     "score": 0.59
+    },
+    "Milio": {
+     "wr": 47.68,
+     "games": 302,
+     "score": -0.93
+    },
+    "Janna": {
+     "wr": 51.19,
+     "games": 293,
+     "score": 0.46
+    },
+    "Alistar": {
+     "wr": 45.02,
+     "games": 291,
+     "score": -1.93
+    },
+    "Braum": {
+     "wr": 54.06,
+     "games": 283,
+     "score": 1.53
+    },
+    "Soraka": {
+     "wr": 46.38,
+     "games": 276,
+     "score": -1.33
+    },
+    "Bard": {
+     "wr": 50.0,
+     "games": 260,
+     "score": 0.0
+    },
+    "Seraphine": {
+     "wr": 51.03,
+     "games": 243,
+     "score": 0.33
+    },
+    "Senna": {
+     "wr": 52.32,
+     "games": 237,
+     "score": 0.73
+    },
+    "Pantheon": {
+     "wr": 49.01,
+     "games": 202,
+     "score": -0.27
+    },
+    "Rell": {
+     "wr": 48.74,
+     "games": 199,
+     "score": -0.33
+    },
+    "Morgana": {
+     "wr": 47.18,
+     "games": 195,
+     "score": -0.73
+    },
+    "Xerath": {
+     "wr": 45.81,
+     "games": 179,
+     "score": -1.0
+    },
+    "Tahm Kench": {
+     "wr": 59.06,
+     "games": 149,
+     "score": 1.8
+    },
+    "Maokai": {
+     "wr": 48.2,
+     "games": 139,
+     "score": -0.33
+    },
+    "Swain": {
+     "wr": 58.21,
+     "games": 134,
+     "score": 1.47
+    },
+    "Poppy": {
+     "wr": 44.03,
+     "games": 134,
+     "score": -1.07
+    },
+    "Zilean": {
+     "wr": 53.72,
+     "games": 121,
+     "score": 0.6
+    },
+    "Sona": {
+     "wr": 48.65,
+     "games": 111,
+     "score": -0.2
+    },
+    "Vel'Koz": {
+     "wr": 51.96,
+     "games": 102,
+     "score": 0.27
+    }
+   },
+   "synergy": {
+    "Kai'Sa": {
+     "wr": 50.18,
+     "games": 20364,
+     "delta": 1.49
+    },
+    "Jhin": {
+     "wr": 47.57,
+     "games": 8127,
+     "delta": -2.16
+    },
+    "Tristana": {
+     "wr": 51.36,
+     "games": 7300,
+     "delta": 1.68
+    },
+    "Jinx": {
+     "wr": 50.96,
+     "games": 6439,
+     "delta": 0.38
+    },
+    "Caitlyn": {
+     "wr": 48.54,
+     "games": 6183,
+     "delta": 0.41
+    },
+    "Yunara": {
+     "wr": 50.84,
+     "games": 6109,
+     "delta": 1.83
+    },
+    "Ezreal": {
+     "wr": 44.07,
+     "games": 5346,
+     "delta": -1.88
+    },
+    "Draven": {
+     "wr": 49.28,
+     "games": 4117,
+     "delta": 0.05
+    },
+    "Lucian": {
+     "wr": 47.92,
+     "games": 4695,
+     "delta": -0.58
+    },
+    "Aphelios": {
+     "wr": 48.32,
+     "games": 3253,
+     "delta": -1.07
+    },
+    "Kalista": {
+     "wr": 48.23,
+     "games": 2602,
+     "delta": -0.33
+    },
+    "Samira": {
+     "wr": 47.72,
+     "games": 2955,
+     "delta": -2.54
+    },
+    "Twitch": {
+     "wr": 49.0,
+     "games": 2661,
+     "delta": -1.87
+    },
+    "Xayah": {
+     "wr": 51.19,
+     "games": 4282,
+     "delta": -0.24
+    },
+    "Miss Fortune": {
+     "wr": 51.38,
+     "games": 4274,
+     "delta": 1.53
+    },
+    "Nilah": {
+     "wr": 49.12,
+     "games": 684,
+     "delta": -1.42
+    },
+    "Corki": {
+     "wr": 51.55,
+     "games": 2927,
+     "delta": 0.92
+    },
+    "Ziggs": {
+     "wr": 47.56,
+     "games": 841,
+     "delta": -2.1
+    }
+   }
+  },
+  {
+   "name": "Zyra",
+   "role": "support",
+   "arch": "mage",
+   "tier_wr": 50.8,
+   "pick": 2.52,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Sorcerer's Shoes",
+   "runes": {
+    "keystone": "Arcane Comet",
+    "primary": [
+     "Manaflow Band",
+     "Transcendence",
+     "Scorch"
+    ],
+    "secondary": [
+     "Taste of Blood",
+     "Relentless Hunter"
+    ],
+    "alt": "Secundaria: Domination"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "E",
+    "Q",
+    "W"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Liandry's Torment",
+      "Rylai's Crystal Scepter",
+      "Zhonya's Hourglass"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Liandry's Torment",
+      "Rylai's Crystal Scepter",
+      "Zhonya's Hourglass"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Liandry's Torment",
+      "Rylai's Crystal Scepter",
+      "Zhonya's Hourglass"
+     ]
+    }
+   },
+   "general": "Nivel 1: E. Plantas en arbustos para controlar visión.",
+   "plan": {
+    "lv1": "E. Plantas en arbustos para controlar visión.",
+    "pre6": [
+     "E enraíza: Q después.",
+     "Plantas (W) protegen tu línea de engage.",
+     "Pokeá desde detrás de minions."
+    ],
+    "post6": "R levanta en área: combinala con tus plantas."
+   },
+   "threat": {
+    "respect": "Plantas en los arbustos y E (raíz).",
+    "avoid": "Entrar a arbustos con plantas."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 48.73,
+     "games": 2440,
+     "score": -0.51
+    },
+    "Lulu": {
+     "wr": 49.77,
+     "games": 1931,
+     "score": -0.09
+    },
+    "Nami": {
+     "wr": 47.1,
+     "games": 1571,
+     "score": -1.16
+    },
+    "Seraphine": {
+     "wr": 50.47,
+     "games": 1167,
+     "score": 0.19
+    },
+    "Lux": {
+     "wr": 47.24,
+     "games": 1158,
+     "score": -1.1
+    },
+    "Leona": {
+     "wr": 49.52,
+     "games": 1151,
+     "score": -0.19
+    },
+    "Nautilus": {
+     "wr": 47.96,
+     "games": 1128,
+     "score": -0.82
+    },
+    "Karma": {
+     "wr": 48.8,
+     "games": 1127,
+     "score": -0.48
+    },
+    "Milio": {
+     "wr": 48.75,
+     "games": 1079,
+     "score": -0.5
+    },
+    "Janna": {
+     "wr": 48.37,
+     "games": 889,
+     "score": -0.65
+    },
+    "Senna": {
+     "wr": 51.88,
+     "games": 877,
+     "score": 0.75
+    },
+    "Blitzcrank": {
+     "wr": 46.61,
+     "games": 871,
+     "score": -1.36
+    },
+    "Soraka": {
+     "wr": 50.29,
+     "games": 853,
+     "score": 0.12
+    },
+    "Yuumi": {
+     "wr": 49.45,
+     "games": 823,
+     "score": -0.22
+    },
+    "Bard": {
+     "wr": 51.0,
+     "games": 700,
+     "score": 0.4
+    },
+    "Pyke": {
+     "wr": 52.49,
+     "games": 682,
+     "score": 1.0
+    },
+    "Braum": {
+     "wr": 48.8,
+     "games": 666,
+     "score": -0.48
+    },
+    "Alistar": {
+     "wr": 45.54,
+     "games": 628,
+     "score": -1.78
+    },
+    "Morgana": {
+     "wr": 49.27,
+     "games": 617,
+     "score": -0.29
+    },
+    "Rakan": {
+     "wr": 49.91,
+     "games": 531,
+     "score": -0.04
+    },
+    "Zilean": {
+     "wr": 44.84,
+     "games": 504,
+     "score": -2.06
+    },
+    "Xerath": {
+     "wr": 51.7,
+     "games": 499,
+     "score": 0.68
+    },
+    "Rell": {
+     "wr": 47.48,
+     "games": 497,
+     "score": -1.01
+    },
+    "Vel'Koz": {
+     "wr": 51.87,
+     "games": 455,
+     "score": 0.75
+    },
+    "Pantheon": {
+     "wr": 48.48,
+     "games": 427,
+     "score": -0.61
+    },
+    "Brand": {
+     "wr": 54.24,
+     "games": 413,
+     "score": 1.7
+    },
+    "Swain": {
+     "wr": 55.61,
+     "games": 410,
+     "score": 2.24
+    },
+    "Sona": {
+     "wr": 47.85,
+     "games": 395,
+     "score": -0.86
+    },
+    "Tahm Kench": {
+     "wr": 54.03,
+     "games": 298,
+     "score": 1.6
+    }
+   },
+   "synergy": {
+    "Jhin": {
+     "wr": 53.73,
+     "games": 9137,
+     "delta": 2.48
+    },
+    "Kai'Sa": {
+     "wr": 51.2,
+     "games": 4191,
+     "delta": 0.99
+    },
+    "Ezreal": {
+     "wr": 49.03,
+     "games": 4120,
+     "delta": 1.56
+    },
+    "Caitlyn": {
+     "wr": 49.57,
+     "games": 3220,
+     "delta": -0.08
+    },
+    "Miss Fortune": {
+     "wr": 51.61,
+     "games": 2447,
+     "delta": 0.24
+    },
+    "Jinx": {
+     "wr": 50.0,
+     "games": 1746,
+     "delta": -2.1
+    },
+    "Xayah": {
+     "wr": 52.8,
+     "games": 1570,
+     "delta": -0.15
+    },
+    "Yunara": {
+     "wr": 48.39,
+     "games": 1461,
+     "delta": -2.14
+    },
+    "Ashe": {
+     "wr": 50.48,
+     "games": 1456,
+     "delta": -0.2
+    },
+    "Smolder": {
+     "wr": 52.14,
+     "games": 1352,
+     "delta": -0.19
+    }
+   }
+  },
+  {
+   "name": "Karma",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 48.57,
+   "pick": 7.83,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Summon Aery",
+    "primary": [
+     "Transcendence",
+     "Manaflow Band",
+     "Gathering Storm"
+    ],
+    "secondary": [
+     "Revitalize",
+     "Font of Life"
+    ],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "Q",
+    "E",
+    "W"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Echoes of Helia",
+      "Moonstone Renewer",
+      "Redemption"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Echoes of Helia",
+      "Moonstone Renewer",
+      "Redemption"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Echoes of Helia",
+      "Moonstone Renewer",
+      "Redemption"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Q potenciada (R) para poke enorme.",
+   "plan": {
+    "lv1": "Q. Q potenciada (R) para poke enorme.",
+    "pre6": [
+     "Pokeá con Q + R desde el nivel 1.",
+     "E escudo y velocidad para tu ADC.",
+     "W enraíza: buen control contra engage."
+    ],
+    "post6": "R potencia Q (poke), W (cura) o E (escudo en área)."
+   },
+   "threat": {
+    "respect": "Q potenciada (R): mucho poke temprano.",
+    "avoid": "Quedarte en el área de su Q."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 48.14,
+     "games": 9118,
+     "score": -0.74
+    },
+    "Thresh": {
+     "wr": 46.77,
+     "games": 8012,
+     "score": -1.29
+    },
+    "Nautilus": {
+     "wr": 47.54,
+     "games": 6912,
+     "score": -0.98
+    },
+    "Nami": {
+     "wr": 47.25,
+     "games": 6501,
+     "score": -1.1
+    },
+    "Seraphine": {
+     "wr": 47.91,
+     "games": 4713,
+     "score": -0.84
+    },
+    "Milio": {
+     "wr": 49.12,
+     "games": 4057,
+     "score": -0.35
+    },
+    "Blitzcrank": {
+     "wr": 46.89,
+     "games": 3933,
+     "score": -1.24
+    },
+    "Lux": {
+     "wr": 51.85,
+     "games": 3873,
+     "score": 0.74
+    },
+    "Leona": {
+     "wr": 49.13,
+     "games": 3798,
+     "score": -0.35
+    },
+    "Senna": {
+     "wr": 45.63,
+     "games": 3493,
+     "score": -1.75
+    },
+    "Yuumi": {
+     "wr": 48.99,
+     "games": 3017,
+     "score": -0.4
+    },
+    "Alistar": {
+     "wr": 47.58,
+     "games": 3016,
+     "score": -0.97
+    },
+    "Bard": {
+     "wr": 48.02,
+     "games": 2978,
+     "score": -0.79
+    },
+    "Pyke": {
+     "wr": 48.28,
+     "games": 2968,
+     "score": -0.69
+    },
+    "Rakan": {
+     "wr": 45.81,
+     "games": 2877,
+     "score": -1.68
+    },
+    "Janna": {
+     "wr": 46.58,
+     "games": 2776,
+     "score": -1.37
+    },
+    "Soraka": {
+     "wr": 51.27,
+     "games": 2528,
+     "score": 0.51
+    },
+    "Braum": {
+     "wr": 46.11,
+     "games": 2355,
+     "score": -1.56
+    },
+    "Rell": {
+     "wr": 45.9,
+     "games": 2207,
+     "score": -1.64
+    },
+    "Morgana": {
+     "wr": 49.32,
+     "games": 2147,
+     "score": -0.27
+    },
+    "Sona": {
+     "wr": 44.94,
+     "games": 1878,
+     "score": -2.02
+    },
+    "Vel'Koz": {
+     "wr": 49.06,
+     "games": 1871,
+     "score": -0.38
+    },
+    "Zilean": {
+     "wr": 47.84,
+     "games": 1756,
+     "score": -0.86
+    },
+    "Xerath": {
+     "wr": 54.78,
+     "games": 1663,
+     "score": 1.91
+    },
+    "Pantheon": {
+     "wr": 50.57,
+     "games": 1659,
+     "score": 0.23
+    },
+    "Zyra": {
+     "wr": 50.07,
+     "games": 1480,
+     "score": 0.03
+    },
+    "Swain": {
+     "wr": 51.71,
+     "games": 1460,
+     "score": 0.68
+    },
+    "Renata Glasc": {
+     "wr": 50.28,
+     "games": 1243,
+     "score": 0.11
+    },
+    "Brand": {
+     "wr": 53.06,
+     "games": 1061,
+     "score": 1.22
+    }
+   },
+   "synergy": {
+    "Ezreal": {
+     "wr": 46.32,
+     "games": 36577,
+     "delta": 1.08
+    },
+    "Jhin": {
+     "wr": 49.63,
+     "games": 20841,
+     "delta": 0.61
+    },
+    "Caitlyn": {
+     "wr": 48.02,
+     "games": 12756,
+     "delta": 0.6
+    },
+    "Jinx": {
+     "wr": 49.64,
+     "games": 6714,
+     "delta": -0.23
+    },
+    "Kai'Sa": {
+     "wr": 48.89,
+     "games": 4807,
+     "delta": 0.91
+    },
+    "Yunara": {
+     "wr": 47.36,
+     "games": 6900,
+     "delta": -0.94
+    },
+    "Tristana": {
+     "wr": 48.6,
+     "games": 2827,
+     "delta": -0.37
+    },
+    "Sivir": {
+     "wr": 50.44,
+     "games": 4405,
+     "delta": 0.69
+    },
+    "Ashe": {
+     "wr": 48.92,
+     "games": 3369,
+     "delta": 0.47
+    },
+    "Lucian": {
+     "wr": 46.53,
+     "games": 1728,
+     "delta": -1.26
+    },
+    "Kog'Maw": {
+     "wr": 53.44,
+     "games": 1338,
+     "delta": 1.43
+    },
+    "Vayne": {
+     "wr": 49.06,
+     "games": 2291,
+     "delta": 0.99
+    },
+    "Zeri": {
+     "wr": 51.04,
+     "games": 2355,
+     "delta": 0.34
+    },
+    "Varus": {
+     "wr": 50.23,
+     "games": 2640,
+     "delta": 1.85
+    },
+    "Twitch": {
+     "wr": 49.73,
+     "games": 2570,
+     "delta": -0.43
+    },
+    "Smolder": {
+     "wr": 50.82,
+     "games": 4254,
+     "delta": 0.72
+    },
+    "Aphelios": {
+     "wr": 49.21,
+     "games": 3733,
+     "delta": 0.53
+    },
+    "Corki": {
+     "wr": 50.59,
+     "games": 2297,
+     "delta": 0.67
+    }
+   }
+  },
+  {
+   "name": "Morgana",
+   "role": "support",
+   "arch": "mage",
+   "tier_wr": 49.63,
+   "pick": 3.99,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Arcane Comet",
+    "primary": [
+     "Manaflow Band",
+     "Transcendence",
+     "Scorch"
+    ],
+    "secondary": [
+     "Cheap Shot",
+     "Ultimate Hunter"
+    ],
+    "alt": "Secundaria: Domination"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Liandry's Torment",
+      "Zhonya's Hourglass",
+      "Rylai's Crystal Scepter"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Liandry's Torment",
+      "Zhonya's Hourglass",
+      "Rylai's Crystal Scepter"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Liandry's Torment",
+      "Zhonya's Hourglass",
+      "Rylai's Crystal Scepter"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Q enraíza 2+ segundos.",
+   "plan": {
+    "lv1": "Q. Q enraíza 2+ segundos.",
+    "pre6": [
+     "E (escudo negro) bloquea controles: anula a Leona, Naut, Thresh.",
+     "W en el enemigo enraizado.",
+     "Guardá E para el engage rival."
+    ],
+    "post6": "R encadena y stunea: entrá con E sobre vos."
+   },
+   "threat": {
+    "respect": "Q (raíz larga) y E (anula tu CC).",
+    "avoid": "Tirar tu engage en su E."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 49.08,
+     "games": 5000,
+     "score": -0.37
+    },
+    "Nautilus": {
+     "wr": 51.2,
+     "games": 2924,
+     "score": 0.48
+    },
+    "Leona": {
+     "wr": 51.48,
+     "games": 2694,
+     "score": 0.59
+    },
+    "Lulu": {
+     "wr": 48.02,
+     "games": 2526,
+     "score": -0.79
+    },
+    "Blitzcrank": {
+     "wr": 47.39,
+     "games": 2262,
+     "score": -1.04
+    },
+    "Karma": {
+     "wr": 48.74,
+     "games": 1830,
+     "score": -0.5
+    },
+    "Lux": {
+     "wr": 49.2,
+     "games": 1758,
+     "score": -0.32
+    },
+    "Nami": {
+     "wr": 48.56,
+     "games": 1742,
+     "score": -0.58
+    },
+    "Milio": {
+     "wr": 45.82,
+     "games": 1626,
+     "score": -1.67
+    },
+    "Janna": {
+     "wr": 47.85,
+     "games": 1580,
+     "score": -0.86
+    },
+    "Seraphine": {
+     "wr": 48.17,
+     "games": 1559,
+     "score": -0.73
+    },
+    "Pyke": {
+     "wr": 51.52,
+     "games": 1285,
+     "score": 0.61
+    },
+    "Braum": {
+     "wr": 48.6,
+     "games": 1216,
+     "score": -0.56
+    },
+    "Senna": {
+     "wr": 46.09,
+     "games": 1215,
+     "score": -1.56
+    },
+    "Alistar": {
+     "wr": 53.05,
+     "games": 1163,
+     "score": 1.22
+    },
+    "Soraka": {
+     "wr": 47.43,
+     "games": 1010,
+     "score": -1.03
+    },
+    "Yuumi": {
+     "wr": 44.47,
+     "games": 877,
+     "score": -2.21
+    },
+    "Bard": {
+     "wr": 51.96,
+     "games": 866,
+     "score": 0.78
+    },
+    "Rell": {
+     "wr": 46.23,
+     "games": 809,
+     "score": -1.51
+    },
+    "Xerath": {
+     "wr": 46.28,
+     "games": 767,
+     "score": -1.49
+    },
+    "Rakan": {
+     "wr": 49.24,
+     "games": 723,
+     "score": -0.3
+    },
+    "Pantheon": {
+     "wr": 49.02,
+     "games": 663,
+     "score": -0.39
+    },
+    "Vel'Koz": {
+     "wr": 49.07,
+     "games": 644,
+     "score": -0.37
+    },
+    "Zilean": {
+     "wr": 46.69,
+     "games": 634,
+     "score": -1.32
+    },
+    "Brand": {
+     "wr": 48.48,
+     "games": 627,
+     "score": -0.61
+    },
+    "Zyra": {
+     "wr": 48.51,
+     "games": 569,
+     "score": -0.6
+    },
+    "Swain": {
+     "wr": 53.66,
+     "games": 533,
+     "score": 1.46
+    },
+    "Sona": {
+     "wr": 49.16,
+     "games": 478,
+     "score": -0.34
+    },
+    "Tahm Kench": {
+     "wr": 50.21,
+     "games": 470,
+     "score": 0.08
+    }
+   },
+   "synergy": {
+    "Caitlyn": {
+     "wr": 49.09,
+     "games": 12664,
+     "delta": 0.61
+    },
+    "Jhin": {
+     "wr": 50.22,
+     "games": 1352,
+     "delta": 0.14
+    },
+    "Kai'Sa": {
+     "wr": 48.51,
+     "games": 1008,
+     "delta": -0.53
+    },
+    "Jinx": {
+     "wr": 50.0,
+     "games": 794,
+     "delta": -0.74
+    },
+    "Miss Fortune": {
+     "wr": 49.79,
+     "games": 727,
+     "delta": -0.3
+    },
+    "Ezreal": {
+     "wr": 46.84,
+     "games": 585,
+     "delta": 0.32
+    },
+    "Tristana": {
+     "wr": 47.66,
+     "games": 428,
+     "delta": -1.02
+    },
+    "Aphelios": {
+     "wr": 49.04,
+     "games": 416,
+     "delta": -0.29
+    },
+    "Yunara": {
+     "wr": 49.33,
+     "games": 371,
+     "delta": -0.01
+    },
+    "Xayah": {
+     "wr": 51.59,
+     "games": 347,
+     "delta": -0.07
+    }
+   }
+  },
+  {
+   "name": "Lux",
+   "role": "support",
+   "arch": "mage",
+   "tier_wr": 48.82,
+   "pick": 6.22,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Sorcerer's Shoes",
+   "runes": {
+    "keystone": "Arcane Comet",
+    "primary": [
+     "Manaflow Band",
+     "Transcendence",
+     "Scorch"
+    ],
+    "secondary": [
+     "Cheap Shot",
+     "Ultimate Hunter"
+    ],
+    "alt": "Secundaria: Domination"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "E",
+    "Q",
+    "W"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Luden's Echo",
+      "Stormsurge",
+      "Shadowflame"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Luden's Echo",
+      "Stormsurge",
+      "Shadowflame"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Luden's Echo",
+      "Stormsurge",
+      "Shadowflame"
+     ]
+    }
+   },
+   "general": "Nivel 1: E. Pokeá con E.",
+   "plan": {
+    "lv1": "E. Pokeá con E.",
+    "pre6": [
+     "Q enraíza a 2 enemigos: buscala detrás del minion.",
+     "W escudo para tu ADC.",
+     "Tu pasiva se consume con autos: E + auto."
+    ],
+    "post6": "R a larga distancia para rematar."
+   },
+   "threat": {
+    "respect": "Q (raíz doble) y E (poke).",
+    "avoid": "Esquivar mal la Q detrás de minions."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 47.0,
+     "games": 1085,
+     "score": -1.2
+    },
+    "Lulu": {
+     "wr": 50.28,
+     "games": 907,
+     "score": 0.11
+    },
+    "Nautilus": {
+     "wr": 49.57,
+     "games": 700,
+     "score": -0.17
+    },
+    "Blitzcrank": {
+     "wr": 42.11,
+     "games": 634,
+     "score": -3
+    },
+    "Karma": {
+     "wr": 46.9,
+     "games": 612,
+     "score": -1.24
+    },
+    "Nami": {
+     "wr": 49.58,
+     "games": 597,
+     "score": -0.17
+    },
+    "Seraphine": {
+     "wr": 47.94,
+     "games": 534,
+     "score": -0.82
+    },
+    "Leona": {
+     "wr": 47.86,
+     "games": 491,
+     "score": -0.86
+    },
+    "Milio": {
+     "wr": 49.68,
+     "games": 469,
+     "score": -0.13
+    },
+    "Pyke": {
+     "wr": 48.48,
+     "games": 460,
+     "score": -0.61
+    },
+    "Senna": {
+     "wr": 50.36,
+     "games": 417,
+     "score": 0.14
+    },
+    "Yuumi": {
+     "wr": 48.26,
+     "games": 373,
+     "score": -0.7
+    },
+    "Xerath": {
+     "wr": 52.5,
+     "games": 360,
+     "score": 1.0
+    },
+    "Morgana": {
+     "wr": 51.0,
+     "games": 349,
+     "score": 0.4
+    },
+    "Soraka": {
+     "wr": 49.06,
+     "games": 318,
+     "score": -0.38
+    },
+    "Vel'Koz": {
+     "wr": 45.15,
+     "games": 299,
+     "score": -1.93
+    },
+    "Alistar": {
+     "wr": 54.42,
+     "games": 294,
+     "score": 1.73
+    },
+    "Bard": {
+     "wr": 48.11,
+     "games": 291,
+     "score": -0.73
+    },
+    "Janna": {
+     "wr": 42.97,
+     "games": 263,
+     "score": -2.47
+    },
+    "Braum": {
+     "wr": 52.89,
+     "games": 225,
+     "score": 0.87
+    },
+    "Rakan": {
+     "wr": 54.46,
+     "games": 224,
+     "score": 1.33
+    },
+    "Brand": {
+     "wr": 55.5,
+     "games": 209,
+     "score": 1.53
+    },
+    "Pantheon": {
+     "wr": 49.76,
+     "games": 209,
+     "score": -0.07
+    },
+    "Rell": {
+     "wr": 42.93,
+     "games": 198,
+     "score": -1.87
+    },
+    "Zyra": {
+     "wr": 50.0,
+     "games": 186,
+     "score": 0.0
+    },
+    "Zilean": {
+     "wr": 47.28,
+     "games": 184,
+     "score": -0.67
+    },
+    "Sona": {
+     "wr": 45.51,
+     "games": 167,
+     "score": -1.0
+    },
+    "Swain": {
+     "wr": 55.69,
+     "games": 167,
+     "score": 1.27
+    },
+    "Tahm Kench": {
+     "wr": 53.47,
+     "games": 144,
+     "score": 0.67
+    }
+   },
+   "synergy": {
+    "Caitlyn": {
+     "wr": 48.78,
+     "games": 27634,
+     "delta": 1.11
+    },
+    "Jhin": {
+     "wr": 49.86,
+     "games": 16893,
+     "delta": 0.59
+    },
+    "Ezreal": {
+     "wr": 46.01,
+     "games": 13026,
+     "delta": 0.52
+    },
+    "Kai'Sa": {
+     "wr": 50.1,
+     "games": 4020,
+     "delta": 1.87
+    },
+    "Miss Fortune": {
+     "wr": 47.21,
+     "games": 4965,
+     "delta": -2.18
+    },
+    "Jinx": {
+     "wr": 49.87,
+     "games": 2745,
+     "delta": -0.25
+    },
+    "Tristana": {
+     "wr": 47.87,
+     "games": 1594,
+     "delta": -1.35
+    },
+    "Aphelios": {
+     "wr": 47.94,
+     "games": 1335,
+     "delta": -0.99
+    },
+    "Xayah": {
+     "wr": 49.55,
+     "games": 1334,
+     "delta": -1.42
+    },
+    "Ashe": {
+     "wr": 48.94,
+     "games": 1275,
+     "delta": 0.24
+    },
+    "Varus": {
+     "wr": 45.74,
+     "games": 2184,
+     "delta": -2.89
+    },
+    "Ziggs": {
+     "wr": 46.98,
+     "games": 960,
+     "delta": -2.51
+    }
+   }
+  },
+  {
+   "name": "Bard",
+   "role": "support",
+   "arch": "roamer",
+   "tier_wr": 49.08,
+   "pick": 4.14,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Boots of Swiftness",
+   "runes": {
+    "keystone": "Electrocute",
+    "primary": [
+     "Cheap Shot",
+     "Deep Ward",
+     "Relentless Hunter"
+    ],
+    "secondary": [
+     "Magical Footwear",
+     "Cosmic Insight"
+    ],
+    "alt": "Secundaria: Inspiration"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Dead Man's Plate",
+      "Locket of the Iron Solari",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Dead Man's Plate",
+      "Locket of the Iron Solari",
+      "Bandlepipes"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Dead Man's Plate",
+      "Locket of the Iron Solari",
+      "Bandlepipes"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Q contra un minion o pared stunea.",
+   "plan": {
+    "lv1": "Q. Q contra un minion o pared stunea.",
+    "pre6": [
+     "Juntá campanas para escalar, pero no dejes solo a tu ADC nivel 2-3.",
+     "W (santuario) cura a tu ADC.",
+     "Rotá a mid cuando tu ADC esté seguro."
+    ],
+    "post6": "R congela: para salvar o para encerrar a 2-3 enemigos."
+   },
+   "threat": {
+    "respect": "Q stunea contra minions/paredes. Roaming.",
+    "avoid": "Pararte junto a un minion o pared."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 45.02,
+     "games": 1124,
+     "score": -1.99
+    },
+    "Lulu": {
+     "wr": 51.65,
+     "games": 937,
+     "score": 0.66
+    },
+    "Nautilus": {
+     "wr": 47.67,
+     "games": 707,
+     "score": -0.93
+    },
+    "Karma": {
+     "wr": 53.5,
+     "games": 572,
+     "score": 1.4
+    },
+    "Nami": {
+     "wr": 50.0,
+     "games": 544,
+     "score": 0.0
+    },
+    "Janna": {
+     "wr": 46.55,
+     "games": 464,
+     "score": -1.38
+    },
+    "Blitzcrank": {
+     "wr": 51.3,
+     "games": 460,
+     "score": 0.52
+    },
+    "Leona": {
+     "wr": 45.65,
+     "games": 425,
+     "score": -1.74
+    },
+    "Pyke": {
+     "wr": 50.26,
+     "games": 390,
+     "score": 0.1
+    },
+    "Seraphine": {
+     "wr": 51.93,
+     "games": 389,
+     "score": 0.77
+    },
+    "Milio": {
+     "wr": 49.35,
+     "games": 385,
+     "score": -0.26
+    },
+    "Yuumi": {
+     "wr": 53.39,
+     "games": 369,
+     "score": 1.36
+    },
+    "Lux": {
+     "wr": 47.53,
+     "games": 364,
+     "score": -0.99
+    },
+    "Senna": {
+     "wr": 42.7,
+     "games": 363,
+     "score": -2.92
+    },
+    "Alistar": {
+     "wr": 53.1,
+     "games": 339,
+     "score": 1.24
+    },
+    "Soraka": {
+     "wr": 53.65,
+     "games": 274,
+     "score": 1.33
+    },
+    "Rakan": {
+     "wr": 48.52,
+     "games": 270,
+     "score": -0.53
+    },
+    "Rell": {
+     "wr": 47.15,
+     "games": 263,
+     "score": -1.0
+    },
+    "Braum": {
+     "wr": 47.77,
+     "games": 247,
+     "score": -0.73
+    },
+    "Zilean": {
+     "wr": 44.92,
+     "games": 236,
+     "score": -1.6
+    },
+    "Pantheon": {
+     "wr": 54.7,
+     "games": 234,
+     "score": 1.47
+    },
+    "Morgana": {
+     "wr": 47.78,
+     "games": 203,
+     "score": -0.6
+    },
+    "Xerath": {
+     "wr": 53.72,
+     "games": 188,
+     "score": 0.93
+    },
+    "Vel'Koz": {
+     "wr": 47.06,
+     "games": 170,
+     "score": -0.67
+    },
+    "Swain": {
+     "wr": 45.28,
+     "games": 159,
+     "score": -1.0
+    },
+    "Sona": {
+     "wr": 42.11,
+     "games": 152,
+     "score": -1.6
+    },
+    "Tahm Kench": {
+     "wr": 40.54,
+     "games": 148,
+     "score": -1.87
+    },
+    "Zyra": {
+     "wr": 57.24,
+     "games": 145,
+     "score": 1.4
+    }
+   },
+   "synergy": {
+    "Jhin": {
+     "wr": 49.15,
+     "games": 16793,
+     "delta": -0.38
+    },
+    "Caitlyn": {
+     "wr": 49.48,
+     "games": 15137,
+     "delta": 1.55
+    },
+    "Ezreal": {
+     "wr": 46.85,
+     "games": 10133,
+     "delta": 1.1
+    },
+    "Kai'Sa": {
+     "wr": 48.46,
+     "games": 7982,
+     "delta": -0.03
+    },
+    "Jinx": {
+     "wr": 48.68,
+     "games": 6653,
+     "delta": -1.7
+    },
+    "Tristana": {
+     "wr": 49.71,
+     "games": 4548,
+     "delta": 0.23
+    },
+    "Yunara": {
+     "wr": 48.58,
+     "games": 3765,
+     "delta": -0.23
+    },
+    "Aphelios": {
+     "wr": 48.51,
+     "games": 3500,
+     "delta": -0.68
+    },
+    "Smolder": {
+     "wr": 48.94,
+     "games": 3351,
+     "delta": -1.67
+    },
+    "Sivir": {
+     "wr": 47.64,
+     "games": 3172,
+     "delta": -2.62
+    },
+    "Ziggs": {
+     "wr": 52.42,
+     "games": 1013,
+     "delta": 2.57
+    }
+   }
+  },
+  {
+   "name": "Renata Glasc",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 49.95,
+   "pick": 2.24,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Guardian",
+    "primary": [
+     "Bone Plating",
+     "Shield Bash",
+     "Unflinching"
+    ],
+    "secondary": [
+     "Sixth Sense",
+     "Relentless Hunter"
+    ],
+    "alt": "Secundaria: Domination"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "E",
+    "W",
+    "Q"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Shurelya's Battlesong",
+      "Redemption"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Shurelya's Battlesong",
+      "Redemption"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Locket of the Iron Solari",
+      "Shurelya's Battlesong",
+      "Redemption"
+     ]
+    }
+   },
+   "general": "Nivel 1: E. Pokeá con E y escudo a tu ADC.",
+   "plan": {
+    "lv1": "E. Pokeá con E y escudo a tu ADC.",
+    "pre6": [
+     "Q engancha y tira al rival contra su ADC.",
+     "W (revivir) hace que tu ADC se cure si mata.",
+     "Jugá a no perder el nivel 2."
+    ],
+    "post6": "R hace que el equipo rival se pegue entre sí: muy fuerte contra dives."
+   },
+   "threat": {
+    "respect": "Q (engancha) y R (berserk).",
+    "avoid": "Agruparte en su R."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 48.65,
+     "games": 1663,
+     "score": -0.54
+    },
+    "Thresh": {
+     "wr": 49.78,
+     "games": 1585,
+     "score": -0.09
+    },
+    "Nautilus": {
+     "wr": 55.59,
+     "games": 1056,
+     "score": 2.24
+    },
+    "Janna": {
+     "wr": 48.83,
+     "games": 895,
+     "score": -0.47
+    },
+    "Nami": {
+     "wr": 47.69,
+     "games": 889,
+     "score": -0.92
+    },
+    "Leona": {
+     "wr": 52.2,
+     "games": 797,
+     "score": 0.88
+    },
+    "Milio": {
+     "wr": 48.33,
+     "games": 720,
+     "score": -0.67
+    },
+    "Karma": {
+     "wr": 52.09,
+     "games": 693,
+     "score": 0.84
+    },
+    "Seraphine": {
+     "wr": 49.04,
+     "games": 624,
+     "score": -0.38
+    },
+    "Pyke": {
+     "wr": 52.56,
+     "games": 605,
+     "score": 1.02
+    },
+    "Braum": {
+     "wr": 47.83,
+     "games": 577,
+     "score": -0.87
+    },
+    "Blitzcrank": {
+     "wr": 51.08,
+     "games": 556,
+     "score": 0.43
+    },
+    "Senna": {
+     "wr": 50.72,
+     "games": 556,
+     "score": 0.29
+    },
+    "Alistar": {
+     "wr": 52.02,
+     "games": 519,
+     "score": 0.81
+    },
+    "Yuumi": {
+     "wr": 48.89,
+     "games": 497,
+     "score": -0.44
+    },
+    "Bard": {
+     "wr": 55.2,
+     "games": 471,
+     "score": 2.08
+    },
+    "Soraka": {
+     "wr": 52.56,
+     "games": 468,
+     "score": 1.02
+    },
+    "Lux": {
+     "wr": 50.32,
+     "games": 467,
+     "score": 0.13
+    },
+    "Rell": {
+     "wr": 51.78,
+     "games": 421,
+     "score": 0.71
+    },
+    "Rakan": {
+     "wr": 50.5,
+     "games": 400,
+     "score": 0.2
+    },
+    "Zilean": {
+     "wr": 45.27,
+     "games": 349,
+     "score": -1.89
+    },
+    "Morgana": {
+     "wr": 49.84,
+     "games": 307,
+     "score": -0.06
+    },
+    "Pantheon": {
+     "wr": 56.77,
+     "games": 303,
+     "score": 2.71
+    },
+    "Poppy": {
+     "wr": 53.47,
+     "games": 245,
+     "score": 1.13
+    },
+    "Sona": {
+     "wr": 48.97,
+     "games": 243,
+     "score": -0.33
+    },
+    "Vel'Koz": {
+     "wr": 51.43,
+     "games": 210,
+     "score": 0.4
+    },
+    "Swain": {
+     "wr": 52.15,
+     "games": 209,
+     "score": 0.6
+    },
+    "Xerath": {
+     "wr": 53.23,
+     "games": 201,
+     "score": 0.87
+    },
+    "Zyra": {
+     "wr": 54.08,
+     "games": 196,
+     "score": 1.07
+    },
+    "Tahm Kench": {
+     "wr": 49.44,
+     "games": 180,
+     "score": -0.13
+    }
+   },
+   "synergy": {
+    "Kalista": {
+     "wr": 49.38,
+     "games": 17542,
+     "delta": 0.15
+    },
+    "Kai'Sa": {
+     "wr": 50.5,
+     "games": 3006,
+     "delta": 1.14
+    },
+    "Yunara": {
+     "wr": 49.69,
+     "games": 1767,
+     "delta": 0.01
+    },
+    "Jinx": {
+     "wr": 49.07,
+     "games": 1610,
+     "delta": -2.18
+    },
+    "Jhin": {
+     "wr": 48.18,
+     "games": 1515,
+     "delta": -2.22
+    },
+    "Xayah": {
+     "wr": 51.78,
+     "games": 1205,
+     "delta": -0.32
+    },
+    "Ezreal": {
+     "wr": 43.64,
+     "games": 1132,
+     "delta": -2.98
+    },
+    "Caitlyn": {
+     "wr": 45.9,
+     "games": 1122,
+     "delta": -2.9
+    },
+    "Varus": {
+     "wr": 51.9,
+     "games": 1104,
+     "delta": 2.14
+    },
+    "Draven": {
+     "wr": 50.05,
+     "games": 959,
+     "delta": 0.14
+    }
+   }
+  },
+  {
+   "name": "Tahm Kench",
+   "role": "support",
+   "arch": "warden",
+   "tier_wr": 49.82,
+   "pick": 2.14,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Plated Steelcaps",
+   "runes": {
+    "keystone": "Grasp of the Undying",
+    "primary": [
+     "Second Wind",
+     "Shield Bash",
+     "Unflinching"
+    ],
+    "secondary": [
+     "Legend: Alacrity",
+     "Triumph"
+    ],
+    "alt": "Secundaria: Precision"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Heartsteel",
+      "Thornmail",
+      "Spirit Visage"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Heartsteel",
+      "Thornmail",
+      "Spirit Visage"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Heartsteel",
+      "Thornmail",
+      "Spirit Visage"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Nivel 2 E + Q y Q de nuevo.",
+   "plan": {
+    "lv1": "Q. Nivel 2 E + Q y Q de nuevo.",
+    "pre6": [
+     "Pasiva: 3 stacks y podés tragarte a un enemigo con W.",
+     "Tragá a tu ADC (W) para salvarlo de engage.",
+     "E guarda daño para convertirlo en escudo."
+    ],
+    "post6": "R lleva a tu equipo a gankear otras líneas."
+   },
+   "threat": {
+    "respect": "Q + pasiva: si llega a 3 stacks te traga.",
+    "avoid": "Pelear cuerpo a cuerpo largo."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 47.86,
+     "games": 2714,
+     "score": -0.86
+    },
+    "Lulu": {
+     "wr": 48.88,
+     "games": 1837,
+     "score": -0.45
+    },
+    "Nautilus": {
+     "wr": 52.48,
+     "games": 1816,
+     "score": 0.99
+    },
+    "Leona": {
+     "wr": 48.78,
+     "games": 1314,
+     "score": -0.49
+    },
+    "Nami": {
+     "wr": 47.96,
+     "games": 1297,
+     "score": -0.82
+    },
+    "Blitzcrank": {
+     "wr": 46.05,
+     "games": 1077,
+     "score": -1.58
+    },
+    "Karma": {
+     "wr": 51.51,
+     "games": 1062,
+     "score": 0.6
+    },
+    "Braum": {
+     "wr": 48.16,
+     "games": 978,
+     "score": -0.74
+    },
+    "Pyke": {
+     "wr": 46.85,
+     "games": 967,
+     "score": -1.26
+    },
+    "Milio": {
+     "wr": 49.84,
+     "games": 939,
+     "score": -0.06
+    },
+    "Alistar": {
+     "wr": 46.72,
+     "games": 929,
+     "score": -1.31
+    },
+    "Janna": {
+     "wr": 50.86,
+     "games": 873,
+     "score": 0.34
+    },
+    "Lux": {
+     "wr": 49.13,
+     "games": 859,
+     "score": -0.35
+    },
+    "Senna": {
+     "wr": 47.46,
+     "games": 847,
+     "score": -1.02
+    },
+    "Seraphine": {
+     "wr": 49.11,
+     "games": 843,
+     "score": -0.36
+    },
+    "Yuumi": {
+     "wr": 54.3,
+     "games": 838,
+     "score": 1.72
+    },
+    "Rell": {
+     "wr": 46.82,
+     "games": 801,
+     "score": -1.27
+    },
+    "Soraka": {
+     "wr": 47.82,
+     "games": 734,
+     "score": -0.87
+    },
+    "Morgana": {
+     "wr": 49.33,
+     "games": 671,
+     "score": -0.27
+    },
+    "Bard": {
+     "wr": 52.26,
+     "games": 641,
+     "score": 0.9
+    },
+    "Rakan": {
+     "wr": 46.49,
+     "games": 626,
+     "score": -1.4
+    },
+    "Pantheon": {
+     "wr": 54.13,
+     "games": 617,
+     "score": 1.65
+    },
+    "Swain": {
+     "wr": 48.01,
+     "games": 604,
+     "score": -0.8
+    },
+    "Brand": {
+     "wr": 45.65,
+     "games": 460,
+     "score": -1.74
+    },
+    "Zilean": {
+     "wr": 50.99,
+     "games": 455,
+     "score": 0.4
+    },
+    "Xerath": {
+     "wr": 53.95,
+     "games": 430,
+     "score": 1.58
+    },
+    "Vel'Koz": {
+     "wr": 52.94,
+     "games": 408,
+     "score": 1.18
+    },
+    "Sona": {
+     "wr": 52.2,
+     "games": 364,
+     "score": 0.88
+    },
+    "Zyra": {
+     "wr": 46.03,
+     "games": 315,
+     "score": -1.59
+    }
+   },
+   "synergy": {
+    "Jinx": {
+     "wr": 51.69,
+     "games": 4227,
+     "delta": 0.57
+    },
+    "Kai'Sa": {
+     "wr": 46.45,
+     "games": 3595,
+     "delta": -2.78
+    },
+    "Jhin": {
+     "wr": 51.03,
+     "games": 3116,
+     "delta": 0.76
+    },
+    "Caitlyn": {
+     "wr": 48.21,
+     "games": 2537,
+     "delta": -0.46
+    },
+    "Ezreal": {
+     "wr": 45.87,
+     "games": 1840,
+     "delta": -0.62
+    },
+    "Tristana": {
+     "wr": 49.33,
+     "games": 1804,
+     "delta": -0.89
+    },
+    "Yunara": {
+     "wr": 49.28,
+     "games": 1256,
+     "delta": -0.27
+    },
+    "Miss Fortune": {
+     "wr": 48.26,
+     "games": 1181,
+     "delta": -2.13
+    },
+    "Ashe": {
+     "wr": 48.5,
+     "games": 1097,
+     "delta": -1.2
+    },
+    "Aphelios": {
+     "wr": 47.54,
+     "games": 976,
+     "delta": -2.33
+    }
+   }
+  },
+  {
+   "name": "Yuumi",
+   "role": "support",
+   "arch": "enchanter",
+   "tier_wr": 47.85,
+   "pick": 5.64,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Ionian Boots of Lucidity",
+   "runes": {
+    "keystone": "Summon Aery",
+    "primary": [
+     "Manaflow Band",
+     "Transcendence",
+     "Scorch"
+    ],
+    "secondary": [
+     "Font of Life",
+     "Revitalize"
+    ],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Exhaust",
+    "Heal"
+   ],
+   "skills": [
+    "Q",
+    "E",
+    "W"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Mikael's Blessing",
+      "Ardent Censer",
+      "Moonstone Renewer"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Mikael's Blessing",
+      "Ardent Censer",
+      "Moonstone Renewer"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Mikael's Blessing",
+      "Ardent Censer",
+      "Moonstone Renewer"
+     ]
+    }
+   },
+   "general": "Nivel 1: Q. Pegada a tu ADC, Q para pokear.",
+   "plan": {
+    "lv1": "Q. Pegada a tu ADC, Q para pokear.",
+    "pre6": [
+     "Salí a buscar pasiva (escudo) con autos y volvé a tu ADC.",
+     "E cura y da velocidad.",
+     "Cuidado con engage: no podés hacer mucho sola."
+    ],
+    "post6": "R enraíza en línea: usala cuando el rival entra."
+   },
+   "threat": {
+    "respect": "Es frágil cuando sale del ADC. Atacala cuando salta.",
+    "avoid": "Ignorarla: hace muy fuerte a su ADC."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Lulu": {
+     "wr": 47.08,
+     "games": 6527,
+     "score": -1.17
+    },
+    "Thresh": {
+     "wr": 44.16,
+     "games": 4577,
+     "score": -2.34
+    },
+    "Nautilus": {
+     "wr": 45.16,
+     "games": 3596,
+     "score": -1.94
+    },
+    "Nami": {
+     "wr": 49.19,
+     "games": 3035,
+     "score": -0.32
+    },
+    "Janna": {
+     "wr": 48.15,
+     "games": 2785,
+     "score": -0.74
+    },
+    "Leona": {
+     "wr": 43.02,
+     "games": 2650,
+     "score": -2.79
+    },
+    "Milio": {
+     "wr": 47.86,
+     "games": 2286,
+     "score": -0.86
+    },
+    "Karma": {
+     "wr": 51.7,
+     "games": 2238,
+     "score": 0.68
+    },
+    "Blitzcrank": {
+     "wr": 44.47,
+     "games": 2105,
+     "score": -2.21
+    },
+    "Seraphine": {
+     "wr": 50.22,
+     "games": 2045,
+     "score": 0.09
+    },
+    "Lux": {
+     "wr": 51.71,
+     "games": 1990,
+     "score": 0.68
+    },
+    "Pyke": {
+     "wr": 48.91,
+     "games": 1934,
+     "score": -0.44
+    },
+    "Soraka": {
+     "wr": 49.6,
+     "games": 1875,
+     "score": -0.16
+    },
+    "Senna": {
+     "wr": 48.73,
+     "games": 1812,
+     "score": -0.51
+    },
+    "Alistar": {
+     "wr": 42.64,
+     "games": 1733,
+     "score": -2.94
+    },
+    "Bard": {
+     "wr": 46.11,
+     "games": 1670,
+     "score": -1.56
+    },
+    "Braum": {
+     "wr": 43.56,
+     "games": 1515,
+     "score": -2.58
+    },
+    "Pantheon": {
+     "wr": 48.25,
+     "games": 1341,
+     "score": -0.7
+    },
+    "Rell": {
+     "wr": 41.42,
+     "games": 1328,
+     "score": -3
+    },
+    "Rakan": {
+     "wr": 42.02,
+     "games": 1190,
+     "score": -3
+    },
+    "Zilean": {
+     "wr": 45.88,
+     "games": 1081,
+     "score": -1.65
+    },
+    "Sona": {
+     "wr": 47.08,
+     "games": 1009,
+     "score": -1.17
+    },
+    "Morgana": {
+     "wr": 55.53,
+     "games": 877,
+     "score": 2.21
+    },
+    "Xerath": {
+     "wr": 56.08,
+     "games": 765,
+     "score": 2.43
+    },
+    "Vel'Koz": {
+     "wr": 50.07,
+     "games": 747,
+     "score": 0.03
+    },
+    "Zyra": {
+     "wr": 50.56,
+     "games": 720,
+     "score": 0.22
+    },
+    "Brand": {
+     "wr": 53.3,
+     "games": 636,
+     "score": 1.32
+    },
+    "Swain": {
+     "wr": 57.79,
+     "games": 616,
+     "score": 3
+    },
+    "Tahm Kench": {
+     "wr": 46.68,
+     "games": 602,
+     "score": -1.33
+    }
+   },
+   "synergy": {
+    "Zeri": {
+     "wr": 50.96,
+     "games": 24954,
+     "delta": 0.98
+    },
+    "Twitch": {
+     "wr": 50.14,
+     "games": 8855,
+     "delta": 0.7
+    },
+    "Tristana": {
+     "wr": 51.5,
+     "games": 5375,
+     "delta": 3.25
+    },
+    "Lucian": {
+     "wr": 51.61,
+     "games": 8841,
+     "delta": 4.54
+    },
+    "Ezreal": {
+     "wr": 37.71,
+     "games": 952,
+     "delta": -6.48
+    },
+    "Kai'Sa": {
+     "wr": 43.57,
+     "games": 762,
+     "delta": -2.82
+    },
+    "Sivir": {
+     "wr": 48.72,
+     "games": 5242,
+     "delta": -0.31
+    },
+    "Yunara": {
+     "wr": 49.59,
+     "games": 615,
+     "delta": 1.23
+    },
+    "Jinx": {
+     "wr": 43.63,
+     "games": 573,
+     "delta": -3.16
+    },
+    "Vayne": {
+     "wr": 49.22,
+     "games": 2889,
+     "delta": 1.87
+    },
+    "Nilah": {
+     "wr": 49.27,
+     "games": 1778,
+     "delta": -0.5
+    }
+   }
+  },
+  {
+   "name": "Xerath",
+   "role": "support",
+   "arch": "mage",
+   "tier_wr": 48.53,
+   "pick": 2.7,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Sorcerer's Shoes",
+   "runes": {
+    "keystone": "Arcane Comet",
+    "primary": [
+     "Manaflow Band",
+     "Transcendence",
+     "Scorch"
+    ],
+    "secondary": [
+     "Presence of Mind",
+     "Coup de Grace"
+    ],
+    "alt": "Secundaria: Precision"
+   },
+   "spells": [
+    "Flash",
+    "Heal"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Luden's Echo",
+      "Horizon Focus",
+      "Shadowflame"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Luden's Echo",
+      "Horizon Focus",
+      "Shadowflame"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Luden's Echo",
+      "Horizon Focus",
+      "Shadowflame"
+     ]
+    }
+   },
+   "general": "Nivel 1: W. Pokeá con Q larga desde máximo rango.",
+   "plan": {
+    "lv1": "W. Pokeá con Q larga desde máximo rango.",
+    "pre6": [
+     "E (stun) solo si están en línea limpia.",
+     "Si te enganchan, morís: jugá detrás de tu ADC.",
+     "Sin maná no hacés nada: gestioná."
+    ],
+    "post6": "R pokea a distancia enorme: rematá a quien huye."
+   },
+   "threat": {
+    "respect": "Poke enorme. Muy frágil si lo alcanzás.",
+    "avoid": "Quedarte quieto a recibir poke."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 46.86,
+     "games": 510,
+     "score": -1.26
+    },
+    "Nautilus": {
+     "wr": 43.2,
+     "games": 375,
+     "score": -2.72
+    },
+    "Lux": {
+     "wr": 47.5,
+     "games": 360,
+     "score": -1.0
+    },
+    "Lulu": {
+     "wr": 49.85,
+     "games": 333,
+     "score": -0.06
+    },
+    "Blitzcrank": {
+     "wr": 46.33,
+     "games": 313,
+     "score": -1.47
+    },
+    "Karma": {
+     "wr": 49.45,
+     "games": 275,
+     "score": -0.2
+    },
+    "Leona": {
+     "wr": 48.73,
+     "games": 236,
+     "score": -0.4
+    },
+    "Nami": {
+     "wr": 53.88,
+     "games": 232,
+     "score": 1.2
+    },
+    "Pyke": {
+     "wr": 46.23,
+     "games": 212,
+     "score": -1.07
+    },
+    "Seraphine": {
+     "wr": 44.83,
+     "games": 203,
+     "score": -1.4
+    },
+    "Senna": {
+     "wr": 45.05,
+     "games": 182,
+     "score": -1.2
+    },
+    "Bard": {
+     "wr": 43.9,
+     "games": 164,
+     "score": -1.33
+    },
+    "Yuumi": {
+     "wr": 45.0,
+     "games": 160,
+     "score": -1.07
+    },
+    "Milio": {
+     "wr": 43.14,
+     "games": 153,
+     "score": -1.4
+    },
+    "Vel'Koz": {
+     "wr": 46.21,
+     "games": 145,
+     "score": -0.73
+    },
+    "Pantheon": {
+     "wr": 46.32,
+     "games": 136,
+     "score": -0.67
+    },
+    "Janna": {
+     "wr": 51.91,
+     "games": 131,
+     "score": 0.33
+    },
+    "Alistar": {
+     "wr": 46.51,
+     "games": 129,
+     "score": -0.6
+    },
+    "Soraka": {
+     "wr": 45.74,
+     "games": 129,
+     "score": -0.73
+    },
+    "Morgana": {
+     "wr": 48.31,
+     "games": 118,
+     "score": -0.27
+    },
+    "Braum": {
+     "wr": 46.09,
+     "games": 115,
+     "score": -0.6
+    },
+    "Zilean": {
+     "wr": 46.46,
+     "games": 99,
+     "score": -0.47
+    },
+    "Rakan": {
+     "wr": 51.02,
+     "games": 98,
+     "score": 0.13
+    },
+    "Brand": {
+     "wr": 50.56,
+     "games": 89,
+     "score": 0.07
+    },
+    "Zyra": {
+     "wr": 51.72,
+     "games": 87,
+     "score": 0.2
+    },
+    "Swain": {
+     "wr": 49.41,
+     "games": 85,
+     "score": -0.07
+    },
+    "Rell": {
+     "wr": 49.4,
+     "games": 83,
+     "score": -0.07
+    },
+    "Sona": {
+     "wr": 53.33,
+     "games": 75,
+     "score": 0.33
+    },
+    "Tahm Kench": {
+     "wr": 45.59,
+     "games": 68,
+     "score": -0.4
+    }
+   },
+   "synergy": {
+    "Jhin": {
+     "wr": 50.75,
+     "games": 17284,
+     "delta": 1.77
+    },
+    "Ezreal": {
+     "wr": 48.54,
+     "games": 789,
+     "delta": 2.64
+    },
+    "Caitlyn": {
+     "wr": 48.1,
+     "games": 686,
+     "delta": 0.49
+    },
+    "Kai'Sa": {
+     "wr": 48.75,
+     "games": 521,
+     "delta": 0.42
+    },
+    "Miss Fortune": {
+     "wr": 43.6,
+     "games": 367,
+     "delta": -2.02
+    },
+    "Jinx": {
+     "wr": 46.89,
+     "games": 354,
+     "delta": -1.04
+    },
+    "Varus": {
+     "wr": 50.45,
+     "games": 224,
+     "delta": 0.47
+    },
+    "Tristana": {
+     "wr": 47.73,
+     "games": 220,
+     "delta": -0.26
+    },
+    "Aphelios": {
+     "wr": 51.02,
+     "games": 196,
+     "delta": 0.47
+    },
+    "Ashe": {
+     "wr": 46.6,
+     "games": 191,
+     "delta": -0.35
+    }
+   }
+  },
+  {
+   "name": "Swain",
+   "role": "support",
+   "arch": "mage",
+   "tier_wr": 48.32,
+   "pick": 2.87,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Plated Steelcaps",
+   "runes": {
+    "keystone": "Conqueror",
+    "primary": [
+     "Legend: Haste",
+     "Presence of Mind",
+     "Last Stand"
+    ],
+    "secondary": [
+     "Overgrowth"
+    ],
+    "alt": "Secundaria: Resolve"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Rylai's Crystal Scepter",
+      "Liandry's Torment",
+      "Zhonya's Hourglass"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Rylai's Crystal Scepter",
+      "Liandry's Torment",
+      "Zhonya's Hourglass"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Rylai's Crystal Scepter",
+      "Liandry's Torment",
+      "Zhonya's Hourglass"
+     ]
+    }
+   },
+   "general": "Nivel 1: E. E atrae + Q.",
+   "plan": {
+    "lv1": "E. E atrae + Q.",
+    "pre6": [
+     "Pasiva: si están inmovilizados, los atraés y te curás.",
+     "W da visión y ralentiza.",
+     "Jugá tanque: aguantás mucho."
+    ],
+    "post6": "R te cura en área: entrá a pelear largo."
+   },
+   "threat": {
+    "respect": "E (atracción) + pasiva. Aguanta mucho.",
+    "avoid": "Pelear largo en su R."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 47.55,
+     "games": 2324,
+     "score": -0.98
+    },
+    "Lulu": {
+     "wr": 44.37,
+     "games": 1742,
+     "score": -2.25
+    },
+    "Nautilus": {
+     "wr": 49.93,
+     "games": 1452,
+     "score": -0.03
+    },
+    "Nami": {
+     "wr": 44.58,
+     "games": 1126,
+     "score": -2.17
+    },
+    "Leona": {
+     "wr": 48.66,
+     "games": 1042,
+     "score": -0.54
+    },
+    "Karma": {
+     "wr": 47.02,
+     "games": 955,
+     "score": -1.19
+    },
+    "Janna": {
+     "wr": 45.12,
+     "games": 942,
+     "score": -1.95
+    },
+    "Seraphine": {
+     "wr": 47.4,
+     "games": 941,
+     "score": -1.04
+    },
+    "Lux": {
+     "wr": 49.06,
+     "games": 903,
+     "score": -0.38
+    },
+    "Milio": {
+     "wr": 45.35,
+     "games": 849,
+     "score": -1.86
+    },
+    "Senna": {
+     "wr": 49.44,
+     "games": 797,
+     "score": -0.22
+    },
+    "Pyke": {
+     "wr": 50.19,
+     "games": 797,
+     "score": 0.08
+    },
+    "Alistar": {
+     "wr": 50.7,
+     "games": 791,
+     "score": 0.28
+    },
+    "Blitzcrank": {
+     "wr": 48.16,
+     "games": 762,
+     "score": -0.74
+    },
+    "Braum": {
+     "wr": 48.8,
+     "games": 668,
+     "score": -0.48
+    },
+    "Soraka": {
+     "wr": 44.55,
+     "games": 660,
+     "score": -2.18
+    },
+    "Yuumi": {
+     "wr": 42.21,
+     "games": 616,
+     "score": -3
+    },
+    "Bard": {
+     "wr": 45.16,
+     "games": 558,
+     "score": -1.94
+    },
+    "Morgana": {
+     "wr": 46.34,
+     "games": 533,
+     "score": -1.46
+    },
+    "Rell": {
+     "wr": 45.28,
+     "games": 530,
+     "score": -1.89
+    },
+    "Pantheon": {
+     "wr": 47.38,
+     "games": 515,
+     "score": -1.05
+    },
+    "Rakan": {
+     "wr": 47.16,
+     "games": 475,
+     "score": -1.14
+    },
+    "Brand": {
+     "wr": 45.77,
+     "games": 426,
+     "score": -1.69
+    },
+    "Xerath": {
+     "wr": 45.05,
+     "games": 424,
+     "score": -1.98
+    },
+    "Tahm Kench": {
+     "wr": 50.89,
+     "games": 395,
+     "score": 0.36
+    },
+    "Vel'Koz": {
+     "wr": 40.48,
+     "games": 378,
+     "score": -3
+    },
+    "Zilean": {
+     "wr": 48.13,
+     "games": 347,
+     "score": -0.75
+    },
+    "Zyra": {
+     "wr": 50.75,
+     "games": 333,
+     "score": 0.3
+    },
+    "Sona": {
+     "wr": 47.35,
+     "games": 302,
+     "score": -1.06
+    }
+   },
+   "synergy": {
+    "Jhin": {
+     "wr": 48.99,
+     "games": 6824,
+     "delta": 0.22
+    },
+    "Kai'Sa": {
+     "wr": 48.59,
+     "games": 6594,
+     "delta": 0.86
+    },
+    "Ezreal": {
+     "wr": 47.69,
+     "games": 3858,
+     "delta": 2.7
+    },
+    "Caitlyn": {
+     "wr": 46.4,
+     "games": 3164,
+     "delta": -0.77
+    },
+    "Miss Fortune": {
+     "wr": 49.03,
+     "games": 2429,
+     "delta": 0.14
+    },
+    "Jinx": {
+     "wr": 49.81,
+     "games": 2333,
+     "delta": 0.19
+    },
+    "Xayah": {
+     "wr": 50.81,
+     "games": 2098,
+     "delta": 0.34
+    },
+    "Yunara": {
+     "wr": 43.22,
+     "games": 1976,
+     "delta": -4.83
+    },
+    "Tristana": {
+     "wr": 48.01,
+     "games": 1554,
+     "delta": -0.71
+    },
+    "Ashe": {
+     "wr": 47.12,
+     "games": 1509,
+     "delta": -1.08
+    }
+   }
+  },
+  {
+   "name": "Brand",
+   "role": "support",
+   "arch": "mage",
+   "tier_wr": 48.84,
+   "pick": 2.14,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Sorcerer's Shoes",
+   "runes": {
+    "keystone": "Deathfire Touch",
+    "primary": [
+     "Manaflow Band",
+     "Transcendence",
+     "Scorch"
+    ],
+    "secondary": [
+     "Presence of Mind",
+     "Cut Down"
+    ],
+    "alt": "Secundaria: Precision"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "W",
+    "Q",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Rylai's Crystal Scepter",
+      "Liandry's Torment",
+      "Morellonomicon"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Rylai's Crystal Scepter",
+      "Liandry's Torment",
+      "Morellonomicon"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Rylai's Crystal Scepter",
+      "Liandry's Torment",
+      "Morellonomicon"
+     ]
+    }
+   },
+   "general": "Nivel 1: W. W + E en minions para pokear.",
+   "plan": {
+    "lv1": "W. W + E en minions para pokear.",
+    "pre6": [
+     "Q stunea si el objetivo tiene la pasiva.",
+     "Pasiva a 3 stacks explota: buscala en peleas.",
+     "Liandry's te hace fuerte contra tanques."
+    ],
+    "post6": "R rebota entre enemigos: usala cuando están juntos."
+   },
+   "threat": {
+    "respect": "Pasiva a 3 stacks y su poke W.",
+    "avoid": "Agruparte en su R."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 48.13,
+     "games": 2063,
+     "score": -0.75
+    },
+    "Lulu": {
+     "wr": 50.07,
+     "games": 1472,
+     "score": 0.03
+    },
+    "Nautilus": {
+     "wr": 48.72,
+     "games": 1246,
+     "score": -0.51
+    },
+    "Nami": {
+     "wr": 47.32,
+     "games": 1101,
+     "score": -1.07
+    },
+    "Lux": {
+     "wr": 50.45,
+     "games": 1001,
+     "score": 0.18
+    },
+    "Karma": {
+     "wr": 47.59,
+     "games": 912,
+     "score": -0.96
+    },
+    "Leona": {
+     "wr": 46.57,
+     "games": 861,
+     "score": -1.37
+    },
+    "Janna": {
+     "wr": 44.26,
+     "games": 854,
+     "score": -2.3
+    },
+    "Milio": {
+     "wr": 45.57,
+     "games": 823,
+     "score": -1.77
+    },
+    "Blitzcrank": {
+     "wr": 48.18,
+     "games": 822,
+     "score": -0.73
+    },
+    "Seraphine": {
+     "wr": 49.01,
+     "games": 810,
+     "score": -0.4
+    },
+    "Soraka": {
+     "wr": 48.33,
+     "games": 720,
+     "score": -0.67
+    },
+    "Pyke": {
+     "wr": 47.09,
+     "games": 705,
+     "score": -1.16
+    },
+    "Senna": {
+     "wr": 51.29,
+     "games": 659,
+     "score": 0.52
+    },
+    "Yuumi": {
+     "wr": 46.7,
+     "games": 636,
+     "score": -1.32
+    },
+    "Morgana": {
+     "wr": 51.52,
+     "games": 627,
+     "score": 0.61
+    },
+    "Braum": {
+     "wr": 47.55,
+     "games": 612,
+     "score": -0.98
+    },
+    "Alistar": {
+     "wr": 51.96,
+     "games": 537,
+     "score": 0.78
+    },
+    "Bard": {
+     "wr": 48.15,
+     "games": 513,
+     "score": -0.74
+    },
+    "Xerath": {
+     "wr": 48.07,
+     "games": 493,
+     "score": -0.77
+    },
+    "Swain": {
+     "wr": 54.23,
+     "games": 426,
+     "score": 1.69
+    },
+    "Rell": {
+     "wr": 48.75,
+     "games": 400,
+     "score": -0.5
+    },
+    "Pantheon": {
+     "wr": 50.38,
+     "games": 393,
+     "score": 0.15
+    },
+    "Vel'Koz": {
+     "wr": 46.83,
+     "games": 363,
+     "score": -1.27
+    },
+    "Rakan": {
+     "wr": 49.58,
+     "games": 359,
+     "score": -0.17
+    },
+    "Zilean": {
+     "wr": 46.82,
+     "games": 346,
+     "score": -1.27
+    },
+    "Tahm Kench": {
+     "wr": 53.25,
+     "games": 338,
+     "score": 1.3
+    },
+    "Zyra": {
+     "wr": 44.44,
+     "games": 333,
+     "score": -2.22
+    },
+    "Sona": {
+     "wr": 48.23,
+     "games": 282,
+     "score": -0.67
+    }
+   },
+   "synergy": {}
+  },
+  {
+   "name": "Pantheon",
+   "role": "support",
+   "arch": "engage",
+   "tier_wr": 47.5,
+   "pick": 3.24,
+   "blind": 0,
+   "start": [
+    "World Atlas",
+    "Health Potion",
+    "Health Potion"
+   ],
+   "boots": "Plated Steelcaps",
+   "runes": {
+    "keystone": "Press the Attack",
+    "primary": [
+     "Triumph",
+     "Legend: Haste",
+     "Coup de Grace"
+    ],
+    "secondary": [
+     "Relentless Hunter",
+     "Cheap Shot"
+    ],
+    "alt": "Secundaria: Domination"
+   },
+   "spells": [
+    "Flash",
+    "Ignite"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "builds": {
+    "default": {
+     "items": [
+      "Umbral Glaive",
+      "Eclipse",
+      "Black Cleaver"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Umbral Glaive",
+      "Eclipse",
+      "Black Cleaver"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Umbral Glaive",
+      "Eclipse",
+      "Black Cleaver"
+     ]
+    }
+   },
+   "general": "Nivel 1: W. Nivel 2 W + Q mata a casi cualquier ADC.",
+   "plan": {
+    "lv1": "W. Nivel 2 W + Q mata a casi cualquier ADC.",
+    "pre6": [
+     "Pokeá con Q a distancia; Q potenciada tras 5 stacks.",
+     "W stunea: buscalos cuando se acercan a la wave.",
+     "E bloquea daño frontal para tu engage."
+    ],
+    "post6": "R para gankear otras líneas o volver rápido a bot."
+   },
+   "threat": {
+    "respect": "Nivel 2 W + Q: es un asesino temprano.",
+    "avoid": "Pelear en nivel 2-3 sin vida completa."
+   },
+   "comp_bonus": {
+    "AD": 0,
+    "AP": 0
+   },
+   "matchups": {
+    "Thresh": {
+     "wr": 44.92,
+     "games": 2511,
+     "score": -2.03
+    },
+    "Lulu": {
+     "wr": 44.08,
+     "games": 2330,
+     "score": -2.37
+    },
+    "Nautilus": {
+     "wr": 47.48,
+     "games": 1824,
+     "score": -1.01
+    },
+    "Pyke": {
+     "wr": 48.92,
+     "games": 1439,
+     "score": -0.43
+    },
+    "Yuumi": {
+     "wr": 51.68,
+     "games": 1341,
+     "score": 0.67
+    },
+    "Leona": {
+     "wr": 45.3,
+     "games": 1298,
+     "score": -1.88
+    },
+    "Nami": {
+     "wr": 48.33,
+     "games": 1258,
+     "score": -0.67
+    },
+    "Lux": {
+     "wr": 49.66,
+     "games": 1160,
+     "score": -0.14
+    },
+    "Alistar": {
+     "wr": 45.76,
+     "games": 1145,
+     "score": -1.7
+    },
+    "Karma": {
+     "wr": 50.17,
+     "games": 1144,
+     "score": 0.07
+    },
+    "Janna": {
+     "wr": 43.28,
+     "games": 1139,
+     "score": -2.69
+    },
+    "Braum": {
+     "wr": 43.47,
+     "games": 1111,
+     "score": -2.61
+    },
+    "Blitzcrank": {
+     "wr": 45.55,
+     "games": 1100,
+     "score": -1.78
+    },
+    "Milio": {
+     "wr": 45.52,
+     "games": 1026,
+     "score": -1.79
+    },
+    "Seraphine": {
+     "wr": 43.45,
+     "games": 985,
+     "score": -2.62
+    },
+    "Bard": {
+     "wr": 51.57,
+     "games": 954,
+     "score": 0.63
+    },
+    "Senna": {
+     "wr": 45.71,
+     "games": 816,
+     "score": -1.72
+    },
+    "Soraka": {
+     "wr": 47.4,
+     "games": 789,
+     "score": -1.04
+    },
+    "Morgana": {
+     "wr": 50.98,
+     "games": 663,
+     "score": 0.39
+    },
+    "Rell": {
+     "wr": 48.3,
+     "games": 646,
+     "score": -0.68
+    },
+    "Rakan": {
+     "wr": 46.57,
+     "games": 627,
+     "score": -1.37
+    },
+    "Poppy": {
+     "wr": 43.26,
+     "games": 564,
+     "score": -2.7
+    },
+    "Xerath": {
+     "wr": 50.84,
+     "games": 535,
+     "score": 0.34
+    },
+    "Swain": {
+     "wr": 52.62,
+     "games": 515,
+     "score": 1.05
+    },
+    "Tahm Kench": {
+     "wr": 50.44,
+     "games": 458,
+     "score": 0.18
+    },
+    "Zilean": {
+     "wr": 46.68,
+     "games": 437,
+     "score": -1.33
+    },
+    "Vel'Koz": {
+     "wr": 47.75,
+     "games": 400,
+     "score": -0.9
+    },
+    "Brand": {
+     "wr": 49.62,
+     "games": 393,
+     "score": -0.15
+    },
+    "Sona": {
+     "wr": 47.49,
+     "games": 379,
+     "score": -1.0
+    }
+   },
+   "synergy": {
+    "Kai'Sa": {
+     "wr": 46.18,
+     "games": 7439,
+     "delta": -0.73
+    },
+    "Jhin": {
+     "wr": 49.68,
+     "games": 6510,
+     "delta": 1.73
+    },
+    "Tristana": {
+     "wr": 47.52,
+     "games": 4756,
+     "delta": -0.38
+    },
+    "Caitlyn": {
+     "wr": 46.58,
+     "games": 4347,
+     "delta": 0.23
+    },
+    "Jinx": {
+     "wr": 50.36,
+     "games": 4075,
+     "delta": 1.56
+    },
+    "Yunara": {
+     "wr": 48.61,
+     "games": 3787,
+     "delta": 1.38
+    },
+    "Ezreal": {
+     "wr": 43.75,
+     "games": 3129,
+     "delta": -0.42
+    },
+    "Lucian": {
+     "wr": 43.28,
+     "games": 2276,
+     "delta": -3.44
+    },
+    "Samira": {
+     "wr": 45.8,
+     "games": 2205,
+     "delta": -2.68
+    },
+    "Miss Fortune": {
+     "wr": 47.38,
+     "games": 2024,
+     "delta": -0.69
+    }
+   }
+  }
+ ]
+}

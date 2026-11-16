@@ -1,0 +1,2532 @@
+{
+ "patch": "26.22",
+ "source": "op.gg Master+",
+ "_info": "Winrate por matchup de op.gg Master+ (16.22 = 26.22). score = (wr-50)/2.5, reducido con menos de 300 partidas. Guías: análisis de kits.",
+ "pool": [
+  {
+   "name": "Nocturne",
+   "role": "jungle",
+   "blind": -0.9,
+   "tier_wr": 48.7,
+   "pick": 2.73,
+   "comp_bonus": {},
+   "start": [
+    "Scorchclaw Pup",
+    "Health Potion"
+   ],
+   "runes": {
+    "keystone": "Conqueror",
+    "primary": [
+     "Triumph",
+     "Legend: Alacrity",
+     "Last Stand"
+    ],
+    "secondary": [
+     "Grisly Mementos",
+     "Ultimate Hunter"
+    ]
+   },
+   "spells": [
+    "Flash",
+    "Smite"
+   ],
+   "skills": [
+    "Q",
+    "E",
+    "W"
+   ],
+   "boots": "Plated Steelcaps",
+   "builds": {
+    "default": {
+     "items": [
+      "Profane Hydra",
+      "Axiom Arc",
+      "Voltaic Cyclosword"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Experimental Hexplate",
+      "Stridebreaker",
+      "Death's Dance"
+     ]
+    },
+    "vs_ap": {
+     "items": [
+      "Experimental Hexplate",
+      "Black Cleaver",
+      "Maw of Malmortius"
+     ],
+     "boots": "Mercury's Treads"
+    }
+   },
+   "general": "Nocturne es un jungla de picos: débil en duelos tempranos, muy fuerte al 6 con R. Planificá tu primer recorrido para estar cerca de una línea con prioridad al 6. El W bloquea una habilidad: usalo contra el CC más importante del rival.",
+   "matchups": {
+    "Lee Sin": {
+     "wr": 49.74,
+     "games": 567,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Lee Sin: Gana el nivel 2-3 y puede invadirte con Q: ward en tu buff y no le regales el primer duelo."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear en un pasillo donde te pueda patear con R hacia su equipo.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Jarvan IV": {
+     "wr": 47.31,
+     "games": 353,
+     "score": -1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Jarvan IV: Gankea fuerte nivel 3 con E-Q (knockup): ward el río antes del minuto 3."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Quedarte en el borde de su R (te encierra).",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Qiyana": {
+     "wr": 52.68,
+     "games": 298,
+     "score": 1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Qiyana: Mucho daño explosivo y su R contra paredes: no pelees cerca de muros."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Agruparte en un pasillo donde su R pegue a varios.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Graves": {
+     "wr": 48.25,
+     "games": 286,
+     "score": -0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Graves: Gana duelos cortos y farmea rápido: no lo pelees en su jungla."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelearlo de cerca cuando tiene las dos balas cargadas.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Viego": {
+     "wr": 41.6,
+     "games": 262,
+     "score": -2.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Le gana el duelo largo a Nocturne: no lo peleés 1v1 en su jungla. Pelealo con tu línea al lado o cuando use su habilidad de engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Viego: Gana pelea larga y se vuelve el campeón que mata: no le dejes resets."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Dejar a un aliado bajo de vida que Viego pueda poseer.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Kha'Zix": {
+     "wr": 54.51,
+     "games": 244,
+     "score": 1.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Kha'Zix: Hace mucho daño a quien está aislado: nunca te quedes solo en tu jungla."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Hacer campamentos solo sin ward cuando no sabés dónde está.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Sylas": {
+     "wr": 49.57,
+     "games": 232,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Le gana el duelo largo a Nocturne: no lo peleés 1v1 en su jungla. Pelealo con tu línea al lado o cuando use su habilidad de engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Sylas: Puede robar tu R; pelea fuerte a corto plazo."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Usar tu R cuando Sylas la puede robar contra tu equipo.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Hecarim": {
+     "wr": 45.58,
+     "games": 226,
+     "score": -1.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Le gana el duelo largo a Nocturne: no lo peleés 1v1 en su jungla. Pelealo con tu línea al lado o cuando use su habilidad de engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Hecarim: Llega rápido con E y te tira para atrás: no lo dejes cargar velocidad en línea recta."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear en terreno abierto donde corre en línea.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Talon": {
+     "wr": 51.15,
+     "games": 217,
+     "score": 0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Talon: Gankea por encima de los muros: ward en lugares raros."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Quedarte en el río sin visión.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Naafiri": {
+     "wr": 54.38,
+     "games": 217,
+     "score": 1.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Naafiri: Ráfaga fuerte temprano con sus perros: no pelees en desventaja de vida."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear de cerca cuando tiene todos los perros.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Wukong": {
+     "wr": 43.13,
+     "games": 211,
+     "score": -1.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Le gana el duelo largo a Nocturne: no lo peleés 1v1 en su jungla. Pelealo con tu línea al lado o cuando use su habilidad de engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Wukong: Su clon te confunde y su R levanta a varios."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Agruparte con tu equipo cuando tiene R lista.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Taliyah": {
+     "wr": 54.7,
+     "games": 181,
+     "score": 1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Master Yi": {
+     "wr": 45.61,
+     "games": 171,
+     "score": -1.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Master Yi: Si farmea tranquilo te gana el juego: invadilo temprano."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear cuando tiene Q (se vuelve intocable) disponible.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Vi": {
+     "wr": 48.05,
+     "games": 154,
+     "score": -0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Vi: Su R marca a uno y no se puede evitar: guardá W de Nocturne o Zhonya para eso."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Ser el carry aislado al que va a buscar.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Kayn": {
+     "wr": 49.01,
+     "games": 151,
+     "score": -0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Kayn: Débil antes de su forma; muy fuerte después."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Dejarlo farmear libre los primeros 10 minutos.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Cho'Gath": {
+     "wr": 45.27,
+     "games": 148,
+     "score": -0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "No lo podés matar en peleas: ganale objetivos y matá a sus carries. Guardá W para su engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Ekko": {
+     "wr": 45.58,
+     "games": 147,
+     "score": -0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Ekko: Daño explosivo y vuelve atrás con R: guardá algo para después de su R."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Gastar todo antes de que use R.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Rengar": {
+     "wr": 47.92,
+     "games": 144,
+     "score": -0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Rengar: Salta desde arbustos: limpiá con Oracle Lens."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Caminar cerca de arbustos sin visión.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Jayce": {
+     "wr": 54.55,
+     "games": 143,
+     "score": 0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Lillia": {
+     "wr": 38.03,
+     "games": 142,
+     "score": -2.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Lillia: Escala y gana peleas largas corriendo: forzá peleas cortas temprano."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Perseguirla en pelea larga.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Shaco": {
+     "wr": 51.11,
+     "games": 135,
+     "score": 0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Shaco: Te invade con trampas: ward y limpiá cajas antes de entrar a su jungla."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Seguirlo cuando se hace invisible.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Elise": {
+     "wr": 50.77,
+     "games": 130,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Elise: Muy fuerte nivel 2-3 y gankea temprano: no la invadas."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelearla en su jungla antes del 6.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Zyra": {
+     "wr": 53.04,
+     "games": 115,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Nidalee": {
+     "wr": 47.79,
+     "games": 113,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Nidalee: Te gasta con lanzas y gana duelos tempranos."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear con poca vida contra su lanza.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Evelynn": {
+     "wr": 53.57,
+     "games": 112,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Evelynn: Invisible desde el 6: comprá Control Ward y llevá Oracle."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Caminar sola por la jungla después del 6.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Xin Zhao": {
+     "wr": 45.95,
+     "games": 111,
+     "score": -0.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Xin Zhao: Gana el duelo temprano y te tira para arriba."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelearlo 1v1 antes del 6.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Diana": {
+     "wr": 49.0,
+     "games": 100,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Zed": {
+     "wr": 47.42,
+     "games": 97,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Zed: Su R te marca: W de Diana justo cuando reaparece detrás tuyo."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear con media vida cuando tiene R.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Shyvana": {
+     "wr": 44.09,
+     "games": 93,
+     "score": -0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Kindred": {
+     "wr": 41.94,
+     "games": 93,
+     "score": -1.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Kindred: Gana duelos y se lleva marcas de tu jungla."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Dejarla tomar las marcas en tus campamentos.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Nunu & Willump": {
+     "wr": 43.18,
+     "games": 88,
+     "score": -0.8,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "No lo podés matar en peleas: ganale objetivos y matá a sus carries. Guardá W para su engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Zac": {
+     "wr": 47.73,
+     "games": 88,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "No lo podés matar en peleas: ganale objetivos y matá a sus carries. Guardá W para su engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Zac: Engage desde muy lejos: guardá movilidad."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Quedarte junto a tu equipo cuando él salta.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Bel'Veth": {
+     "wr": 46.59,
+     "games": 88,
+     "score": -0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Bel'Veth: Escala muy fuerte: presionala temprano."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Dejarla tomar heraldo/barón gratis.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Briar": {
+     "wr": 47.13,
+     "games": 87,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Le gana el duelo largo a Nocturne: no lo peleés 1v1 en su jungla. Pelealo con tu línea al lado o cuando use su habilidad de engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Karthus": {
+     "wr": 46.58,
+     "games": 73,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Karthus: Farmea y te mata desde la base con R: guardá Zhonya o W."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear con poca vida cuando su R está lista.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Fiddlesticks": {
+     "wr": 47.06,
+     "games": 68,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Rek'Sai": {
+     "wr": 51.72,
+     "games": 58,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Rek'Sai: Gana el nivel 2-3 y aparece debajo de la tierra."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Hacer campamentos sin ward cerca de su túnel.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Udyr": {
+     "wr": 48.08,
+     "games": 52,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Le gana el duelo largo a Nocturne: no lo peleés 1v1 en su jungla. Pelealo con tu línea al lado o cuando use su habilidad de engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Sejuani": {
+     "wr": 52.27,
+     "games": 44,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "No lo podés matar en peleas: ganale objetivos y matá a sus carries. Guardá W para su engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea.",
+       "Respetá a Sejuani: Su R stunea a varios: separate."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear agrupados contra su R.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Darius": {
+     "wr": 45.45,
+     "games": 44,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Le gana el duelo largo a Nocturne: no lo peleés 1v1 en su jungla. Pelealo con tu línea al lado o cuando use su habilidad de engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Ivern": {
+     "wr": 43.18,
+     "games": 44,
+     "score": -0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "No lo podés matar en peleas: ganale objetivos y matá a sus carries. Guardá W para su engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Pantheon": {
+     "wr": 50.0,
+     "games": 40,
+     "score": 0.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Gwen": {
+     "wr": 36.84,
+     "games": 38,
+     "score": -0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Él escala mejor que vos en duelos largos: invadilo con prioridad de línea antes del 6 y gankeá seguido para que no farmee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Skarner": {
+     "wr": 42.86,
+     "games": 35,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "No lo podés matar en peleas: ganale objetivos y matá a sus carries. Guardá W para su engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Warwick": {
+     "wr": 41.18,
+     "games": 34,
+     "score": -0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Le gana el duelo largo a Nocturne: no lo peleés 1v1 en su jungla. Pelealo con tu línea al lado o cuando use su habilidad de engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Aatrox": {
+     "wr": 48.48,
+     "games": 33,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Le gana el duelo largo a Nocturne: no lo peleés 1v1 en su jungla. Pelealo con tu línea al lado o cuando use su habilidad de engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Quinn": {
+     "wr": 54.84,
+     "games": 31,
+     "score": 0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Ese jungla te gana nivel 2-4: no lo invadas y poné ward en tu buff contrario al empezar. Contra-gankeá donde él gankee.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Gragas": {
+     "wr": 46.67,
+     "games": 30,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "No lo podés matar en peleas: ganale objetivos y matá a sus carries. Guardá W para su engage.",
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Zaahen": {
+     "wr": 46.67,
+     "games": 30,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q y limpiá rápido: Nocturne no gana duelos tempranos contra invasores, su fuerza llega al 6.",
+      "pre6": [
+       "Hacé un recorrido de full clear o 3 campamentos + ganke a una línea con CC (tu E necesita que el rival no pueda escaparse del rango).",
+       "Ganke solo si el rival está empujado: entrá por el costado con Q y guardá E para cuando intente escapar.",
+       "Usá W para bloquear la habilidad clave del rival (stun, root, pull), no apenas empieza la pelea."
+      ],
+      "post6": "Al 6 cambia todo: con R buscá al carry rival que esté lejos de su equipo o a la línea que perdió Flash. Antes de usar R, avisá a tu equipo con un ping.",
+      "evitar": "Pelear 1v1 nivel 2-3 contra un jungla de duelo temprano o entrar con R a una pelea 1v3 sin tu equipo cerca.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    }
+   },
+   "start_note": "Más jugada en Master+: letalidad (Profane Hydra). La de peleador (Hexplate, Stridebreaker, Black Cleaver) tiene más winrate: 54,8% vs 53,6%."
+  },
+  {
+   "name": "Diana",
+   "role": "jungle",
+   "blind": -0.2,
+   "tier_wr": 49.77,
+   "pick": 2.99,
+   "comp_bonus": {},
+   "start": [
+    "Scorchclaw Pup",
+    "Health Potion"
+   ],
+   "runes": {
+    "keystone": "Conqueror",
+    "primary": [
+     "Triumph",
+     "Legend: Alacrity",
+     "Coup de Grace"
+    ],
+    "secondary": [
+     "Magical Footwear",
+     "Cosmic Insight"
+    ]
+   },
+   "spells": [
+    "Flash",
+    "Smite"
+   ],
+   "skills": [
+    "Q",
+    "W",
+    "E"
+   ],
+   "boots": "Sorcerer's Shoes",
+   "builds": {
+    "default": {
+     "items": [
+      "Dusk and Dawn",
+      "Riftmaker",
+      "Zhonya's Hourglass"
+     ]
+    },
+    "vs_ad": {
+     "items": [
+      "Dusk and Dawn",
+      "Riftmaker",
+      "Zhonya's Hourglass"
+     ],
+     "boots": "Plated Steelcaps"
+    },
+    "vs_ap": {
+     "items": [
+      "Dusk and Dawn",
+      "Riftmaker",
+      "Banshee's Veil"
+     ],
+     "boots": "Mercury's Treads"
+    }
+   },
+   "general": "Diana tiene un clear muy rápido y peleas en grupo excelentes con R. Juntá ventaja de oro limpiando bien y buscá peleas de objetivo donde los rivales estén juntos.",
+   "matchups": {
+    "Lee Sin": {
+     "wr": 51.28,
+     "games": 546,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Lee Sin: Gana el nivel 2-3 y puede invadirte con Q: ward en tu buff y no le regales el primer duelo."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelear en un pasillo donde te pueda patear con R hacia su equipo.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Qiyana": {
+     "wr": 48.85,
+     "games": 393,
+     "score": -0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Qiyana: Mucho daño explosivo y su R contra paredes: no pelees cerca de muros."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Agruparte en un pasillo donde su R pegue a varios.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Graves": {
+     "wr": 57.38,
+     "games": 359,
+     "score": 3.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Graves: Gana duelos cortos y farmea rápido: no lo pelees en su jungla."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelearlo de cerca cuando tiene las dos balas cargadas.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Jarvan IV": {
+     "wr": 53.25,
+     "games": 338,
+     "score": 1.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Jarvan IV: Gankea fuerte nivel 3 con E-Q (knockup): ward el río antes del minuto 3."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Quedarte en el borde de su R (te encierra).",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Sylas": {
+     "wr": 47.88,
+     "games": 330,
+     "score": -0.8,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Sylas: Puede robar tu R; pelea fuerte a corto plazo."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Usar tu R cuando Sylas la puede robar contra tu equipo.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Kha'Zix": {
+     "wr": 55.14,
+     "games": 321,
+     "score": 2.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Kha'Zix: Hace mucho daño a quien está aislado: nunca te quedes solo en tu jungla."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Hacer campamentos solo sin ward cuando no sabés dónde está.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Talon": {
+     "wr": 46.69,
+     "games": 302,
+     "score": -1.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Talon: Gankea por encima de los muros: ward en lugares raros."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Quedarte en el río sin visión.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Hecarim": {
+     "wr": 48.28,
+     "games": 290,
+     "score": -0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Hecarim: Llega rápido con E y te tira para atrás: no lo dejes cargar velocidad en línea recta."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelear en terreno abierto donde corre en línea.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Viego": {
+     "wr": 47.81,
+     "games": 274,
+     "score": -0.8,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Viego: Gana pelea larga y se vuelve el campeón que mata: no le dejes resets."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Dejar a un aliado bajo de vida que Viego pueda poseer.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Wukong": {
+     "wr": 45.76,
+     "games": 271,
+     "score": -1.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Wukong: Su clon te confunde y su R levanta a varios."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Agruparte con tu equipo cuando tiene R lista.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Kayn": {
+     "wr": 51.5,
+     "games": 200,
+     "score": 0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Kayn: Débil antes de su forma; muy fuerte después."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Dejarlo farmear libre los primeros 10 minutos.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Rengar": {
+     "wr": 48.21,
+     "games": 195,
+     "score": -0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Rengar: Salta desde arbustos: limpiá con Oracle Lens."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Caminar cerca de arbustos sin visión.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Ekko": {
+     "wr": 42.22,
+     "games": 180,
+     "score": -1.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Ekko: Daño explosivo y vuelve atrás con R: guardá algo para después de su R."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Gastar todo antes de que use R.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Cho'Gath": {
+     "wr": 48.54,
+     "games": 171,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Su engage te pone en peligro: entrá después de que use su CC y comprá Zhonya temprano.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Vi": {
+     "wr": 52.05,
+     "games": 171,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Vi: Su R marca a uno y no se puede evitar: guardá W de Nocturne o Zhonya para eso."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Ser el carry aislado al que va a buscar.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Naafiri": {
+     "wr": 48.54,
+     "games": 171,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Naafiri: Ráfaga fuerte temprano con sus perros: no pelees en desventaja de vida."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelear de cerca cuando tiene todos los perros.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Lillia": {
+     "wr": 44.71,
+     "games": 170,
+     "score": -1.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Lillia: Escala y gana peleas largas corriendo: forzá peleas cortas temprano."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Perseguirla en pelea larga.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Nidalee": {
+     "wr": 45.91,
+     "games": 159,
+     "score": -0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Nidalee: Te gasta con lanzas y gana duelos tempranos."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelear con poca vida contra su lanza.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Master Yi": {
+     "wr": 45.22,
+     "games": 157,
+     "score": -1.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Master Yi: Si farmea tranquilo te gana el juego: invadilo temprano."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelear cuando tiene Q (se vuelve intocable) disponible.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Taliyah": {
+     "wr": 42.58,
+     "games": 155,
+     "score": -1.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Elise": {
+     "wr": 39.58,
+     "games": 144,
+     "score": -2.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Elise: Muy fuerte nivel 2-3 y gankea temprano: no la invadas."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelearla en su jungla antes del 6.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Shaco": {
+     "wr": 53.15,
+     "games": 143,
+     "score": 0.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Shaco: Te invade con trampas: ward y limpiá cajas antes de entrar a su jungla."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Seguirlo cuando se hace invisible.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Evelynn": {
+     "wr": 55.73,
+     "games": 131,
+     "score": 1.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Evelynn: Invisible desde el 6: comprá Control Ward y llevá Oracle."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Caminar sola por la jungla después del 6.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Xin Zhao": {
+     "wr": 53.85,
+     "games": 130,
+     "score": 0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Xin Zhao: Gana el duelo temprano y te tira para arriba."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelearlo 1v1 antes del 6.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Jayce": {
+     "wr": 48.44,
+     "games": 128,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Shyvana": {
+     "wr": 46.02,
+     "games": 113,
+     "score": -0.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Zac": {
+     "wr": 50.0,
+     "games": 108,
+     "score": 0.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Su engage te pone en peligro: entrá después de que use su CC y comprá Zhonya temprano.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Zac: Engage desde muy lejos: guardá movilidad."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Quedarte junto a tu equipo cuando él salta.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Bel'Veth": {
+     "wr": 49.04,
+     "games": 104,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Bel'Veth: Escala muy fuerte: presionala temprano."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Dejarla tomar heraldo/barón gratis.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Kindred": {
+     "wr": 42.72,
+     "games": 103,
+     "score": -1.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Kindred: Gana duelos y se lleva marcas de tu jungla."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Dejarla tomar las marcas en tus campamentos.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Nocturne": {
+     "wr": 51.0,
+     "games": 100,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Zyra": {
+     "wr": 48.96,
+     "games": 96,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Nunu & Willump": {
+     "wr": 49.45,
+     "games": 91,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Su engage te pone en peligro: entrá después de que use su CC y comprá Zhonya temprano.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Zed": {
+     "wr": 53.33,
+     "games": 90,
+     "score": 0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Zed: Su R te marca: W de Diana justo cuando reaparece detrás tuyo."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelear con media vida cuando tiene R.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Briar": {
+     "wr": 52.27,
+     "games": 88,
+     "score": 0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Rek'Sai": {
+     "wr": 46.48,
+     "games": 71,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Rek'Sai: Gana el nivel 2-3 y aparece debajo de la tierra."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Hacer campamentos sin ward cerca de su túnel.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Udyr": {
+     "wr": 38.24,
+     "games": 68,
+     "score": -1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Sejuani": {
+     "wr": 62.69,
+     "games": 67,
+     "score": 1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Su engage te pone en peligro: entrá después de que use su CC y comprá Zhonya temprano.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Sejuani: Su R stunea a varios: separate."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelear agrupados contra su R.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Fiddlesticks": {
+     "wr": 53.85,
+     "games": 65,
+     "score": 0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Karthus": {
+     "wr": 55.38,
+     "games": 65,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro.",
+       "Respetá a Karthus: Farmea y te mata desde la base con R: guardá Zhonya o W."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Pelear con poca vida cuando su R está lista.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Zaahen": {
+     "wr": 42.19,
+     "games": 64,
+     "score": -0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Aatrox": {
+     "wr": 67.31,
+     "games": 52,
+     "score": 1.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Skarner": {
+     "wr": 49.02,
+     "games": 51,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Su engage te pone en peligro: entrá después de que use su CC y comprá Zhonya temprano.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Ivern": {
+     "wr": 45.1,
+     "games": 51,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Su engage te pone en peligro: entrá después de que use su CC y comprá Zhonya temprano.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Pantheon": {
+     "wr": 51.11,
+     "games": 45,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Darius": {
+     "wr": 46.67,
+     "games": 45,
+     "score": -0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Ambessa": {
+     "wr": 60.0,
+     "games": 45,
+     "score": 0.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Warwick": {
+     "wr": 59.09,
+     "games": 44,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Gana duelos largos: Q-E-R y salí, no te quedes pegando. Peleá en grupo donde tu R pegue a varios.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Locke": {
+     "wr": 58.54,
+     "games": 41,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Amumu": {
+     "wr": 57.89,
+     "games": 38,
+     "score": 0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Su engage te pone en peligro: entrá después de que use su CC y comprá Zhonya temprano.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Rammus": {
+     "wr": 56.76,
+     "games": 37,
+     "score": 0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Su engage te pone en peligro: entrá después de que use su CC y comprá Zhonya temprano.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Gragas": {
+     "wr": 61.11,
+     "games": 36,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Su engage te pone en peligro: entrá después de que use su CC y comprá Zhonya temprano.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Quinn": {
+     "wr": 41.67,
+     "games": 36,
+     "score": -0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Ese jungla es más fuerte que vos temprano: full clear seguro con ward en la entrada de tu jungla y no pelees antes del 4.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    },
+    "Gwen": {
+     "wr": 43.33,
+     "games": 30,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis de kits · números de op.gg Master+",
+      "lv1": "Empezá Q, después W y E. Diana limpia muy rápido: full clear y primera vuelta lista para gankear al nivel 4.",
+      "pre6": [
+       "Igualás o ganás en ritmo de farm: tomá su campamento cuando aparezca del otro lado del mapa y presioná objetivos al 6.",
+       "Tu combo es Q y después E a la marca de luna: si la Q no pega, no entres.",
+       "Gankeá líneas donde el rival no tenga escape (sin Flash o empujado): Q desde la niebla, E, W y pegá.",
+       "Diana farmea más rápido que casi todos: si no hay ganke claro, seguí limpiando y tomá ventaja de oro."
+      ],
+      "post6": "Al 6 tu R junta a varios rivales: buscá peleas en el río y en objetivos donde estén juntos. Entrá después de que gasten su CC.",
+      "evitar": "Entrar primera a una pelea sin Q marcada ni Zhonya, o pelear en espacios abiertos contra rivales con mucho CC.",
+      "labels": [
+       "Inicio",
+       "Hasta el 6",
+       "Desde el 6 (R)"
+      ]
+     }
+    }
+   }
+  }
+ ]
+}

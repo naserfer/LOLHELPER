@@ -1,0 +1,2583 @@
+{
+  "_info": "Datos de op.gg (winrate por matchup, Emerald+) y Lolalytics (ítem inicial, botas y primer ítem por matchup, solo muestras >= 300). score = (winrate - 50) / 2.5. Los tips son criterio de juego.",
+  "patch": "26.22",
+  "source": "op.gg + Lolalytics, Emerald+",
+  "pro_source": "Federals1 (Challenger) — planillas de matchups 26.x",
+  "pool": [
+    {
+      "name": "Malphite",
+      "role": "top",
+      "blind": 1,
+      "comp_bonus": {
+        "AD": 0.3,
+        "AP": -0.3
+      },
+      "start": [
+        "Doran's Ring",
+        "Health Potion",
+        "Health Potion"
+      ],
+      "runes": {
+        "keystone": "Arcane Comet",
+        "primary": [
+          "Manaflow Band",
+          "Transcendence",
+          "Scorch"
+        ],
+        "secondary": [
+          "Second Wind",
+          "Overgrowth"
+        ],
+        "alt": "Alternativa: Grasp of the Undying + Sorcery (más winrate, menos pick)"
+      },
+      "spells": [
+        "Flash",
+        "Teleport"
+      ],
+      "skills": [
+        "Q",
+        "E",
+        "W"
+      ],
+      "boots": "Plated Steelcaps",
+      "builds": {
+        "default": {
+          "items": [
+            "Sunfire Aegis",
+            "Thornmail",
+            "Frozen Heart"
+          ]
+        },
+        "vs_ad": {
+          "items": [
+            "Sunfire Aegis",
+            "Thornmail",
+            "Frozen Heart"
+          ]
+        },
+        "vs_ap": {
+          "items": [
+            "Sunfire Aegis",
+            "Kaenic Rookern",
+            "Frozen Heart"
+          ],
+          "boots": "Mercury's Treads"
+        }
+      },
+      "general": "Primeros 4 niveles sos débil: farmeá tranquilo. Muchas líneas se ganan solo spameando Q con cometa. Contra campeones con mucho sustain (Nasus, Mundo) el poke no alcanza. El rush depende del rival: Thornmail, Frozen Heart, Kaenic Rookern contra AP, hasta Malignance. R al carry o a 3+ agrupados.",
+      "matchups": {
+        "Jayce": {
+          "wr": 56.62,
+          "games": 5505,
+          "score": 2.6,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Plated Steelcaps"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (fácil) · op.gg",
+            "lv1": "Q. Federals1: Comet y Steelcaps.",
+            "pre6": [
+              "Escondete detrás de minions: su combo E-Q a distancia choca con ellos.",
+              "Cuando cambia a martillo y entra, respondé con E + Q."
+            ],
+            "post6": "R cuando entre en forma martillo.",
+            "evitar": "Pararte en línea recta con su cañón."
+          }
+        },
+        "Sylas": {
+          "wr": 45.91,
+          "games": 3768,
+          "score": -1.6,
+          "start": [
+            "Doran's Ring",
+            "Health Potion",
+            "Health Potion"
+          ],
+          "first": [
+            "Sunfire Aegis"
+          ],
+          "pro": {
+            "diff": "xhard",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Oblivion Orb"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (muy difícil) · op.gg",
+            "lv1": "Q. Línea muy difícil: jugá a no morir.",
+            "pre6": [
+              "Rush Oblivion Orb (anti-curación): Sylas vive de curarse.",
+              "Farmeá con Q desde lejos. No pelees cuando tiene la pasiva cargada (después de usar habilidades).",
+              "Su W cura más cuanto menos vida tiene: no lo dejes en 30% y sigas de largo."
+            ],
+            "post6": "Te roba la R: puede usarla contra tu equipo. Separate de tus aliados en las peleas y no la regales.",
+            "evitar": "Entrar en rango de su E (cadena) sin escudo."
+          }
+        },
+        "Yone": {
+          "wr": 52.84,
+          "games": 3486,
+          "score": 1.1,
+          "start": [
+            "Doran's Shield",
+            "Health Potion"
+          ],
+          "first": [
+            "Frozen Heart",
+            "Thornmail"
+          ],
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Lethal Tempo",
+            "rush": "Bramble Vest"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (Lethal Tempo, rush Bramble)",
+            "lv1": "Q. Federals1 usa Lethal Tempo.",
+            "pre6": [
+              "Tu E le baja la velocidad de ataque: es clave contra él.",
+              "Cuando entra con E (forma espiritual), castigalo al volver.",
+              "Esquivá la Q3 (tornado): lo deja entrar gratis."
+            ],
+            "post6": "Tu R lo levanta antes de que use su R. Si te ultea, R de respuesta.",
+            "evitar": "Pelear cuando tiene la Q3 lista."
+          }
+        },
+        "Aatrox": {
+          "wr": 53.87,
+          "games": 2894,
+          "score": 1.5,
+          "start": [
+            "Doran's Ring",
+            "Health Potion",
+            "Health Potion"
+          ],
+          "first": [
+            "Malignance"
+          ],
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Bramble Vest",
+            "note": "Federals1: si le pega la Q1 te comés el combo entero, tankealo. Bramble Vest temprano le corta la curación. Steelcaps + velocidad de tu Q para salir de su W. Pokeá con Q y peleá en grupo con el primer ítem."
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger)",
+            "lv1": "Q. Pokeá y alejate.",
+            "pre6": [
+              "Si te pega la Q1 te comés el combo entero: tankealo, no intentes escapar a mitad.",
+              "Bramble Vest temprano le corta la curación.",
+              "Pokeá con Q, trade corto con W y E si podés, y salí."
+            ],
+            "post6": "Si usa la R para matarte, respondele con tu R. Con Steelcaps + velocidad de tu Q salís de su W si tirás la Q antes de que te enganche.",
+            "evitar": "Pelear en la zona dulce del borde de sus Q."
+          }
+        },
+        "Mordekaiser": {
+          "wr": 47.09,
+          "games": 2646,
+          "score": -1.2,
+          "start": [
+            "Doran's Helm",
+            "Health Potion"
+          ],
+          "first": [
+            "Kaenic Rookern"
+          ],
+          "pro": {
+            "diff": "hard",
+            "start": "Tear of the Goddess",
+            "keystone": "Arcane Comet"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (difícil, inicia Tear)",
+            "lv1": "Q. Federals1 sale con Tear of the Goddess para tener maná de poke.",
+            "pre6": [
+              "Su Q (martillo) tarda en salir: dá un paso al costado.",
+              "Si te atrae con la E, alejate: su pasiva se activa después de 3 golpes.",
+              "Su W es escudo que puede convertir en curación: pokeá cuando ya lo usó."
+            ],
+            "post6": "Su R te lleva a otra dimensión 1v1 y te roba stats. No entres bajo de vida y comprá resistencia mágica.",
+            "evitar": "Pelear dentro de su aura (pasiva activa)."
+          }
+        },
+        "Gnar": {
+          "wr": 55.2,
+          "games": 2594,
+          "score": 2.1,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Bramble Vest"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (rush Bramble)",
+            "lv1": "Q.",
+            "pre6": [
+              "Mini Gnar te pokea: Q y alejate.",
+              "Cuando la barra de furia está llena, se transforma: retrocedé."
+            ],
+            "post6": "R cuando esté en Mega Gnar para cortar su engage.",
+            "evitar": "Estar cerca de una pared cuando está por transformarse."
+          }
+        },
+        "Teemo": {
+          "wr": 52.52,
+          "games": 2321,
+          "score": 1.0,
+          "start": [
+            "Doran's Ring",
+            "Health Potion",
+            "Health Potion"
+          ],
+          "first": [
+            "Stormsurge"
+          ],
+          "boots": "Sorcerer's Shoes",
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Negatron Cloak"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (fácil)",
+            "lv1": "Q. Federals1: Comet y rush Negatron Cloak.",
+            "pre6": [
+              "Tu Q le gana a su poke: no te afecta su ceguera.",
+              "Maxeá Q y pokeá cada vez que se acerca a farmear."
+            ],
+            "post6": "R + Q lo mata aunque te haya cegado. Comprá Oracle Lens para limpiar hongos.",
+            "evitar": "Perseguirlo por el río sin visión (hongos)."
+          }
+        },
+        "Darius": {
+          "wr": 49.15,
+          "games": 2289,
+          "score": -0.3,
+          "start": [
+            "Doran's Ring",
+            "Health Potion",
+            "Health Potion"
+          ],
+          "first": [
+            "Frozen Heart"
+          ],
+          "boots": "Plated Steelcaps",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Plated Steelcaps"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) · one-trick de Darius (op.gg) · matchupcoach",
+            "lv1": "Q. Niveles 1 a 4 son de Darius: no le disputes la wave.",
+            "pre6": [
+              "No spamees Q temprano: casi no hace daño y te deja sin maná. Q solo con cometa listo.",
+              "Farmeá fuera del rango de su E (te atrae). Si te atrae, E para bajarle la velocidad de ataque y Q para alejarte.",
+              "Desde nivel 5 con W y E ya es tu línea: tradeá corto cuando tengas el escudo de la pasiva.",
+              "Nunca pelees si te puso 3+ sangrados: retrocedé y esperá que se vayan."
+            ],
+            "post6": "Su R es daño verdadero, la armadura no sirve. Tu R corta su Q si lo usás cuando empieza a girar.",
+            "evitar": "Pelear largo o quedarte al lado de la wave sin escudo."
+          }
+        },
+        "Jax": {
+          "wr": 51.37,
+          "games": 2184,
+          "score": 0.5,
+          "start": [
+            "Doran's Helm",
+            "Health Potion"
+          ],
+          "first": [
+            "Hollow Radiance"
+          ],
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Null-Magic Mantle",
+            "spell": "Ignite"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (Ignite, rush Null-Magic Mantle)",
+            "lv1": "Q. Federals1 lleva Ignite en este matchup.",
+            "pre6": [
+              "Su E bloquea autoataques, no habilidades: cuando la active, usá Q y E igual.",
+              "Tu E le baja mucho la velocidad de ataque: usala cuando entre.",
+              "Null-Magic Mantle temprano: su W y su R hacen daño mágico."
+            ],
+            "post6": "Escala bien. Cuando salte con Q sobre vos, respondé con E + R.",
+            "evitar": "Pegarle con autos mientras tiene la E activa."
+          }
+        },
+        "Irelia": {
+          "wr": 56.29,
+          "games": 2137,
+          "score": 2.5,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Lethal Tempo",
+            "rush": "Thornmail",
+            "spell": "Ignite"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (Lethal Tempo, rush Thornmail, Ignite)",
+            "lv1": "Q.",
+            "pre6": [
+              "No la dejes llegar a 4 stacks de pasiva: ahí gana todo.",
+              "Esquivá su E (stun): si te marca, se resetea la Q.",
+              "Tu E le baja la velocidad de ataque."
+            ],
+            "post6": "R cuando dashee hacia vos.",
+            "evitar": "Pelear cuando tiene la pasiva cargada."
+          }
+        },
+        "Dr. Mundo": {
+          "wr": 46.02,
+          "games": 2123,
+          "score": -1.6,
+          "pro": {
+            "diff": "xhard",
+            "start": "Tear of the Goddess",
+            "keystone": "First Strike",
+            "rush": "Oblivion Orb"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (muy difícil, inicia Tear)",
+            "lv1": "Q. Federals1 sale con Tear y First Strike.",
+            "pre6": [
+              "No lo vas a matar: farmeá y no regales nada.",
+              "Rush Oblivion Orb: le corta la regeneración."
+            ],
+            "post6": "Tu R gana las peleas en grupo; en la línea solo empatá.",
+            "evitar": "Pelear cuando tiene su R activa."
+          }
+        },
+        "Renekton": {
+          "wr": 52.46,
+          "games": 2072,
+          "score": 1.0,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Bramble Vest"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (rush Bramble)",
+            "lv1": "Q.",
+            "pre6": [
+              "Con 50+ de furia sus habilidades son más fuertes: no tradees.",
+              "Su W potenciada te stunea más tiempo: alejate cuando está rojo.",
+              "Farmeá con Q; él pierde fuerza después del nivel 9."
+            ],
+            "post6": "Su R le da vida y daño: no pelees mientras dura.",
+            "evitar": "Tradear con su furia llena."
+          }
+        },
+        "Garen": {
+          "wr": 51.14,
+          "games": 1975,
+          "score": 0.5,
+          "start": [
+            "Doran's Helm",
+            "Health Potion"
+          ],
+          "first": [
+            "Sunfire Aegis",
+            "Thornmail"
+          ],
+          "boots": "Plated Steelcaps",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "First Strike",
+            "rush": "Bramble Vest"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) · Lolalytics (Doran's Helm)",
+            "lv1": "Q. Federals1: First Strike y rush Bramble Vest.",
+            "pre6": [
+              "Q cada vez que puedas: le cortás la regeneración de la pasiva.",
+              "Cuando corre con Q (silencio), alejate: no le aceptes el trade.",
+              "Su E (giro) pega varias veces: no te quedes adentro."
+            ],
+            "post6": "Su R hace daño verdadero según tu vida faltante: con menos de 40% no pelees.",
+            "evitar": "Quedarte a pelear dentro de su E."
+          }
+        },
+        "Fiora": {
+          "wr": 54.72,
+          "games": 1972,
+          "score": 1.9,
+          "start": [
+            "Doran's Ring",
+            "Health Potion",
+            "Health Potion"
+          ],
+          "first": [
+            "Frozen Heart"
+          ],
+          "boots": "Plated Steelcaps",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Oblivion Orb"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (rush Oblivion Orb)",
+            "lv1": "Q. Federals1: Comet y Oblivion Orb para cortar su curación.",
+            "pre6": [
+              "Su W (parry) devuelve el control: no tires E ni R cuando la tiene.",
+              "Pokeá con Q (ralentiza) y alejate.",
+              "Cuidado con sus vitales: no le des el lado que marca."
+            ],
+            "post6": "Su R cura a su equipo en el área: no pelees adentro.",
+            "evitar": "Tirarle E o R con la W disponible."
+          }
+        },
+        "Gangplank": {
+          "wr": 48.82,
+          "games": 1950,
+          "score": -0.5,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Bramble Vest"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (rush Bramble)",
+            "lv1": "Q.",
+            "pre6": [
+              "Alejate de sus barriles: su combo te saca media vida.",
+              "Tradeá cuando no tiene barriles cerca o le acabás de romper uno."
+            ],
+            "post6": "Su R cubre el área en todo el mapa. Tu R gana las teamfights.",
+            "evitar": "Farmear al lado de un barril."
+          }
+        },
+        "Sion": {
+          "wr": 43.42,
+          "games": 1838,
+          "score": -2.6,
+          "start": [
+            "Doran's Shield",
+            "Health Potion"
+          ],
+          "boots": "Plated Steelcaps",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Grasp of the Undying",
+            "rush": "Mercury's Treads"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (Grasp, Mercury's) · op.gg",
+            "lv1": "Q. Línea mala por datos (43%): jugá a farmear.",
+            "pre6": [
+              "Esquivá su Q cargada yendo al costado: si te pega cargada, te deja stuneado.",
+              "Alejate cuando explota su W (escudo).",
+              "No te pongas detrás de minions en línea con él: su E los lanza."
+            ],
+            "post6": "No lo vas a matar fácil. Que no splitee solo; tu valor está en teamfights.",
+            "evitar": "Gastar maná intentando matarlo."
+          }
+        },
+        "Sett": {
+          "wr": 52.51,
+          "games": 1834,
+          "score": 1.0,
+          "start": [
+            "Doran's Helm",
+            "Health Potion"
+          ],
+          "first": [
+            "Frozen Heart"
+          ],
+          "boots": "Plated Steelcaps",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Plated Steelcaps"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) · Lolalytics (Doran's Helm)",
+            "lv1": "Q. Doran's Helm tiene el mejor resultado en esta línea.",
+            "pre6": [
+              "Su W hace daño verdadero en el centro: salite de la línea recta.",
+              "Tu E le baja la velocidad de ataque (sus golpes alternados).",
+              "Pokeá con Q y no aceptes el all-in temprano."
+            ],
+            "post6": "Su R te puede tirar encima de tu equipo: no te pegues a tus aliados.",
+            "evitar": "Quedarte en el centro de su W."
+          }
+        },
+        "Tryndamere": {
+          "wr": 57.39,
+          "games": 1765,
+          "score": 3.0,
+          "tip": "Muy bueno por datos: tu E le destruye la velocidad de ataque.",
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Lethal Tempo",
+            "rush": "Bramble Vest"
+          }
+        },
+        "Ambessa": {
+          "wr": 53.91,
+          "games": 1753,
+          "score": 1.6,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Grasp of the Undying",
+            "rush": "Bramble Vest",
+            "spell": "Ignite"
+          }
+        },
+        "Nasus": {
+          "wr": 50.0,
+          "games": 1730,
+          "score": 0.0,
+          "pro": {
+            "diff": "xhard",
+            "start": "Doran's Ring",
+            "keystone": "First Strike",
+            "rush": "Oblivion Orb"
+          }
+        },
+        "Pantheon": {
+          "wr": 52.68,
+          "games": 1699,
+          "score": 1.1,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Ruby Crystal"
+          }
+        },
+        "Ornn": {
+          "wr": 46.83,
+          "games": 1627,
+          "score": -1.3,
+          "tip": "Malo por datos. Línea pasiva, prioridad en roaming con TP."
+        },
+        "Camille": {
+          "wr": 51.84,
+          "games": 1605,
+          "score": 0.7,
+          "start": [
+            "Doran's Ring",
+            "Health Potion",
+            "Health Potion"
+          ],
+          "boots": "Plated Steelcaps",
+          "tip": "Pokeá con Q; cuando entre con su E, respondé con tu E.",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Giant's Belt"
+          }
+        },
+        "Yasuo": {
+          "wr": 54.81,
+          "games": 1549,
+          "score": 1.9,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Lethal Tempo",
+            "rush": "Bramble Vest"
+          }
+        },
+        "Cho'Gath": {
+          "wr": 46.92,
+          "games": 1509,
+          "score": -1.2,
+          "tip": "Malo por datos. Esquivá su Q, línea de farmeo.",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "First Strike",
+            "rush": "Negatron Cloak"
+          }
+        },
+        "Akali": {
+          "wr": 51.77,
+          "games": 1501,
+          "score": 0.7,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet"
+          }
+        },
+        "Shen": {
+          "wr": 46.87,
+          "games": 1263,
+          "score": -1.3,
+          "tip": "Malo por datos: te supera en la línea. Vigilá su R a otras líneas.",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Grasp of the Undying",
+            "rush": "Bramble Vest"
+          }
+        },
+        "Gwen": {
+          "wr": 50.73,
+          "games": 1234,
+          "score": 0.3,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Negatron Cloak"
+          }
+        },
+        "K'Sante": {
+          "wr": 51.96,
+          "games": 1201,
+          "score": 0.8,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "First Strike",
+            "rush": "Bramble Vest"
+          }
+        },
+        "Zaahen": {
+          "wr": 50.43,
+          "games": 1164,
+          "score": 0.2,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Bramble Vest"
+          }
+        },
+        "Volibear": {
+          "wr": 53.75,
+          "games": 1094,
+          "score": 1.5,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Oblivion Orb"
+          }
+        },
+        "Riven": {
+          "wr": 55.49,
+          "games": 1038,
+          "score": 2.2,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Ruby Crystal"
+          }
+        },
+        "Olaf": {
+          "wr": 50.73,
+          "games": 962,
+          "score": 0.3,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Kayle": {
+          "wr": 55.66,
+          "games": 936,
+          "score": 2.3,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Dark Seal"
+          }
+        },
+        "Urgot": {
+          "wr": 54.9,
+          "games": 929,
+          "score": 2.0,
+          "pro": {
+            "diff": "skill",
+            "start": "Tear of the Goddess",
+            "keystone": "First Strike",
+            "rush": "Plated Steelcaps"
+          }
+        },
+        "Kennen": {
+          "wr": 51.24,
+          "games": 890,
+          "score": 0.5,
+          "start": [
+            "Doran's Ring",
+            "Health Potion",
+            "Health Potion"
+          ],
+          "boots": "Mercury's Treads",
+          "tip": "Poke de rango AP: Mercury's y farmeá. Tu R gana las peleas.",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Negatron Cloak"
+          }
+        },
+        "Vayne": {
+          "wr": 62.09,
+          "games": 831,
+          "score": 3,
+          "tip": "Muy bueno por datos: Q para ralentizarla y all-in nivel 6.",
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Plated Steelcaps"
+          }
+        },
+        "Gragas": {
+          "wr": 52.72,
+          "games": 808,
+          "score": 1.1,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Mercury's Treads"
+          }
+        },
+        "Illaoi": {
+          "wr": 45.32,
+          "games": 801,
+          "score": -1.9,
+          "start": [
+            "Doran's Ring",
+            "Health Potion",
+            "Health Potion"
+          ],
+          "boots": "Plated Steelcaps",
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Plated Steelcaps"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (marca fácil) · op.gg (45% WR)",
+            "lv1": "Q. Federals1 la marca fácil, pero el promedio pierde: no te confíes.",
+            "pre6": [
+              "Esquivá su E: si te saca el espíritu, alejate de los tentáculos.",
+              "Nunca pelees entre sus tentáculos.",
+              "Pokeá con Q desde lejos."
+            ],
+            "post6": "Su R crea tentáculos en todo el área: salí apenas la use.",
+            "evitar": "Pelear dentro de su zona."
+          }
+        },
+        "Tahm Kench": {
+          "wr": 46.15,
+          "games": 793,
+          "score": -1.5,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "First Strike",
+            "rush": "Ionian Boots of Lucidity"
+          }
+        },
+        "Yorick": {
+          "wr": 54.08,
+          "games": 784,
+          "score": 1.6,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Ring",
+            "keystone": "Lethal Tempo",
+            "rush": "Bramble Vest"
+          }
+        },
+        "Trundle": {
+          "wr": 56.27,
+          "games": 718,
+          "score": 2.5,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Oblivion Orb"
+          }
+        },
+        "Rumble": {
+          "wr": 49.78,
+          "games": 681,
+          "score": -0.1,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Ring",
+            "keystone": "Unsealed Spellbook",
+            "rush": "Null-Magic Mantle"
+          }
+        },
+        "Singed": {
+          "wr": 45.82,
+          "games": 622,
+          "score": -1.7,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Ring",
+            "keystone": "First Strike",
+            "rush": "Tear of the Goddess"
+          }
+        },
+        "Kled": {
+          "wr": 48.79,
+          "games": 580,
+          "score": -0.5,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Ruby Crystal",
+            "spell": "Ignite"
+          }
+        },
+        "Vladimir": {
+          "wr": 50.35,
+          "games": 568,
+          "score": 0.1,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Ring",
+            "keystone": "Unsealed Spellbook",
+            "rush": "Oblivion Orb"
+          }
+        },
+        "Heimerdinger": {
+          "wr": 48.72,
+          "games": 429,
+          "score": -0.5,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Ring",
+            "keystone": "Unsealed Spellbook",
+            "rush": "Mercury's Treads"
+          }
+        },
+        "Warwick": {
+          "wr": 47.88,
+          "games": 424,
+          "score": -0.8,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "First Strike",
+            "rush": "Bramble Vest"
+          }
+        },
+        "Swain": {
+          "wr": 43.38,
+          "games": 385,
+          "score": -2.6,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Mercury's Treads"
+          }
+        },
+        "Quinn": {
+          "wr": 53.0,
+          "games": 383,
+          "score": 1.2,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Plated Steelcaps"
+          }
+        },
+        "Maokai": {
+          "wr": 45.68,
+          "games": 324,
+          "score": -1.7,
+          "pro": {
+            "diff": "skill",
+            "start": "Tear of the Goddess",
+            "keystone": "Grasp of the Undying"
+          }
+        },
+        "Aurora": {
+          "wr": 49.03,
+          "games": 308,
+          "score": -0.4,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Kaenic Rookern"
+          }
+        },
+        "Wukong": {
+          "wr": 53.06,
+          "games": 294,
+          "score": 1.2,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Warden's Mail"
+          }
+        },
+        "Anivia": {
+          "wr": 45.58,
+          "games": 283,
+          "score": -1.7,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Ring",
+            "keystone": "Unsealed Spellbook",
+            "rush": "Mercury's Treads"
+          }
+        },
+        "Lissandra": {
+          "wr": 44.65,
+          "games": 271,
+          "score": -1.9,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Mercury's Treads"
+          }
+        },
+        "Master Yi": {
+          "wr": 54.58,
+          "games": 262,
+          "score": 1.6,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Lethal Tempo",
+            "rush": "Thornmail"
+          }
+        },
+        "Ryze": {
+          "wr": 49.81,
+          "games": 257,
+          "score": -0.1,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet",
+            "rush": "Negatron Cloak"
+          }
+        },
+        "Varus": {
+          "wr": 59.29,
+          "games": 253,
+          "score": 3,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Ring",
+            "keystone": "Unsealed Spellbook",
+            "rush": "Kaenic Rookern"
+          }
+        },
+        "Poppy": {
+          "wr": 52.07,
+          "games": 242,
+          "score": 0.7,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "First Strike",
+            "rush": "Bramble Vest"
+          }
+        },
+        "Malzahar": {
+          "wr": 52.29,
+          "games": 218,
+          "score": 0.7,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Ring",
+            "keystone": "Arcane Comet"
+          }
+        },
+        "Udyr": {
+          "wr": 51.59,
+          "games": 157,
+          "score": 0.3,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Ring",
+            "keystone": "First Strike",
+            "rush": "Tear of the Goddess"
+          }
+        }
+      }
+    },
+    {
+      "name": "Garen",
+      "role": "top",
+      "blind": 1,
+      "comp_bonus": {
+        "AD": 0,
+        "AP": 0
+      },
+      "start": [
+        "Doran's Shield",
+        "Health Potion"
+      ],
+      "start_note": "Doran's Blade: menos pick, más winrate",
+      "runes": {
+        "keystone": "Conqueror",
+        "primary": [
+          "Triumph",
+          "Legend: Haste",
+          "Last Stand"
+        ],
+        "secondary": [],
+        "alt": "Secundaria: Sorcery"
+      },
+      "spells": [
+        "Flash",
+        "Ignite"
+      ],
+      "skills": [
+        "E",
+        "Q",
+        "W"
+      ],
+      "boots": "Berserker's Greaves",
+      "builds": {
+        "default": {
+          "items": [
+            "Stridebreaker",
+            "Phantom Dancer",
+            "Mortal Reminder"
+          ]
+        },
+        "vs_ad": {
+          "items": [
+            "Stridebreaker",
+            "Phantom Dancer",
+            "Dead Man's Plate"
+          ]
+        },
+        "vs_ap": {
+          "items": [
+            "Stridebreaker",
+            "Phantom Dancer",
+            "Mortal Reminder"
+          ],
+          "boots": "Mercury's Treads"
+        }
+      },
+      "general": "Tu pasiva te cura si no recibís daño: salí de la línea un rato y volvés lleno. Q para entrar o escapar, R para ejecutar (daño verdadero).",
+      "matchups": {
+        "Jax": {
+          "wr": 55.46,
+          "games": 4259,
+          "score": 2.2,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Blade",
+            "keystone": "Conqueror",
+            "rush": "Berserker's Greaves"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) · op.gg · datos (55% WR)",
+            "lv1": "Q. Federals1: Doran's Blade y Conqueror.",
+            "pre6": [
+              "Línea a favor: él no quiere pelearte temprano.",
+              "No le tires la Q cuando tiene E: esperá que la use y después entrá.",
+              "Activá tu pasiva saliendo de su rango para recuperar vida entre trades."
+            ],
+            "post6": "Tu R ejecuta. Él escala recién con 3-4 ítems: tenés que ganar antes.",
+            "evitar": "Empezar el trade con Q cuando su E está lista."
+          }
+        },
+        "Darius": {
+          "wr": 46.7,
+          "games": 3966,
+          "score": -1.3,
+          "start": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "first": [
+            "Stridebreaker"
+          ],
+          "boots": "Berserker's Greaves",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Blade",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "MOBA Trainer (OTP sheet) · RAIDER (Challenger Darius) · matchupcoach · Federals1 (Challenger)",
+            "lv1": "W para que no te saque de la experiencia. Después 3 puntos en Q y maxeá E.",
+            "pre6": [
+              "Darius te gana hasta tu primer ítem: farmeá y no pelees.",
+              "Solo tradeá en cuerpo a cuerpo al lado de tu torre.",
+              "Su combo es W, auto, y E para atraerte cuando se te acaba la velocidad de la Q: guardá distancia."
+            ],
+            "post6": "Con Stridebreaker: Q, E, activo de Stridebreaker y salí. Con 2 ítems el duelo pasa a ser tuyo.",
+            "evitar": "Acercarte a la wave cuando tiene la E lista."
+          }
+        },
+        "Camille": {
+          "wr": 47.11,
+          "games": 2806,
+          "score": -1.2,
+          "first": [
+            "Stridebreaker"
+          ],
+          "boots": "Boots of Swiftness",
+          "pro": {
+            "diff": "xhard",
+            "start": "Doran's Shield",
+            "keystone": "Grasp of the Undying",
+            "rush": "Sheen"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (muy difícil, Grasp + Sheen) · Mobalytics",
+            "lv1": "Q.",
+            "pre6": [
+              "Entrá cuando su escudo pasivo ya se usó (después de su primer auto).",
+              "Tradeá corto y alejate de las paredes: su E te stunea contra la pared."
+            ],
+            "post6": "Ella escala más que vos: si no ganaste temprano, jugá en grupo.",
+            "evitar": "Pelear pegado a una pared."
+          }
+        },
+        "Mordekaiser": {
+          "wr": 49.03,
+          "games": 2566,
+          "score": -0.4,
+          "pro": {
+            "diff": "xhard",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (muy difícil) · op.gg",
+            "lv1": "Q.",
+            "pre6": [
+              "Silenciá con Q antes de su combo.",
+              "Esquivá su Q (martillo) y su E (atracción).",
+              "Gana las peleas largas: tradeá corto y salí."
+            ],
+            "post6": "Su R te lleva 1v1 a otra dimensión. Tu R sigue funcionando adentro: entrá con vida alta.",
+            "evitar": "Peleas largas con su aura activa."
+          }
+        },
+        "Sett": {
+          "wr": 50.24,
+          "games": 2542,
+          "score": 0.1,
+          "start": [
+            "Doran's Shield",
+            "Health Potion"
+          ],
+          "first": [
+            "Stridebreaker"
+          ],
+          "boots": "Boots of Swiftness",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Grasp of the Undying",
+            "rush": "Plated Steelcaps"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (Grasp, Steelcaps)",
+            "lv1": "Q. Federals1: Doran's Shield y Grasp.",
+            "pre6": [
+              "No te quedes frente a su W cargada: hace daño verdadero en el centro.",
+              "Tu pasiva te deja aguantar más que él en trades cortos."
+            ],
+            "post6": "Pareja; tu R ejecuta si está bajo.",
+            "evitar": "El centro de su W."
+          }
+        },
+        "Yone": {
+          "wr": 52.85,
+          "games": 2365,
+          "score": 1.1,
+          "start": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "first": [
+            "Stridebreaker"
+          ],
+          "boots": "Boots of Swiftness",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Plated Steelcaps"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) · datos (53% WR)",
+            "lv1": "Q.",
+            "pre6": [
+              "Silenciá con Q cuando vuelve de su E: no puede escapar.",
+              "La silencia también corta su Q3 (tornado)."
+            ],
+            "post6": "R cuando vuelve de su E.",
+            "evitar": "Pelear cuando tiene la Q3 lista y vos sin Q."
+          }
+        },
+        "Renekton": {
+          "wr": 52.32,
+          "games": 2265,
+          "score": 0.9,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Grasp of the Undying",
+            "rush": "Cloth Armor"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (Grasp, Cloth Armor)",
+            "lv1": "Q.",
+            "pre6": [
+              "Con 50+ de furia no tradees.",
+              "Pierde fuerza desde el nivel 9: farmeá y escalá."
+            ],
+            "post6": "Su R le da vida: alejate mientras dura.",
+            "evitar": "Tradear con su furia llena."
+          }
+        },
+        "K'Sante": {
+          "wr": 55.15,
+          "games": 2205,
+          "score": 2.1,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Conqueror",
+            "rush": "Plated Steelcaps"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) · datos (55% WR)",
+            "lv1": "Q.",
+            "pre6": [
+              "Línea a favor. Castigalo cuando falla la Q."
+            ],
+            "post6": "Su R te tira detrás de su torre: no te quedes contra una pared.",
+            "evitar": "Estar entre él y una pared."
+          }
+        },
+        "Aatrox": {
+          "wr": 50.71,
+          "games": 2120,
+          "score": 0.3,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Berserker's Greaves"
+          },
+          "guide": {
+            "src": "analisis",
+            "por": "Federals1 (Challenger) (inicio/runa) · análisis",
+            "lv1": "Q.",
+            "pre6": [
+              "Esquivá las zonas dulces de sus Q (el borde).",
+              "Cuando gaste la Q, entrá con Q y E."
+            ],
+            "post6": "Su R lo cura más: no pelees largo mientras dura.",
+            "evitar": "El borde de su Q."
+          }
+        },
+        "Nasus": {
+          "wr": 54.48,
+          "games": 2087,
+          "score": 1.8,
+          "pro": {
+            "diff": "skill",
+            "start": "Cull",
+            "keystone": "Stormraider's Surge",
+            "rush": "Berserker's Greaves",
+            "spell": "Ghost"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (inicia Cull, Ghost) · datos (54% WR)",
+            "lv1": "Q. Federals1 empieza con Cull y lleva Ghost.",
+            "pre6": [
+              "Presionalo para que no junte stacks de Q.",
+              "Su Wither te ralentiza: entrá cuando la usó."
+            ],
+            "post6": "Su R le da vida: no pelees mientras dura.",
+            "evitar": "Dejarlo farmear tranquilo."
+          }
+        },
+        "Malphite": {
+          "wr": 48.79,
+          "games": 1976,
+          "score": -0.5,
+          "start": [
+            "Doran's Shield",
+            "Health Potion"
+          ],
+          "first": [
+            "Youmuu's Ghostblade"
+          ],
+          "boots": "Boots of Swiftness",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Conqueror",
+            "rush": "Boots of Swiftness"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) · Lolalytics",
+            "lv1": "Q.",
+            "pre6": [
+              "Te pokea con Q: entrá con Q + E cuando su Q está en cooldown.",
+              "Su escudo pasivo se recarga: tradeá después de rompérselo."
+            ],
+            "post6": "Su R es engage instantáneo: cuidado en teamfights.",
+            "evitar": "Quedarte quieto a que te pokee."
+          }
+        },
+        "Kayle": {
+          "wr": 45.79,
+          "games": 1828,
+          "score": -1.7,
+          "first": [
+            "Stridebreaker"
+          ],
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Berserker's Greaves",
+            "spell": "Ghost"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (difícil, Ghost)",
+            "lv1": "Q. Ella es muy débil temprano.",
+            "pre6": [
+              "Forzá peleas temprano: no puede escapar de tu Q.",
+              "Matala antes del 11: después te gana."
+            ],
+            "post6": "Desde el 6 es de rango: menos ventanas.",
+            "evitar": "Dejarla escalar tranquila."
+          }
+        },
+        "Shen": {
+          "wr": 50.28,
+          "games": 1812,
+          "score": 0.1,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Helm",
+            "keystone": "Stormraider's Surge",
+            "rush": "Berserker's Greaves"
+          }
+        },
+        "Gangplank": {
+          "wr": 48.15,
+          "games": 1649,
+          "score": -0.7,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Ruby Crystal"
+          }
+        },
+        "Fiora": {
+          "wr": 46.56,
+          "games": 1630,
+          "score": -1.4,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Blade",
+            "keystone": "Conqueror",
+            "rush": "Bramble Vest"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (difícil, Blade + Conqueror + Bramble)",
+            "lv1": "Q.",
+            "pre6": [
+              "Tu Q es control: si se la tirás contra su W (parry), te stunea a vos.",
+              "Entrá cuando ya usó la W."
+            ],
+            "post6": "Su R cura en el área: alejate.",
+            "evitar": "Tirarle Q con la W disponible."
+          }
+        },
+        "Ornn": {
+          "wr": 50.59,
+          "games": 1613,
+          "score": 0.2,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Helm",
+            "keystone": "Stormraider's Surge",
+            "rush": "Berserker's Greaves"
+          }
+        },
+        "Ambessa": {
+          "wr": 53.14,
+          "games": 1609,
+          "score": 1.3,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Shield",
+            "keystone": "Grasp of the Undying",
+            "rush": "Plated Steelcaps"
+          }
+        },
+        "Gnar": {
+          "wr": 49.75,
+          "games": 1576,
+          "score": -0.1,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Volibear": {
+          "wr": 50.38,
+          "games": 1570,
+          "score": 0.2,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Helm",
+            "keystone": "Stormraider's Surge",
+            "rush": "Mercury's Treads"
+          }
+        },
+        "Zaahen": {
+          "wr": 52.29,
+          "games": 1440,
+          "score": 0.9,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Conqueror",
+            "rush": "Executioner's Calling"
+          }
+        },
+        "Jayce": {
+          "wr": 52.65,
+          "games": 1394,
+          "score": 1.1,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Plated Steelcaps"
+          }
+        },
+        "Irelia": {
+          "wr": 52.49,
+          "games": 1368,
+          "score": 1.0,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Blade",
+            "keystone": "Conqueror",
+            "rush": "Bramble Vest"
+          }
+        },
+        "Akali": {
+          "wr": 52.81,
+          "games": 1352,
+          "score": 1.1,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Sion": {
+          "wr": 51.76,
+          "games": 1337,
+          "score": 0.7,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Dr. Mundo": {
+          "wr": 54.49,
+          "games": 1325,
+          "score": 1.8,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Blade",
+            "keystone": "Conqueror"
+          }
+        },
+        "Tryndamere": {
+          "wr": 46.76,
+          "games": 1311,
+          "score": -1.3,
+          "tip": "Malo por datos. Guardá tu R hasta que termine su R.",
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Shield",
+            "keystone": "Unsealed Spellbook",
+            "rush": "Plated Steelcaps",
+            "spell": "Ghost"
+          }
+        },
+        "Teemo": {
+          "wr": 47.88,
+          "games": 1295,
+          "score": -0.8,
+          "first": [
+            "Stridebreaker"
+          ],
+          "boots": "Boots of Swiftness",
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Mercury's Treads"
+          },
+          "guide": {
+            "src": "analisis",
+            "por": "Federals1 (Challenger) (Mercury's) · análisis",
+            "lv1": "Q.",
+            "pre6": [
+              "Su ceguera hace fallar tu Q (es un auto potenciado): usá E, que no se ve afectada.",
+              "Usá la velocidad de la Q para alcanzarlo cuando gasta la ceguera."
+            ],
+            "post6": "Tu R lo ejecuta: no lo dejes escapar con poca vida.",
+            "evitar": "Perseguirlo por los hongos."
+          }
+        },
+        "Pantheon": {
+          "wr": 50.77,
+          "games": 1294,
+          "score": 0.3,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Ruby Crystal"
+          }
+        },
+        "Riven": {
+          "wr": 53.83,
+          "games": 1213,
+          "score": 1.5,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Plated Steelcaps"
+          }
+        },
+        "Cho'Gath": {
+          "wr": 50.0,
+          "games": 1166,
+          "score": 0.0,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Olaf": {
+          "wr": 51.09,
+          "games": 1147,
+          "score": 0.4,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Blade",
+            "keystone": "Conqueror",
+            "rush": "Executioner's Calling"
+          }
+        },
+        "Singed": {
+          "wr": 50.04,
+          "games": 1133,
+          "score": 0.0,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Cull"
+          }
+        },
+        "Yasuo": {
+          "wr": 54.04,
+          "games": 1051,
+          "score": 1.6,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Plated Steelcaps"
+          }
+        },
+        "Gwen": {
+          "wr": 53.5,
+          "games": 985,
+          "score": 1.4,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Blade",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Illaoi": {
+          "wr": 53.81,
+          "games": 944,
+          "score": 1.5,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Blade",
+            "keystone": "Stormraider's Surge"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (fácil)",
+            "lv1": "Q. Federals1: Doran's Blade.",
+            "pre6": [
+              "Esquivá su E y sacala de sus tentáculos con Q.",
+              "Peleá en zona abierta, no entre tentáculos."
+            ],
+            "post6": "Su R crea tentáculos en todo el área: alejate.",
+            "evitar": "Pelear entre sus tentáculos."
+          }
+        },
+        "Urgot": {
+          "wr": 46.43,
+          "games": 939,
+          "score": -1.4,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Plated Steelcaps"
+          }
+        },
+        "Yorick": {
+          "wr": 52.25,
+          "games": 867,
+          "score": 0.9,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Helm",
+            "keystone": "Stormraider's Surge",
+            "rush": "Berserker's Greaves"
+          }
+        },
+        "Gragas": {
+          "wr": 51.89,
+          "games": 794,
+          "score": 0.8,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Mercury's Treads"
+          }
+        },
+        "Tahm Kench": {
+          "wr": 51.33,
+          "games": 752,
+          "score": 0.5,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Trundle": {
+          "wr": 50.77,
+          "games": 711,
+          "score": 0.3,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Blade",
+            "keystone": "Stormraider's Surge",
+            "rush": "Sheen"
+          }
+        },
+        "Kled": {
+          "wr": 50.66,
+          "games": 681,
+          "score": 0.3,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Blade",
+            "keystone": "Conqueror",
+            "rush": "Plated Steelcaps"
+          }
+        },
+        "Vayne": {
+          "wr": 48.44,
+          "games": 673,
+          "score": -0.6,
+          "pro": {
+            "diff": "xhard",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Plated Steelcaps",
+            "spell": "Ghost"
+          },
+          "guide": {
+            "src": "pro",
+            "por": "Federals1 (Challenger) (muy difícil, Ghost)",
+            "lv1": "Q.",
+            "pre6": [
+              "Te kitea: farmeá bajo torre y pedí ganks.",
+              "Plated Steelcaps temprano."
+            ],
+            "post6": "Tu R ejecuta si te acercás con Ghost.",
+            "evitar": "Perseguirla sin Ghost."
+          }
+        },
+        "Kennen": {
+          "wr": 50.08,
+          "games": 591,
+          "score": 0.0,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Shield",
+            "keystone": "Unsealed Spellbook",
+            "rush": "Negatron Cloak",
+            "spell": "Teleport"
+          }
+        },
+        "Rumble": {
+          "wr": 49.48,
+          "games": 574,
+          "score": -0.2,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Warwick": {
+          "wr": 47.91,
+          "games": 503,
+          "score": -0.8,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Helm",
+            "keystone": "Stormraider's Surge",
+            "rush": "Executioner's Calling"
+          }
+        },
+        "Heimerdinger": {
+          "wr": 53.57,
+          "games": 420,
+          "score": 1.4,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Mercury's Treads"
+          }
+        },
+        "Vladimir": {
+          "wr": 53.0,
+          "games": 400,
+          "score": 1.2,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Poppy": {
+          "wr": 52.43,
+          "games": 370,
+          "score": 1.0,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Quinn": {
+          "wr": 47.16,
+          "games": 352,
+          "score": -1.1,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness",
+            "spell": "Ghost"
+          }
+        },
+        "Wukong": {
+          "wr": 51.94,
+          "games": 283,
+          "score": 0.7,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Grasp of the Undying",
+            "rush": "Plated Steelcaps"
+          }
+        },
+        "Sylas": {
+          "wr": 52.23,
+          "games": 247,
+          "score": 0.7,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Anivia": {
+          "wr": 50.83,
+          "games": 240,
+          "score": 0.3,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Swain": {
+          "wr": 50.65,
+          "games": 231,
+          "score": 0.2,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Maokai": {
+          "wr": 46.36,
+          "games": 220,
+          "score": -1.1,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Berserker's Greaves"
+          }
+        },
+        "Udyr": {
+          "wr": 44.09,
+          "games": 220,
+          "score": -1.7,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Helm",
+            "keystone": "Stormraider's Surge",
+            "rush": "Boots of Swiftness"
+          }
+        },
+        "Master Yi": {
+          "wr": 50.24,
+          "games": 209,
+          "score": 0.1,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Berserker's Greaves"
+          }
+        },
+        "Aurora": {
+          "wr": 46.38,
+          "games": 207,
+          "score": -1.0,
+          "pro": {
+            "diff": "hard",
+            "start": "Doran's Shield",
+            "keystone": "Unsealed Spellbook",
+            "rush": "Negatron Cloak",
+            "spell": "Teleport"
+          }
+        },
+        "Lissandra": {
+          "wr": 49.71,
+          "games": 175,
+          "score": -0.1,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Mercury's Treads"
+          }
+        },
+        "Ryze": {
+          "wr": 46.47,
+          "games": 170,
+          "score": -0.8,
+          "pro": {
+            "diff": "skill",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Mercury's Treads"
+          }
+        },
+        "Varus": {
+          "wr": 52.76,
+          "games": 163,
+          "score": 0.6,
+          "pro": {
+            "diff": "xhard",
+            "start": "Doran's Shield",
+            "keystone": "Unsealed Spellbook",
+            "rush": "Ruby Crystal",
+            "spell": "Teleport"
+          }
+        },
+        "Malzahar": {
+          "wr": 52.52,
+          "games": 139,
+          "score": 0.5,
+          "pro": {
+            "diff": "easy",
+            "start": "Doran's Shield",
+            "keystone": "Stormraider's Surge",
+            "rush": "Berserker's Greaves"
+          }
+        }
+      }
+    },
+    {
+      "name": "Illaoi",
+      "role": "top",
+      "blind": 0,
+      "comp_bonus": {
+        "AD": 0,
+        "AP": 0
+      },
+      "start": [
+        "Doran's Blade",
+        "Health Potion"
+      ],
+      "runes": {
+        "keystone": "Grasp of the Undying",
+        "primary": [
+          "Bone Plating",
+          "Overgrowth"
+        ],
+        "secondary": [
+          "Presence of Mind",
+          "Last Stand"
+        ],
+        "alt": "Alternativa: Conqueror + Resolve"
+      },
+      "spells": [
+        "Flash",
+        "Teleport"
+      ],
+      "skills": [
+        "E",
+        "Q",
+        "W"
+      ],
+      "boots": "Plated Steelcaps",
+      "builds": {
+        "default": {
+          "items": [
+            "Black Cleaver",
+            "Iceborn Gauntlet",
+            "Sterak's Gage"
+          ]
+        },
+        "vs_ad": {
+          "items": [
+            "Black Cleaver",
+            "Iceborn Gauntlet",
+            "Sterak's Gage"
+          ]
+        },
+        "vs_ap": {
+          "items": [
+            "Black Cleaver",
+            "Iceborn Gauntlet",
+            "Spirit Visage"
+          ],
+          "boots": "Mercury's Treads"
+        }
+      },
+      "general": "Peleá siempre cerca de tus tentáculos. E primero: si pega, pelea; si no, retrocedé. R en peleas con varios enemigos.",
+      "matchups": {
+        "Yone": {
+          "wr": 49.56,
+          "games": 1721,
+          "score": -0.2,
+          "guide": {
+            "src": "pro",
+            "por": "op.gg",
+            "lv1": "E.",
+            "pre6": [
+              "Cuando entra con E y Q, respondé con tu E.",
+              "Es melee: si no le das mucha vida con su Q, la línea es tuya."
+            ],
+            "post6": "Esquiva tu R con su E: esperá a que la use.",
+            "evitar": "Comerte su Q3."
+          }
+        },
+        "Mordekaiser": {
+          "wr": 44.34,
+          "games": 1662,
+          "score": -2.3,
+          "boots": "Mercury's Treads",
+          "guide": {
+            "src": "pro",
+            "por": "op.gg · datos (44% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Gana las peleas largas aunque aciertes la E: tradeá corto.",
+              "Pokeá con E sin comerte su E (atracción)."
+            ],
+            "post6": "Nunca uses tu R antes que él use la suya: te lleva a su dimensión y tus tentáculos quedan afuera.",
+            "evitar": "Usar R primero."
+          }
+        },
+        "Sett": {
+          "wr": 49.57,
+          "games": 1612,
+          "score": -0.2,
+          "start": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "first": [
+            "Iceborn Gauntlet"
+          ],
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (49.6% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Peleá entre tentáculos y retrocedé ante su W cargada.",
+              "Su E te puede atraer fuera de tu zona: no te quedes en el borde."
+            ],
+            "post6": "Su R te puede sacar de tus tentáculos: guardá Flash.",
+            "evitar": "El centro de su W."
+          }
+        },
+        "Renekton": {
+          "wr": 54.88,
+          "games": 1556,
+          "score": 2.0,
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (55% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Línea a favor. Esquivá su W potenciada y peleá entre tentáculos."
+            ],
+            "post6": "Ganás el all-in con E + R.",
+            "evitar": "Tradear cuando tiene la furia llena."
+          }
+        },
+        "Darius": {
+          "wr": 51.86,
+          "games": 1450,
+          "score": 0.7,
+          "start": [
+            "Doran's Shield",
+            "Health Potion"
+          ],
+          "first": [
+            "Black Cleaver"
+          ],
+          "boots": "Mercury's Treads",
+          "guide": {
+            "src": "pro",
+            "por": "MOBA Trainer (OTP sheet) · Real (OTP Darius) · Federals1 (Challenger)",
+            "lv1": "E, y llevá Teleport. Antes del 6 la línea es de él.",
+            "pre6": [
+              "Metete dentro de su Q: el anillo interno no hace casi nada, el borde sí.",
+              "Peleá siempre entre dos tentáculos.",
+              "Antes del 6 te saca de la wave: quedate con la experiencia, no persigas oro peligroso."
+            ],
+            "post6": "Si acertás la E después del 6, E + R lo gana. Él no tiene respuesta sin su R.",
+            "evitar": "Tradear con él en campo abierto antes del 6."
+          }
+        },
+        "Aatrox": {
+          "wr": 49.22,
+          "games": 1412,
+          "score": -0.3,
+          "first": [
+            "Black Cleaver"
+          ],
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (49% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Esquivá el borde de sus Q.",
+              "Su W te atrae fuera de los tentáculos: alejate del borde."
+            ],
+            "post6": "Su R lo cura: no pelees largo mientras dura.",
+            "evitar": "La zona dulce de su Q."
+          }
+        },
+        "Jax": {
+          "wr": 55.82,
+          "games": 1324,
+          "score": 2.3,
+          "start": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "boots": "Mercury's Treads",
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (56% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Su E reduce el daño en área: peleá cuando la gastó.",
+              "Peleá dentro de tus tentáculos."
+            ],
+            "post6": "E + R gana el duelo.",
+            "evitar": "Entrar mientras tiene la E activa."
+          }
+        },
+        "Garen": {
+          "wr": 48.51,
+          "games": 1177,
+          "score": -0.6,
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (48.5% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Su Q te silencia: no podés usar E. Mantenete dentro de tus tentáculos.",
+              "Sacale vida con Q para cortar su regeneración."
+            ],
+            "post6": "Su R hace daño verdadero: no pelees bajo de vida.",
+            "evitar": "Pelear sin tentáculos alrededor."
+          }
+        },
+        "Volibear": {
+          "wr": 54.92,
+          "games": 1169,
+          "score": 2.0,
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (55% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Línea a favor: peleá entre tentáculos."
+            ],
+            "post6": "Su R desactiva torres: no te quedes bajo torre.",
+            "evitar": "—"
+          }
+        },
+        "Malphite": {
+          "wr": 51.5,
+          "games": 1136,
+          "score": 0.6,
+          "start": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (51.5% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Le ganás la línea: E y pegale entre tentáculos."
+            ],
+            "post6": "Cuidado con su R desde la niebla.",
+            "evitar": "Pelear donde pueda entrar con R."
+          }
+        },
+        "Nasus": {
+          "wr": 49.01,
+          "games": 1110,
+          "score": -0.4,
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (49% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Presionalo para que no junte stacks."
+            ],
+            "post6": "Su R le da vida: alejate mientras dura.",
+            "evitar": "Dejarlo farmear."
+          }
+        },
+        "Ornn": {
+          "wr": 50.71,
+          "games": 990,
+          "score": 0.3
+        },
+        "Fiora": {
+          "wr": 47.92,
+          "games": 962,
+          "score": -0.8,
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (48% WR)",
+            "lv1": "Q.",
+            "pre6": [
+              "Su W bloquea tu E: tirala cuando ya la usó.",
+              "Jugá paciente: farmeá y esperá su error."
+            ],
+            "post6": "Su R cura en el área: alejate.",
+            "evitar": "Tirar la E con su W disponible."
+          }
+        },
+        "K'Sante": {
+          "wr": 57.84,
+          "games": 944,
+          "score": 3,
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (58% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Línea muy a favor: presionalo."
+            ],
+            "post6": "Su R te tira lejos: no te quedes con una pared atrás.",
+            "evitar": "Estar contra una pared."
+          }
+        },
+        "Gangplank": {
+          "wr": 48.87,
+          "games": 929,
+          "score": -0.5
+        },
+        "Shen": {
+          "wr": 50.0,
+          "games": 928,
+          "score": 0.0
+        },
+        "Camille": {
+          "wr": 51.9,
+          "games": 869,
+          "score": 0.8
+        },
+        "Jayce": {
+          "wr": 52.51,
+          "games": 857,
+          "score": 1.0
+        },
+        "Teemo": {
+          "wr": 42.61,
+          "games": 819,
+          "score": -3.0,
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (42.6% WR)",
+            "lv1": "Q.",
+            "pre6": [
+              "Línea muy mala: farmeá bajo torre y pedí ganks.",
+              "Su ceguera anula tus autos: usá Q y E."
+            ],
+            "post6": "Comprá Oracle Lens para los hongos.",
+            "evitar": "Perseguirlo."
+          }
+        },
+        "Ambessa": {
+          "wr": 51.9,
+          "games": 736,
+          "score": 0.8
+        },
+        "Irelia": {
+          "wr": 48.74,
+          "games": 714,
+          "score": -0.5
+        },
+        "Yorick": {
+          "wr": 54.07,
+          "games": 701,
+          "score": 1.6
+        },
+        "Cho'Gath": {
+          "wr": 52.35,
+          "games": 682,
+          "score": 0.9
+        },
+        "Zaahen": {
+          "wr": 54.64,
+          "games": 679,
+          "score": 1.9
+        },
+        "Tryndamere": {
+          "wr": 47.56,
+          "games": 677,
+          "score": -1.0
+        },
+        "Pantheon": {
+          "wr": 54.74,
+          "games": 654,
+          "score": 1.9
+        },
+        "Sion": {
+          "wr": 47.93,
+          "games": 653,
+          "score": -0.8
+        },
+        "Yasuo": {
+          "wr": 45.24,
+          "games": 630,
+          "score": -1.9,
+          "tip": "Malo por datos: su Wind Wall bloquea tu E."
+        },
+        "Urgot": {
+          "wr": 47.04,
+          "games": 625,
+          "score": -1.2
+        },
+        "Kayle": {
+          "wr": 45.77,
+          "games": 614,
+          "score": -1.7,
+          "guide": {
+            "src": "analisis",
+            "por": "análisis · datos (45.8% WR)",
+            "lv1": "E.",
+            "pre6": [
+              "Presionala antes del 6: después es de rango."
+            ],
+            "post6": "Desde el 11 te gana: terminá antes.",
+            "evitar": "Dejarla escalar."
+          }
+        },
+        "Gnar": {
+          "wr": 50.41,
+          "games": 613,
+          "score": 0.2
+        },
+        "Olaf": {
+          "wr": 52.45,
+          "games": 612,
+          "score": 1.0
+        },
+        "Gwen": {
+          "wr": 47.44,
+          "games": 605,
+          "score": -1.0
+        },
+        "Dr. Mundo": {
+          "wr": 52.35,
+          "games": 596,
+          "score": 0.9
+        },
+        "Gragas": {
+          "wr": 52.71,
+          "games": 516,
+          "score": 1.1
+        },
+        "Tahm Kench": {
+          "wr": 52.5,
+          "games": 501,
+          "score": 1.0
+        },
+        "Singed": {
+          "wr": 45.61,
+          "games": 467,
+          "score": -1.8
+        },
+        "Riven": {
+          "wr": 52.21,
+          "games": 452,
+          "score": 0.9
+        },
+        "Akali": {
+          "wr": 54.96,
+          "games": 413,
+          "score": 2.0
+        },
+        "Kled": {
+          "wr": 53.32,
+          "games": 407,
+          "score": 1.3
+        },
+        "Trundle": {
+          "wr": 51.06,
+          "games": 378,
+          "score": 0.4
+        },
+        "Vayne": {
+          "wr": 48.48,
+          "games": 363,
+          "score": -0.6
+        },
+        "Varus": {
+          "wr": 44.12,
+          "games": 306,
+          "score": -2.4
+        },
+        "Warwick": {
+          "wr": 51.71,
+          "games": 292,
+          "score": 0.7
+        },
+        "Kennen": {
+          "wr": 53.14,
+          "games": 271,
+          "score": 1.1
+        },
+        "Vladimir": {
+          "wr": 45.19,
+          "games": 270,
+          "score": -1.7
+        },
+        "Heimerdinger": {
+          "wr": 50.39,
+          "games": 256,
+          "score": 0.1
+        },
+        "Rumble": {
+          "wr": 53.78,
+          "games": 238,
+          "score": 1.2
+        },
+        "Wukong": {
+          "wr": 54.98,
+          "games": 211,
+          "score": 1.4
+        },
+        "Poppy": {
+          "wr": 52.44,
+          "games": 164,
+          "score": 0.5
+        },
+        "Malzahar": {
+          "wr": 38.26,
+          "games": 149,
+          "score": -2.3
+        },
+        "Udyr": {
+          "wr": 51.37,
+          "games": 146,
+          "score": 0.3
+        },
+        "Sylas": {
+          "wr": 58.16,
+          "games": 141,
+          "score": 1.5
+        },
+        "Anivia": {
+          "wr": 44.12,
+          "games": 136,
+          "score": -1.1
+        },
+        "Swain": {
+          "wr": 49.22,
+          "games": 128,
+          "score": -0.1
+        },
+        "Master Yi": {
+          "wr": 50.42,
+          "games": 119,
+          "score": 0.1
+        },
+        "Zac": {
+          "wr": 47.46,
+          "games": 118,
+          "score": -0.4
+        },
+        "Quinn": {
+          "wr": 45.95,
+          "games": 111,
+          "score": -0.6
+        },
+        "Lissandra": {
+          "wr": 45.26,
+          "games": 95,
+          "score": -0.6
+        },
+        "Aurora": {
+          "wr": 42.11,
+          "games": 95,
+          "score": -1.0
+        },
+        "Ryze": {
+          "wr": 47.73,
+          "games": 88,
+          "score": -0.3
+        },
+        "Corki": {
+          "wr": 56.25,
+          "games": 80,
+          "score": 0.7
+        }
+      }
+    }
+  ]
+}

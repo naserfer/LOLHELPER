@@ -1,0 +1,27 @@
+{
+  "name": "pick-helper",
+  "productName": "Pick Helper",
+  "version": "2.1.0",
+  "description": "Coach de League of Legends: picks, compras, repaso y autopsia de muertes",
+  "main": "main.js",
+  "author": "Naser",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/run_all.js",
+    "dist": "./build_win.sh naser",
+    "dist:bitty": "./build_win.sh bitty"
+  },
+  "build": {
+    "appId": "py.naser.pickhelper",
+    "productName": "Pick Helper",
+    "files": ["main.js", "preload.js", "src/**", "renderer/**", "data/**", "package.json"],
+    "win": { "target": ["portable"], "icon": "build/icon.ico", "signAndEditExecutable": false },
+    "portable": { "artifactName": "PickHelper.exe" },
+    "directories": { "output": "dist", "buildResources": "build" }
+  },
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  }
+}

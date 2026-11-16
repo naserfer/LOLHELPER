@@ -1,0 +1,112 @@
+{
+ "localPlayerCellId": 2,
+ "timer": {
+  "phase": "BAN_PICK"
+ },
+ "actions": [],
+ "bans": {
+  "myTeamBans": [],
+  "theirTeamBans": []
+ },
+ "myTeam": [
+  {
+   "cellId": 0,
+   "assignedPosition": "top",
+   "championId": 86,
+   "championPickIntent": 0
+  },
+  {
+   "cellId": 1,
+   "assignedPosition": "jungle",
+   "championId": 3015,
+   "championPickIntent": 0
+  },
+  {
+   "cellId": 2,
+   "assignedPosition": "middle",
+   "championId": 0,
+   "championPickIntent": 3008
+  },
+  {
+   "cellId": 3,
+   "assignedPosition": "bottom",
+   "championId": 222,
+   "championPickIntent": 0
+  },
+  {
+   "cellId": 4,
+   "assignedPosition": "utility",
+   "championId": 412,
+   "championPickIntent": 0
+  }
+ ],
+ "theirTeam": [
+  {
+   "cellId": 5,
+   "assignedPosition": "",
+   "championId": 122
+  },
+  {
+   "cellId": 6,
+   "assignedPosition": "",
+   "championId": 64
+  },
+  {
+   "cellId": 7,
+   "assignedPosition": "",
+   "championId": 103
+  },
+  {
+   "cellId": 8,
+   "assignedPosition": "",
+   "championId": 145
+  },
+  {
+   "cellId": 9,
+   "assignedPosition": "",
+   "championId": 89
+  }
+ ],
+ "_champs": {
+  "64": {
+   "name": "Lee Sin",
+   "dmg": "AD"
+  },
+  "3015": {
+   "name": "Graves",
+   "dmg": "AD"
+  },
+  "86": {
+   "name": "Garen",
+   "dmg": "AD"
+  },
+  "3008": {
+   "name": "Diana",
+   "dmg": "AP"
+  },
+  "103": {
+   "name": "Ahri",
+   "dmg": "AP"
+  },
+  "145": {
+   "name": "Kai'Sa",
+   "dmg": "AD"
+  },
+  "122": {
+   "name": "Darius",
+   "dmg": "AD"
+  },
+  "222": {
+   "name": "Jinx",
+   "dmg": "AD"
+  },
+  "412": {
+   "name": "Thresh",
+   "dmg": "AD"
+  },
+  "89": {
+   "name": "Leona",
+   "dmg": "AD"
+  }
+ }
+}

@@ -1,0 +1,368 @@
+'use strict';
+/* Interfaz de Pick Helper. Recibe la vista del motor y la dibuja. Solo se redibuja cuando cambia
+   algo importante; el reloj, el oro y los timers se actualizan en el lugar (sin titilar). */
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s === undefined || s === null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+const fmtT = (t) => (t <= 0 ? 'VIVO' : `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`);
+const pct = (x) => `${Math.round(x)}%`;
+const wrc = (wr) => (wr >= 51.5 ? 'good' : wr <= 48.5 ? 'bad' : 'neutral');
+const DMG = { AD: 'var(--ad)', AP: 'var(--ap)', MIX: 'var(--mix)', '?': 'var(--muted)' };
+const DIFF = { easy: ['FÁCIL', 'green'], skill: ['PAREJO', 'gold'], hard: ['DIFÍCIL', 'red'], xhard: ['MUY DIFÍCIL', 'red'] };
+const BUILD_LABEL = { default: 'estándar', vs_ad: 'vs equipo AD', vs_ap: 'vs equipo AP' };
+const ROLE_TXT = { support: 'support', adc: 'ADC', top: 'top', mid: 'mid', middle: 'mid', jungle: 'jungla', todos: 'todos los roles' };
+const ROLE_TAG = { top: 'TOP', jungle: 'JG', middle: 'MID', mid: 'MID' };
+
+let ICONS = {};
+let S = null;            // último estado completo
+const LIVE = {};
+
+/* ------------------------------------------------------------------ íconos */
+function icon(kind, name, size, opts = {}) {
+  if (!name) return '';
+  const u = ICONS[`${kind}:${norm(name)}`];
+  const px = Math.round(size * (window.UI_U || 1));
+  const style = `width:${px}px;height:${px}px;${opts.border ? `border-color:${opts.border};` : ''}`;
+  const tip = opts.tip ? ` data-tip="${esc(opts.tip)}"` : ` data-tip="${esc(name)}"`;
+  const initials = esc(String(name).replace(/[^A-Za-z ]/g, '').split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase());
+  const cls = `ic${opts.round ? ' round' : ''}${opts.dead ? ' dead' : ''}`;
+  if (!u) return `<span class="${cls}" style="${style}"${tip}><span class="fb">${initials}</span></span>`;
+  // Las iniciales quedan debajo: si la imagen tarda o no carga, se ven igual.
+  return `<span class="${cls}" style="${style}"${tip}><span class="fb under">${initials}</span><img src="${esc(u)}" alt="" data-fb="${initials}"></span>`;
+}
+const items = (names, size, arrows) => `<div class="icons">${(names || []).map((n, i) => (i && arrows ? '<span class="arrow">›</span>' : '') + icon('item', n, size)).join('')}</div>`;
+const sec = (title, right) => `<div class="sec">${esc(title)}${right ? `<span class="r">${esc(right)}</span>` : ''}</div>`;
+const pill = (txt, cls) => `<span class="pill ${cls}">${esc(txt)}</span>`;
+function wrBar(wr, w = 180) {
+  const pos = Math.max(0, Math.min(1, (wr - 40) / 20)) * 100;
+  const a = Math.min(50, pos), b = Math.max(50, pos);
+  return `<div class="wr sp4" style="width:${w}px"><i style="left:${a}%;width:${b - a}%;background:var(--${wrc(wr)})"></i></div>`;
+}
+
+/* ------------------------------------------------------------------ guía */
+function guideCard(g, enemy, myLevel, role) {
+  if (!g) return '';
+  const L = g.labels || ['Nivel 1', 'Hasta el nivel 6', 'Desde el 6'];
+  const title = role === 'jungle' ? `Cómo jugarle al jungla ${enemy}` : `Cómo jugar la línea vs ${enemy}`;
+  const pro = g.src === 'pro';
+  const phase = myLevel === undefined ? null : myLevel < 6 ? 'pre' : 'post';
+  let h = `<div class="card${pro ? ' hi' : ''}"><div class="row"><span class="k" style="color:var(--gold)">${esc(title)}</span><span class="right">${pill(pro ? 'PRO' : 'ANÁLISIS', pro ? 'gold' : 'dark')}</span></div>`;
+  if (phase === null || myLevel <= 3) h += `<div class="g-h">${esc(L[0])}</div><div class="g-l">${esc(g.lv1)}</div>`;
+  if (phase === null || phase === 'pre') h += `<div class="g-h">${esc(L[1])}</div><ul class="g">${(g.pre6 || []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`;
+  if (phase === null || phase === 'post') h += `<div class="g-h">${phase === null ? esc(L[2]) : 'Ya sos nivel 6+'}</div><div class="g-l">${esc(g.post6)}</div>`;
+  else h += `<div class="g-h off">Cuando llegues al 6</div><div class="g-l off">${esc(g.post6)}</div>`;
+  if (g.evitar && g.evitar !== '—') h += `<div class="g-h red">No hagas esto</div><div class="g-l">${esc(g.evitar)}</div>`;
+  return `${h}<div class="small muted sp8">Fuente: ${esc(g.por || '')}</div></div>`;
+}
+
+/* ------------------------------------------------------------------ champ select */
+function drawSelect(v) {
+  const sup = v.mode === 'support';
+  let A = '', B = '';
+  A += sec('Equipo rival', v.enemies.length ? `AD ${v.ad} · AP ${v.ap}` : '');
+  if (v.enemies.length) {
+    A += `<div class="pad"><div class="icons">${v.enemies.map((e) => {
+      const lane = v.lane_enemy && norm(e.name) === norm(v.lane_enemy);
+      return `<div style="text-align:center">${icon('champion', e.name, lane ? 40 : 34, { border: lane ? 'var(--gold)' : DMG[e.dmg] })}<div class="k" style="color:${lane ? 'var(--gold)' : DMG[e.dmg]}">${lane ? (sup ? 'SUP' : ROLE_TAG[v.mode] || 'TOP') : e.dmg === '?' ? '' : e.dmg}</div></div>`;
+    }).join('')}</div><div class="bar sp8"><i style="flex:${v.ad};background:var(--ad)"></i><i style="flex:${v.ap};background:var(--ap)"></i></div></div>`;
+  } else A += '<div class="empty">Todavía nadie pickeó.</div>';
+
+  if (sup) {
+    const ah = v.adc_hist;
+    A += `<div class="card"><div class="row"><div class="grow"><div class="k">Tu ADC${v.ally_adc && !v.ally_adc_locked ? ' (hover)' : ''}</div>`;
+    A += v.ally_adc ? `<div class="row sp4">${icon('champion', v.ally_adc, 32, { border: 'var(--good)' })}<span class="t big">${esc(v.ally_adc)}</span></div>` : '<div class="dim sp4">Todavía no eligió</div>';
+    if (ah && ah.g) A += `<div class="small sp4 ${ah.w * 2 > ah.g ? 'good' : ah.w * 2 < ah.g ? 'bad' : 'dim'}">Vos de support con ${esc(v.ally_adc)}: ${ah.w}-${ah.g - ah.w}</div>`;
+    A += `</div><div class="right"><div class="k" style="color:var(--bad)">Línea rival</div><div class="icons sp4" style="justify-content:flex-end">`;
+    for (const [n, lab] of [[v.enemy_adc, 'ADC'], [v.lane_enemy, 'SUP']]) A += `<div style="text-align:center">${n ? icon('champion', n, 32, { border: 'var(--bad)' }) : '<span class="ic" style="width:32px;height:32px">?</span>'}<div class="k">${lab}</div></div>`;
+    A += '</div></div></div>';
+    if (v.ban_sugg.length) A += `<div class="row sp8"><span class="k" style="color:var(--bad)">Baneá</span>${v.ban_sugg.map((n) => icon('champion', n, 24, { border: 'var(--bad)' })).join('')}</div>`;
+    A += '</div>';
+  } else {
+    A += `<div class="card"><div class="row"><div class="grow"><div class="k">${v.mode === 'jungle' ? 'Jungla rival' : `Rival de ${esc(ROLE_TXT[v.mode] || 'top')}`}</div>${v.lane_enemy ? `<div class="row sp4">${icon('champion', v.lane_enemy, 30, { border: 'var(--gold)' })}<span class="t big">${esc(v.lane_enemy)}</span></div>` : '<div class="t big sp4">Pick a ciegas</div>'}</div>`;
+    if (v.ban_sugg.length) A += `<div class="right"><div class="k" style="color:var(--bad)">Baneá</div><div class="icons sp4">${v.ban_sugg.map((n) => icon('champion', n, 28, { border: 'var(--bad)' })).join('')}</div></div>`;
+    A += '</div></div>';
+  }
+
+  A += sec(sup ? 'Tu support' : 'Tu pick', sup ? 'mejores 5' : '');
+  v.recs.forEach((r, i) => {
+    const ok = r.status === 'ok', best = i === 0 && ok;
+    const sc = r.score;
+    let mid = `<div class="row"><span class="nm">${esc(r.name)}</span>${best ? pill('RECOMENDADO', 'gold') : ''}${!ok ? pill(r.status, r.status === 'BANEADO' ? 'red' : 'gray') : ''}</div>`;
+    if (r.lane) {
+      const m = r.lane[1];
+      mid += `<div class="row small"><b class="${wrc(m.wr)}">${m.wr.toFixed(1)}%</b><span class="dim">vs ${esc(r.lane[0])}${sup ? '' : ` · ${m.games.toLocaleString('es')} partidas`}</span>${m.pro ? pill(DIFF[m.pro.diff][0], DIFF[m.pro.diff][1]) : ''}</div>${wrBar(m.wr)}`;
+    } else if (!sup) mid += `<div class="small dim">${(r.cfg.blind || 0) >= 1 ? 'Seguro a ciegas' : 'Mejor si ves al rival'}</div>`;
+    if (sup) {
+      const ch = [];
+      if (r.arch) ch.push(pill(r.arch, 'gray'));
+      if (r.syn) {
+        const d = r.syn[1].delta, cls = d >= 0.5 ? 'good' : d <= -0.5 ? 'bad' : 'neutral';
+        ch.push(r.syn[1].est ? `<span class="${Math.abs(d) >= 0.5 ? cls : 'dim'}">≈${d >= 0 ? '+' : ''}${d.toFixed(1)} con ${esc(r.syn[0])} <span class="muted">(estimado por tipo)</span></span>`
+          : `<b class="${cls}">sinergia ${d >= 0 ? '+' : ''}${d.toFixed(1)} con ${esc(r.syn[0])}</b>`);
+      } else if (v.ally_adc) ch.push(`<span class="muted">dúo casi no jugado con ${esc(v.ally_adc)}</span>`);
+      if (r.mine) {
+        const pr = r.mine.pair;
+        ch.push(`<span style="color:var(--gold-l)">vos: ${pr ? `${pr.w}-${pr.g - pr.w} con ${esc(v.ally_adc)}` : `${r.mine.w}-${r.mine.g - r.mine.w}`}</span>`);
+      }
+      if (!r.lane) ch.push(`<span class="dim">WR general ${r.cfg.tier_wr.toFixed(1)}%</span>`);
+      mid += `<div class="chips">${ch.join('')}</div>`;
+    }
+    A += `<div class="card${best ? ' hi' : ''}" style="margin-top:${i ? 4 : 0}px"><div class="rec${best ? ' top' : ''}${ok ? '' : ' off'}">${icon('champion', r.name, best ? 48 : 38, { border: best ? 'var(--gold)' : 'var(--gold-d)' })}<div class="grow">${mid}</div><span class="score ${sc > 0.5 ? 'good' : sc < -0.5 ? 'bad' : 'neutral'}">${sc > 0 ? '+' : ''}${sc.toFixed(1)}</span></div></div>`;
+  });
+
+  const f = v.focus;
+  if (f) {
+    const g = f.guide || (f.lane ? f.lane[1].guide : null);
+    if (g) B += guideCard(g, f.lane ? f.lane[0] : v.lane_enemy || 'tu línea', undefined, v.mode);
+    const p = v.plan;
+    if (p) {
+      B += sec(`Plan · ${f.name}`, BUILD_LABEL[v.build_key]);
+      B += '<div class="pad"><div class="row wrap" style="align-items:flex-start;gap:16px">';
+      for (const [title, names] of [['Inicio', p.start], ['Botas', [p.boots]], ['1° vs rival', p.first || []]]) {
+        if (names && names.length) B += `<div><div class="k">${title}</div><div class="sp4">${items(names, 32)}</div></div>`;
+      }
+      B += '</div>';
+      if (p.start_note) B += `<div class="small muted sp4">${esc(p.start_note)}</div>`;
+      B += `<div class="k sp12">Build</div><div class="sp4">${items(p.build, 36, true)}</div>`;
+      B += `<div class="row wrap sp12" style="align-items:flex-start;justify-content:space-between">
+        <div><div class="k">Runas · ${esc(p.runes.keystone)}</div><div class="row sp4">${icon('rune', p.runes.keystone, 40, { round: true, border: 'transparent', tip: p.runes.keystone + (p.runes.alt ? `\n${p.runes.alt}` : '') })}<div class="icons">${p.runes.primary.concat(p.runes.secondary).map((n) => icon('rune', n, 22, { round: true, border: 'transparent' })).join('')}</div></div></div>
+        <div style="text-align:right"><div class="k">Hechizos · skills</div><div class="icons sp4" style="justify-content:flex-end">${p.spells.map((n) => icon('spell', n, 26)).join('')}</div>
+        <div class="icons sp4" style="justify-content:flex-end">${p.skills.map((k, i) => `${i ? '<span class="arrow">›</span>' : ''}<span class="pill gray" style="font-size:.85em">${esc(k)}</span>`).join('')}</div></div></div>`;
+      if (p.pro) {
+        const d = DIFF[p.pro.diff];
+        B += `<div class="card" style="margin:10px 0 0;border-color:var(--gold-d)"><div class="row"><span class="k" style="color:var(--gold)">★ Challenger · Federals1</span><span class="right">${pill(d[0], d[1])}</span></div>
+          <div class="row sp8">${icon('item', p.pro.start, 28)}<span class="arrow">›</span>${icon('rune', p.pro.keystone, 30, { round: true, border: 'transparent' })}${p.pro.rush ? `<span class="arrow">›</span>${icon('item', p.pro.rush, 28)}` : ''}${p.pro.spell ? `<span class="arrow">+</span>${icon('spell', p.pro.spell, 24)}` : ''}</div>
+          <div class="small dim sp4">${esc([p.pro.start, p.pro.keystone, p.pro.rush && `rush ${p.pro.rush}`, p.pro.spell].filter(Boolean).join(' · '))}</div></div>`;
+      }
+      if (p.tip && !g) B += `<div class="sp8">En línea: ${esc(p.tip)}</div>`;
+      B += `<div class="small dim sp8">${esc(p.general)}</div></div>`;
+    }
+  }
+  return cols(A, B);
+}
+
+/* ------------------------------------------------------------------ partida */
+function drawGame(v) {
+  const me = v.me;
+  let H = `<div class="gh">${icon('champion', me.champ, 38, { border: 'var(--gold)' })}<div class="grow"><div class="t big">${esc(me.champ)}</div><div class="small dim">Nivel ${me.level} · ${esc(me.kda)} · ${me.cs} CS</div></div>
+    <div class="right"><div class="gold-big" data-live="gold">${v.gold}</div><div class="small muted" data-live="time">${fmtT(v.time)}</div></div></div>`;
+  let A = '', B = '';
+  if (v.death) A += `<div class="toast"><div class="ttl">Moriste · ${esc(v.death.title)}</div><div class="sp4">${esc(v.death.text)}</div></div>`;
+  const b = v.buy;
+  if (!v.in_pool) A += `<div class="empty">${esc(me.champ)} no está en tu pool: no tengo build para recomendarte.</div>`;
+  else if (b) {
+    const ok = b.missing === 0;
+    const buys = b.items.concat(b.extra ? [b.extra] : []);
+    A += `<div class="card hi"${ok ? '' : ' style="border-color:var(--line)"'}><div class="row"><span class="k" style="color:${ok ? 'var(--gold)' : 'var(--dim)'}">${ok ? 'Comprá ahora' : 'Próxima compra'}</span>${ok ? `<span class="right">${pill(`${b.cost} de oro`, 'gold')}</span>` : ''}</div>
+      <div class="icons sp8">${buys.map((n, i) => (i ? '<span class="arrow">+</span>' : '') + icon('item', n, i === 0 ? 46 : 38, { border: ok ? 'var(--gold)' : 'var(--gold-d)' })).join('')}</div>
+      <div class="t sp8">${esc(buys.join(' + '))}</div>${ok ? '' : `<div class="bad small" data-live="missing" style="font-weight:700">Te faltan ${b.missing} de oro</div>`}
+      <div class="row sp8">${icon('item', b.target, 24)}<div class="grow"><div style="font-weight:700">${b.complete ? 'Completa' : 'Hacia'} ${esc(b.target)}</div><div class="small dim">Por qué: ${esc((v.why || {})[b.target] || 'parte de la build')}</div>
+      ${(b.also || []).map((nx) => `<div class="small dim">Con lo que sobra avanzás ${esc(nx)}: ${esc((v.why || {})[nx] || '')}</div>`).join('')}</div></div></div>`;
+  } else A += '<div class="empty good">Build completa. Si sobra oro: Control Ward y elixires.</div>';
+  if ((v.queue || []).length > 1) A += sec('Después') + `<div class="pad">${items(v.queue.slice(1), 32, true)}</div>`;
+
+  const rl = v.rules_live || [];
+  if (rl.length) {
+    A += sec(v.rules_early ? 'Tu plan hasta el 14' : 'Tus reglas', v.rules_early ? 'de tus partidas' : 'menos confiables');
+    A += `<div class="card" style="margin-top:0">${rl.map((r) => `<div class="rule"><span class="dot" style="background:var(--${r.ok ? 'good' : 'bad'})"></span><b>${esc(r.rule)}</b><span class="v ${r.ok ? 'good' : 'bad'}" data-live="rule:${r.key}">${esc(r.value)}</span></div>
+      <div class="small dim">${esc(r.note)} · cumpliéndola ganás ${r.wr_ok}%, si no ${r.wr_no}%</div>`).join('')}</div>`;
+  }
+
+  const l = v.lane;
+  if (l && v.guide && v.time < 16 * 60) B += guideCard(v.guide, l.champ, me.level, v.role);
+  A += sec(v.support_mode ? 'Support rival' : v.role === 'jungle' ? 'Jungla rival' : 'Tu rival');
+  if (l) {
+    const dl = l.level - me.level;
+    A += `<div class="card" style="margin-top:0"><div class="row">${icon('champion', l.champ, 40, { border: l.dead ? 'var(--muted)' : 'var(--bad)', dead: l.dead })}<div class="grow"><div class="t">${esc(l.champ)}${l.dead ? ' <span class="muted">(muerto)</span>' : ''}</div>
+      <div class="small"><b class="${dl >= 1 ? 'bad' : dl <= -1 ? 'good' : 'dim'}">Nivel ${l.level}</b> <span class="dim">(${dl > 0 ? '+' : ''}${dl} vs vos) · ${esc(l.kda)} · ${l.cs} CS</span></div></div>
+      <div class="icons">${l.spells.filter(Boolean).map((s) => icon('spell', s, 22, { tip: s.replace('Summoner', '') })).join('')}</div></div>
+      ${l.items.length ? `<div class="sp8">${items(l.items, 28)}</div>` : ''}${l.ult ? `<div class="small sp8">${esc(l.ult)}</div>` : ''}</div>`;
+  } else A += '<div class="empty">No pude detectar a tu rival de línea.</div>';
+  const ea = v.enemy_adc;
+  if (ea) A += `<div class="card" style="margin-top:4px"><div class="row">${icon('champion', ea.champ, 32, { border: 'var(--bad)' })}<div class="grow"><div class="t">ADC rival: ${esc(ea.champ)}</div><div class="small dim">Nivel ${ea.level} · ${esc(ea.kda)}</div></div></div>${ea.items.length ? `<div class="sp8">${items(ea.items, 24)}</div>` : ''}</div>`;
+  if (v.ally_adc && v.support_mode) A += `<div class="small dim pad sp4">Tu ADC: ${esc(v.ally_adc)}</div>`;
+
+  if (v.alerts.length) B += sec('Alertas') + v.alerts.map(([tone, t]) => `<div class="alert ${tone}">${esc(t)}</div>`).join('');
+  B += sec('Equipo rival', `AP ${Math.round(v.ap_share * 100)}% · AD ${100 - Math.round(v.ap_share * 100)}%`);
+  B += `<div class="pad"><div class="icons">${v.threats.map((t, i) => `<div style="text-align:center">${icon('champion', t.name, i ? 32 : 38, { border: DMG[t.dmg], dead: t.dead, tip: `${t.name} · nivel ${t.level} · ${t.kda}` })}<div class="small ${i ? 'dim' : 'bad'}">${esc(t.kda)}</div></div>`).join('')}</div>
+    <div class="bar sp8"><i style="flex:${1 - v.ap_share};background:var(--ad)"></i><i style="flex:${v.ap_share};background:var(--ap)"></i></div><div class="small muted sp4">Ordenados por amenaza (oro en ítems + kills).</div></div>`;
+  return H + cols(A, B);
+}
+
+/* ------------------------------------------------------------------ coach (fuera de partida) */
+function drawCoach(status) {
+  const c = S.coach || {};
+  const h = S.history || {};
+  let A = '', B = '';
+  const kind = status[0];
+  A += `<div class="hero"><span class="gem"></span><h1>${kind === 'off' ? 'Sin conexión' : 'Listo'}</h1><div class="dim small sp4">${kind === 'off' ? 'Abrí el cliente de League para conectar.' : 'Entrá a champ select y aparece la recomendación.'}</div></div>`;
+
+  // Última partida: repaso + autopsia
+  const last = c.last;
+  if (last) {
+    const res = last.win === true ? 'Victoria' : last.win === false ? 'Derrota' : 'Resultado pendiente';
+    A += sec('Tu última partida', `${res} · ${last.champ}`);
+    A += `<div class="card${last.win === false ? ' bad' : last.win ? ' good' : ''}" style="margin-top:0">`;
+    const rv = last.review_early;
+    if (rv) {
+      A += `<div class="t">Cumpliste ${rv.met} de ${rv.total} de tu plan hasta el 14</div>${rv.items.map((it) => `<div class="line"><b class="${it.ok ? 'good' : 'bad'}">${it.ok ? '✓' : '✗'}</b><span class="grow">${esc(it.rule)}</span><span class="dim">hiciste ${esc(it.value)}</span></div>`).join('')}`;
+      if (rv.key_miss) A += `<div class="neutral sp8" style="font-weight:700">Para la próxima: ${esc(rv.key_miss.rule)}. Cumpliéndola ganás ${pct(rv.key_miss.wr_ok)}, si no ${pct(rv.key_miss.wr_no)}.</div>`;
+    } else if (last.snap14) {
+      const s = last.snap14;
+      A += `<div class="k">Hasta el minuto 14</div><div class="row wrap sp4 small" style="gap:4px 14px"><span>Muertes <b>${s.d14}</b></span><span>Visión <b>${Math.round(s.vis14)}</b></span><span>Control Wards <b>${s.cw14}</b></span><span>Oro <b>${Math.round(s.gold14).toLocaleString('es')}</b></span><span>Participación <b>${pct(s.kp14)}</b></span>${last.item1 ? `<span>1er legendario <b>${Number(last.item1).toFixed(1)} min</b></span>` : ''}</div>`;
+    } else A += '<div class="small dim">El overlay no estaba abierto al minuto 14 de esta partida.</div>';
+    if (last.deaths.length) {
+      A += `<div class="k sp12">Autopsia: ${last.deaths.length} muerte${last.deaths.length > 1 ? 's' : ''}</div><div class="death">${last.deaths.map((d) => `<span class="tm">${fmtT(d.t)}</span><div><b class="${d.primary === 'clara' ? 'dim' : 'bad'}">${esc(d.title)}</b><div class="small dim">${esc(d.text)}</div></div>`).join('')}</div>`;
+    } else A += '<div class="good small sp8">No moriste en toda la partida.</div>';
+    A += '</div>';
+  }
+
+  // Por qué morís (todas las partidas grabadas)
+  const au = c.autopsy;
+  A += sec('Por qué morís', au && au.deaths ? `${au.deaths} muertes · ${au.games} partidas` : '');
+  if (au && au.deaths) {
+    A += '<div class="pad">';
+    for (const p of au.patterns.slice(0, 5)) {
+      const cmp = p.in_wins !== null && p.in_losses !== null ? `<span class="muted"> · por partida: ${p.in_losses.toFixed(1)} en derrotas, ${p.in_wins.toFixed(1)} en victorias</span>` : '';
+      A += `<div class="pat"><div class="row"><b>${esc(p.title)}</b><span class="right ${p.pct >= 30 ? 'bad' : 'neutral'}" style="font-weight:800">${Math.round(p.pct)}%</span></div><div class="bar"><i style="width:${p.pct}%;background:${p.pct >= 30 ? 'var(--bad)' : 'var(--gold)'}"></i></div><div class="small dim sp4">${esc(p.tip)}${cmp}</div></div>`;
+    }
+    if (au.games < 5) A += `<div class="small muted sp8">Con ${au.games} partida${au.games > 1 ? 's' : ''} grabada${au.games > 1 ? 's' : ''} es una primera mirada: se afina con cada partida.</div>`;
+    A += '</div>';
+  } else A += '<div class="empty">Se llena solo: jugá con el overlay abierto y cada muerte queda analizada.</div>';
+
+  // Reglas tempranas (las confiables)
+  const e = c.early || { have: 0, need: 20, ready: false, rules: [] };
+  B += sec('Tu plan hasta el minuto 14', e.ready ? `${e.have} partidas` : '');
+  if (e.ready) {
+    if ((c.early_rules_text || []).length) {
+      B += '<div class="pad">' + c.early_rules_text.map((r) => `<div class="line"><b class="grow">${esc(r.text)}</b>${r.conf === 'pista' ? pill('PISTA', 'dark') : ''}<b class="good">${pct(r.wr_ok)} vs ${pct(r.wr_no)}</b></div><div class="small dim">Cumpliéndola ganás ${pct(r.wr_ok)} (${r.ok[1]} partidas); si no, ${pct(r.wr_no)} (${r.no[1]}).${r.conf === 'pista' ? ' Todavía sin confirmar.' : ''}</div>`).join('') + '</div>';
+    } else B += '<div class="empty">Con tus partidas no aparece un patrón claro antes del 14. Seguimos midiendo.</div>';
+  } else {
+    const faltan = Math.max(0, e.need - e.have);
+    B += `<div class="card" style="margin-top:0"><div class="row"><b>Faltan ${faltan} partida${faltan === 1 ? '' : 's'} completa${faltan === 1 ? '' : 's'}</b><span class="right dim">${e.have}/${e.need}</span></div><div class="prog sp8"><i style="width:${100 * e.have / e.need}%"></i></div>
+      <div class="small dim sp8">Cuentan las partidas en las que el overlay estuvo abierto desde el principio hasta el minuto 14. Con eso aprende qué hacés distinto antes del 14 cuando ganás: son cosas que controlás vos, no consecuencias de ir ganando.</div></div>`;
+  }
+
+  // Reglas de partida completa (menos confiables)
+  if ((h.rules || []).length) {
+    B += sec('Condiciones de partida completa', 'menos confiables');
+    B += '<div class="pad">' + h.rules.map((r) => `<div class="line"><span class="grow">${esc(r.text)}</span>${r.conf === 'pista' ? pill('PISTA', 'dark') : ''}<b class="neutral">${pct(r.wr_ok)} vs ${pct(r.wr_no)}</b></div>`).join('')
+      + `<div class="small muted sp8">Salen de ${h.rules_n} partidas (${esc(ROLE_TXT[h.rules_role] || h.rules_role)}). Usan números de toda la partida, que pueden ser consecuencia de ir ganando y no causa.</div></div>`;
+  }
+
+  // Historial
+  if (h.games) {
+    B += sec(`Tus últimas ${h.games} partidas`, `${h.wins}-${h.games - h.wins} · ${pct(100 * h.wins / h.games)}`);
+    const line = (name, g, w, kind, extra = '') => {
+      const p = g ? 100 * w / g : 0;
+      return `<div class="line">${kind ? icon(kind, name, 24) : ''}<span class="grow">${esc(name)}</span><b class="${p >= 55 ? 'good' : p <= 45 ? 'bad' : 'neutral'}">${w}-${g - w} ${pct(p)}</b>${extra ? `<span class="dim small">${extra}</span>` : ''}</div>`;
+    };
+    if (h.mates.length) B += sec('Con quién más jugaste', 'mismo equipo') + `<div class="pad">${h.mates.map((m) => line(m.name, m.g, m.w)).join('')}</div>`;
+    if (h.champs.length) B += sec('Tus campeones') + `<div class="pad">${h.champs.slice(0, 6).map((x) => line(x.key, x.g, x.w, 'champion', `KDA ${((x.k + x.a) / Math.max(1, x.d)).toFixed(1)}`)).join('')}</div>`;
+    if (h.with_adc.length) B += sec('De support, con cada ADC') + `<div class="pad">${h.with_adc.slice(0, 6).map((x) => line(x.key, x.g, x.w, 'champion')).join('')}</div>`;
+  } else if (kind === 'off') B += '<div class="empty">Tu historial se carga cuando abras el cliente.</div>';
+  else if (h.state === 'cargando' || h.state === 'pendiente') B += '<div class="empty">Cargando tu historial…</div>';
+
+  const role = (S.settings || {}).rol_por_defecto;
+  const roles = (S.profile || {}).roles || { utility: 'Support', top: 'Top' };
+  B += `${sec('Ajustes')}<div class="pad row"><span class="small dim grow">Rol cuando no hay rol asignado (normales, blind)</span><span class="seg">${Object.entries(roles).map(([k, lab]) => `<button data-role="${k}" class="${role === k ? 'on' : ''}">${esc(lab)}</button>`).join('')}</span></div>`;
+  B += hudSettings();
+  return cols(A, B);
+}
+
+function hudSettings() {
+  const st = S.settings || {};
+  const on = st.hud_enabled !== false;
+  return `${sec('Overlay dentro del juego')}<div class="card" style="margin-top:0">
+    <div class="row"><span class="grow">Mostrar qué comprar y los avisos sobre el juego</span><span class="seg"><button data-hud="on" class="${on ? 'on' : ''}">Sí</button><button data-hud="off" class="${on ? '' : 'on'}">No</button></span></div>
+    <div class="row wrap sp8"><button class="btn" data-hudcmd="edit">${HUD_EDIT ? 'Terminar de acomodar' : 'Acomodar posiciones'}</button><button class="btn" data-hudcmd="reset">Posiciones de fábrica</button><button class="btn" data-hudcmd="monitor">Cambiar monitor (${(st.hud_display || 0) + 1})</button></div>
+    <div class="small dim sp8">Atajos dentro del juego: <b>Alt+Shift+H</b> ocultar/mostrar · <b>Alt+Shift+E</b> acomodar · <b>Alt+Shift+R</b> posiciones de fábrica.<br>Jugá en modo <b>Sin bordes</b>: en pantalla completa exclusiva Windows no deja dibujar encima.</div></div>`;
+}
+let HUD_EDIT = false;
+
+function cols(A, B) { return `<div class="cols"><div class="col colA">${A}</div><div class="col colB">${B}</div></div>`; }
+
+/* ------------------------------------------------------------------ render */
+function setBrand() {
+  const t = (S && S.profile && S.profile.title) || 'PICK HELPER';
+  const el = document.querySelector('.brand .name');
+  if (el.textContent !== t) el.textContent = t;
+}
+function setStatus(st) {
+  const el = $('#status');
+  el.className = `status ${st[0]}`;
+  el.querySelector('span').textContent = st[1];
+}
+function render() {
+  if (!S) return;
+  setBrand();
+  setStatus(S.status);
+  const v = S.view;
+  const scroll = $('#scroll');
+  const keep = scroll.scrollTop;
+  let html;
+  if (!v) html = drawCoach(S.status);
+  else if ('gold' in v) html = drawGame(v);
+  else html = drawSelect(v);
+  html += `<div class="foot"><span>${esc(v && 'gold' in v ? 'Datos en vivo del juego' : S.meta || '')}</span><span>Arrastrá la barra para mover · doble clic: pantalla completa</span></div>`;
+  $('#app').innerHTML = html;
+  scroll.scrollTop = keep;
+  for (const b of document.querySelectorAll('[data-role]')) b.onclick = () => window.ph.settings({ rol_por_defecto: b.dataset.role });
+  for (const b of document.querySelectorAll('[data-hud]')) b.onclick = () => window.ph.settings({ hud_enabled: b.dataset.hud === 'on' });
+  for (const b of document.querySelectorAll('[data-hudcmd]')) b.onclick = () => window.ph.hud(b.dataset.hudcmd);
+  applyLive(S.live);
+}
+function applyLive(l) {
+  if (!l) return;
+  const set = (sel, txt) => { const e = document.querySelector(sel); if (e && e.textContent !== txt) e.textContent = txt; };
+  set('[data-live="gold"]', String(l.gold));
+  set('[data-live="time"]', fmtT(l.time));
+  if (l.missing > 0) set('[data-live="missing"]', `Te faltan ${l.missing} de oro`);
+  (l.objectives || []).forEach(([, t], i) => set(`[data-live="obj:${i}"]`, fmtT(t)));
+  for (const [k, val] of l.rules || []) set(`[data-live="rule:${k}"]`, val);
+}
+
+/* escala con el ancho de la ventana */
+function rescale() {
+  const w = window.innerWidth;
+  const colW = w >= 760 ? w / 2 : w;
+  const u = Math.max(0.9, Math.min(1.45, colW / 430));
+  window.UI_U = u;
+  document.documentElement.style.setProperty('--u', u.toFixed(3));
+}
+let rt = null;
+window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { const old = window.UI_U; rescale(); if (Math.abs(old - window.UI_U) > 0.02) render(); }, 120); });
+
+/* si un ícono no carga, se muestran las iniciales */
+document.addEventListener('error', (e) => {
+  const img = e.target;
+  if (img.tagName === 'IMG' && img.dataset.fb !== undefined) img.remove();
+}, true);
+
+/* tooltips */
+const tip = $('#tip');
+document.addEventListener('mouseover', (e) => {
+  const t = e.target.closest('[data-tip]');
+  if (!t) { tip.classList.remove('on'); return; }
+  tip.textContent = t.dataset.tip;
+  const r = t.getBoundingClientRect();
+  tip.style.left = `${Math.min(window.innerWidth - 290, r.left)}px`;
+  tip.style.top = `${r.bottom + 6}px`;
+  tip.classList.add('on');
+});
+
+$('#b-min').onclick = () => window.ph.win('min');
+$('#b-max').onclick = () => window.ph.win('max');
+$('#b-close').onclick = () => window.ph.win('close');
+$('#b-pin').onclick = () => window.ph.win('pin');
+document.getElementById('bar').ondblclick = () => window.ph.win('max');
+
+window.ph.on('icons', (m) => { ICONS = m; render(); });
+window.ph.on('state', (s) => { S = s; render(); });
+window.ph.on('tick', (s) => { if (S) { S.status = s.status; S.live = s.live; setStatus(s.status); applyLive(s.live); } });
+window.ph.on('win', (w) => {
+  if ('pinned' in w) $('#b-pin').classList.toggle('on', w.pinned);
+  if ('hudEdit' in w && w.hudEdit !== HUD_EDIT) { HUD_EDIT = w.hudEdit; render(); }
+});
+rescale();
+window.ph.ready();

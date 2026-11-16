@@ -1,0 +1,12 @@
+{
+ "id": "bitty",
+ "title": "PICK HELPER · BITTY",
+ "default_role": "jungle",
+ "roles": {
+  "jungle": { "pool": "pool_jungle.json", "kind": "lane", "label": "Jungla" },
+  "middle": { "pool": "pool_mid.json", "kind": "lane", "label": "Mid" }
+ },
+ "track_adc": false,
+ "demos": { "select": { "session": "demo_session_jungle.json" }, "mid": { "session": "demo_session_mid.json" },
+  "game": { "game": "demo_game_jungle.json" } }
+}

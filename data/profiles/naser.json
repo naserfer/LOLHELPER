@@ -1,0 +1,12 @@
+{
+ "id": "naser",
+ "title": "PICK HELPER",
+ "default_role": "utility",
+ "roles": {
+  "top": { "pool": "pool.json", "kind": "lane", "label": "Top" },
+  "utility": { "pool": "pool_support.json", "kind": "support", "label": "Support" }
+ },
+ "track_adc": true,
+ "demos": { "select": { "session": "demo_session.json" }, "support": { "session": "demo_session_support.json" },
+  "game": { "game": "demo_game.json" }, "gamesup": { "game": "demo_game_support.json" } }
+}

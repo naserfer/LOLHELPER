@@ -1,0 +1,24 @@
+# Pick Helper 2.0
+
+Coach de League of Legends para support (y tu pool de top). Una sola app: `PickHelper.exe`.
+
+## Cómo se usa
+1. Doble clic en `PickHelper.exe`. La primera vez Windows puede mostrar "Windows protegió tu PC" porque la app no está firmada: **Más información → Ejecutar de todas formas**.
+2. Abrí el cliente de League. El overlay se conecta solo.
+3. Jugá en ventana **Sin bordes** (Borderless) para que el overlay quede arriba del juego.
+
+Botones de la barra: alfiler (siempre arriba), minimizar, pantalla completa en el monitor actual (o doble clic en la barra) y cerrar. Se arrastra desde la barra y se agranda desde los bordes; recuerda la posición y el tamaño.
+
+## Qué hace
+- **Champ select:** supports recomendados por matchup, sinergia con tu ADC (op.gg Emerald+, parche 26.22) y tu propio historial. Para top, tu pool Malphite/Garen/Illaoi.
+- **En partida:** qué comprar exactamente con tu oro, guía de línea, rival, alertas y objetivos.
+- **Autopsia de muertes (nuevo):** cada vez que morís, te dice por qué (oro sin gastar, la jungla rival, inferioridad numérica, bajo torre, tu ADC ya había caído, abajo de nivel, pelea de objetivo). Después de cada partida ves la autopsia completa y el resumen de por qué morís más seguido.
+- **Tu plan hasta el minuto 14 (nuevo):** el overlay graba lo que hacés hasta el 14 (muertes, visión, Control Wards, oro, primer ítem). Con 20 partidas completas aprende qué hacés distinto antes del 14 cuando ganás. Mientras tanto te muestra cuántas faltan y las reglas viejas marcadas como "menos confiables".
+
+Una partida cuenta como completa si el overlay estuvo abierto desde el principio y no perdió la lectura por más de un minuto antes del 14.
+
+## Reglas de Riot
+Solo usa la API del cliente y la API en vivo del juego (las mismas que usan las apps aprobadas). No lee la memoria del juego, no automatiza nada y no muestra timers de habilidades ni hechizos del rival.
+
+## Dónde guarda tus datos
+`%APPDATA%\Pick Helper` (historial, partidas grabadas, ajustes). Borrando esa carpeta empieza de cero.
