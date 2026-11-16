@@ -38,7 +38,27 @@ En champ select, con tu support elegido, aparece **Plan de bot con tu ADC**:
 En partida ves el mismo plan sin números. En el overlay aparece una línea corta al empezar (hasta 1:30) y otra al llegar al 6.
 
 ## Quién sos
-La primera vez que abrís la app te pregunta si sos **Naser** (support) o **Bitty** (jungla). Cada uno tiene sus propios datos. Para cambiar, andá a Ajustes → "Cambiar a …".
+La primera vez que abrís la app te pregunta si sos **Naser** (support), **Bitty** (jungla y mid) o **Mauri** (jungla, Udyr). Cada uno tiene sus propios datos. Para cambiar, andá a Ajustes → "Cambiar a …".
+
+## Arranca con Windows y queda en la bandeja
+- Al prender la PC, la app se abre sola, **escondida**, con su ícono abajo a la derecha (al lado del reloj; si no lo ves, tocá la flechita ^).
+- Clic en el ícono: abre la app. Clic derecho: **Abrir**, **Iniciar con Windows** (prender/apagar) y **Salir**.
+- La **X** la esconde en la bandeja: el overlay, los clips y el coach siguen andando. Para cerrarla del todo: clic derecho en el ícono → Salir.
+- Si está escondida y empieza un champ select, aparece sola (sin sacarte el foco).
+- Todo se puede apagar en Ajustes → Windows.
+- Si movés el `.exe` a otra carpeta, abrilo una vez desde ahí para que Windows lo arranque desde el lugar nuevo.
+
+## Mauri (Udyr jungla)
+- **¿AD o AP?** En champ select y en partida la app te dice qué armar y **por qué**:
+  - **AD (subís Q):** daño físico por % de vida y velocidad de ataque. Duelos, objetivos rápidos y llegar a sus carries con E.
+  - **AP (subís R):** tormenta mágica alrededor tuyo que les pega a todos y los ralentiza, más escudo de W y Liandry's. Peleas de equipo y más aguante.
+  - **Cómo decide:** primero el daño de tu equipo (si todos pegan físico → AP; si ya tienen mucho AP → AD), después los rivales (casi sin tanques → AD; mucho cuerpo a cuerpo encima tuyo → AP). Sin una razón clara, AD (la más jugada). Las dos rinden parecido en los datos (op.gg Emerald+): no hay una que gane siempre.
+  - **En partida:** si ya compraste algo de un camino (por ejemplo Long Sword o Haunting Guise), te dice que sigas ese: cambiar a mitad te deja con ítems que no sirven. En el overlay ves "Armá AP (subí R)…" al empezar.
+- **Datos:** op.gg Emerald+ y Lolalytics (Emerald+ y Master+). Si Mauri juega en otro rango, se puede cambiar.
+- **Plan de jungla y guías:** con qué línea jugar, qué respetar de cada jungla y cómo gankear con E. Udyr no tiene definitiva, así que no hay avisos de "al 6".
+
+## Festejo de triple, cuádruple y penta
+Si en la partida hiciste un triple o más, al terminar la app aparece sola y festeja: animación grande con tu campeón, una frase y fuegos artificiales (con sonido bajito). Si se grabó el clip, tenés el botón **▶ Ver la jugada**. Se cierra con **Seguir** o sola a los 14 segundos.
 
 ## Bitty (jungla y mid)
 - **Más datos:** cada matchup mezcla op.gg Master+ con Lolalytics (Master+ y Emerald+, este último a mitad de peso). Antes había ~110 partidas por matchup; ahora suelen ser miles. Debajo de cada campeón ves el número de cada fuente.
@@ -46,6 +66,7 @@ La primera vez que abrís la app te pregunta si sos **Naser** (support) o **Bitt
 - **Diana mid:** cuánto respetar al jungla rival.
 - **Locke y Zaahen:** guías armadas con sus kits reales.
 - **Coach de jungla:** además del minuto 14 graba el **minuto 8** (campamentos, nivel, participación y muertes). Lo usa cuando todas tus partidas de jungla grabadas lo tengan.
+- **Avisos de jungla en partida:** si el jungla rival aparece en una línea, te dice que juegues del otro lado del mapa; las diferencias de nivel y el "está muerto" hablan de campamentos e invasiones, no de torres ni oleadas.
 
 ## Coach de muertes
 Cada muerte se revisa como lo haría un coach:

@@ -3,6 +3,7 @@
 const { norm, sortBy, round1, clamp } = require('./util');
 const botlane = require('./botlane');
 const jgplan = require('./jgplan');
+const udyr = require('./udyr');
 
 const ADCS = new Set(["Aphelios", "Ashe", "Caitlyn", "Draven", "Ezreal", "Jhin", "Jinx", "Kai'Sa", "Kalista", "Kog'Maw",
   "Lucian", "Miss Fortune", "Nilah", "Samira", "Senna", "Sivir", "Smolder", "Tristana", "Twitch", "Varus",
@@ -101,13 +102,18 @@ function analyzeLane(session, champs, pool, role = 'top') {
     if (role === 'jungle' && laneEnemy) enemiesByPos.jungle = laneEnemy;
     focus.jg = jgplan.plan({ me: focus.cfg, mu: focus.lane ? focus.lane[1] : null, laneEnemy, enemies: enemiesByPos });
   }
+  // Udyr (Mauri): AD o AP según tu equipo y los rivales. La build del plan sale del camino elegido.
+  if (focus && focus.cfg && focus.cfg.paths) {
+    focus.udyr = udyr.decide({ allies: allies.map((cid) => ({ name: cname(cid), dmg: cdmg(cid) })), enemies: enemyList });
+    buildKey = focus.udyr.path.toLowerCase();
+  }
   return {
     mode: role, phase: (session.timer || {}).phase || '', enemies: enemyList, lane_enemy: laneEnemy,
     ad, ap, build_key: buildKey, recs, ban_sugg: banSugg, focus,
   };
 }
 
-const BUILD_LABEL = { default: 'estándar', vs_ad: 'vs equipo AD', vs_ap: 'vs equipo AP' };
+const BUILD_LABEL = { default: 'estándar', vs_ad: 'vs equipo AD', vs_ap: 'vs equipo AP', ad: 'camino AD', ap: 'camino AP' };
 
 function planFor(f, buildKey) {
   const cfg = f.cfg;
@@ -121,7 +127,7 @@ function planFor(f, buildKey) {
     build: build.items,
     runes: cfg.runes,
     spells: cfg.spells,
-    skills: cfg.skills,
+    skills: build.skills || cfg.skills,
     tip: m.tip || null,
     general: cfg.general,
     pro: m.pro || null,

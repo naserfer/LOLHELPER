@@ -1,7 +1,7 @@
 'use strict';
-// Quién usa la app (Naser o Bitty). Un solo .exe: la primera vez se pregunta y se guarda.
+// Quién usa la app (Naser, Bitty o Mauri). Un solo .exe: la primera vez se pregunta y se guarda.
 // La elección vive en %APPDATA%\Pick Helper\jugador.json. Cada jugador mantiene su carpeta de datos de siempre:
-//   naser → %APPDATA%\Pick Helper        bitty → %APPDATA%\Pick Helper Bitty
+//   naser → %APPDATA%\Pick Helper        bitty → %APPDATA%\Pick Helper Bitty        mauri → %APPDATA%\Pick Helper Mauri
 // así nadie pierde historial ni grabaciones (no se cambia productName ni appId).
 const fs = require('fs');
 const path = require('path');
@@ -9,6 +9,7 @@ const path = require('path');
 const PLAYERS = {
   naser: { dir: 'Pick Helper' },
   bitty: { dir: 'Pick Helper Bitty' },
+  mauri: { dir: 'Pick Helper Mauri' },
 };
 
 const choiceFile = (appData) => path.join(appData, 'Pick Helper', 'jugador.json');

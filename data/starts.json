@@ -1,8 +1,23 @@
 {
  "fuente": "op.gg Master+, parche 16.22, página de build (Starter items): https://op.gg/lol/champions/<campeón>/build/jungle?tier=master_plus",
- "nota": "Qué mascota de jungla usar. pick = % de partidas que empiezan con esa mascota (sumando las variantes con y sin poción). Si un campeón no está, se usa el inicio de su pool sin dato.",
+ "nota": "Qué mascota de jungla usar. pick = % de partidas que empiezan con esa mascota (sumando las variantes con y sin poción). Si un campeón no está, se usa el inicio de su pool sin dato. tier: de qué nivel es el dato (si falta, Master+).",
  "pets": {
-  "Nocturne|jungle": { "item": "Scorchclaw Pup", "pick": 87.1, "games": 8672 },
-  "Diana|jungle": { "item": "Scorchclaw Pup", "pick": 59.3, "games": 6364 }
+  "Nocturne|jungle": {
+   "item": "Scorchclaw Pup",
+   "pick": 87.1,
+   "games": 8672
+  },
+  "Diana|jungle": {
+   "item": "Scorchclaw Pup",
+   "pick": 59.3,
+   "games": 6364
+  },
+  "Udyr|jungle": {
+   "item": "Gustwalker Hatchling",
+   "pick": 70.2,
+   "games": 26744,
+   "tier": "Emerald+",
+   "fuente": "op.gg Emerald+: https://op.gg/lol/champions/udyr/items/jungle?tier=emerald_plus"
+  }
  }
 }

@@ -1,14 +1,23 @@
 'use strict';
-// Bitty (jungla y mid): segunda fuente de datos y plan de partida.
+// Bitty (jungla y mid) y Mauri (Udyr jungla): segunda fuente de datos y plan de partida.
 //  - mix(): mezcla el WR de cada matchup de op.gg Master+ con Lolalytics Master+ (mismo peso) y Lolalytics Emerald+
 //    (medio peso: más partidas, pero otro nivel). El score usa la mezcla; se guardan las fuentes para mostrarlas.
 //  - plan(): jungla → con qué línea jugar (tu jungla contra el que juega cada línea, Lolalytics Emerald+), duelo con el
 //    jungla rival, qué respetar y qué cambia en el 6. Mid → cuánto respetar al jungla rival.
 // Cada línea dice de dónde sale: DATOS (con fuente y partidas) o ANÁLISIS (kits). No hay material PRO para estos campeones.
 const { norm, round1 } = require('./util');
-const BL = require('../../data/bitty_lolalytics.json');
+// Lolalytics de cada perfil, juntos (las claves son "Campeón|rol").
+const BL = { same: {}, lanes: {} };
+for (const f of ['bitty_lolalytics.json', 'mauri_lolalytics.json']) {
+  const d = require(`../../data/${f}`);
+  Object.assign(BL.same, d.same);
+  Object.assign(BL.lanes, d.lanes);
+}
 
 const LANE = { top: 'top', middle: 'mid', bottom: 'bot' };
+const FUENTE = {
+  'Udyr|jungle': 'Fuentes: op.gg Emerald+ y Lolalytics (Emerald+ y Master+, este último a mitad de peso) · kit de la wiki (ANÁLISIS). No hay guías PRO de Udyr.',
+};
 const EMERALD_WEIGHT = 0.5;
 const fmt = (x) => `${x >= 0 ? '+' : '−'}${Math.abs(x).toFixed(1).replace('.', ',')}`;
 const pct = (x) => `${x.toFixed(1).replace('.', ',')}%`;
@@ -21,16 +30,19 @@ const find = (obj, name) => {
 const keyOf = (c) => `${c.name}|${c.role === 'middle' ? 'mid' : c.role}`;
 const first = (t) => String(t || '').split(/[:;.]/)[0].trim();
 
-function mix(pool) {
+// opgg: de qué tier son los números de op.gg del pool ("op.gg Master+" o "op.gg Emerald+"). El tier de Lolalytics que
+// coincide pesa entero; el otro, a mitad de peso (otro nivel de juego).
+function mix(pool, opgg = 'op.gg Master+') {
+  const emeraldBase = /emerald/i.test(opgg);
   for (const c of pool) {
     const same = BL.same[keyOf(c)];
     if (!same) continue;
     for (const [enemy, m] of Object.entries(c.matchups)) {
-      const src = [{ name: 'op.gg Master+', wr: m.wr, games: m.games, w: 1 }];
+      const src = [{ name: opgg, wr: m.wr, games: m.games, w: 1 }];
       const mp = find(same.master_plus, enemy);
       const em = find(same.emerald_plus, enemy);
-      if (mp) src.push({ name: 'Lolalytics Master+', wr: mp[0], games: mp[2], w: 1 });
-      if (em) src.push({ name: 'Lolalytics Emerald+', wr: em[0], games: em[2], w: EMERALD_WEIGHT });
+      if (mp) src.push({ name: 'Lolalytics Master+', wr: mp[0], games: mp[2], w: emeraldBase ? EMERALD_WEIGHT : 1 });
+      if (em) src.push({ name: 'Lolalytics Emerald+', wr: em[0], games: em[2], w: emeraldBase ? 1 : EMERALD_WEIGHT });
       const n = src.reduce((s, x) => s + x.games * x.w, 0);
       const wr = src.reduce((s, x) => s + x.wr * x.games * x.w, 0) / Math.max(1, n);
       m.score_opgg = m.score;
@@ -44,7 +56,7 @@ function mix(pool) {
 }
 
 function sourcesText(m) {
-  if (!m || !m.sources) return m ? `op.gg Master+ ${pct(m.wr)} (${games(m.games)} partidas)` : '';
+  if (!m || !m.sources) return m ? `op.gg ${pct(m.wr)} (${games(m.games)} partidas)` : '';
   return m.sources.map((s) => `${s.name} ${pct(s.wr)} (${games(s.games)})`).join(' · ');
 }
 
@@ -54,7 +66,7 @@ function plan(p) {
   if (!me) return null;
   const key = keyOf(me);
   const lanes = BL.lanes[key];
-  if (!lanes) return null;   // solo Bitty (Nocturne/Diana jungla, Diana mid)
+  if (!lanes) return null;   // solo Bitty (Nocturne/Diana jungla, Diana mid) y Mauri (Udyr jungla)
   const e = p.enemies || {};
   const why = [];
   const missing = [];
@@ -137,10 +149,13 @@ function plan(p) {
   let t6 = post6.length ? post6[0].txt.replace(/^Al 6[^:]*:\s*/, '') : '';
   t6 = t6.split('.')[0].trim();
   const lower = t6.length > 1 && t6[1] === t6[1].toLowerCase() && t6[1] !== t6[1].toUpperCase();   // no tocar "Q, E, R…"
-  const hud6 = t6 ? `Ya sos 6: ${lower ? t6.charAt(0).toLowerCase() + t6.slice(1) : t6}.` : null;
+  // Udyr no tiene definitiva: al 6 no cambia nada (no6), así que no hay línea del 6 en el overlay.
+  const no6 = !!(guide && guide.no6);
+  const hud6 = t6 && !no6 ? `Ya sos 6: ${lower ? t6.charAt(0).toLowerCase() + t6.slice(1) : t6}.` : null;
   return {
     role: me.role, label: label || 'PLAN', head: head || 'Elegí rivales para armar el plan.', known: Boolean(head),
     why, missing, threats, post6, hud: head ? hud || null : null, hud6,
+    post6_label: no6 ? ((guide.labels || [])[2] || 'Más adelante') : null, fuente: FUENTE[key] || null,
   };
 }
 
@@ -148,7 +163,7 @@ function plan(p) {
 function forGame(pl) {
   if (!pl) return null;
   return { role: pl.role, label: pl.label, head: pl.head, threats: pl.threats.filter((t) => t.src === 'ANÁLISIS' || !/\d/.test(t.txt)),
-    post6: pl.post6, hud: pl.hud, hud6: pl.hud6 };
+    post6: pl.post6, hud: pl.hud, hud6: pl.hud6, post6_label: pl.post6_label };
 }
 
 module.exports = { mix, plan, forGame, sourcesText, BL };

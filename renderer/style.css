@@ -61,6 +61,7 @@ img { -webkit-user-drag: none; }
 .pill { display: inline-block; padding: 1px 7px; border-radius: 3px; font-size: .7em; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; white-space: nowrap; }
 .pill.gold { background: var(--gold); color: var(--bg); } .pill.gray { background: var(--line); color: var(--text); }
 .pill.red { background: var(--bad); color: #fff; } .pill.green { background: var(--good); color: var(--bg); } .pill.dark { background: #ffffff10; color: var(--dim); }
+.pill.ad { background: var(--ad); color: #fff; } .pill.ap { background: var(--ap); color: #fff; }
 .sp4 { margin-top: calc(4px * var(--u)); } .sp8 { margin-top: calc(8px * var(--u)); } .sp12 { margin-top: calc(12px * var(--u)); }
 
 /* --- íconos --- */
@@ -158,3 +159,66 @@ ul.g { margin: 3px 0 0 1.1em; } ul.g li { margin-top: 2px; }
   animation: congrats 1.2s ease-out both, wiggle 2.4s ease-in-out 1.2s infinite; }
 @keyframes congrats { from { transform: translate(-50%, -20px) scale(.6); opacity: 0; } to { transform: translate(-50%, 0) scale(1); opacity: 1; } }
 @keyframes wiggle { 0%, 100% { transform: translate(-50%, 0) rotate(0); } 50% { transform: translate(-50%, 0) rotate(-1.5deg) scale(1.03); } }
+
+/* ------------------------------------------------------------------ festejo (triple o más) */
+.fest { position: fixed; inset: 0; z-index: 9000; overflow: hidden; display: flex; align-items: center; justify-content: center;
+  font-family: inherit; animation: festIn .35s ease-out both; }
+.fest.out { animation: festOut .45s ease-in both; }
+@keyframes festIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes festOut { to { opacity: 0; transform: scale(1.06); } }
+.fest-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 36%, #1b2a4af0 0%, #050b16fa 55%, #000 100%); }
+.fest-rays { position: absolute; left: 50%; top: 36%; width: 260vmax; height: 260vmax; margin: -130vmax 0 0 -130vmax; opacity: 0;
+  background: repeating-conic-gradient(from 0deg, #f4c87433 0deg 6deg, transparent 6deg 18deg);
+  -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 42%); mask-image: radial-gradient(circle, #000 0%, transparent 42%);
+  animation: festRays 18s linear infinite; transition: opacity .6s; }
+.fest.hit .fest-rays { opacity: 1; }
+.fest.n5 .fest-rays { background: repeating-conic-gradient(from 0deg, #ff4fd844 0deg 6deg, transparent 6deg 12deg, #5be0ff44 12deg 18deg, transparent 18deg 24deg); animation-duration: 9s; }
+@keyframes festRays { to { transform: rotate(360deg); } }
+.fest-fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.fest-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+.fest.hit .fest-flash { animation: festFlash .55s ease-out; }
+@keyframes festFlash { 0% { opacity: .95; } 100% { opacity: 0; } }
+body.fest-shake #app, body.fest-shake .fest-stage { animation: festShake .55s cubic-bezier(.36,.07,.19,.97); }
+@keyframes festShake { 10%, 90% { transform: translate(-2px, 1px); } 20%, 80% { transform: translate(5px, -3px); }
+  30%, 50%, 70% { transform: translate(-9px, 4px) rotate(-.6deg); } 40%, 60% { transform: translate(9px, -4px) rotate(.6deg); } }
+
+.fest-stage { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 1.6vh; padding: 0 12px;
+  width: 100%; text-align: center; margin-top: -4vh; }
+.fest-champ { position: relative; width: clamp(70px, 22vmin, 150px); height: clamp(70px, 22vmin, 150px); opacity: 0;
+  animation: festChamp .7s cubic-bezier(.2,1.6,.4,1) .45s both; }
+.fest-champ img, .fest-champ > span { position: absolute; inset: 14%; width: 72%; height: 72%; object-fit: cover; border-radius: 50%;
+  border: 2px solid var(--gold); box-shadow: 0 0 30px #f4c874aa, inset 0 0 20px #000; display: flex; align-items: center; justify-content: center;
+  background: var(--card); color: var(--gold-l); font-weight: 800; font-size: 2em; }
+.fest-champ .ring { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; }
+.fest-champ .r1 { stroke: #c8aa6e; stroke-width: 1.6; stroke-dasharray: 14 6 2 6; animation: festSpin 6s linear infinite; }
+.fest-champ .r2 { stroke: #0ac8b9; stroke-width: 1.2; stroke-dasharray: 3 7; animation: festSpin 4s linear infinite reverse; }
+@keyframes festSpin { to { transform: rotate(360deg); } }
+@keyframes festChamp { from { opacity: 0; transform: scale(.2) rotate(-90deg); } to { opacity: 1; transform: none; } }
+
+.fest-title { position: relative; font-weight: 900; letter-spacing: .04em; line-height: .95; font-size: clamp(34px, 12.5vw, 120px);
+  background: linear-gradient(180deg, #fff6db 0%, #f4c874 38%, #b8862f 52%, #ffe7a3 64%, #8a6420 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 4px 0 #3b2a0e) drop-shadow(0 0 22px #f4c87488);
+  opacity: 0; transform: scale(4); }
+.fest.hit .fest-title { animation: festSlam .5s cubic-bezier(.17,1.4,.4,1) both, festGlitch .35s steps(2) .05s 2; }
+.fest-title::after { content: attr(data-text); position: absolute; inset: 0; color: transparent; pointer-events: none;
+  background: linear-gradient(100deg, transparent 35%, #ffffffee 50%, transparent 65%); background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; animation: festShine 2.4s ease-in-out 1s infinite; }
+.fest.n5 .fest-title { background: linear-gradient(90deg, #ff4fd8, #ffe066, #5be0ff, #9b5cff, #ff4fd8); background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; animation: festSlam .5s cubic-bezier(.17,1.4,.4,1) both, festRainbow 2s linear infinite; }
+@keyframes festSlam { 0% { opacity: 0; transform: scale(4) rotate(-4deg); filter: blur(12px); } 60% { opacity: 1; transform: scale(.92); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1); } }
+@keyframes festGlitch { 0% { text-shadow: -6px 0 #ff00c8, 6px 0 #00f0ff; } 100% { text-shadow: 6px 0 #ff00c8, -6px 0 #00f0ff; } }
+@keyframes festShine { 0% { background-position: 150% 0; } 60%, 100% { background-position: -100% 0; } }
+@keyframes festRainbow { to { background-position: 300% 0; } }
+
+.fest-kills { display: flex; gap: clamp(8px, 2.4vw, 18px); margin-top: .4vh; }
+.fest-kills i { width: clamp(16px, 4.6vw, 30px); height: clamp(16px, 4.6vw, 30px); transform: rotate(45deg) scale(0); background: linear-gradient(135deg, #fff2c8, #c8aa6e 55%, #785a28);
+  box-shadow: 0 0 18px #f4c874, inset 0 0 0 2px #fff6; animation: festKill .45s cubic-bezier(.2,2,.4,1) var(--d) both; }
+.fest.n5 .fest-kills i { background: linear-gradient(135deg, #fff, #ff4fd8 50%, #5be0ff); box-shadow: 0 0 22px #ff4fd8; }
+@keyframes festKill { from { transform: rotate(45deg) scale(0); } to { transform: rotate(45deg) scale(1); } }
+.fest-champname { color: var(--gold-l); font-weight: 700; letter-spacing: .3em; text-transform: uppercase; font-size: clamp(11px, 2.6vw, 18px); opacity: 0;
+  animation: festIn .5s ease-out 1.2s both; }
+.fest-msg { min-height: 1.4em; max-width: 640px; color: #fff; font-size: clamp(14px, 3.4vw, 24px); font-weight: 600; text-shadow: 0 2px 10px #000; }
+.fest-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 1vh; opacity: 0; animation: festIn .5s ease-out 2.2s both; }
+.fest-btns .btn { font-size: 14px; padding: 8px 16px; }
+.fest-btns .fest-play { background: var(--gold); color: var(--bg); border-color: var(--gold); font-weight: 800; box-shadow: 0 0 18px #f4c87488; }

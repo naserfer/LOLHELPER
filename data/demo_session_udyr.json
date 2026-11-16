@@ -1,0 +1,112 @@
+{
+ "localPlayerCellId": 1,
+ "timer": {
+  "phase": "BAN_PICK"
+ },
+ "actions": [],
+ "bans": {
+  "myTeamBans": [],
+  "theirTeamBans": []
+ },
+ "myTeam": [
+  {
+   "cellId": 0,
+   "assignedPosition": "top",
+   "championId": 122,
+   "championPickIntent": 0
+  },
+  {
+   "cellId": 1,
+   "assignedPosition": "jungle",
+   "championId": 0,
+   "championPickIntent": 2075
+  },
+  {
+   "cellId": 2,
+   "assignedPosition": "middle",
+   "championId": 3044,
+   "championPickIntent": 0
+  },
+  {
+   "cellId": 3,
+   "assignedPosition": "bottom",
+   "championId": 222,
+   "championPickIntent": 0
+  },
+  {
+   "cellId": 4,
+   "assignedPosition": "utility",
+   "championId": 412,
+   "championPickIntent": 0
+  }
+ ],
+ "theirTeam": [
+  {
+   "cellId": 5,
+   "assignedPosition": "",
+   "championId": 2020
+  },
+  {
+   "cellId": 6,
+   "assignedPosition": "",
+   "championId": 64
+  },
+  {
+   "cellId": 7,
+   "assignedPosition": "",
+   "championId": 3042
+  },
+  {
+   "cellId": 8,
+   "assignedPosition": "",
+   "championId": 145
+  },
+  {
+   "cellId": 9,
+   "assignedPosition": "",
+   "championId": 89
+  }
+ ],
+ "_champs": {
+  "122": {
+   "name": "Darius",
+   "dmg": "AD"
+  },
+  "2075": {
+   "name": "Udyr",
+   "dmg": "AD"
+  },
+  "3044": {
+   "name": "Talon",
+   "dmg": "AD"
+  },
+  "222": {
+   "name": "Jinx",
+   "dmg": "AD"
+  },
+  "412": {
+   "name": "Thresh",
+   "dmg": "AD"
+  },
+  "64": {
+   "name": "Lee Sin",
+   "dmg": "AD"
+  },
+  "3042": {
+   "name": "Syndra",
+   "dmg": "AP"
+  },
+  "145": {
+   "name": "Kai'Sa",
+   "dmg": "AD"
+  },
+  "89": {
+   "name": "Leona",
+   "dmg": "AD"
+  },
+  "2020": {
+   "name": "Gnar",
+   "dmg": "AD"
+  }
+ }
+}

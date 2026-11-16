@@ -7,7 +7,7 @@ const { LCU, liveGame } = require('./lcu');
 const { DataDragon } = require('./ddragon');
 const select = require('./select');
 const jgplan = require('./jgplan');
-const { Clipper } = require('../clipper');
+const { Clipper, congrats } = require('../clipper');
 const ingame = require('./ingame');
 const { History } = require('./history');
 const wincons = require('./wincons');
@@ -31,6 +31,17 @@ const HISTORY_ROLE = { utility: 'support', adc: 'adc' };
 const canonicalRole = (role) => ROLE_CANON[String(role || '').toLowerCase()] || String(role || '').toLowerCase();
 const historyRole = (role) => HISTORY_ROLE[canonicalRole(role)] || canonicalRole(role);
 
+// Festejo al terminar una partida con triple o más: la app muestra una animación grande (una vez por partida).
+const MULTI_TITLE = { 3: '¡TRIPLE KILL!', 4: '¡CUÁDRUPLE KILL!', 5: '¡PENTAKILL!' };
+function celebrationFor(rec, now) {
+  const ms = (rec && rec.multis) || [];
+  if (!ms.length) return null;
+  const best = ms.reduce((a, b) => (b.n > a.n ? b : a));
+  const n = Math.min(5, best.n);
+  return { id: `${rec.id}|${best.t}`, n, count: ms.length, champ: rec.champ, t: best.t, title: MULTI_TITLE[n],
+    msg: congrats(n, best.t), at: now };
+}
+
 class Engine {
   constructor({ dataDir, userDir, demo = null }) {
     this.dataDir = dataDir;
@@ -38,7 +49,7 @@ class Engine {
     this.demo = demo;            // null | {session: file, game: file}
     this.lcu = new LCU();
     this.dd = new DataDragon(path.join(userDir, 'ddragon'));
-    // Perfil: qué roles y campeones usa este jugador (naser = top + support, bitty = jungla + mid).
+    // Perfil: qué roles y campeones usa este jugador (naser = top + support, bitty = jungla + mid, mauri = Udyr jungla).
     const pid = process.env.PH_PROFILE || (this.readJson(path.join(dataDir, 'profile.json')) || {}).id || 'naser';
     this.profile = this.readJson(path.join(dataDir, 'profiles', `${pid}.json`));
     this.roles = {};
@@ -46,7 +57,7 @@ class Engine {
     this.supPool = []; this.supDyn = {}; this.supLabels = {}; this.supAdcArch = {};
     for (const [role, cfg] of Object.entries(this.profile.roles)) {
       const d = JSON.parse(fs.readFileSync(path.join(dataDir, cfg.pool), 'utf8'));
-      const pool = jgplan.mix(d.pool.map((c) => Object.assign({ role: role === 'utility' ? 'utility' : role === 'middle' ? 'mid' : role }, c)));
+      const pool = jgplan.mix(d.pool.map((c) => Object.assign({ role: role === 'utility' ? 'utility' : role === 'middle' ? 'mid' : role }, c)), d.source);
       this.roles[role] = { kind: cfg.kind, label: cfg.label, pool, meta: `${d.source || '?'} · parche ${d.patch || '?'}` };
       this.pool = this.pool.concat(pool);
       if (cfg.kind === 'support') {
@@ -186,7 +197,9 @@ class Engine {
       const jp = gv.jg_plan;
       if (jp && (gv.me.level || 1) >= 6 && this.gamePrev.lvl6_at == null) this.gamePrev.lvl6_at = gv.time;
       const at6 = this.gamePrev.lvl6_at;
-      if (jp && jp.hud && gv.time < 90) { gv.win_line = jp.hud; gv.win_until = 90; }
+      // Udyr (Mauri): lo primero que ve es si arma AD o AP (hasta 0:45); después, el plan de jungla (hasta 1:30).
+      if (gv.udyr && gv.udyr.hud && gv.time < 45) { gv.win_line = gv.udyr.hud; gv.win_until = 45; }
+      else if (jp && jp.hud && gv.time < 90) { gv.win_line = jp.hud; gv.win_until = 90; }
       else if (jp && jp.hud6 && at6 != null && gv.time - at6 < 20) { gv.win_line = jp.hud6; gv.win_until = at6 + 20; }
     }
     if (gv.support_mode) {
@@ -392,6 +405,7 @@ class Engine {
     if (this.lastGame && now - this.lastGame[0] < STALE_GAME_MS) return { view: this.lastGame[1], status: ['ingame', 'En partida'] };
     if (this.wasInGame) {         // terminó la partida
       this.wasInGame = false;
+      this.celebrate = celebrationFor(this.recorder.rec, now);
       this.recorder.save();
       this.computeCoach(true);    // la autopsia de la partida que terminó, ya
       this.history.last = 0;      // actualizar historial para saber si ganaste
@@ -432,4 +446,4 @@ class Engine {
   }
 }
 
-module.exports = { Engine, EARLY_NEED };
+module.exports = { Engine, EARLY_NEED, celebrationFor };

@@ -15,6 +15,7 @@ Hay **dos builds**, que comparten el mismo código y se separan por *perfil*:
 |---|---|---|---|---|---|
 | `naser` | Naser (dueño del proyecto), Plat 3 | support (+ top) | 31 supports; top: Malphite, Garen, Illaoi | op.gg Emerald+ | `PickHelper.exe` · `%APPDATA%\Pick Helper` |
 | `bitty` | Bitty (amigo), Master | jungla, mid | Nocturne y Diana (jungla), Diana (mid) | op.gg Master+ + Lolalytics (Master+ y Emerald+) | `PickHelper-Bitty.exe` · `%APPDATA%\Pick Helper Bitty` |
+| `mauri` | Mauri (amigo), rango sin confirmar | jungla | Udyr (AD o AP) | op.gg Emerald+ + Lolalytics (Emerald+ y Master+ a mitad) | el mismo `PickHelper.exe` · `%APPDATA%\Pick Helper Mauri` |
 
 ## Preferencias del usuario (importan)
 - Todo en **español rioplatense/paraguayo con voseo** ("comprá", "jugá"). Textos cortos y concretos.
@@ -42,6 +43,8 @@ src/hud.js              Qué muestra el HUD y posiciones por defecto (% de panta
 src/keywatch.js         Lee si Tab está apretada (PowerShell + GetAsyncKeyState), sin quedarse con la tecla
 src/player.js           Quién usa la app (Naser o Bitty): se elige la primera vez; cada uno con su carpeta de datos
 src/clipper.js          Clips de muertes y jugadas: maneja la ventana oculta que graba, guarda y borra (ver "Clips")
+src/startup.js          Arranque con Windows (--oculta) y bandeja: qué registrar y cuándo aparecer sola
+renderer/celebrate.js   Festejo de triple o más al terminar la partida (canvas + CSS + sonido sintetizado)
 renderer/clipper.*      Ventana oculta: captura de pantalla + WebCodecs (placa de video) + buffer en memoria + MP4 (vendor/mp4-muxer.js, MIT)
 src/engine/
   engine.js             Orquesta todo: perfil, cliente, partida, historial, grabador, coach
@@ -50,7 +53,8 @@ src/engine/
   itemdb.js             Recetas y "qué comprar con X de oro" (planPurchase)
   select.js             Champ select: analyzeLane (top/jungla/mid) y analyzeSupport (+ sinergia ADC)
   botlane.js            Plan de bot lane para support: estilo de línea, combo, amenaza y post-6 (ver "Plan de bot")
-  jgplan.js             Bitty: mezcla op.gg + Lolalytics y plan de jungla/mid (ver "Bitty")
+  jgplan.js             Bitty y Mauri: mezcla op.gg + Lolalytics y plan de jungla/mid (ver "Bitty")
+  udyr.js               Mauri: ¿AD o AP? (decide, startedPath, forGame). Ver "Mauri" 
   ingame.js             Partida en vivo: rival, compra adaptativa (BUILD_RULES, supportRules), alertas, guía
   history.js            Historial desde el cliente (últimas 100 partidas, en historial/)
   wincons.js            Reglas "si cumplís X ganás Y%" con prueba de permutación (Westfall-Young)
@@ -64,9 +68,11 @@ data/
   items.json            Lista fija de ítems vigentes (ver "Lista de ítems"); se actualiza a mano
   bot_lane.json         Plan de bot: perfiles de ADC, aportes de cada support, combos y support vs ADC (Lolalytics)
   bitty_lolalytics.json Bitty: matchups de Lolalytics (mismo rol, por tier) y su campeón contra cada línea rival
+  mauri_lolalytics.json Mauri: lo mismo para Udyr jungla (jgplan junta los dos archivos)
+  pool_udyr.json        Mauri: Udyr con builds ad / ap (y default = ad), paths: true
   starts.json           Mascota de jungla por campeón (op.gg Master+, % de partidas que la eligen)
   demo_*.json           Sesiones y partidas de ejemplo para --demo
-tools/datos/            Scripts que generan pool*.json a partir de datos crudos (top, support, bitty)
+tools/datos/            Scripts que generan pool*.json a partir de datos crudos (top, support, bitty, mauri)
 test/                   Todas las pruebas (ver "Pruebas")
 legacy/python/          Versión anterior en Python/Tkinter. Solo se usa para la prueba de equivalencia
 build/                  Íconos y configuración de electron-builder para Bitty
@@ -121,6 +127,32 @@ build_win.sh            Arma el .exe desde Linux con Wine
 - **Locke y Zaahen:** guías con los kits leídos en la wiki (16.22), en `tools/datos/bitty/knowledge.py`.
 - **Foto del minuto 8** (`recorder.snap8`: `cs8`, `lvl8`, `kp8`, `d8`): se graba siempre, pero `wincons.earlySpec` la usa solo en jungla y solo si **todas** las partidas del rol la tienen (las viejas no la traen; rellenarlas con 0 inventaría reglas).
 - Para actualizar: Lolalytics `.../counters/?lane=jungle&vslane=<jungle|top|middle|bottom>&tier=<master_plus|emerald_plus>` (y `lane=middle` para Diana mid) → `tools/datos/bitty/raw_lolalytics.txt` → `node tools/datos/bitty/build_lolalytics.js`.
+
+## Mauri: Udyr y la decisión AD / AP
+- Lo que más le cuesta es elegir AD o AP. `udyr.decide({ allies, enemies, started })` puntúa (ANÁLISIS, por el kit de la wiki):
+  1. Daño de tu equipo, 2 puntos: AP aliado ≤ 0,5 → AP; ≥ 2,5 (o ≥ 2 con 3 aliados conocidos) → AD.
+  2. Rivales, 1 punto: ≤ 1 en `FRONT` (tanques y peleadores) → AD; ≥ 3 → AP.
+  3. Empate → AD (la más jugada en op.gg Emerald+: Shojin 54% de las partidas vs Liandry's 28%, winrates parecidos).
+  4. En partida, `startedPath` (etiquetas de Data Dragon: `SpellDamage` = AP, `Damage` = AD) bloquea el camino ya empezado.
+- Champ select: tarjeta "¿AD o AP?" con el porqué, los dos caminos y el dato (con número y fuente). `build_key` pasa a `ad`/`ap` y el plan muestra esa build y ese orden de habilidades (AD Q>E>W, AP R>E>Q).
+- En partida: `BUILD_RULES['Udyr|jungle|AD' | 'Udyr|jungle|AP']`; el porqué del ítem dice "camino AP (motivo)". Sin números. Overlay: la línea AD/AP hasta 0:45, después el plan de jungla hasta 1:30.
+- Udyr no tiene definitiva: las guías llevan `no6` (sin línea "Ya sos 6", título "Con tu primer ítem") y los avisos de nivel no dicen "hasta tu 6".
+- Rango de Mauri sin confirmar: se usa Emerald+. `jgplan.mix(pool, d.source)` da peso entero al tier de Lolalytics que coincide con el de op.gg del pool y mitad al otro (Bitty no cambia).
+- Para actualizar: op.gg `udyr/counters/jungle?tier=emerald_plus` e `items/jungle` → `tools/datos/mauri/raw.py` → `python3 tools/datos/mauri/build.py`; Lolalytics como Bitty → `tools/datos/mauri/raw_lolalytics.txt` → `node tools/datos/mauri/build_lolalytics.js`.
+
+## Avisos de jungla en partida
+- Con `role === 'jungle'` no se dicen cosas de línea: nada de "bajo torre", "Retrocedé", "Podés jugar adelante", oleadas ni cañón. El jungla rival visto en una línea → "jugá del otro lado del mapa". Diferencia de niveles y rival muerto hablan de campamentos, río e invasión.
+
+## Arranque con Windows y bandeja
+- Pedido del usuario: que arranque al prender la PC, escondida, con el ícono en la bandeja. `app.setLoginItemSettings` con `PORTABLE_EXECUTABLE_FILE` (no `process.execPath`, que es la copia temporal) y `--oculta`. Se vuelve a registrar en cada arranque (si el .exe se mueve, se corrige al abrirlo).
+- Ajustes (`settings.json`, por defecto todo sí): `arranque_windows`, `bandeja` (la X esconde; el bucle, el HUD y los clips siguen), `mostrar_en_champ` (si está escondida, aparece con `showInactive` al entrar a champ select).
+- En pruebas (`TESTING`) no hay bandeja ni se registra nada. Bandeja → Salir (o `before-quit`) cierra de verdad.
+
+## Festejo (triple o más)
+- Al terminar una partida, `celebrationFor(recorder.rec)` toma la mejor multikill (`rec.multis`) → `engine.celebrate`. `main.maybeCelebrate` lo manda una sola vez (`sent`), muestra la ventana sin foco y adjunta el clip de "jugadas" si existe.
+- `renderer/celebrate.js`: rayos, flash, temblor, onda expansiva, rayos eléctricos, chispas, título con golpe y brillo, una marca por kill, tu campeón con anillos, frase tipeada, fuegos y confeti; penta en arcoíris. Sonido sintetizado con WebAudio (bajo). Se cierra con "Seguir" o a los 14 s.
+- Vista previa: `--celebrate=3|4|5` (con `--shot`/`--wait`).
+- Ojo: `openClip` es una función global del renderer; no la reasignes en `window.openClip` (recursión infinita).
 
 ## Clips de muertes y jugadas
 - **Sin programas externos ni grabar la partida entera.** `renderer/clipper.js` (ventana oculta) captura la pantalla del overlay con `desktopCapturer`/`getUserMedia`, codifica H.264 con **WebCodecs y la placa de video** (`hardwareAcceleration: 'prefer-hardware'`) a 30 fps, máximo 1920×1080, 6 Mbps, y guarda **en memoria** los últimos 45 s (keyframe cada 2 s). Si la placa no puede, `status: sin-placa` y no graba: codificar con el procesador bajaría FPS (`--clipsoftware` lo permite solo para pruebas).
@@ -180,6 +212,8 @@ Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo p
 - `test/botlane.js`: plan de bot (fuentes, fallbacks, combos solo con kit, historial con muestra chica, sin números en partida).
 - `test/player.js`: elegir jugador la primera vez y que cada uno use su carpeta.
 - `test/bitty_plus.js`: mezcla de fuentes, plan de jungla/mid, guías de Locke y Zaahen y foto del minuto 8.
+- `test/mauri.js`: AD/AP (equipo, rivales, empate, camino empezado), pool y mezcla de fuentes de Udyr, partida (compra, overlay, avisos de jungla), arranque con Windows, festejo.
+- `test/ui_mauri.js`: pantallas de Mauri a 4 anchos; en partida la tarjeta AD/AP no muestra winrates.
 - `test/start_items.js`: inicio de partida (support con el ítem ya comprado → 2 pociones, mascota de jungla con su dato, Doran's + pociones en mid).
 - `test/clips.js` y `test/clips_e2e.js`: clips (ciclo por partida, borrado, tope, rutas seguras, triples; y de punta a punta en Electron: captura → MP4 → se reproduce).
 - `test/coach.js`: autopsia de coach (vida, cambios, sacrificios, costo, nivel por rol, foco por costo, progreso, compatibilidad con grabaciones viejas).
@@ -199,6 +233,8 @@ Flags útiles de la app:
 - `--selftest=out.json`
 - `--hudtest=out.json`, `--hudsize=WxH` y `--hudedit`
 - `--coach-fixture=full|few`
+- `--celebrate=3|4|5`: muestra el festejo
+- `--oculta`: arranca escondida (así la abre Windows al iniciar)
 
 `test/sim_server.js <lockdir>` simula una sesión en tiempo real para probar el `.exe` con Wine (`SIM_ROLE=jungle` para Bitty).
 
@@ -230,4 +266,6 @@ Flags útiles de la app:
 - Íconos reales: en las pruebas se usan placeholders.
 - Que `scores.creepScore` de la Live API cuente los campamentos de jungla (el marcador del juego los cuenta).
 - Autopsia: confirmar con partidas reales los nombres de `TurretKilled`/`InhibKilled` (`Turret_T1_…`) y que `respawnTimer` venga cargado en el momento de la muerte.
+- Bandeja y arranque con Windows: probados solo en la lógica (`test/mauri.js`); falta confirmar en Windows que el ícono aparece y que `--oculta` arranca escondida.
+- Udyr: el rango de Mauri. Si no es Emerald, rehacer los datos con su tier.
 - Stream: el overlay sale con "Captura de pantalla" pero no con "Captura de juego" de OBS. Idea: servirlo como fuente de navegador (o esconderlo de las capturas con `setContentProtection`).

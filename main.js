@@ -1,6 +1,6 @@
 'use strict';
 // Pick Helper: proceso principal de Electron. Corre el motor cada segundo y le manda la vista a la UI.
-const { app, BrowserWindow, ipcMain, protocol, screen, globalShortcut, desktopCapturer, net } = require('electron');
+const { app, BrowserWindow, ipcMain, protocol, screen, globalShortcut, desktopCapturer, net, Tray, Menu, nativeImage } = require('electron');
 const { pathToFileURL } = require('url');
 const path = require('path');
 const fs = require('fs');
@@ -10,6 +10,7 @@ const { hudPayload, hudSig, DEFAULT_LAYOUT } = require('./src/hud');
 const { watchKey } = require('./src/keywatch');
 const player = require('./src/player');
 const { Clipper } = require('./src/clipper');
+const startup = require('./src/startup');
 
 const arg = (name) => { const a = process.argv.find((x) => x.startsWith(`--${name}`)); return a ? (a.split('=')[1] || true) : null; };
 const COMMON_DEMOS = { idle: { idle: true }, gamedeath: { game: '../test/demo_game_death.json' }, jgdeath: { game: '../test/demo_game_jungle_death.json' } };
@@ -30,6 +31,12 @@ if (!app.requestSingleInstanceLock() && !arg('demo')) app.quit();
 
 let win = null;
 let engine = null;
+let tray = null;
+let quitting = false;
+let wasSelect = false;
+// Windows la abre así al prender la PC: arranca escondida, con el ícono en la bandeja.
+const STARTED_HIDDEN = process.argv.includes(startup.HIDDEN_ARG) && !TESTING;
+const PLAYER_NAME = { naser: 'Naser', bitty: 'Bitty', mauri: 'Mauri' };
 let lastSig = null;
 let lastIconsV = -1;
 let busy = false;
@@ -57,7 +64,11 @@ function createWindow() {
   }, bounds()));
   win.setAlwaysOnTop(engine.settings.always_on_top !== false, 'screen-saver');
   win.loadFile(path.join(__dirname, 'renderer', 'index.html'));
-  win.once('ready-to-show', () => win.show());
+  win.once('ready-to-show', () => { if (!STARTED_HIDDEN) win.show(); });
+  // Con la bandeja prendida, la X esconde la ventana: el overlay, los clips y el coach siguen andando.
+  win.on('close', (e) => {
+    if (!quitting && tray && startup.setting(engine.settings, 'bandeja')) { e.preventDefault(); win.hide(); }
+  });
   let t = null;
   const remember = () => { clearTimeout(t); t = setTimeout(() => { if (!win.isMaximized() && !arg('size')) engine.saveSettings({ bounds: win.getBounds() }); }, 500); };
   win.on('move', remember);
@@ -166,6 +177,8 @@ async function tick() {
     else send('tick', payload(view, status, false));
     updateHud(view);
     clipTick(view, status);
+    maybePopUp(view);
+    maybeCelebrate();
   } catch (e) {
     send('state', { status: ['off', `Error: ${e.message}`], view: null, coach: engine.coach, history: engine.historyView(), meta: engine.meta, settings: engine.settings });
   } finally { busy = false; }
@@ -174,7 +187,7 @@ async function tick() {
 // Primera vez: ventanita "¿Quién sos?". Devuelve el id elegido.
 function chooseplayer() {
   return new Promise((resolve) => {
-    const w = new BrowserWindow({ width: 440, height: 420, minWidth: 340, minHeight: 300, frame: false, backgroundColor: '#010A13', show: false,
+    const w = new BrowserWindow({ width: 440, height: 490, minWidth: 340, minHeight: 300, frame: false, backgroundColor: '#010A13', show: false,
       title: 'Pick Helper', icon: path.join(__dirname, 'renderer', 'icon.png'),
       webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false } });
     if (arg('size')) { const [sw, sh] = String(arg('size')).split('x').map(Number); w.setBounds({ x: 0, y: 0, width: sw, height: sh }); }
@@ -290,6 +303,15 @@ app.whenReady().then(async () => {
     return new Response('', { status: 404 });
   });
   createWindow();
+  createTray();
+  if (arg('celebrate')) {   // prueba/vista previa: --celebrate=3|4|5
+    const n = Number(arg('celebrate')) || 3;
+    setTimeout(() => {
+      engine.celebrate = { id: 'prueba', n, count: 1, champ: String(arg('celebrate-champ') || 'Udyr'), t: 600,
+        title: { 3: '¡TRIPLE KILL!', 4: '¡CUÁDRUPLE KILL!', 5: '¡PENTAKILL!' }[n], msg: require('./src/clipper').congrats(n, 600), at: Date.now() };
+    }, 1500);
+  }
+  applyLoginItem();
   if (chooserWin) { chooserWin.destroy(); chooserWin = null; }
   setupClipper();
   if (arg('cliptest')) runCliptest(String(arg('cliptest')));
@@ -297,7 +319,10 @@ app.whenReady().then(async () => {
     if (!win) return;
     if (cmd === 'min') win.minimize();
     else if (cmd === 'max') { if (win.isMaximized()) win.unmaximize(); else win.maximize(); }
-    else if (cmd === 'close') { if (hud) hud.destroy(); win.close(); }
+    else if (cmd === 'close') {
+      if (tray && startup.setting(engine.settings, 'bandeja')) win.hide();
+      else { if (hud) hud.destroy(); win.close(); }
+    }
     else if (cmd === 'pin') {
       const on = !win.isAlwaysOnTop();
       win.setAlwaysOnTop(on, 'screen-saver');
@@ -305,7 +330,11 @@ app.whenReady().then(async () => {
       send('win', { pinned: on });
     }
   });
-  ipcMain.on('settings', (e, patch) => { engine.saveSettings(patch); lastSig = null; hudConfig(); });
+  ipcMain.on('settings', (e, patch) => {
+    engine.saveSettings(patch); lastSig = null; hudConfig();
+    if ('arranque_windows' in patch) applyLoginItem();
+    if (tray) tray.setContextMenu(trayMenu());
+  });
   ipcMain.on('ready', (e, who) => {
     if (who === 'hud') {
       hudReady = true;
@@ -370,7 +399,7 @@ function runSelftest(out) {
     const cols = getComputedStyle(document.querySelector('.cols') || document.body).gridTemplateColumns || '';
     const bar = document.getElementById('bar');
     const btns = [...bar.querySelectorAll('button')].map((b) => { const r = b.getBoundingClientRect(); return r.right <= vw + 1 && r.width > 10; });
-    return { vw, text: document.getElementById('app').innerText, texts: { bot: (document.querySelector('.card.bot') || {}).innerText }, overflow: sc.scrollWidth > sc.clientWidth + 1, wide,
+    return { vw, text: document.getElementById('app').innerText, texts: { bot: (document.querySelector('.card.bot') || {}).innerText, udyr: (document.querySelector('.card.udyr') || {}).innerText }, overflow: sc.scrollWidth > sc.clientWidth + 1, wide,
       cols: cols.split(' ').filter(Boolean).length, buttonsVisible: btns.every(Boolean), status: document.querySelector('#status span').textContent,
       brand: document.querySelector('.brand .name').textContent,
       imgs: document.querySelectorAll('#app .ic').length };
@@ -438,6 +467,55 @@ function runCliptest(out) {
   }, 1500);
 }
 
-app.on('second-instance', () => { if (win) { if (win.isMinimized()) win.restore(); win.focus(); } });
+// ------------------------------------------------------------ bandeja y arranque con Windows
+function showWin(focus = true) {
+  if (!win || win.isDestroyed()) return;
+  if (win.isMinimized()) win.restore();
+  if (focus) { win.show(); win.focus(); } else win.showInactive();
+}
+function trayMenu() {
+  const on = startup.setting(engine.settings, 'arranque_windows');
+  return Menu.buildFromTemplate([
+    { label: 'Abrir Pick Helper', click: () => showWin() },
+    { type: 'separator' },
+    { label: 'Iniciar con Windows', type: 'checkbox', checked: on, click: (it) => { engine.saveSettings({ arranque_windows: it.checked }); applyLoginItem(); lastSig = null; } },
+    { label: 'Salir', click: () => { quitting = true; app.quit(); } },
+  ]);
+}
+function createTray() {
+  if (TESTING || tray) return;
+  try {
+    const img = nativeImage.createFromPath(path.join(__dirname, 'renderer', 'icon.png')).resize({ width: 16, height: 16 });
+    tray = new Tray(img);
+    tray.setToolTip(`Pick Helper · ${PLAYER_NAME[engine.profile.id] || engine.profile.id}`);
+    tray.setContextMenu(trayMenu());
+    tray.on('click', () => showWin());
+    tray.on('double-click', () => showWin());
+  } catch (e) { tray = null; }
+}
+function applyLoginItem() {
+  const li = startup.loginItem({ enabled: startup.setting(engine.settings, 'arranque_windows'),
+    portableExe: process.env.PORTABLE_EXECUTABLE_FILE, packaged: app.isPackaged && !TESTING });
+  if (li) { try { app.setLoginItemSettings(li); } catch (e) { /* sin permiso: queda como estaba */ } }
+}
+// Si estaba escondida y empieza un champ select, aparece sola (sin robar el foco).
+function maybePopUp(view) {
+  const isSelect = !!(view && view.mode && !('gold' in view));
+  if (win && startup.shouldPopUp({ hidden: !win.isVisible(), wasSelect, isSelect, settings: engine.settings })) showWin(false);
+  wasSelect = isSelect;
+}
+
+// Terminó una partida con triple o más: la app aparece y festeja (una vez por partida).
+function maybeCelebrate() {
+  const c = engine.celebrate;
+  if (!c || c.sent) return;
+  c.sent = true;
+  const play = engine.clipStore.listPlays(30).find((p) => p.kind === 'multi' && Math.abs((p.t || 0) - c.t) < 2 && p.champ === c.champ);
+  showWin(false);
+  setTimeout(() => send('celebrate', Object.assign({}, c, { clip: play ? `jugadas/${play.file}` : null })), 700);
+}
+
+app.on('before-quit', () => { quitting = true; });
+app.on('second-instance', () => showWin());
 app.on('window-all-closed', () => app.quit());
 app.on('will-quit', () => { globalShortcut.unregisterAll(); stopKeyWatch(); });

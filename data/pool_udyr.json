@@ -1,0 +1,1620 @@
+{
+ "patch": "26.22",
+ "source": "op.gg Emerald+",
+ "_info": "Winrate por matchup de op.gg Emerald+ (16.22 = 26.22). score = (wr-50)/2.5, reducido con menos de 300 partidas. Guías: análisis del kit.",
+ "pool": [
+  {
+   "name": "Udyr",
+   "role": "jungle",
+   "blind": 2.0,
+   "tier_wr": 53.06,
+   "pick": 1.74,
+   "comp_bonus": {},
+   "start": [
+    "Gustwalker Hatchling",
+    "Health Potion"
+   ],
+   "runes": {
+    "keystone": "Press the Attack",
+    "primary": [
+     "Triumph",
+     "Legend: Haste",
+     "Coup de Grace"
+    ],
+    "secondary": [
+     "Magical Footwear",
+     "Approach Velocity"
+    ],
+    "alt": "Alternativa: Conqueror (24,6% de las partidas en op.gg Emerald+)"
+   },
+   "spells": [
+    "Flash",
+    "Smite"
+   ],
+   "skills": [
+    "Q",
+    "E",
+    "W"
+   ],
+   "boots": "Boots of Swiftness",
+   "builds": {
+    "default": {
+     "items": [
+      "Spear of Shojin",
+      "Experimental Hexplate",
+      "Death's Dance"
+     ],
+     "skills": [
+      "Q",
+      "E",
+      "W"
+     ],
+     "boots": "Boots of Swiftness"
+    },
+    "ad": {
+     "items": [
+      "Spear of Shojin",
+      "Experimental Hexplate",
+      "Death's Dance"
+     ],
+     "skills": [
+      "Q",
+      "E",
+      "W"
+     ],
+     "boots": "Boots of Swiftness"
+    },
+    "ap": {
+     "items": [
+      "Liandry's Torment",
+      "Dead Man's Plate",
+      "Spirit Visage"
+     ],
+     "skills": [
+      "R",
+      "E",
+      "Q"
+     ],
+     "boots": "Boots of Swiftness"
+    },
+    "vs_ad": {
+     "items": [
+      "Spear of Shojin",
+      "Experimental Hexplate",
+      "Death's Dance"
+     ],
+     "boots": "Plated Steelcaps"
+    },
+    "vs_ap": {
+     "items": [
+      "Spear of Shojin",
+      "Experimental Hexplate",
+      "Death's Dance"
+     ],
+     "boots": "Mercury's Treads"
+    }
+   },
+   "paths": true,
+   "general": "Udyr no tiene definitiva: sus 4 habilidades son posturas que mejoran tus próximos 2 autos, y cada una se puede despertar (recastearla) para un efecto más fuerte. Tu build decide qué subís: AD sube Q, AP sube R. Lo que más cambia la partida es elegir bien AD o AP (mirá la tarjeta).",
+   "matchups": {
+    "Lee Sin": {
+     "wr": 53.49,
+     "games": 1662,
+     "score": 1.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Lee Sin: Si te pega la Q gana el nivel 2-3: peleá cuando la haya gastado."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Pelear en un pasillo donde te pueda patear con R hacia su equipo.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Viego": {
+     "wr": 50.71,
+     "games": 1276,
+     "score": 0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Jarvan IV": {
+     "wr": 50.24,
+     "games": 1256,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Jarvan IV: Su E-Q te levanta: E despertada te da 1,5 s de inmunidad a control para entrar."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Quedarte en el borde de su R (te encierra).",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Kayn": {
+     "wr": 49.7,
+     "games": 1161,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Graves": {
+     "wr": 52.95,
+     "games": 1137,
+     "score": 1.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Wukong": {
+     "wr": 51.11,
+     "games": 1123,
+     "score": 0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Qiyana": {
+     "wr": 58.02,
+     "games": 1048,
+     "score": 3.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Lillia": {
+     "wr": 49.66,
+     "games": 1043,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Hecarim": {
+     "wr": 50.96,
+     "games": 942,
+     "score": 0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Master Yi": {
+     "wr": 51.19,
+     "games": 924,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Master Yi: Su Q lo hace intocable: tirá tu stun (E) después de que la use."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Dejarlo farmear libre.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Shyvana": {
+     "wr": 54.17,
+     "games": 888,
+     "score": 1.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Cho'Gath": {
+     "wr": 48.97,
+     "games": 878,
+     "score": -0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Contra tanques no ganás la pelea rápido: ganale campamentos y objetivos y gankeá antes que él.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Kha'Zix": {
+     "wr": 52.87,
+     "games": 872,
+     "score": 1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Kha'Zix: Hace mucho daño a quien está aislado: no hagas campamentos solo sin ward."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Pelear lejos de tu equipo cuando él está invisible.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Sylas": {
+     "wr": 50.41,
+     "games": 853,
+     "score": 0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Ekko": {
+     "wr": 47.42,
+     "games": 833,
+     "score": -1.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Ekko: Su W stunea en un círculo: salí del círculo antes de que explote."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Gastar todo antes de que use R (vuelve atrás).",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Talon": {
+     "wr": 50.98,
+     "games": 763,
+     "score": 0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Shaco": {
+     "wr": 52.74,
+     "games": 730,
+     "score": 1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Briar": {
+     "wr": 49.43,
+     "games": 706,
+     "score": -0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Rengar": {
+     "wr": 52.29,
+     "games": 700,
+     "score": 0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Vi": {
+     "wr": 52.22,
+     "games": 653,
+     "score": 0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Evelynn": {
+     "wr": 53.81,
+     "games": 643,
+     "score": 1.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Naafiri": {
+     "wr": 48.87,
+     "games": 618,
+     "score": -0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Nocturne": {
+     "wr": 51.71,
+     "games": 613,
+     "score": 0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Diana": {
+     "wr": 53.11,
+     "games": 514,
+     "score": 1.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Bel'Veth": {
+     "wr": 52.75,
+     "games": 510,
+     "score": 1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Xin Zhao": {
+     "wr": 50.42,
+     "games": 480,
+     "score": 0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Kindred": {
+     "wr": 52.69,
+     "games": 465,
+     "score": 1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Elise": {
+     "wr": 46.83,
+     "games": 457,
+     "score": -1.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Elise: Su capullo (E) te stunea antes de que llegues: entrá con E despertada (inmunidad a control)."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Pelearla en su jungla nivel 2-3.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Warwick": {
+     "wr": 50.11,
+     "games": 455,
+     "score": 0.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Zac": {
+     "wr": 44.47,
+     "games": 443,
+     "score": -2.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Contra tanques no ganás la pelea rápido: ganale campamentos y objetivos y gankeá antes que él.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Zac: Salta desde muy lejos: no lo persigas, pelealo cuando ya gastó la E."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Quedarte agrupado cuando tiene el salto cargado.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Nunu & Willump": {
+     "wr": 45.69,
+     "games": 383,
+     "score": -1.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Contra tanques no ganás la pelea rápido: ganale campamentos y objetivos y gankeá antes que él.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Nunu & Willump: Te ralentiza y te pega fuerte con la bola: ganale campamentos, no la pelea en el río."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Pelear dentro de su R cargada.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Taliyah": {
+     "wr": 51.19,
+     "games": 379,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Sejuani": {
+     "wr": 47.34,
+     "games": 376,
+     "score": -1.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Contra tanques no ganás la pelea rápido: ganale campamentos y objetivos y gankeá antes que él.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Sejuani: Su R stunea a varios: separate y entrá con E despertada."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Pelear agrupados contra su R.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Zed": {
+     "wr": 54.39,
+     "games": 342,
+     "score": 1.8,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Jayce": {
+     "wr": 53.57,
+     "games": 336,
+     "score": 1.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Fiddlesticks": {
+     "wr": 48.06,
+     "games": 335,
+     "score": -0.8,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Amumu": {
+     "wr": 48.4,
+     "games": 312,
+     "score": -0.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Contra tanques no ganás la pelea rápido: ganale campamentos y objetivos y gankeá antes que él.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Nidalee": {
+     "wr": 56.38,
+     "games": 298,
+     "score": 2.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Zyra": {
+     "wr": 54.04,
+     "games": 285,
+     "score": 1.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Darius": {
+     "wr": 52.9,
+     "games": 259,
+     "score": 1.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Rek'Sai": {
+     "wr": 51.97,
+     "games": 229,
+     "score": 0.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Trundle": {
+     "wr": 47.73,
+     "games": 220,
+     "score": -0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Karthus": {
+     "wr": 49.07,
+     "games": 216,
+     "score": -0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Karthus: Farmea y te mata con R desde lejos: con poca vida, guardá W (escudo)."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Pelear con poca vida cuando su R está lista.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Rammus": {
+     "wr": 49.3,
+     "games": 213,
+     "score": -0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Contra tanques no ganás la pelea rápido: ganale campamentos y objetivos y gankeá antes que él.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Gwen": {
+     "wr": 51.18,
+     "games": 211,
+     "score": 0.3,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Él escala con ítems: invadilo y gankeá seguido antes de que complete su primer ítem.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Volibear": {
+     "wr": 50.0,
+     "games": 190,
+     "score": 0.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Skarner": {
+     "wr": 51.89,
+     "games": 185,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Contra tanques no ganás la pelea rápido: ganale campamentos y objetivos y gankeá antes que él.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Ivern": {
+     "wr": 48.09,
+     "games": 183,
+     "score": -0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Contra tanques no ganás la pelea rápido: ganale campamentos y objetivos y gankeá antes que él.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Quinn": {
+     "wr": 43.43,
+     "games": 175,
+     "score": -1.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Quinn: Su Q te deja ciego (tus autos fallan) y su E te empuja: esperá que gaste E para entrar."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Pegarle autos mientras estás ciego.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Pantheon": {
+     "wr": 47.7,
+     "games": 174,
+     "score": -0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Udyr se banca los duelos tempranos: si te invade, peleá en tu jungla con E (stun) y la postura despertada. No lo persigas a la suya sin visión.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Zaahen": {
+     "wr": 51.76,
+     "games": 170,
+     "score": 0.4,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Ambessa": {
+     "wr": 50.98,
+     "games": 153,
+     "score": 0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Aatrox": {
+     "wr": 55.03,
+     "games": 149,
+     "score": 1.0,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Maokai": {
+     "wr": 44.85,
+     "games": 136,
+     "score": -0.9,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto.",
+       "Respetá a Maokai: Te ata (root) con W y aguanta mucho: no gastes tu E antes de su W."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Pelear en arbustos con sus brotes.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Jax": {
+     "wr": 50.76,
+     "games": 132,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Dr. Mundo": {
+     "wr": 50.41,
+     "games": 121,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Gragas": {
+     "wr": 49.57,
+     "games": 115,
+     "score": -0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Contra tanques no ganás la pelea rápido: ganale campamentos y objetivos y gankeá antes que él.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Sion": {
+     "wr": 48.6,
+     "games": 107,
+     "score": -0.2,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Shen": {
+     "wr": 45.1,
+     "games": 102,
+     "score": -0.7,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Teemo": {
+     "wr": 55.06,
+     "games": 89,
+     "score": 0.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Locke": {
+     "wr": 51.22,
+     "games": 82,
+     "score": 0.1,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Duelo largo parejo: entrá con W lista (escudo y curación) y salí si ya usaste E.",
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Malphite": {
+     "wr": 44.44,
+     "games": 81,
+     "score": -0.6,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    },
+    "Fizz": {
+     "wr": 55.71,
+     "games": 70,
+     "score": 0.5,
+     "guide": {
+      "src": "analisis",
+      "por": "análisis del kit (wiki de LoL) · números de op.gg Emerald+",
+      "lv1": "Nivel 1 con la habilidad de tu build: Q si vas AD, R si vas AP. Al 2 la otra, al 3 W y al 4 E.",
+      "pre6": [
+       "Gankeá con E: te da velocidad y el primer auto a cada rival lo stunea 0,75 s. Entrá desde la niebla, no caminando por la línea.",
+       "Despertá una postura (recastearla dentro de 5 s) cuando sirve: Q (AD) o R (AP) para ganar un duelo; E para entrar o escapar, porque te da 1,5 s de inmunidad a control.",
+       "Prendé W cuando te pegan: escudo y te curás con cada auto."
+      ],
+      "post6": "Udyr no tiene definitiva: lo que cambia es tu primer ítem. Con Shojin o Liandry's terminado, peleá dragón y heraldo y, si ganás los duelos, invadí.",
+      "evitar": "Perseguir a un rival que ya se te escapó: si gastaste E, no tenés cómo volver a llegar.",
+      "labels": [
+       "Inicio",
+       "Antes del primer ítem",
+       "Con tu primer ítem"
+      ],
+      "no6": true
+     }
+    }
+   }
+  }
+ ]
+}

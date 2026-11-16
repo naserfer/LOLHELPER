@@ -1,0 +1,10 @@
+{
+ "id": "mauri",
+ "title": "PICK HELPER · MAURI",
+ "default_role": "jungle",
+ "roles": {
+  "jungle": { "pool": "pool_udyr.json", "kind": "lane", "label": "Jungla (Udyr)" }
+ },
+ "track_adc": false,
+ "demos": { "select": { "session": "demo_session_udyr.json" }, "game": { "game": "demo_game_udyr.json" } }
+}

@@ -51,6 +51,7 @@ const ULT_NOTES = {
   Gangplank: 'R cubre área en todo el mapa; sus barriles hacen mucho daño.',
 };
 const STARTS = require('../../data/starts.json');
+const udyr = require('./udyr');
 const START_WINDOW = 90;   // segundos: compra del inicio (después ya estás en línea o en tu primer campamento)
 const PETS = new Set(['Scorchclaw Pup', 'Gustwalker Hatchling', 'Mosstomper Seedling']);
 
@@ -98,6 +99,24 @@ Object.assign(BUILD_RULES, {
     options: [['Stormsurge', { default: 6 }], ['Shadowflame', { default: 5 }], ["Zhonya's Hourglass", { default: 4, ad_fed: 2, ad_heavy: 1 }],
       ["Rabadon's Deathcap", { default: 3 }], ['Void Staff', { tanky: 4 }], ["Banshee's Veil", { ap_fed: 3, ap_heavy: 1 }],
       ['Morellonomicon', { heal: 3 }], ['Lich Bane', { default: 1 }]],
+  },
+});
+// Mauri: Udyr jungla, dos caminos (udyr.js decide cuál). AD sube Q; AP sube R. Sin "Udyr|jungle" a secas:
+// la regla sale del camino elegido.
+Object.assign(BUILD_RULES, {
+  'Udyr|jungle|AD': {
+    boots: { ad: 'Plated Steelcaps', ap: "Mercury's Treads", default: 'Boots of Swiftness' },
+    options: [['Spear of Shojin', { default: 6 }], ['Experimental Hexplate', { default: 4, squishy: 1 }],
+      ["Death's Dance", { default: 3, ad_heavy: 2, ad_fed: 1 }], ["Sterak's Gage", { default: 2, cc: 2 }],
+      ['Spirit Visage', { ap_heavy: 3, default: 1 }], ['Maw of Malmortius', { ap_fed: 3 }], ['Black Cleaver', { tanky: 3 }],
+      ["Dead Man's Plate", { default: 1 }], ["Randuin's Omen", { crit: 3 }], ['Mortal Reminder', { heal: 3 }]],
+  },
+  'Udyr|jungle|AP': {
+    boots: { ad: 'Plated Steelcaps', ap: "Mercury's Treads", default: 'Boots of Swiftness' },
+    options: [["Liandry's Torment", { default: 6 }], ["Dead Man's Plate", { default: 4, ad_heavy: 1 }],
+      ['Spirit Visage', { default: 3, ap_heavy: 2 }], ['Riftmaker', { default: 2 }], ["Jak'Sho, The Protean", { default: 1, tanky: 1 }],
+      ['Thornmail', { heal: 3, auto: 1 }], ["Randuin's Omen", { crit: 3 }], ['Kaenic Rookern', { ap_heavy: 3, ap_fed: 2 }],
+      ['Force of Nature', { ap_heavy: 2 }], ['Frozen Heart', { auto: 3, ad_heavy: 1 }]],
   },
 });
 Object.assign(ULT_NOTES, {
@@ -315,7 +334,14 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
     shields: enemyNames.filter((n) => SHIELDERS.has(n)), ally_auto: allyAdcName ? [allyAdcName] : [] };
 
   const myRole = POS_ROLE[me.position] || '';
-  let rules = BUILD_RULES[`${myChamp}|${myRole}`] || BUILD_RULES[myChamp] || null;
+  // Udyr: AD o AP según la partida (y si ya empezaste un camino, ese).
+  let udyrPath = null;
+  if (udyr.isUdyr(myChamp)) {
+    const dmgOfName = (n) => ({ name: n, dmg: champDmg[norm(n)] || '?' });
+    const started = udyr.startedPath(itemsOf(me).map((i) => db.name(i)), (n) => { const id = db.idOf(n); return id === null ? new Set() : db.tags(id); });
+    udyrPath = udyr.decide({ allies: allies.map((a) => dmgOfName(pc(a))), enemies: enemies.map((e) => dmgOfName(pc(e))), started });
+  }
+  let rules = (udyrPath && BUILD_RULES[`Udyr|${myRole || 'jungle'}|${udyrPath.path}`]) || BUILD_RULES[`${myChamp}|${myRole}`] || BUILD_RULES[myChamp] || null;
   let supCfg = null;
   if (!rules && sup) {
     supCfg = sup[0].find((c) => c.name === myChamp) || null;
@@ -336,6 +362,7 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
     sortBy(scored, (x) => [x[0], x[1]]);
     const order = scored.map((x) => x[2]);
     for (const [, , it, why] of scored) reasons[it] = why;
+    if (udyrPath) for (const it of udyr.ITEMS[udyrPath.path]) reasons[it] = ['udyr_path', ...(reasons[it] || [])];
     const cfg = pool.find((c) => c.name === myChamp && c.role === myRole) || pool.find((c) => c.name === myChamp);
     if (cfg && laneName && !supCfg) {
       const hit = Object.entries(cfg.matchups).find(([n]) => norm(n) === norm(laneName));
@@ -439,17 +466,27 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
 
   const alerts = [];
   const events = [];
+  // Jungla: el "rival de línea" es el jungla rival. Los avisos hablan de campamentos, ríos y ganks, no de torres ni oleadas.
+  const isJg = myRole === 'jungle';
+  const noUlt = udyr.isUdyr(myChamp);   // Udyr no tiene definitiva: "tu 6" no le cambia nada
   if (lane) {
     const dl = (lane.level || 1) - (me.level || 1);
-    if ((lane.level || 1) >= 6 && (me.level || 1) < 6) alerts.push(['bad', `${laneName} ya tiene la R y vos no: no pelees hasta tu 6.`]);
-    else if (dl >= 2) alerts.push(['bad', `${laneName} te saca ${dl} niveles: jugá seguro y farmeá bajo torre.`]);
-    else if (dl <= -2) alerts.push(['good', `Le sacás ${-dl} niveles a ${laneName}: es tu momento de presionar.`]);
+    if ((lane.level || 1) >= 6 && (me.level || 1) < 6) {
+      alerts.push(['bad', noUlt ? `${laneName} ya tiene la R: no lo pelees solo hasta igualarle el nivel.`
+        : isJg ? `${laneName} ya tiene la R y vos no: no lo pelees en el río hasta tu 6.` : `${laneName} ya tiene la R y vos no: no pelees hasta tu 6.`]);
+    } else if (dl >= 2) {
+      alerts.push(['bad', isJg ? `${laneName} te saca ${dl} niveles: no lo pelees; farmeá tu jungla y contra-gankeá donde aparezca.`
+        : `${laneName} te saca ${dl} niveles: jugá seguro y farmeá bajo torre.`]);
+    } else if (dl <= -2) {
+      alerts.push(['good', isJg ? `Le sacás ${-dl} niveles a ${laneName}: invadí su jungla o buscalo en el río.`
+        : `Le sacás ${-dl} niveles a ${laneName}: es tu momento de presionar.`]);
+    }
     const prevItems = new Set(prev.lane_items || []);
     for (const i of itemsOf(lane)) {
       if (db.isLegendary(i) && !prevItems.has(i) && prev.lane_name === laneName) events.push(['bad', `${laneName} completó ${db.name(i)}: respetá su pico de poder.`]);
     }
     if (itemsOf(lane).some((i) => ANTIHEAL.has(db.name(i))) && myChamp === 'Illaoi') alerts.push(['neutral', `${laneName} compró antiheal: tus curaciones rinden menos.`]);
-    if (lane.isDead) alerts.push(['good', `${laneName} está muerto: pusheá la wave o volvé a base.`]);
+    if (lane.isDead) alerts.push(['good', isJg ? `${laneName} está muerto: tomá sus campamentos o un objetivo con tu equipo.` : `${laneName} está muerto: pusheá la wave o volvé a base.`]);
   }
   // Cualquier rival, una vez por ítem. El primer sondeo solo anota lo que ya traían.
   const seen = new Set(prev.legend_seen || []);
@@ -506,7 +543,9 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
       else if (victim === jg && killer && killer.position && killer.position !== 'JUNGLE') where = killer.position;
       const spot = spotOf[where];
       if (!spot) continue;
-      const text = mine === spot ? `Jungla enemigo en ${spot}. Retrocedé.` : `Jungla enemigo en ${spot}. Podés jugar adelante.`;
+      // Si sos el jungla: jugá del otro lado del mapa (lo que se llama cross-map).
+      const text = isJg ? `Jungla rival en ${spot}: jugá del otro lado del mapa (sus campamentos o un ganke).`
+        : mine === spot ? `Jungla enemigo en ${spot}. Retrocedé.` : `Jungla enemigo en ${spot}. Podés jugar adelante.`;
       orders.push({ pri: 2, text, until: (ev.EventTime || gtime) + 20 });
     }
   }
@@ -522,7 +561,8 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
   }
 
   // Cañón a 25 s o menos, y te alcanza para cerrar o el rival de línea está muerto. Si vos estás muerto, no se dice.
-  if (!me.isDead) {
+  // El cañón es de las líneas: al jungla no se le dice.
+  if (!me.isDead && !isJg) {
     const nc = nextCannon(gtime);
     if (nc != null && nc - gtime <= 25) {
       if (buy && buy.complete && buy.missing === 0 && buy.target) orders.push({ pri: 4, text: `Cañón en camino. Pusheá y basá: te alcanza para ${buy.target}.` });
@@ -575,6 +615,7 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
     alerts: alerts.slice(0, 5), events, lane_items_raw: lane ? itemsOf(lane) : [], objectives,
     sup_upgrade: supUpgrade, orders, legend_seen: legendSeen, legend_ready: true,
     jg_seen: [...jgSeen], adc_seen: adcSeen, adc_dead: adcDead,
+    udyr: udyr.forGame(udyrPath),
   };
 }
 
@@ -586,9 +627,15 @@ function reasonText(item, view) {
     else if (k === 'boots') parts.push('botas según el daño rival');
     else if (k === 'sup_item') parts.push('ítem de support (te da oro y wards)');
     else if (k === 'start') parts.push('inicio de partida');
+    else if (k === 'udyr_path') {
+      if (view.udyr) {
+        const motivo = view.udyr.locked ? 'ya lo empezaste' : (view.udyr.head.split(': ')[1] || '').replace(/\.$/, '');
+        parts.push(`camino ${view.udyr.path}${motivo ? ` (${motivo})` : ''}`);
+      }
+    }
     else if (k === 'pet') {
       const p = STARTS.pets[`${view.me.champ}|${view.role}`];
-      parts.push(p && p.item === item ? `mascota: la usa el ${String(p.pick).replace('.', ',')}% de los ${view.me.champ} en Master+ (op.gg, ${String(p.games).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} partidas)`
+      parts.push(p && p.item === item ? `mascota: la usa el ${String(p.pick).replace('.', ',')}% de los ${view.me.champ} en ${p.tier || 'Master+'} (op.gg, ${String(p.games).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} partidas)`
         : 'mascota del inicio de tu build');
     }
     else {

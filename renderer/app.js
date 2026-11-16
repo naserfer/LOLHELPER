@@ -9,7 +9,7 @@ const pct = (x) => `${Math.round(x)}%`;
 const wrc = (wr) => (wr >= 51.5 ? 'good' : wr <= 48.5 ? 'bad' : 'neutral');
 const DMG = { AD: 'var(--ad)', AP: 'var(--ap)', MIX: 'var(--mix)', '?': 'var(--muted)' };
 const DIFF = { easy: ['FÁCIL', 'green'], skill: ['PAREJO', 'gold'], hard: ['DIFÍCIL', 'red'], xhard: ['MUY DIFÍCIL', 'red'] };
-const BUILD_LABEL = { default: 'estándar', vs_ad: 'vs equipo AD', vs_ap: 'vs equipo AP' };
+const BUILD_LABEL = { default: 'estándar', vs_ad: 'vs equipo AD', vs_ap: 'vs equipo AP', ad: 'camino AD', ap: 'camino AP' };
 const ROLE_TXT = { support: 'support', utility: 'support', adc: 'ADC', bottom: 'ADC', top: 'top', mid: 'mid', middle: 'mid', jungle: 'jungla', todos: 'todos los roles' };
 const ROLE_TAG = { top: 'TOP', jungle: 'JG', middle: 'MID', mid: 'MID' };
 
@@ -45,9 +45,10 @@ function guideCard(g, enemy, myLevel, role) {
   const L = g.labels || ['Nivel 1', 'Hasta el nivel 6', 'Desde el 6'];
   const title = role === 'jungle' ? `Cómo jugarle al jungla ${enemy}` : `Cómo jugar la línea vs ${enemy}`;
   const pro = g.src === 'pro';
-  const phase = myLevel === undefined ? null : myLevel < 6 ? 'pre' : 'post';
+  // Udyr (no6): no tiene definitiva, así que no hay "antes/después del 6": se muestran las dos partes siempre.
+  const phase = myLevel === undefined || g.no6 ? null : myLevel < 6 ? 'pre' : 'post';
   let h = `<div class="card${pro ? ' hi' : ''}"><div class="row"><span class="k" style="color:var(--gold)">${esc(title)}</span><span class="right">${pill(pro ? 'PRO' : 'ANÁLISIS', pro ? 'gold' : 'dark')}</span></div>`;
-  if (phase === null || myLevel <= 3) h += `<div class="g-h">${esc(L[0])}</div><div class="g-l">${esc(g.lv1)}</div>`;
+  if (phase === null ? !(g.no6 && myLevel > 3) : myLevel <= 3) h += `<div class="g-h">${esc(L[0])}</div><div class="g-l">${esc(g.lv1)}</div>`;
   if (phase === null || phase === 'pre') h += `<div class="g-h">${esc(L[1])}</div><ul class="g">${(g.pre6 || []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`;
   if (phase === null || phase === 'post') h += `<div class="g-h">${phase === null ? esc(L[2]) : 'Ya sos nivel 6+'}</div><div class="g-l">${esc(g.post6)}</div>`;
   else h += `<div class="g-h off">Cuando llegues al 6</div><div class="g-l off">${esc(g.post6)}</div>`;
@@ -89,11 +90,33 @@ function jgCard(jp, game, level) {
   if (!game && jp.why && jp.why.length) h += `<ul class="g bot-why">${jp.why.map((w) => `<li>${srcPill(w.src)} ${esc(w.txt)}</li>`).join('')}</ul>`;
   if (jp.threats && jp.threats.length) h += `<div class="g-h red">Respetá</div>${jp.threats.map((t) => `<div class="g-l">${srcPill(t.src)} <b>${esc(t.who)}:</b> ${esc(t.txt)}</div>`).join('')}`;
   if (jp.post6 && jp.post6.length) {
-    const off = game && level !== undefined && level < 6;
-    h += `<div class="g-h${off ? ' off' : ''}">${game && level >= 6 ? 'Ya sos 6' : 'Desde el 6'} ${srcPill('ANÁLISIS')}</div>${jp.post6.map((t) => `<div class="g-l${off ? ' off' : ''}">${esc(t.txt)}</div>`).join('')}`;
+    // Udyr no tiene definitiva: en vez de "Desde el 6" trae su propio título (post6_label) y no se apaga antes del 6.
+    const off = !jp.post6_label && game && level !== undefined && level < 6;
+    const ttl = jp.post6_label || (game && level >= 6 ? 'Ya sos 6' : 'Desde el 6');
+    h += `<div class="g-h${off ? ' off' : ''}">${esc(ttl)} ${srcPill('ANÁLISIS')}</div>${jp.post6.map((t) => `<div class="g-l${off ? ' off' : ''}">${esc(t.txt)}</div>`).join('')}`;
   }
   if (!game && jp.missing && jp.missing.length) h += `<div class="small muted sp8">${esc(jp.missing.join(' · ').replace(/^./, (c) => c.toUpperCase()))}</div>`;
-  if (!game) h += '<div class="small muted sp8">Fuentes: op.gg Master+ y Lolalytics (Master+ y Emerald+, este último a mitad de peso) · kits (ANÁLISIS). No hay guías PRO para estos campeones.</div>';
+  if (!game) h += `<div class="small muted sp8">${esc(jp.fuente || 'Fuentes: op.gg Master+ y Lolalytics (Master+ y Emerald+, este último a mitad de peso) · kits (ANÁLISIS). No hay guías PRO para estos campeones.')}</div>`;
+  return `${h}</div>`;
+}
+
+/* ------------------------------------------------------------------ Udyr: AD o AP */
+// Lo que a Mauri más le cuesta. En champ select: la decisión, por qué, los dos caminos y el dato. En partida: sin números.
+function udyrCard(u, game) {
+  if (!u) return '';
+  const other = u.path === 'AD' ? 'AP' : 'AD';
+  let h = `<div class="card hi udyr"><div class="row wrap"><span class="k" style="color:var(--gold)">¿AD o AP?</span><span class="right">${pill(`ARMÁ ${u.path}`, u.path === 'AP' ? 'ap' : 'ad')}</span></div>`;
+  h += `<div class="t sp4">${esc(u.head)}</div>`;
+  const rs = (u.reasons || []).filter((r) => !game || r.side === u.path);
+  if (rs.length) h += `<ul class="g bot-why">${rs.map((r) => `<li>${pill(r.side ? `→ ${r.side}` : '=', r.side === 'AP' ? 'ap' : r.side === 'AD' ? 'ad' : 'gray')} ${esc(r.txt)}</li>`).join('')}</ul>`;
+  h += `<div class="row wrap sp8" style="gap:10px"><div><div class="k">Ítems ${esc(u.path)}</div><div class="sp4">${items(u.items, 30, true)}</div></div>
+    <div><div class="k">Subí</div><div class="icons sp4">${u.skills.map((k, i) => `${i ? '<span class="arrow">›</span>' : ''}<span class="pill gray" style="font-size:.85em">${esc(k)}</span>`).join('')}</div></div></div>`;
+  h += `<div class="g-h">Por qué ${esc(u.path)} ${srcPill('ANÁLISIS')}</div><div class="g-l">${esc(u.explain[u.path])}</div>`;
+  if (!game) {
+    h += `<div class="g-h off">Y ${esc(other)}, cuándo</div><div class="g-l off">${esc(u.explain[other])}</div>`;
+    if (u.data) h += `<div class="small sp8">${srcPill('DATOS')} ${esc(u.data)}</div>`;
+    h += '<div class="small muted sp8">Criterio: el daño de tu equipo pesa el doble que los rivales. Si ya empezaste un camino en partida, se sigue ese. Fuentes: kit de la wiki de LoL (ANÁLISIS) · op.gg Emerald+ (ítems de Udyr jungla, 16.22).</div>';
+  }
   return `${h}</div>`;
 }
 
@@ -126,7 +149,7 @@ function drawSelect(v) {
   }
 
   if (sup && v.focus && v.focus.bot) A += botCard(v.focus.bot, v.ally_adc, false);
-  else if (v.focus && v.focus.jg) A += jgCard(v.focus.jg, false);
+  else if (v.focus && v.focus.jg) A += udyrCard(v.focus.udyr, false) + jgCard(v.focus.jg, false);
   else if (v.win_line) A += `<div class="card hi"><div class="t">${esc(v.win_line)}</div></div>`;
   if (v.scout) A += `<div class="card"><div class="small">${esc(v.scout)}</div></div>`;
   A += sec(sup ? 'Tu support' : 'Tu pick', sup ? 'mejores 5' : '');
@@ -227,6 +250,7 @@ function drawGame(v) {
 
   const l = v.lane;
   if (v.bot_plan && v.time < 14 * 60) B += botCard(v.bot_plan, v.ally_adc, true, me.level);
+  if (v.udyr && v.time < 20 * 60) B += udyrCard(v.udyr, true);
   if (v.jg_plan && v.time < 14 * 60) B += jgCard(v.jg_plan, true, me.level);
   if (l && v.guide && v.time < 16 * 60) B += guideCard(v.guide, l.champ, me.level, v.role);
   A += sec(v.support_mode ? 'Support rival' : v.role === 'jungle' ? 'Jungla rival' : 'Tu rival');
@@ -385,15 +409,21 @@ function drawCoach(status) {
   const roles = (S.profile || {}).roles || { utility: 'Support', top: 'Top' };
   B += `${sec('Ajustes')}<div class="pad row"><span class="small dim grow">Rol cuando no hay rol asignado (normales, blind)</span><span class="seg">${Object.entries(roles).map(([k, lab]) => `<button data-role="${k}" class="${role === k ? 'on' : ''}">${esc(lab)}</button>`).join('')}</span></div>`;
   const pid = (S.profile || {}).id;
-  const other = pid === 'bitty' ? 'naser' : 'bitty';
-  const NAMES = { naser: 'Naser', bitty: 'Bitty' };
-  if (pid) B += `<div class="pad row sp8"><span class="small dim grow">Jugador: <b style="color:var(--gold-l)">${esc(NAMES[pid] || pid)}</b> (cada uno con sus datos)</span><button class="btn" data-switch="${other}">Cambiar a ${NAMES[other]}</button></div>`;
+  const NAMES = { naser: 'Naser', bitty: 'Bitty', mauri: 'Mauri' };
+  const others = Object.keys(NAMES).filter((k) => k !== pid);
+  if (pid) B += `<div class="pad row wrap sp8"><span class="small dim grow">Jugador: <b style="color:var(--gold-l)">${esc(NAMES[pid] || pid)}</b> (cada uno con sus datos)</span>${others.map((o) => `<button class="btn" data-switch="${o}">Cambiar a ${NAMES[o]}</button>`).join('')}</div>`;
   B += hudSettings();
   const cs = S.clips || {};
   const clipsOn = (S.settings || {}).clips_enabled !== false;
   const csTxt = !clipsOn ? 'Apagado.' : cs.state === 'grabando' ? `Grabando con ${cs.hw ? 'la placa de video' : 'el procesador'} (${cs.width}×${cs.height}).` : cs.state === 'sin-placa' ? 'Tu placa de video no pudo codificar: los clips quedan apagados para no bajarte FPS.' : 'Listo: arranca solo en la próxima partida.';
   B += `${sec('Clips')}<div class="card" style="margin-top:0"><div class="row"><span class="grow">Clip de cada muerte y de tus triples (o más)</span><span class="seg"><button data-clips="on" class="${clipsOn ? 'on' : ''}">Sí</button><button data-clips="off" class="${clipsOn ? '' : 'on'}">No</button></span></div>
     <div class="small dim sp8">${esc(csTxt)} Se graba en memoria: al disco solo van los clips. Los de muertes se borran solos al empezar la partida siguiente; las jugadas se guardan (las últimas 30).</div></div>`;
+  // Windows: arranque oculto con el ícono en la bandeja (por defecto todo en Sí).
+  const st = S.settings || {};
+  const yes = (k) => st[k] !== false;
+  const tog = (k, label) => `<div class="row sp4"><span class="grow small">${esc(label)}</span><span class="seg"><button data-tog="${k}" data-val="on" class="${yes(k) ? 'on' : ''}">Sí</button><button data-tog="${k}" data-val="off" class="${yes(k) ? '' : 'on'}">No</button></span></div>`;
+  B += `${sec('Windows')}<div class="card" style="margin-top:0">${tog('arranque_windows', 'Iniciar con Windows (oculta, con el ícono abajo a la derecha)')}${tog('bandeja', 'La X la manda a la bandeja (el overlay sigue andando)')}${tog('mostrar_en_champ', 'Aparecer sola al empezar el champ select')}
+    <div class="small dim sp8">Para cerrarla del todo: clic derecho en el ícono de la bandeja → Salir.</div></div>`;
   return cols(A, B);
 }
 
@@ -436,6 +466,7 @@ function render() {
   scroll.scrollTop = keep;
   for (const b of document.querySelectorAll('[data-role]')) b.onclick = () => window.ph.settings({ rol_por_defecto: b.dataset.role });
   for (const b of document.querySelectorAll('[data-clips]')) b.onclick = () => window.ph.settings({ clips_enabled: b.dataset.clips === 'on' });
+  for (const b of document.querySelectorAll('[data-tog]')) b.onclick = () => window.ph.settings({ [b.dataset.tog]: b.dataset.val === 'on' });
   for (const b of document.querySelectorAll('[data-switch]')) b.onclick = () => window.ph.switchPlayer(b.dataset.switch);
   for (const b of document.querySelectorAll('[data-hud]')) b.onclick = () => window.ph.settings({ hud_enabled: b.dataset.hud === 'on' });
   for (const b of document.querySelectorAll('[data-hudcmd]')) b.onclick = () => window.ph.hud(b.dataset.hudcmd);
@@ -488,6 +519,8 @@ document.getElementById('bar').ondblclick = () => window.ph.win('max');
 
 window.ph.on('icons', (m) => { ICONS = m; render(); });
 window.ph.on('state', (s) => { S = s; render(); });
+// Festejo de triple o más al terminar la partida (lo manda main.js una sola vez por partida).
+window.ph.on('celebrate', (c) => { if (window.celebrate) window.celebrate(Object.assign({ champIcon: ICONS[`champion:${norm(c.champ)}`] || null }, c)); });
 window.ph.on('tick', (s) => { if (S) { S.status = s.status; S.live = s.live; setStatus(s.status); applyLive(s.live); } });
 window.ph.on('win', (w) => {
   if ('pinned' in w) $('#b-pin').classList.toggle('on', w.pinned);
