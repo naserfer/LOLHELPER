@@ -41,6 +41,8 @@ src/sig.js              Firma de la vista: si no cambia, no se redibuja (evita t
 src/hud.js              Qué muestra el HUD y posiciones por defecto (% de pantalla)
 src/keywatch.js         Lee si Tab está apretada (PowerShell + GetAsyncKeyState), sin quedarse con la tecla
 src/player.js           Quién usa la app (Naser o Bitty): se elige la primera vez; cada uno con su carpeta de datos
+src/clipper.js          Clips de muertes y jugadas: maneja la ventana oculta que graba, guarda y borra (ver "Clips")
+renderer/clipper.*      Ventana oculta: captura de pantalla + WebCodecs (placa de video) + buffer en memoria + MP4 (vendor/mp4-muxer.js, MIT)
 src/engine/
   engine.js             Orquesta todo: perfil, cliente, partida, historial, grabador, coach
   lcu.js                Credenciales del cliente (PowerShell o lockfile; LOL_PATH lo pisa) y HTTPS a 127.0.0.1
@@ -120,6 +122,14 @@ build_win.sh            Arma el .exe desde Linux con Wine
 - **Foto del minuto 8** (`recorder.snap8`: `cs8`, `lvl8`, `kp8`, `d8`): se graba siempre, pero `wincons.earlySpec` la usa solo en jungla y solo si **todas** las partidas del rol la tienen (las viejas no la traen; rellenarlas con 0 inventaría reglas).
 - Para actualizar: Lolalytics `.../counters/?lane=jungle&vslane=<jungle|top|middle|bottom>&tier=<master_plus|emerald_plus>` (y `lane=middle` para Diana mid) → `tools/datos/bitty/raw_lolalytics.txt` → `node tools/datos/bitty/build_lolalytics.js`.
 
+## Clips de muertes y jugadas
+- **Sin programas externos ni grabar la partida entera.** `renderer/clipper.js` (ventana oculta) captura la pantalla del overlay con `desktopCapturer`/`getUserMedia`, codifica H.264 con **WebCodecs y la placa de video** (`hardwareAcceleration: 'prefer-hardware'`) a 30 fps, máximo 1920×1080, 6 Mbps, y guarda **en memoria** los últimos 45 s (keyframe cada 2 s). Si la placa no puede, `status: sin-placa` y no graba: codificar con el procesador bajaría FPS (`--clipsoftware` lo permite solo para pruebas).
+- **Cuándo:** el grabador marca `fresh.clip = muerte_<t>.mp4` y detecta tus `Multikill` con `KillStreak ≥ 3`. `engine.clipEvents` → `main.clipTick` pasa el tiempo de juego a reloj y pide el clip: muerte 25 s antes + 5 después, jugada 20 s antes + 4 después. Se arma con `mp4-muxer` desde el keyframe anterior.
+- **Disco:** `<userDir>/clips/muertes` se **borra al empezar la partida siguiente** (`startGame`); `clips/jugadas` se guarda con felicitación (`.json` al lado) y tope de 30. El buffer de la partida nunca toca el disco.
+- **Ver:** `pickhelper://clip/<muertes|jugadas>/<archivo>` (solo esos nombres, nada de `../`; esquema con `stream: true` para poder adelantar). La revisión de la última partida muestra "▶ Ver la muerte" en cada muerte; "Tus jugadas" muestra las jugadas con la felicitación sobre el video.
+- Ajuste `clips_enabled` (por defecto sí). `--cliptest=out.json` graba, corta y reproduce un clip para la prueba.
+- Sin verificar en Windows real: impacto en FPS con la placa del jugador y que la captura funcione con el juego en Sin bordes (en pantalla completa exclusiva puede salir negro).
+
 ## Formato de datos (pool*.json)
 `{ patch, source, pool: [campeón] }`. Cada campeón tiene:
 - `name`, `role`, `start`, `boots`, `builds{default,vs_ad,vs_ap}`, `runes`, `spells`, `skills`, `general`.
@@ -171,6 +181,7 @@ Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo p
 - `test/player.js`: elegir jugador la primera vez y que cada uno use su carpeta.
 - `test/bitty_plus.js`: mezcla de fuentes, plan de jungla/mid, guías de Locke y Zaahen y foto del minuto 8.
 - `test/start_items.js`: inicio de partida (support con el ítem ya comprado → 2 pociones, mascota de jungla con su dato, Doran's + pociones en mid).
+- `test/clips.js` y `test/clips_e2e.js`: clips (ciclo por partida, borrado, tope, rutas seguras, triples; y de punta a punta en Electron: captura → MP4 → se reproduce).
 - `test/coach.js`: autopsia de coach (vida, cambios, sacrificios, costo, nivel por rol, foco por costo, progreso, compatibilidad con grabaciones viejas).
 - `test/new_features.js`: pruebas pensadas para fallar si la idea está mal: causa al revés, autopsia, grabación con cortes y que no titile.
 - `test/e2e.js` y `test/bitty_test.js`: de punta a punta contra un cliente y un juego simulados por HTTPS (`test/fake_riot.js`; la API en vivo usa el puerto 2999 de verdad).

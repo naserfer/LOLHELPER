@@ -64,3 +64,10 @@ Al empezar la partida, la app te dice qué comprar del inicio y cuenta lo que ya
 - **Mid y top:** el Doran's que corresponde + pociones.
 
 Después de 1:30 deja de insistir, porque ya estás en línea o en tu primer campamento.
+
+## Clips de tus muertes y tus jugadas
+- En **Tu última partida**, cada muerte tiene **"▶ Ver la muerte"**: el clip de los 25 segundos anteriores y los 5 posteriores.
+- Las **triples, cuádruples y pentas** se guardan en **"Tus jugadas"**, con una felicitación encima del video.
+- No se graba la partida entera: el video está en memoria y al disco solo van los clips. Los de muertes se borran solos cuando empieza la partida siguiente; las jugadas se guardan (las últimas 30).
+- Usa la placa de video. Si tu placa no puede codificar, los clips se apagan solos para no bajarte FPS. Se apagan en Ajustes → Clips.
+- Jugá en modo **Sin bordes** (igual que para el overlay).

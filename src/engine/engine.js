@@ -7,6 +7,7 @@ const { LCU, liveGame } = require('./lcu');
 const { DataDragon } = require('./ddragon');
 const select = require('./select');
 const jgplan = require('./jgplan');
+const { Clipper } = require('../clipper');
 const ingame = require('./ingame');
 const { History } = require('./history');
 const wincons = require('./wincons');
@@ -53,6 +54,10 @@ class Engine {
       }
     }
     this.settingsFile = path.join(userDir, 'settings.json');
+    // Clips: este solo lista y chequea archivos; el que graba lo crea main.js con la misma carpeta.
+    this.clipDir = path.join(userDir, 'clips');
+    this.clipStore = new Clipper({ dir: this.clipDir });
+    this.clipEvents = [];
     this.settings = Object.assign({ rol_por_defecto: this.profile.default_role, always_on_top: true }, this.readJson(this.settingsFile) || {});
     if (!this.roles[this.settings.rol_por_defecto]) this.settings.rol_por_defecto = this.profile.default_role;
     this.meta = this.roles[this.settings.rol_por_defecto].meta;
@@ -145,6 +150,8 @@ class Engine {
       [this.supPool, this.supDyn]);
     if (!gv) return null;
     const rec = this.recorder.onPoll(g, { db: this.dd.itemdb, alias: this.dd.alias, gameId: this.gameId, now, trackAdc: this.profile.track_adc });
+    if (rec && rec.fresh) this.clipEvents.push({ kind: 'death', t: rec.fresh.t, at: gv.time, game: rec.rec.id });
+    if (rec && rec.multi) this.clipEvents.push({ kind: 'multi', t: rec.multi.t, n: rec.multi.n, champ: gv.me.champ, at: gv.time, game: rec.rec.id });
     if (gv.legend_seen) {
       this.gamePrev.legend_seen = gv.legend_seen;
       this.gamePrev.legend_ready = true;
@@ -298,8 +305,9 @@ class Engine {
     const lastRec = withRole[0] || null;
     let last = null;
     if (lastRec) {
-      const review = autopsy.reviewGame(Object.assign({}, lastRec, { deaths: lastRec.deaths.slice().sort((a, b) => a.t - b.t) }));
-      const deaths = review.deaths;
+      const sorted = lastRec.deaths.slice().sort((a, b) => a.t - b.t);
+      const review = autopsy.reviewGame(Object.assign({}, lastRec, { deaths: sorted }));
+      const deaths = review.deaths.map((d, i) => Object.assign(d, { clip: this.clipStore.hasDeathClip(sorted[i].clip) ? `muertes/${sorted[i].clip}` : null }));
       const role = this.coachRoleForRec(lastRec);
       const roleModel = role ? earlyByRole[role] : null;
       last = { review: { errors: review.errors, cambios: review.cambios, sacrificios: review.sacrificios, costly: review.costly }, champ: lastRec.champ, role, role_label: roleModel && roleModel.label, win: lastRec.win, deaths, complete: completeEarly(lastRec),

@@ -7,6 +7,7 @@ const { norm } = require('./util');
 const { playerChamp, spellKey, findMe, itemsOf } = require('./ingame');
 const { ADCS } = require('./select');
 const autopsy = require('./autopsy');
+const { deathName } = require('../clipper');
 
 const T14 = 840;
 const T8 = 480;   // jungla: primer recorrido y primeros ganks
@@ -68,6 +69,7 @@ class Recorder {
     if (this.buffer.length > 40) this.buffer.shift();
 
     let fresh = null;
+    let multi = null;
     const evs = ((g.events || {}).Events || []);
     for (const ev of evs) {
       // Clave estable del evento (no dependemos solo del EventID).
@@ -75,6 +77,11 @@ class Recorder {
       if (r.seen.includes(key)) continue;
       r.seen.push(key);
       if (['DragonKill', 'BaronKill', 'HeraldKill', 'AtakhanKill'].includes(ev.EventName)) r.objectives.push(ev.EventTime);
+      // Triple kill o más tuya: se guarda como jugada (con clip si está grabando).
+      if (ev.EventName === 'Multikill' && (ev.KillStreak || 0) >= 3 && autopsy.matchPlayer([me], ev.KillerName)) {
+        multi = { t: ev.EventTime || 0, n: ev.KillStreak };
+        (r.multis = r.multis || []).push(multi);
+      }
       const logged = this._log(ev, me, players);
       if (logged) (r.ev = r.ev || []).push(logged);
       if (ev.EventName !== 'ChampionKill') continue;
@@ -82,6 +89,7 @@ class Recorder {
       if (!victim) continue;
       if (victim === me) {
         fresh = this._death(ev, me, players, ctx);
+        fresh.clip = deathName(fresh.t);
         r.deaths.push(fresh);
       } else if (ctx.trackAdc !== false && victim.team === me.team && this._isAdc(victim, ctx)) {
         r.adc_deaths.push(ev.EventTime);
@@ -118,7 +126,7 @@ class Recorder {
       if (r.snap14) r.saved14 = true;
       this.save();
     }
-    return { rec: r, fresh, now: sample };
+    return { rec: r, fresh, multi, now: sample };
   }
 
   // Eventos con el equipo que los hizo: kills (y si participaste) y objetivos/estructuras.

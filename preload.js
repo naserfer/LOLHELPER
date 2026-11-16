@@ -13,4 +13,6 @@ contextBridge.exposeInMainWorld('ph', {
   choosePlayer: (id) => ipcRenderer.send('choose-player', id),
   chooseClose: () => ipcRenderer.send('choose-close'),
   switchPlayer: (id) => ipcRenderer.send('switch-player', id),
+  clipper: (type, data) => ipcRenderer.send('clipper', { type, data }),
+  onClipper: (fn) => ipcRenderer.on('clipper', (e, m) => fn(m.type, m.data)),
 });

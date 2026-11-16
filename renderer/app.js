@@ -279,9 +279,18 @@ function drawCoach(status) {
       if (rv2.sacrificios) bits.push(`${rv2.sacrificios} por objetivo`);
       A += `<div class="k sp12">Autopsia: ${last.deaths.length} muerte${last.deaths.length > 1 ? 's' : ''}${bits.length ? ` · ${esc(bits.join(' · '))}` : ''}</div>`;
       if (rv2.costly) A += `<div class="small bad sp4" style="font-weight:700">La más cara: ${esc(rv2.costly.title)} al ${fmtT(rv2.costly.t)} (${esc(rv2.costly.cost_text)}).</div>`;
-      A += `<div class="death">${last.deaths.map((d) => `<span class="tm">${fmtT(d.t)}</span><div><div class="row wrap" style="gap:6px">${verdictPill(d.verdict)}<b class="${d.verdict === 'error' ? 'bad' : d.verdict === 'neutral' ? 'dim' : d.primary === 'cambio' || d.primary === 'sacrificio' ? 'good' : 'neutral'}">${esc(d.title)}</b></div><div class="small dim">${d.facts ? `${esc(d.facts)}. ` : ''}${esc(d.text)}</div>${d.cost_text ? `<div class="small muted">Costo: ${esc(d.cost_text)}</div>` : ''}</div>`).join('')}</div>`;
+      A += `<div class="death">${last.deaths.map((d) => `<span class="tm">${fmtT(d.t)}</span><div><div class="row wrap" style="gap:6px">${verdictPill(d.verdict)}<b class="${d.verdict === 'error' ? 'bad' : d.verdict === 'neutral' ? 'dim' : d.primary === 'cambio' || d.primary === 'sacrificio' ? 'good' : 'neutral'}">${esc(d.title)}</b></div><div class="small dim">${d.facts ? `${esc(d.facts)}. ` : ''}${esc(d.text)}</div>${d.cost_text ? `<div class="small muted">Costo: ${esc(d.cost_text)}</div>` : ''}${d.clip ? `<button class="btn clipbtn sp4" data-clip="${esc(d.clip)}" data-title="${esc(`${fmtT(d.t)} · ${d.title}`)}" data-text="${esc(d.text)}">▶ Ver la muerte</button>` : ''}</div>`).join('')}</div>`;
+      if (!last.deaths.some((d) => d.clip) && (S.clips || {}).state === 'sin-placa') A += '<div class="small muted sp8">Sin clips: tu placa de video no pudo codificar (se apagan para no bajarte FPS).</div>';
     } else A += '<div class="good small sp8">No moriste en toda la partida.</div>';
     A += '</div>';
+  }
+
+  // Tus jugadas: triples, cuádruples y pentas (se guardan, las muertes no)
+  const plays = S.plays || [];
+  if (plays.length) {
+    A += sec('Tus jugadas', `${plays.length} guardada${plays.length > 1 ? 's' : ''}`);
+    A += `<div class="pad">${plays.map((p) => `<div class="play"><div class="row wrap" style="gap:6px">${pill(p.title, 'gold')}<b>${esc(p.champ || '')}</b><span class="right small muted">${esc(new Date(p.date).toLocaleDateString('es'))}</span></div>
+      <div class="sp4">${esc(p.msg)}</div><button class="btn clipbtn sp4" data-clip="jugadas/${esc(p.file)}" data-title="${esc(`${p.title} · ${p.champ || ''}`)}" data-congrats="${esc(p.msg)}">▶ Verla de nuevo</button></div>`).join('')}</div>`;
   }
 
   // Tu coach: un foco, tu progreso, qué te hace perder y lo que hiciste bien (todas las partidas grabadas)
@@ -380,6 +389,11 @@ function drawCoach(status) {
   const NAMES = { naser: 'Naser', bitty: 'Bitty' };
   if (pid) B += `<div class="pad row sp8"><span class="small dim grow">Jugador: <b style="color:var(--gold-l)">${esc(NAMES[pid] || pid)}</b> (cada uno con sus datos)</span><button class="btn" data-switch="${other}">Cambiar a ${NAMES[other]}</button></div>`;
   B += hudSettings();
+  const cs = S.clips || {};
+  const clipsOn = (S.settings || {}).clips_enabled !== false;
+  const csTxt = !clipsOn ? 'Apagado.' : cs.state === 'grabando' ? `Grabando con ${cs.hw ? 'la placa de video' : 'el procesador'} (${cs.width}×${cs.height}).` : cs.state === 'sin-placa' ? 'Tu placa de video no pudo codificar: los clips quedan apagados para no bajarte FPS.' : 'Listo: arranca solo en la próxima partida.';
+  B += `${sec('Clips')}<div class="card" style="margin-top:0"><div class="row"><span class="grow">Clip de cada muerte y de tus triples (o más)</span><span class="seg"><button data-clips="on" class="${clipsOn ? 'on' : ''}">Sí</button><button data-clips="off" class="${clipsOn ? '' : 'on'}">No</button></span></div>
+    <div class="small dim sp8">${esc(csTxt)} Se graba en memoria: al disco solo van los clips. Los de muertes se borran solos al empezar la partida siguiente; las jugadas se guardan (las últimas 30).</div></div>`;
   return cols(A, B);
 }
 
@@ -421,6 +435,7 @@ function render() {
   $('#app').innerHTML = html;
   scroll.scrollTop = keep;
   for (const b of document.querySelectorAll('[data-role]')) b.onclick = () => window.ph.settings({ rol_por_defecto: b.dataset.role });
+  for (const b of document.querySelectorAll('[data-clips]')) b.onclick = () => window.ph.settings({ clips_enabled: b.dataset.clips === 'on' });
   for (const b of document.querySelectorAll('[data-switch]')) b.onclick = () => window.ph.switchPlayer(b.dataset.switch);
   for (const b of document.querySelectorAll('[data-hud]')) b.onclick = () => window.ph.settings({ hud_enabled: b.dataset.hud === 'on' });
   for (const b of document.querySelectorAll('[data-hudcmd]')) b.onclick = () => window.ph.hud(b.dataset.hudcmd);
@@ -480,3 +495,21 @@ window.ph.on('win', (w) => {
 });
 rescale();
 window.ph.ready();
+
+/* ------------------------------------------------------------------ reproductor de clips */
+function openClip(src, title, text, congrats) {
+  closeClip();
+  const m = document.createElement('div');
+  m.id = 'clipmodal';
+  m.innerHTML = `<div class="clipbox"><div class="row"><b class="grow">${esc(title)}</b><button class="btn" id="clipclose">Cerrar</button></div>
+    <div class="clipvid">${congrats ? `<div class="congrats"><span>🎉</span> ${esc(congrats)}</div>` : ''}<video src="pickhelper://clip/${esc(src)}" controls autoplay playsinline></video></div>
+    ${text ? `<div class="small dim sp8">${esc(text)}</div>` : ''}</div>`;
+  document.body.appendChild(m);
+  m.addEventListener('click', (e) => { if (e.target === m || e.target.id === 'clipclose') closeClip(); });
+}
+function closeClip() { const m = document.getElementById('clipmodal'); if (m) m.remove(); }
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-clip]');
+  if (b) openClip(b.dataset.clip, b.dataset.title, b.dataset.text, b.dataset.congrats);
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeClip(); });

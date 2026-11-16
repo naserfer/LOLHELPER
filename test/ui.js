@@ -14,7 +14,7 @@ const SCREENS = [
   { name: 'partida support', demo: 'gamesup', expect: ['COMPRÁ AHORA', 'SUPPORT RIVAL', 'ADC rival', 'ALERTAS', 'PLAN DE BOT'], absent: ['%', 'sinergia', 'pts', 'partidas)'], absentIn: 'bot' },
   { name: 'partida con muerte + plan del 14', demo: 'gamedeath', extra: ['--coach-fixture=full'], expect: ['MORISTE', 'TU PLAN HASTA EL 14', 'Muertes antes del 14', 'te pasaste: jugá a no morir'] },
   { name: 'repaso (con 26 partidas)', demo: 'idle', extra: ['--coach-fixture=full'], expect: ['TU ÚLTIMA PARTIDA', 'AUTOPSIA', 'POR QUÉ MORÍS', 'TU PLAN HASTA EL MINUTO 14', 'CON QUIÉN MÁS JUGASTE', 'menos confiables',
-    'TU FOCO PARA LA PRÓXIMA', 'EVITABLE', 'Costo:', 'LO QUE HICISTE BIEN'] },
+    'TU FOCO PARA LA PRÓXIMA', 'EVITABLE', 'Costo:', 'LO QUE HICISTE BIEN', 'Ver la muerte', 'TUS JUGADAS', 'Tres menos'] },
   { name: 'repaso (con 7 partidas)', demo: 'idle', extra: ['--coach-fixture=few'], expect: ['Faltan 13 partidas completas', 'POR QUÉ MORÍS'] },
   { name: 'sin cliente', demo: null, expect: ['Sin conexión', 'Faltan 20 partidas', 'se carga cuando abras el cliente'] },
 ];

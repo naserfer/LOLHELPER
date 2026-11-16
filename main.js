@@ -1,6 +1,7 @@
 'use strict';
 // Pick Helper: proceso principal de Electron. Corre el motor cada segundo y le manda la vista a la UI.
-const { app, BrowserWindow, ipcMain, protocol, screen, globalShortcut } = require('electron');
+const { app, BrowserWindow, ipcMain, protocol, screen, globalShortcut, desktopCapturer, net } = require('electron');
+const { pathToFileURL } = require('url');
 const path = require('path');
 const fs = require('fs');
 const { Engine } = require('./src/engine/engine');
@@ -8,6 +9,7 @@ const { viewSig } = require('./src/sig');
 const { hudPayload, hudSig, DEFAULT_LAYOUT } = require('./src/hud');
 const { watchKey } = require('./src/keywatch');
 const player = require('./src/player');
+const { Clipper } = require('./src/clipper');
 
 const arg = (name) => { const a = process.argv.find((x) => x.startsWith(`--${name}`)); return a ? (a.split('=')[1] || true) : null; };
 const COMMON_DEMOS = { idle: { idle: true }, gamedeath: { game: '../test/demo_game_death.json' }, jgdeath: { game: '../test/demo_game_jungle_death.json' } };
@@ -23,7 +25,7 @@ if (!TESTING) {
   if (PLAYER.id) process.env.PH_PROFILE = PLAYER.id;
 }
 
-protocol.registerSchemesAsPrivileged([{ scheme: 'pickhelper', privileges: { standard: true, secure: true, supportFetchAPI: true } }]);
+protocol.registerSchemesAsPrivileged([{ scheme: 'pickhelper', privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true } }]);
 if (!app.requestSingleInstanceLock() && !arg('demo')) app.quit();
 
 let win = null;
@@ -133,6 +135,7 @@ function payload(view, status, full) {
   const coach = engine.coach;
   const out = { status, live: liveBits(view) };
   if (full) Object.assign(out, { view, coach, history: engine.historyView(), meta: engine.meta, settings: engine.settings,
+    plays: engine.clipStore.listPlays(10), clips: clipper ? clipper.status : { state: 'apagado' },
     profile: { id: engine.profile.id, title: engine.profile.title, roles: Object.fromEntries(Object.entries(engine.profile.roles).map(([k, r]) => [k, r.label])) } });
   return out;
 }
@@ -162,6 +165,7 @@ async function tick() {
     if (sig !== lastSig) { lastSig = sig; send('state', payload(view, status, true)); }
     else send('tick', payload(view, status, false));
     updateHud(view);
+    clipTick(view, status);
   } catch (e) {
     send('state', { status: ['off', `Error: ${e.message}`], view: null, coach: engine.coach, history: engine.historyView(), meta: engine.meta, settings: engine.settings });
   } finally { busy = false; }
@@ -205,6 +209,57 @@ function chooseplayer() {
 }
 
 let chooserWin = null;
+let clipper = null;
+let clipGameKey = null, clipIdleSince = 0;
+
+// Clips de muertes y jugadas: ventana oculta que graba en memoria con la placa de video (renderer/clipper.js).
+function setupClipper() {
+  clipper = new Clipper({
+    dir: engine.clipDir,
+    allowSoftware: !!arg('clipsoftware'),   // solo pruebas: en la PC real sin placa, los clips se apagan
+    createWindow: () => {
+      const w = new BrowserWindow({ show: false, width: 320, height: 200, skipTaskbar: true,
+        webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false, backgroundThrottling: false } });
+      w.loadFile(path.join(__dirname, 'renderer', 'clipper.html'));
+      return w;
+    },
+    getSourceId: async () => {
+      const disp = hudDisplay();
+      const sources = await desktopCapturer.getSources({ types: ['screen'], thumbnailSize: { width: 0, height: 0 } });
+      const hit = sources.find((x) => String(x.display_id) === String(disp.id)) || sources[0];
+      if (!hit) throw new Error('sin pantallas para capturar');
+      return hit.id;
+    },
+    size: () => {
+      const b = hudDisplay().size;
+      const k = Math.min(1, 1920 / b.width, 1080 / b.height);
+      return { width: Math.round(b.width * k / 2) * 2, height: Math.round(b.height * k / 2) * 2 };
+    },
+  });
+  ipcMain.on('clipper', (e, m) => clipper.onMessage(m.type, m.data));
+}
+// Una vez por segundo: arrancar/cortar el buffer por partida y pedir los clips.
+function clipTick(view, status) {
+  if (!clipper) return;
+  const on = engine.settings.clips_enabled !== false && (!arg('demo') || arg('clipsoftware'));
+  const inGame = status && status[0] === 'ingame' && view && 'gold' in view;
+  const key = engine.recorder.rec ? engine.recorder.rec.id : null;
+  if (on && inGame && key) {
+    clipIdleSince = 0;
+    if (clipGameKey !== key) { clipGameKey = key; clipper.startGame(key); }
+  } else if (clipGameKey) {
+    if (!clipIdleSince) clipIdleSince = Date.now();
+    if (!on || Date.now() - clipIdleSince > 30000) { clipper.endGame(); clipGameKey = null; }
+  }
+  const evs = engine.clipEvents.splice(0);
+  if (!on || !inGame) return;
+  const now = Date.now();
+  for (const ev of evs) {
+    const wall = now - Math.max(0, (ev.at - ev.t)) * 1000;   // momento del evento en el reloj
+    if (ev.kind === 'death') clipper.deathClip(ev.t, wall, now);
+    else if (ev.kind === 'multi') clipper.multiClip(ev.t, ev.n, ev.champ, wall, now);
+  }
+}
 app.whenReady().then(async () => {
   if (PLAYER.ask) {
     const { id, win: w } = await chooseplayer();
@@ -223,6 +278,11 @@ app.whenReady().then(async () => {
   if (arg('coach-fixture')) require('./test/fixture_coach').install(engine, String(arg('coach-fixture')));
   protocol.handle('pickhelper', async (req) => {
     const u = new URL(req.url);
+    if (u.host === 'clip' && clipper) {   // pickhelper://clip/muertes/x.mp4 · pickhelper://clip/jugadas/y.mp4
+      const file = clipper.resolve(decodeURIComponent(u.pathname.slice(1)));
+      if (file && fs.existsSync(file)) return net.fetch(pathToFileURL(file).toString(), { headers: req.headers });
+      return new Response('', { status: 404 });
+    }
     if (u.host === 'lcu') {
       const r = await engine.lcu.raw(u.pathname);
       if (r) return new Response(r.buf, { headers: { 'content-type': r.type } });
@@ -231,6 +291,8 @@ app.whenReady().then(async () => {
   });
   createWindow();
   if (chooserWin) { chooserWin.destroy(); chooserWin = null; }
+  setupClipper();
+  if (arg('cliptest')) runCliptest(String(arg('cliptest')));
   ipcMain.on('win', (e, cmd) => {
     if (!win) return;
     if (cmd === 'min') win.minimize();
@@ -350,6 +412,30 @@ function runHudtest(out) {
     fs.writeFileSync(out, JSON.stringify(res, null, 1));
     app.exit(0);
   }, Number(arg('wait') || 5000));
+}
+
+// Autoprueba de clips: graba la pantalla unos segundos, corta un clip de "muerte" y uno de "triple", y termina.
+function runCliptest(out) {
+  setTimeout(async () => {
+    await clipper.startGame('cliptest');
+    await new Promise((r) => setTimeout(r, 7000));
+    const now = Date.now();
+    const death = clipper.deathClip(123, now - 1000, now);
+    const play = clipper.multiClip(456, 3, 'Diana', now - 500, now);
+    await new Promise((r) => setTimeout(r, 9000));
+    const file = death ? path.join(clipper.deaths, death) : null;
+    const res = { status: clipper.status, death, play, deathBytes: file && fs.existsSync(file) ? fs.statSync(file).size : 0,
+      plays: clipper.listPlays(), deathsDir: clipper.deaths };
+    // Que se reproduzca en la app, por pickhelper://clip (como lo va a ver el jugador).
+    res.play_check = await win.webContents.executeJavaScript(`new Promise((r) => { openClip('muertes/${death}', 'prueba', 'texto');
+      const v = document.querySelector('#clipmodal video'); v.muted = true;
+      v.onloadedmetadata = () => r({ duration: v.duration, w: v.videoWidth, h: v.videoHeight });
+      v.onerror = () => r({ error: v.error && v.error.code }); setTimeout(() => r({ timeout: true }), 6000); })`).catch((e) => ({ error: String(e) }));
+    res.congrats_check = await win.webContents.executeJavaScript(`(() => { openClip('jugadas/${play}', 'Triple', '', '¡Triple!'); const c = document.querySelector('.congrats'); return c ? c.textContent.trim() : null; })()`).catch(() => null);
+    clipper.endGame();
+    fs.writeFileSync(out, JSON.stringify(res, null, 1));
+    setTimeout(() => app.exit(0), 500);
+  }, 1500);
 }
 
 app.on('second-instance', () => { if (win) { if (win.isMinimized()) win.restore(); win.focus(); } });

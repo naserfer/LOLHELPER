@@ -44,7 +44,17 @@ function install(engine, mode) {
       snap14: { d14, kp14: 30 + r() * 40, vis14: 14 + r() * 14 + (win ? 4 : 0), cw14: Math.floor(r() * 4), gold14: 3600 + r() * 1400,
         dg14: deaths.filter((d) => d.t < 840 && d.gold >= 1000).length },
       deaths, adc_deaths: [], objectives: [], win, duration: 1800 };
-    if (i === 0) { rec.win = false; }
+    if (i === 0) {
+      rec.win = false;
+      // clips de ejemplo (vacíos) para ver los botones de la última partida
+      fs.mkdirSync(path.join(engine.clipDir, 'muertes'), { recursive: true });
+      for (const dd of deaths) { dd.clip = `muerte_${dd.t}.mp4`; fs.writeFileSync(path.join(engine.clipDir, 'muertes', dd.clip), ''); }
+      const pj = path.join(engine.clipDir, 'jugadas');
+      fs.mkdirSync(pj, { recursive: true });
+      fs.writeFileSync(path.join(pj, 'jugada_20261115220000_Thresh_3.mp4'), '');
+      fs.writeFileSync(path.join(pj, 'jugada_20261115220000_Thresh_3.json'), JSON.stringify({ kind: 'multi', n: 3, champ: 'Thresh', title: 'Triple kill',
+        date: '2026-11-15T22:00:00.000Z', msg: '¡Triple kill! Tres menos, ¿quién sigue?', seconds: 24 }));
+    }
     fs.writeFileSync(path.join(dir, `${rec.id}.json`), JSON.stringify(rec));
   }
   engine.computeCoach(true);
