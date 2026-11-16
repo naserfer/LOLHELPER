@@ -65,6 +65,11 @@ for (const size of ['1366x768', '1920x1080', '2560x1440']) {
 }
 const e = run('gamesup', '1920x1080', ['--hudedit']);
 ok(e && e.focusable === true && e.boxes.every((b) => !b.hidden || b.id === 'w-death'), 'modo acomodar: se puede arrastrar (toma el mouse) y muestra los recuadros');
+const g = run('gamesup', '1920x1080', ['--hudgrab']);
+ok(g && g.grab === true && g.focusable === false, 'con Tab apretado se puede arrastrar sin quitarle el foco al juego');
+ok(g && g.boxes.every((b) => !b.hidden), 'con Tab apretado aparecen todos los recuadros (los vacíos como fantasma) para poder moverlos');
+ok(g && g.drag && Math.abs(g.drag.dx + 200) < 2 && Math.abs(g.drag.dy + 100) < 2, `arrastrar con Tab mueve la compra (${g && JSON.stringify(g.drag)})`);
+ok(g && g.layout && g.layout.buy && Math.abs(g.layout.buy.x - (72.5 - 100 * 200 / 1920)) < 0.2, `la posición nueva queda guardada (${g && g.layout && JSON.stringify(g.layout.buy)})`);
 const outside = run('support', '1920x1080');
 ok(outside && (!outside.exists || !outside.visible), 'en champ select el overlay del juego no aparece');
 console.log(`\n${passed} OK, ${failed} fallas`);

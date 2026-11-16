@@ -6,6 +6,7 @@ const fs = require('fs');
 const { Engine } = require('./src/engine/engine');
 const { viewSig } = require('./src/sig');
 const { hudPayload, hudSig, DEFAULT_LAYOUT } = require('./src/hud');
+const { watchKey } = require('./src/keywatch');
 
 const arg = (name) => { const a = process.argv.find((x) => x.startsWith(`--${name}`)); return a ? (a.split('=')[1] || true) : null; };
 const COMMON_DEMOS = { idle: { idle: true }, gamedeath: { game: '../test/demo_game_death.json' }, jgdeath: { game: '../test/demo_game_jungle_death.json' } };
@@ -22,6 +23,8 @@ let hud = null;            // ventana transparente dentro del juego
 let hudReady = false;
 let hudHidden = false;     // Alt+Shift+H
 let hudEdit = false;       // Alt+Shift+E
+let hudGrab = false;       // Tab apretado: los recuadros se pueden arrastrar sin salir del juego
+let stopKeyWatch = () => {};
 let lastHud = null;
 let lastUrls = {};
 
@@ -80,6 +83,7 @@ function hudConfig() {
   hud.webContents.send('hud-config', { layout: hudLayout(), edit: hudEdit, scale: Math.max(0.7, Math.min(2, b.height / 1080)) });
 }
 function setHudEdit(on) {
+  if (on) setHudGrab(false);
   hudEdit = on;
   createHud();
   hud.setIgnoreMouseEvents(!on);
@@ -88,11 +92,22 @@ function setHudEdit(on) {
   hudConfig();
   send('win', { hudEdit: on });
 }
+// Tab apretado: el overlay atrapa el mouse solo sobre un recuadro (el renderer avisa con hud-grab-capture);
+// en el resto de la pantalla los clics siguen yendo al juego. Nunca toma el foco.
+function setHudGrab(on) {
+  if (hudEdit || !hud || !hudReady) on = false;
+  if (on && !hud.isVisible()) on = false;
+  if (on === hudGrab) return;
+  hudGrab = on;
+  if (on) hud.setIgnoreMouseEvents(true, { forward: true });
+  else hud.setIgnoreMouseEvents(true);
+  hud.webContents.send('hud-grab', on);
+}
 function updateHud(view) {
   const enabled = engine.settings.hud_enabled !== false;
   const h = hudPayload(view);
   if (hudEdit) { if (hud && hudReady) hud.webContents.send('hud', { hud: h, sig: hudSig(h) }); return; }
-  if (!h || !enabled || hudHidden) { if (hud && hud.isVisible()) hud.hide(); lastHud = null; return; }
+  if (!h || !enabled || hudHidden) { setHudGrab(false); if (hud && hud.isVisible()) hud.hide(); lastHud = null; return; }
   createHud();
   if (!hudReady) return;
   if (!hud.isVisible()) hud.showInactive();
@@ -183,6 +198,7 @@ app.whenReady().then(() => {
     send('win', { pinned: win.isAlwaysOnTop(), maximized: win.isMaximized(), hudEdit });
   });
   ipcMain.on('hud-layout', (e, layout) => { engine.saveSettings({ hud_layout: layout }); });
+  ipcMain.on('hud-grab-capture', (e, on) => { if (hudGrab && hud) hud.setIgnoreMouseEvents(!on, { forward: true }); });
   ipcMain.on('hud', (e, cmd) => {
     if (cmd === 'edit') setHudEdit(!hudEdit);
     else if (cmd === 'reset') { engine.saveSettings({ hud_layout: null }); hudConfig(); }
@@ -197,6 +213,7 @@ app.whenReady().then(() => {
     ['Alt+Shift+E', () => setHudEdit(!hudEdit)],
     ['Alt+Shift+R', () => { engine.saveSettings({ hud_layout: null }); hudConfig(); }]];
   for (const [k, fn] of keys) { try { globalShortcut.register(k, fn); } catch (e) { /* tecla ocupada */ } }
+  if (engine.settings.hud_tab_drag !== false && !arg('demo')) stopKeyWatch = watchKey('tab', (down) => setHudGrab(down));
   setInterval(tick, 1000);
   tick();
   if (arg('selftest')) runSelftest(String(arg('selftest')));
@@ -245,13 +262,24 @@ function runSelftest(out) {
 function runHudtest(out) {
   setTimeout(async () => {
     if (arg('hudedit')) setHudEdit(true);
+    if (arg('hudgrab')) setHudGrab(true);
     await new Promise((r) => setTimeout(r, 1500));
-    const res = { exists: !!hud, visible: !!(hud && hud.isVisible()), focusable: hud ? hud.isFocusable() : null, bounds: hud ? hud.getBounds() : null };
+    const res = { exists: !!hud, visible: !!(hud && hud.isVisible()), focusable: hud ? hud.isFocusable() : null, bounds: hud ? hud.getBounds() : null, grab: hudGrab };
     if (hud) {
       res.boxes = await hud.webContents.executeJavaScript(`[...document.querySelectorAll('.w')].map((w) => { const r = w.getBoundingClientRect();
         return { id: w.id, hidden: w.classList.contains('hide') || !w.innerHTML.trim(), x: r.left, y: r.top, w: r.width, h: r.height, text: w.innerText }; })`);
       res.vw = await hud.webContents.executeJavaScript('[window.innerWidth, window.innerHeight]');
       if (arg('shot')) { const img = await hud.webContents.capturePage(); fs.writeFileSync(String(arg('shot')), img.toPNG()); }
+      if (arg('hudgrab')) {   // arrastra la compra 200 px a la izquierda y 100 px arriba, como con Tab + mouse
+        res.drag = await hud.webContents.executeJavaScript(`(() => { const w = document.getElementById('w-buy'); const r = w.getBoundingClientRect();
+          const at = (t, x, y, el) => (el || document).dispatchEvent(new MouseEvent(t, { bubbles: true, clientX: x, clientY: y }));
+          const x = r.left + 10, y = r.top + 10;
+          at('mousedown', x, y, w); at('mousemove', x - 200, y - 100, w); at('mouseup', x - 200, y - 100, w);
+          const r2 = w.getBoundingClientRect(); return { dx: r2.left - r.left, dy: r2.top - r.top }; })()`);
+        await new Promise((r) => setTimeout(r, 300));
+        res.layout = engine.settings.hud_layout || null;
+        res.ignoring = true;
+      }
     }
     fs.writeFileSync(out, JSON.stringify(res, null, 1));
     app.exit(0);
@@ -260,4 +288,4 @@ function runHudtest(out) {
 
 app.on('second-instance', () => { if (win) { if (win.isMinimized()) win.restore(); win.focus(); } });
 app.on('window-all-closed', () => app.quit());
-app.on('will-quit', () => globalShortcut.unregisterAll());
+app.on('will-quit', () => { globalShortcut.unregisterAll(); stopKeyWatch(); });

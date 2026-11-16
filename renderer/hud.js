@@ -3,7 +3,8 @@
 const esc = (s) => String(s === undefined || s === null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 const fmt = (t) => (t <= 0 ? 'VIVO' : `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`);
-let ICONS = {}, LAYOUT = {}, H = null, SIG = '', EDIT = false, deathShownAt = null;
+let ICONS = {}, LAYOUT = {}, H = null, SIG = '', EDIT = false, GRAB = false, deathShownAt = null;
+const KEY_OF = { 'w-buy': 'buy', 'w-death': 'death', 'w-rule': 'rule' };
 
 function icon(name, size) {
   const u = ICONS[`item:${norm(name)}`];
@@ -52,6 +53,12 @@ function build() {
   death.innerHTML = d ? `<div class="panel death"><div class="k">Moriste · ${esc(d.title)}</div><div style="margin-top:3px">${esc(d.text)}</div></div>`
     : call ? `<div class="panel death"><div>${esc(call)}</div></div>` : '';
   death.classList.toggle('hide', !d && !call);
+  // Con Tab apretado, los recuadros vacíos aparecen como fantasma para poder moverlos también.
+  for (const e of [buy, rule, death]) {
+    if (!GRAB || !e.classList.contains('hide')) continue;
+    e.innerHTML = `<div class="panel ghost">${esc(e.dataset.name)}</div>`;
+    e.classList.remove('hide');
+  }
 }
 function live() {
   if (!H) return;
@@ -69,29 +76,38 @@ function sample() {
     death: { title: 'Te agarró la jungla', text: 'Antes de avanzar, sabé dónde está la jungla rival.', t: 1 }, rule: { text: 'Muertes antes del 14 ≤ 1', value: '0', ok: true } };
 }
 
-/* arrastrar en modo edición */
-let drag = null;
+/* arrastrar: en modo edición (Alt+Shift+E) o manteniendo Tab */
+let drag = null, capturing = false;
+const capture = (on) => { if (capturing !== on) { capturing = on; window.ph.hudGrabCapture(on); } };
+function endDrag() {
+  if (!drag) return;
+  const key = KEY_OF[drag.w.id];
+  if (drag.moved) {
+    LAYOUT[key] = Object.assign({}, LAYOUT[key], { x: parseFloat(drag.w.style.left), y: parseFloat(drag.w.style.top) });
+    window.ph.hudLayout(LAYOUT);
+  }
+  drag.w.classList.remove('dragging');
+  drag = null;
+}
 document.addEventListener('mousedown', (e) => {
-  if (!EDIT) return;
+  if (!EDIT && !GRAB) return;
   const w = e.target.closest('.w');
   if (!w) return;
-  const r = w.getBoundingClientRect();
-  drag = { w, dx: e.clientX, dy: e.clientY, x0: parseFloat(w.style.left), y0: parseFloat(w.style.top), r };
+  e.preventDefault();
+  drag = { w, dx: e.clientX, dy: e.clientY, x0: parseFloat(w.style.left), y0: parseFloat(w.style.top), moved: false };
+  w.classList.add('dragging');
 });
 document.addEventListener('mousemove', (e) => {
+  // Con Tab: atrapar el mouse solo encima de un recuadro (el resto sigue yendo al juego).
+  if (GRAB && !drag) capture(!!(e.target.closest && e.target.closest('.w')));
   if (!drag) return;
   const nx = drag.x0 + 100 * (e.clientX - drag.dx) / window.innerWidth;
   const ny = drag.y0 + 100 * (e.clientY - drag.dy) / window.innerHeight;
   drag.w.style.left = `${Math.max(0, Math.min(100, nx))}%`;
   drag.w.style.top = `${Math.max(2, Math.min(100, ny))}%`;
+  drag.moved = true;
 });
-document.addEventListener('mouseup', () => {
-  if (!drag) return;
-  const key = { 'w-buy': 'buy', 'w-death': 'death', 'w-rule': 'rule' }[drag.w.id];
-  LAYOUT[key] = Object.assign({}, LAYOUT[key], { x: parseFloat(drag.w.style.left), y: parseFloat(drag.w.style.top) });
-  window.ph.hudLayout(LAYOUT);
-  drag = null;
-});
+document.addEventListener('mouseup', () => endDrag());
 
 window.ph.on('icons', (m) => { ICONS = m; SIG = ''; });
 window.ph.on('hud-config', (c) => {
@@ -99,6 +115,12 @@ window.ph.on('hud-config', (c) => {
   document.documentElement.style.setProperty('--s', String(c.scale));
   document.body.classList.toggle('edit', EDIT);
   layout(); SIG = ''; build();
+});
+window.ph.on('hud-grab', (on) => {
+  GRAB = on;
+  if (!on) { endDrag(); capturing = false; }   // soltaste Tab: queda donde lo dejaste
+  document.body.classList.toggle('grab', GRAB);
+  SIG = ''; build();
 });
 window.ph.on('hud', (m) => {
   H = m.hud;

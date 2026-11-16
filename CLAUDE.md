@@ -39,6 +39,7 @@ preload.js              Puente seguro renderer <-> main (window.ph)
 renderer/               Interfaz: index.html + app.js + style.css (ventana principal); hud.* (overlay en el juego)
 src/sig.js              Firma de la vista: si no cambia, no se redibuja (evita titileo)
 src/hud.js              Qué muestra el HUD y posiciones por defecto (% de pantalla)
+src/keywatch.js         Lee si Tab está apretada (PowerShell + GetAsyncKeyState), sin quedarse con la tecla
 src/engine/
   engine.js             Orquesta todo: perfil, cliente, partida, historial, grabador, coach
   lcu.js                Credenciales del cliente (PowerShell o lockfile; LOL_PATH lo pisa) y HTTPS a 127.0.0.1
@@ -79,6 +80,15 @@ build_win.sh            Arma el .exe desde Linux con Wine
 - `track_adc: false` (Bitty) desactiva la causa de muerte "tu ADC ya había caído".
 - Para correr otro perfil en desarrollo: `PH_PROFILE=bitty npm start`.
 
+## Mover el overlay
+- **Alt+Shift+E:** modo acomodar. El HUD toma el mouse y el foco hasta que lo terminás.
+- **Mantener Tab y arrastrar** (pedido del usuario): sin salir del juego. Detalles que importan:
+  - Tab **no** se registra con `globalShortcut`: eso se queda con la tecla y el marcador del juego dejaría de abrir. `src/keywatch.js` levanta un PowerShell que consulta `GetAsyncKeyState(VK_TAB)` cada 40 ms e imprime `1`/`0` al cambiar. Solo lee el estado del teclado de Windows: no lee el juego ni manda teclas.
+  - Con Tab apretado: `setIgnoreMouseEvents(true, {forward: true})`. El renderer ve el mouse y avisa (`hud-grab-capture`) para atrapar los clics **solo encima de un recuadro**; en el resto los clics siguen yendo al juego. La ventana nunca se vuelve enfocable.
+  - Los recuadros vacíos (por ejemplo el aviso de muerte) aparecen como fantasma para poder moverlos.
+  - Al soltar Tab, el recuadro queda donde estaba y se guarda en `hud_layout`.
+  - Se apaga con `hud_tab_drag: false` en `settings.json`. En `--demo` no se lanza el PowerShell; `--hudgrab` simula Tab apretado en `--hudtest`.
+
 ## Formato de datos (pool*.json)
 `{ patch, source, pool: [campeón] }`. Cada campeón tiene:
 - `name`, `role`, `start`, `boots`, `builds{default,vs_ad,vs_ap}`, `runes`, `spells`, `skills`, `general`.
@@ -118,6 +128,7 @@ Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo p
 `DISPLAY=:9 npm test`, con Xvfb levantado: `Xvfb :9 -screen 0 2560x1440x24 &`. Corre:
 - `test/golden/compare.js`: la versión JS da exactamente lo mismo que la Python (395 casos). Usa `items_golden.json` congelado; **no lo modifiques**. Para agregar ítems de prueba usá `test/items_test.json`.
 - `test/items_list.js`: la lista de ítems es coherente y no se recomienda nada que ya no se compre.
+- `test/keywatch.js`: lectura de Tab (sin mandar teclas ni leer memoria) y que se suelte si PowerShell se cae.
 - `test/new_features.js`: pruebas pensadas para fallar si la idea está mal: causa al revés, autopsia, grabación con cortes y que no titile.
 - `test/e2e.js` y `test/bitty_test.js`: de punta a punta contra un cliente y un juego simulados por HTTPS (`test/fake_riot.js`; la API en vivo usa el puerto 2999 de verdad).
 - `test/ui.js` y `test/ui_bitty.js`: cada pantalla a 340, 460, 800 y 1600 px. Verifica que no haya errores JS, que nada se salga de la ventana, cuántas columnas hay y el texto esperado.
@@ -160,7 +171,9 @@ Flags útiles de la app:
 ## Pendiente / sin verificar con el juego real
 - Formato exacto de los nombres en los eventos de kills de la Live API (se contemplan tres formatos).
 - Que el `gameId` de `/lol-gameflow/v1/session` coincida con el del historial; si no, se une por campeón y hora.
-- Posiciones por defecto del HUD con la interfaz de League a escala normal. El usuario las puede mover con Alt+Shift+E.
+- Posiciones por defecto del HUD con la interfaz de League a escala normal. El usuario las puede mover con Alt+Shift+E o con Tab + arrastrar.
+- Arrastre con Tab probado solo con eventos simulados en Xvfb: falta confirmar en Windows con el juego en Sin bordes que `forward: true` deja pasar los clics fuera de los recuadros.
+- `test/e2e.js` (plan del 14) y `test/ui.js` ("no te podés pasar") fallan desde antes: las pruebas quedaron viejas cuando el mínimo pasó a 31 partidas por rol.
 - Íconos reales: en las pruebas se usan placeholders.
 - Bitty: no hay guías específicas para los campeones nuevos Locke y Zaahen, porque no se conocen sus kits.
 - Idea pendiente: una foto extra al minuto 8 para junglas (primer recorrido y ganks).

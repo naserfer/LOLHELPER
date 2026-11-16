@@ -8,4 +8,5 @@ contextBridge.exposeInMainWorld('ph', {
   ready: (who) => ipcRenderer.send('ready', who || 'main'),
   hudLayout: (l) => ipcRenderer.send('hud-layout', l),
   hud: (cmd) => ipcRenderer.send('hud', cmd),
+  hudGrabCapture: (on) => ipcRenderer.send('hud-grab-capture', !!on),
 });

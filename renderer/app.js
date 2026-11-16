@@ -321,7 +321,7 @@ function hudSettings() {
   return `${sec('Overlay dentro del juego')}<div class="card" style="margin-top:0">
     <div class="row"><span class="grow">Mostrar qué comprar y los avisos sobre el juego</span><span class="seg"><button data-hud="on" class="${on ? 'on' : ''}">Sí</button><button data-hud="off" class="${on ? '' : 'on'}">No</button></span></div>
     <div class="row wrap sp8"><button class="btn" data-hudcmd="edit">${HUD_EDIT ? 'Terminar de acomodar' : 'Acomodar posiciones'}</button><button class="btn" data-hudcmd="reset">Posiciones de fábrica</button><button class="btn" data-hudcmd="monitor">Cambiar monitor (${(st.hud_display || 0) + 1})</button></div>
-    <div class="small dim sp8">Atajos dentro del juego: <b>Alt+Shift+H</b> ocultar/mostrar · <b>Alt+Shift+E</b> acomodar · <b>Alt+Shift+R</b> posiciones de fábrica.<br>Jugá en modo <b>Sin bordes</b>: en pantalla completa exclusiva Windows no deja dibujar encima.</div></div>`;
+    <div class="small dim sp8">Atajos dentro del juego: <b>Alt+Shift+H</b> ocultar/mostrar · <b>Alt+Shift+E</b> acomodar · <b>Alt+Shift+R</b> posiciones de fábrica · mantené <b>Tab</b> y arrastrá un recuadro para moverlo.<br>Jugá en modo <b>Sin bordes</b>: en pantalla completa exclusiva Windows no deja dibujar encima.</div></div>`;
 }
 let HUD_EDIT = false;
 

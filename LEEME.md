@@ -25,3 +25,6 @@ Solo usa la API del cliente y la API en vivo del juego (las mismas que usan las 
 
 ## Lista de ítems
 La app solo te recomienda comprar ítems que estén en `data/items.json` (parche 16.22.1, sacada de Data Dragon de Riot). Cuando salga un parche que saque o agregue ítems, editá ese archivo: borrá los que ya no existen y sumá los nuevos con su id y nombre en inglés. Después tenés que volver a armar el `.exe`.
+
+## Mover el overlay
+En partida, **mantené Tab y arrastrá** cualquier recuadro (la compra, el plan del 14 o el aviso de muerte) con el mouse. Mientras tengas Tab apretado, los recuadros que no se están mostrando aparecen como un recuadro punteado para que también los puedas mover. Al soltar, quedan donde los dejaste. El marcador del juego sigue abriendo normal. También está **Alt+Shift+E** para acomodar todo con calma y **Alt+Shift+R** para volver a las posiciones de fábrica.
