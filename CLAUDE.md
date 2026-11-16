@@ -151,7 +151,13 @@ Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo p
   - Reglas **tempranas** (`EARLY`, foto del 14): se aprenden por rol. Las partidas antiguas (65%) entrenan; las posteriores (35%) validan. Hacen falta 20 partidas de entrenamiento y al menos 5 victorias y 5 derrotas posteriores (31 partidas completas por rol como mínimo). Solo se activan reglas con al menos 5 partidas a cada lado del corte, diferencia favorable en validación y `p ≤ 0,05` tras permutar resultados entre todas las candidatas.
   - Reglas de **partida completa** (`FULL`): también se separan y validan por rol con el mismo criterio. Se muestran como "menos confiables", porque sus números pueden ser consecuencia de ir ganando.
   - Las grabaciones nuevas guardan `role`. Para grabaciones viejas sin rol se infiere solo si el campeón pertenece a un único pool del perfil; las ambiguas no entrenan el coach.
-- **Autopsia:** las etiquetas son `torre`, `jungla`, `superado` (3 o más), `adc` (cayó ≤12 s antes), `nivel` (+2), `oro` (≥1000) y `objetivo` (dentro de −10/+45 s de un dragón, barón o heraldo). Si ninguna aplica, es `clara`. La principal se elige por prioridad. Los nombres de los eventos se comparan con `riotId`, `riotIdGameName` y `summonerName`, con o sin `#TAG`.
+- **Autopsia de coach** (`autopsy.js`): pensada como la haría un coach, no como una lista de errores.
+  - **Veredicto** de cada muerte: `error` (evitable), `cambio` (tu equipo mató a alguien en la pelea, ±10 s), `sacrificio` (tu equipo tomó dragón/heraldo/barón/Atakhan: una torre sola no alcanza) o `neutral`.
+  - **Causas** por prioridad: `torre`, `sin_vida` (18+ s con ≤35% de vida antes de morir), `reventado` (≥70% de vida 2-4 s antes), `equipo` (2+ aliados ya muertos), `jungla` (no aplica si sos el jungla), `superado` (3+), `adc` (≤12 s antes), `items` (el que te mató tenía 1500+ de oro más en ítems), `nivel` (+2; de support solo cuenta contra el ADC/support rival), `oro` (≥1000), `objetivo`. Si nada aplica: `clara`.
+  - **Costo:** tiempo muerto (`respawnTimer`) y lo que tomó el rival mientras tanto (torres, inhibidores, dragón, heraldo, barón, Atakhan) en puntos; `cara` desde 3.
+  - **Resumen** (`summarize`): un solo **foco** (la causa con más peso `1 + costo` en las últimas 10 partidas, no la más frecuente), **progreso** (muertes evitables por partida, últimas 5 contra las 5 anteriores, desde 10 partidas), **qué te hace perder** (causas con 0,5+ por partida más en derrotas que en victorias, con 4+ de cada una) y **lo que hiciste bien**. `reviewGame` arma la revisión de la última partida con la muerte más cara.
+  - **Datos:** el grabador guarda la vida (`activePlayer.championStats`, API oficial) de los 25 s anteriores, aliados muertos, oro en ítems tuyo y de cada atacante, rol, tiempo muerto y un log de kills y objetivos por equipo (`rec.ev`; las torres por el nombre `Turret_T1/T2_…`). Las grabaciones viejas no tienen esto: se clasifican igual que antes.
+  - Los nombres de los eventos se comparan con `riotId`, `riotIdGameName` y `summonerName`, con o sin `#TAG`.
 - **Eventos:** se deduplican por contenido (`nombre|tiempo|víctima|asesino`), no solo por `EventID`.
 
 ## Pruebas
@@ -162,6 +168,7 @@ Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo p
 - `test/botlane.js`: plan de bot (fuentes, fallbacks, combos solo con kit, historial con muestra chica, sin números en partida).
 - `test/player.js`: elegir jugador la primera vez y que cada uno use su carpeta.
 - `test/bitty_plus.js`: mezcla de fuentes, plan de jungla/mid, guías de Locke y Zaahen y foto del minuto 8.
+- `test/coach.js`: autopsia de coach (vida, cambios, sacrificios, costo, nivel por rol, foco por costo, progreso, compatibilidad con grabaciones viejas).
 - `test/new_features.js`: pruebas pensadas para fallar si la idea está mal: causa al revés, autopsia, grabación con cortes y que no titile.
 - `test/e2e.js` y `test/bitty_test.js`: de punta a punta contra un cliente y un juego simulados por HTTPS (`test/fake_riot.js`; la API en vivo usa el puerto 2999 de verdad).
 - `test/ui.js` y `test/ui_bitty.js`: cada pantalla a 340, 460, 800 y 1600 px. Verifica que no haya errores JS, que nada se salga de la ventana, cuántas columnas hay y el texto esperado.
@@ -208,4 +215,5 @@ Flags útiles de la app:
 - Arrastre con Tab probado solo con eventos simulados en Xvfb: falta confirmar en Windows con el juego en Sin bordes que `forward: true` deja pasar los clics fuera de los recuadros.
 - Íconos reales: en las pruebas se usan placeholders.
 - Que `scores.creepScore` de la Live API cuente los campamentos de jungla (el marcador del juego los cuenta).
+- Autopsia: confirmar con partidas reales los nombres de `TurretKilled`/`InhibKilled` (`Turret_T1_…`) y que `respawnTimer` venga cargado en el momento de la muerte.
 - Stream: el overlay sale con "Captura de pantalla" pero no con "Captura de juego" de OBS. Idea: servirlo como fuente de navegador (o esconderlo de las capturas con `setContentProtection`).

@@ -46,3 +46,13 @@ La primera vez que abrís la app te pregunta si sos **Naser** (support) o **Bitt
 - **Diana mid:** cuánto respetar al jungla rival.
 - **Locke y Zaahen:** guías armadas con sus kits reales.
 - **Coach de jungla:** además del minuto 14 graba el **minuto 8** (campamentos, nivel, participación y muertes). Lo usa cuando todas tus partidas de jungla grabadas lo tengan.
+
+## Coach de muertes
+Cada muerte se revisa como lo haría un coach:
+- **Evitable, cambio u objetivo:** si te llevaste a alguien o tu equipo tomó un dragón o barón, no es un error y no se cuenta como tal.
+- **Causas nuevas:** "Te reventaron de golpe" (de casi toda la vida a 0 en segundos), "Te quedaste con poca vida" (más de 18 s con menos de 35% sin volver), "Pelea ya perdida" (con 2 aliados muertos) y "Rival con más ítems". De support, estar abajo de nivel contra un mid o top ya no cuenta como error.
+- **Lo que te costó:** cuánto estuviste muerto y qué tomó el rival mientras tanto. En tu última partida se marca la muerte más cara.
+- **Tu foco para la próxima:** una sola cosa, la que más te costó en tus últimas 10 partidas.
+- **Tu progreso, qué te hace perder y lo que hiciste bien:** aparecen cuando hay suficientes partidas para decirlo.
+
+Las partidas grabadas antes de esta versión se siguen analizando como antes. Las nuevas traen todo.

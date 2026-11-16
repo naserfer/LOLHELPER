@@ -38,3 +38,5 @@ body.grab .w:not(.hide) { cursor: grab; }
 body.grab .w:hover, .w.dragging { outline: 2px dashed var(--gold); outline-offset: 4px; }
 .w.dragging { cursor: grabbing; opacity: 1 !important; }
 .ghost { color: var(--gold); font-size: .8em; font-weight: 700; border-style: dashed; opacity: .75; white-space: nowrap; }
+.death.ok { border-color: var(--good); background: linear-gradient(90deg, rgba(15,58,42,.92), rgba(12,26,20,.88)); }
+.death.ok .k { color: var(--good); }

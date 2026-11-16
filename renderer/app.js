@@ -197,7 +197,7 @@ function drawGame(v) {
   let H = `<div class="gh">${icon('champion', me.champ, 38, { border: 'var(--gold)' })}<div class="grow"><div class="t big">${esc(me.champ)}</div><div class="small dim">Nivel ${me.level} · ${esc(me.kda)} · ${me.cs} CS</div></div>
     <div class="right"><div class="gold-big" data-live="gold">${v.gold}</div><div class="small muted" data-live="time">${fmtT(v.time)}</div></div></div>`;
   let A = '', B = '';
-  if (v.death) A += `<div class="toast"><div class="ttl">Moriste · ${esc(v.death.title)}</div><div class="sp4">${esc(v.death.text)}</div></div>`;
+  if (v.death) A += `<div class="toast${v.death.verdict && v.death.verdict !== 'error' ? ' ok' : ''}"><div class="ttl">Moriste · ${esc(v.death.title)}</div><div class="sp4">${esc(v.death.text)}</div></div>`;
   const b = v.buy;
   if (!v.in_pool) A += `<div class="empty">${esc(me.champ)} no está en tu pool: no tengo build para recomendarte.</div>`;
   else if (b) {
@@ -249,6 +249,7 @@ function drawGame(v) {
 }
 
 /* ------------------------------------------------------------------ coach (fuera de partida) */
+const verdictPill = (v) => (v === 'error' ? pill('EVITABLE', 'red') : v === 'cambio' ? pill('CAMBIO', 'green') : v === 'sacrificio' ? pill('OBJETIVO', 'green') : pill('—', 'dark'));
 function drawCoach(status) {
   const c = S.coach || {};
   const h = S.history || {};
@@ -271,19 +272,32 @@ function drawCoach(status) {
       A += `<div class="k">Hasta el minuto 14</div><div class="row wrap sp4 small" style="gap:4px 14px"><span>Muertes <b>${s.d14}</b></span><span>Visión <b>${Math.round(s.vis14)}</b></span><span>Control Wards <b>${s.cw14}</b></span><span>Oro <b>${Math.round(s.gold14).toLocaleString('es')}</b></span><span>Participación <b>${pct(s.kp14)}</b></span>${last.item1 ? `<span>1er legendario <b>${Number(last.item1).toFixed(1)} min</b></span>` : ''}</div>`;
     } else A += '<div class="small dim">El overlay no estaba abierto al minuto 14 de esta partida.</div>';
     if (last.deaths.length) {
-      A += `<div class="k sp12">Autopsia: ${last.deaths.length} muerte${last.deaths.length > 1 ? 's' : ''}</div><div class="death">${last.deaths.map((d) => `<span class="tm">${fmtT(d.t)}</span><div><b class="${d.primary === 'clara' ? 'dim' : 'bad'}">${esc(d.title)}</b><div class="small dim">${d.facts ? `${esc(d.facts)}. ` : ''}${esc(d.text)}</div></div>`).join('')}</div>`;
+      const rv2 = last.review || {};
+      const bits = [];
+      if (rv2.errors != null) bits.push(`${rv2.errors} evitable${rv2.errors === 1 ? '' : 's'}`);
+      if (rv2.cambios) bits.push(`${rv2.cambios} cambio${rv2.cambios > 1 ? 's' : ''}`);
+      if (rv2.sacrificios) bits.push(`${rv2.sacrificios} por objetivo`);
+      A += `<div class="k sp12">Autopsia: ${last.deaths.length} muerte${last.deaths.length > 1 ? 's' : ''}${bits.length ? ` · ${esc(bits.join(' · '))}` : ''}</div>`;
+      if (rv2.costly) A += `<div class="small bad sp4" style="font-weight:700">La más cara: ${esc(rv2.costly.title)} al ${fmtT(rv2.costly.t)} (${esc(rv2.costly.cost_text)}).</div>`;
+      A += `<div class="death">${last.deaths.map((d) => `<span class="tm">${fmtT(d.t)}</span><div><div class="row wrap" style="gap:6px">${verdictPill(d.verdict)}<b class="${d.verdict === 'error' ? 'bad' : d.verdict === 'neutral' ? 'dim' : d.primary === 'cambio' || d.primary === 'sacrificio' ? 'good' : 'neutral'}">${esc(d.title)}</b></div><div class="small dim">${d.facts ? `${esc(d.facts)}. ` : ''}${esc(d.text)}</div>${d.cost_text ? `<div class="small muted">Costo: ${esc(d.cost_text)}</div>` : ''}</div>`).join('')}</div>`;
     } else A += '<div class="good small sp8">No moriste en toda la partida.</div>';
     A += '</div>';
   }
 
-  // Por qué morís (todas las partidas grabadas)
+  // Tu coach: un foco, tu progreso, qué te hace perder y lo que hiciste bien (todas las partidas grabadas)
   const au = c.autopsy;
   A += sec('Por qué morís', au && au.deaths ? `${au.deaths} muertes · ${au.games} partidas${au.early ? ` · ${au.early} antes del 14` : ''}` : '');
   if (au && au.deaths) {
     A += '<div class="pad">';
-    if (au.next) A += `<div class="card hi" style="margin-top:0"><div class="k">Para la próxima</div><div class="t sp4">${esc(au.next.text)}</div></div>`;
+    if (au.focus) A += `<div class="card hi" style="margin-top:0"><div class="k" style="color:var(--gold)">Tu foco para la próxima</div><div class="t sp4">${esc(au.focus.title)}</div><div class="sp4">${esc(au.focus.tip)}</div><div class="small dim sp4">${esc(au.focus.text)}</div></div>`;
+    else if (au.next) A += `<div class="card hi" style="margin-top:0"><div class="k">Para la próxima</div><div class="t sp4">${esc(au.next.text)}</div></div>`;
+    if (au.progress) A += `<div class="small sp8 ${au.progress.better ? 'good' : au.progress.worse ? 'bad' : 'dim'}" style="font-weight:700">${esc(au.progress.text)}</div>`;
+    if (au.hurts && au.hurts.length) A += `<div class="g-h red">Qué te hace perder</div>${au.hurts.map((x) => `<div class="g-l"><b>${esc(x.title)}:</b> ${esc(x.text)}</div>`).join('')}`;
+    if (au.good && au.good.length) A += `<div class="g-h" style="color:var(--good)">Lo que hiciste bien</div>${au.good.map((x) => `<div class="g-l">${esc(x)}</div>`).join('')}`;
+    if (au.patterns.length) A += '<div class="g-h">Todas las causas</div>';
     for (const p of au.patterns.slice(0, 5)) {
-      const cmp = p.in_wins !== null && p.in_losses !== null ? `<span class="muted"> · por partida: ${p.in_losses.toFixed(1)} en derrotas, ${p.in_wins.toFixed(1)} en victorias</span>` : '';
+      const dec = (x) => x.toFixed(1).replace('.', ',');
+      const cmp = p.in_wins !== null && p.in_losses !== null ? `<span class="muted"> · por partida: ${dec(p.in_losses)} en derrotas, ${dec(p.in_wins)} en victorias</span>` : '';
       A += `<div class="pat"><div class="row"><b>${esc(p.title)}</b><span class="right ${p.pct >= 30 ? 'bad' : 'neutral'}" style="font-weight:800">${Math.round(p.pct)}%</span></div><div class="bar"><i style="width:${p.pct}%;background:${p.pct >= 30 ? 'var(--bad)' : 'var(--gold)'}"></i></div><div class="small dim sp4">${esc(p.tip)}${cmp}</div></div>`;
     }
     if (au.games < 5) A += `<div class="small muted sp8">Con ${au.games} partida${au.games > 1 ? 's' : ''} grabada${au.games > 1 ? 's' : ''} es una primera mirada: se afina con cada partida.</div>`;

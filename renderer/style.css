@@ -145,3 +145,4 @@ ul.g { margin: 3px 0 0 1.1em; } ul.g li { margin-top: 2px; }
 .bot-why { margin-top: calc(6px * var(--u)); }
 .bot-why li { overflow-wrap: anywhere; }
 .bot .g-l b { color: var(--gold-l); }
+.toast.ok { background: linear-gradient(90deg, #0f3a2a, #0c1a14); border-color: #2ebd8566; } .toast.ok .ttl { color: var(--good); }

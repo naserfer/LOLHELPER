@@ -14,6 +14,7 @@ function install(engine, mode) {
   const dir = engine.recorder.dir;
   for (const f of fs.readdirSync(dir)) fs.unlinkSync(path.join(dir, f));
   const r = rng(4);
+  const r2 = rng(7);   // datos de la autopsia de coach: generador aparte para no cambiar lo demás
   const n = mode === 'few' ? 7 : 70;
   const champs = ['Thresh', 'Leona', 'Lulu', 'Nautilus'];
   for (let i = 0; i < n; i++) {
@@ -29,6 +30,14 @@ function install(engine, mode) {
         attackers: kind > 0.55 && kind < 0.8 ? [{ champ: 'Lee Sin', level: 8, jungle: true }, { champ: "Kai'Sa", level: 8, jungle: false }]
           : [{ champ: "Kai'Sa", level: kind > 0.8 && kind <= 0.92 ? 10 : 7, jungle: false }],
         adc_died_before: kind > 0.45 && kind < 0.55 ? 4 : null, objective_near: kind > 0.4 && kind < 0.45 });
+      const x = r2();
+      const dd = deaths[deaths.length - 1];
+      dd.role = 'utility';
+      dd.dead_s = Math.round(15 + r2() * 35);
+      dd.fight = { us: x < 0.2 ? 1 : 0, mine: x < 0.1 ? 1 : 0 };
+      dd.won = x >= 0.2 && x < 0.28 ? ['dragón'] : [];
+      dd.lost = x > 0.8 ? ['dragón', 'torre'] : x > 0.65 ? ['torre'] : [];
+      if (x > 0.5 && x < 0.62) dd.hp_trace = Array.from({ length: 24 }, (_, j) => [j - 23, 22]);
     }
     const rec = { v: 1, id: `g${9000 + i}`, gameId: 9000 + i, champ: champs[i % 4], role: 'utility', start_wall: Date.now() - (i + 1) * 3600e3,
       first_t: 15, last_t: 1800, max_gap: 3, cw_bought: 3, item1: 12 + r() * 6,

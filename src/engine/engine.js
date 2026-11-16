@@ -198,7 +198,7 @@ class Engine {
     if (rec) {
       const r = rec.rec;
       const last = r.deaths[r.deaths.length - 1];
-      if (last && t - last.t < 12 && t >= last.t) gv.death = Object.assign({ t: last.t }, autopsy.tipFor(last));
+      if (last && t - last.t < 12 && t >= last.t) gv.death = Object.assign({ t: last.t }, autopsy.tipFor(last, r.role));
       gv.rules_live = this.liveRules(g, gv, r, rec.now);
       const early = (this.coach && this.coach.earlyByRole || {})[canonicalRole(gv.role)];
       gv.rules_early = !!(early && early.ready && early.rules.length);
@@ -292,14 +292,17 @@ class Engine {
     }
     const early = earlyByRole[canonicalRole(this.settings.rol_por_defecto)] || Object.values(earlyByRole)[0]
       || Object.assign({ role: '', label: '' }, wincons.learnValidated([], wincons.EARLY));
-    const aut = autopsy.summarize(recs);
-    const lastRec = recs[0] || null;
+    // Autopsia de coach: cada grabación con su rol (las viejas sin rol lo infieren si se puede).
+    const withRole = recs.map((r) => Object.assign({}, r, { role: canonicalRole(r.role) || this.coachRoleForRec(r) }));
+    const aut = autopsy.summarize(withRole);
+    const lastRec = withRole[0] || null;
     let last = null;
     if (lastRec) {
-      const deaths = lastRec.deaths.slice().sort((a, b) => a.t - b.t).map((d) => Object.assign({ t: d.t }, autopsy.tipFor(d)));
+      const review = autopsy.reviewGame(Object.assign({}, lastRec, { deaths: lastRec.deaths.slice().sort((a, b) => a.t - b.t) }));
+      const deaths = review.deaths;
       const role = this.coachRoleForRec(lastRec);
       const roleModel = role ? earlyByRole[role] : null;
-      last = { champ: lastRec.champ, role, role_label: roleModel && roleModel.label, win: lastRec.win, deaths, complete: completeEarly(lastRec),
+      last = { review: { errors: review.errors, cambios: review.cambios, sacrificios: review.sacrificios, costly: review.costly }, champ: lastRec.champ, role, role_label: roleModel && roleModel.label, win: lastRec.win, deaths, complete: completeEarly(lastRec),
         snap14: lastRec.snap14, item1: lastRec.item1, review_early: null };
       if (roleModel && roleModel.ready && roleModel.rules.length && completeEarly(lastRec)) {
         last.review_early = wincons.review(roleModel.rules, earlyRow(lastRec), wincons.EARLY_JG);

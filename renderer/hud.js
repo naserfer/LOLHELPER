@@ -50,7 +50,7 @@ function build() {
   // muerte
   const d = h.death;
   const call = h.call;
-  death.innerHTML = d ? `<div class="panel death"><div class="k">Moriste · ${esc(d.title)}</div><div style="margin-top:3px">${esc(d.text)}</div></div>`
+  death.innerHTML = d ? `<div class="panel death${d.ok ? ' ok' : ''}"><div class="k">Moriste · ${esc(d.title)}</div><div style="margin-top:3px">${esc(d.text)}</div></div>`
     : call ? `<div class="panel death"><div>${esc(call)}</div></div>` : '';
   death.classList.toggle('hide', !d && !call);
   // Con Tab apretado, los recuadros vacíos aparecen como fantasma para poder moverlos también.

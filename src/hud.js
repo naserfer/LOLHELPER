@@ -5,13 +5,13 @@
 //  - Plan del 14: cuántas muertes te quedan, hasta el minuto 14.
 
 function topLine(v) {
-  if (v.death && v.me && v.me.dead) return { death: true, title: v.death.title, text: v.death.text, t: v.death.t };
+  if (v.death && v.me && v.me.dead) return { death: true, title: v.death.title, text: v.death.text, t: v.death.t, ok: v.death.verdict && v.death.verdict !== 'error' };
   const list = (v.orders || []).filter((o) => o && o.text && (o.until == null || v.time <= o.until));
   list.sort((a, b) => a.pri - b.pri);
   if (list.length) return { call: true, text: list[0].text };
   // Por defecto el plan se ve hasta los 25 s; el plan de bot trae su propio límite (inicio de la línea, llegada al 6).
   if (v.win_line && v.time < (v.win_until != null ? v.win_until : 25)) return { call: true, text: v.win_line };
-  if (v.death) return { death: true, title: v.death.title, text: v.death.text, t: v.death.t };
+  if (v.death) return { death: true, title: v.death.title, text: v.death.text, t: v.death.t, ok: v.death.verdict && v.death.verdict !== 'error' };
   return null;
 }
 
@@ -38,7 +38,7 @@ function hudPayload(v) {
   return {
     time: v.time, gold: v.gold, dead: !!v.me.dead, respawn: Math.round(v.me.respawn || 0),
     buy,
-    death: line && line.death ? { title: line.title, text: line.text, t: line.t } : null,
+    death: line && line.death ? { title: line.title, text: line.text, t: line.t, ok: !!line.ok } : null,
     call: line && line.call ? line.text : null,
     rule: deathRule && v.time < 15 * 60 ? { text: deathRule.rule, value: deathRule.value, ok: deathRule.ok, note: deathRule.note } : null,
   };

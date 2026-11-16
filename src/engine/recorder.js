@@ -57,7 +57,11 @@ class Recorder {
     r.cw_prev = cwNow;
     if (r.item1 === null && items.some((i) => db.isLegendary(i))) r.item1 = Math.round(t / 6) / 10;
 
-    const sample = { t, gold, level: me.level || 1, cs: sc.creepScore || 0, k: sc.kills || 0, d: sc.deaths || 0, a: sc.assists || 0,
+    // Vida (activePlayer.championStats, API oficial) y aliados muertos: para la autopsia de coach.
+    const cs0 = (g.activePlayer || {}).championStats || {};
+    const hp = cs0.maxHealth > 0 && cs0.currentHealth != null ? Math.round(100 * cs0.currentHealth / cs0.maxHealth) : null;
+    const alliesDead = team.filter((p) => p !== me && p.isDead).length;
+    const sample = { t, gold, hp, allies_dead: alliesDead, level: me.level || 1, cs: sc.creepScore || 0, k: sc.kills || 0, d: sc.deaths || 0, a: sc.assists || 0,
       ward: sc.wardScore || 0, inv_value: items.reduce((s, i) => s + db.total(i), 0),
       team_kills: team.reduce((s, p) => s + ((p.scores || {}).kills || 0), 0) };
     this.buffer.push(sample);
@@ -71,6 +75,8 @@ class Recorder {
       if (r.seen.includes(key)) continue;
       r.seen.push(key);
       if (['DragonKill', 'BaronKill', 'HeraldKill', 'AtakhanKill'].includes(ev.EventName)) r.objectives.push(ev.EventTime);
+      const logged = this._log(ev, me, players);
+      if (logged) (r.ev = r.ev || []).push(logged);
       if (ev.EventName !== 'ChampionKill') continue;
       const victim = autopsy.matchPlayer(players, ev.VictimName);
       if (!victim) continue;
@@ -84,7 +90,9 @@ class Recorder {
     // Objetivo cerca: se decide con los eventos que llegan después (hasta 45 s).
     for (const d of r.deaths) {
       d.objective_near = r.objectives.some((o) => o >= d.t - autopsy.OBJ_AFTER && o <= d.t + autopsy.OBJ_BEFORE);
+      if (t - d.t < 150) this._after(d, r.ev || []);
     }
+    if (fresh && me.isDead && me.respawnTimer) fresh.dead_s = Math.round(me.respawnTimer);
 
     // Foto del minuto 8 (solo la usan las reglas de jungla). Las grabaciones viejas no la tienen.
     if (!r.snap8 && t >= T8 && r.first_t <= MAX_FIRST_SEEN) {
@@ -113,6 +121,45 @@ class Recorder {
     return { rec: r, fresh, now: sample };
   }
 
+  // Eventos con el equipo que los hizo: kills (y si participaste) y objetivos/estructuras.
+  _log(ev, me, players) {
+    const t = ev.EventTime || 0;
+    const sideOf = (name) => {
+      const p = autopsy.matchPlayer(players, name);
+      return p ? (p.team === me.team ? 'us' : 'them') : null;
+    };
+    const myTeamId = me.team === 'CHAOS' ? 'T2' : 'T1';
+    if (ev.EventName === 'ChampionKill') {
+      const victim = autopsy.matchPlayer(players, ev.VictimName);
+      if (!victim) return null;
+      const mine = [ev.KillerName, ...(ev.Assisters || [])].some((n) => autopsy.matchPlayer([me], n));
+      return { t, k: 'kill', side: victim.team === me.team ? 'them' : 'us', me: mine };
+    }
+    const OBJ = { DragonKill: 'dragón', BaronKill: 'barón', HeraldKill: 'heraldo', AtakhanKill: 'Atakhan' };
+    if (OBJ[ev.EventName]) {
+      const side = sideOf(ev.KillerName);
+      return side ? { t, k: OBJ[ev.EventName], side } : null;
+    }
+    // "Turret_T1_…" / "Barracks_T1_…": T1 = estructura del equipo azul (ORDER). Si es la tuya, la tomaron ellos.
+    const struct = ev.EventName === 'TurretKilled' ? [ev.TurretKilled, 'torre'] : ev.EventName === 'InhibKilled' ? [ev.InhibKilled, 'inhibidor'] : null;
+    if (struct) {
+      const m = /_(T1|T2)_/.exec(String(struct[0] || ''));
+      return m ? { t, k: struct[1], side: m[1] === myTeamId ? 'them' : 'us' } : null;
+    }
+    return null;
+  }
+
+  // Lo que pasó en la pelea (±10 s) y mientras estabas muerto.
+  _after(d, ev) {
+    const back = d.dead_s || 30;
+    d.fight = {
+      us: ev.filter((e) => e.k === 'kill' && e.side === 'us' && e.t >= d.t - 10 && e.t <= d.t + 5).length,
+      mine: ev.filter((e) => e.k === 'kill' && e.side === 'us' && e.me && e.t >= d.t - 10 && e.t <= d.t + 1).length,
+    };
+    d.lost = ev.filter((e) => e.k !== 'kill' && e.side === 'them' && e.t >= d.t && e.t <= d.t + back + 3).map((e) => e.k);
+    d.won = ev.filter((e) => e.k !== 'kill' && e.k !== 'torre' && e.k !== 'inhibidor' && e.side === 'us' && e.t >= d.t - 10 && e.t <= d.t + back).map((e) => e.k);
+  }
+
   _isAdc(p, ctx) {
     if (p.position === 'BOTTOM') return true;
     return !p.position && ADCS.has(playerChamp(p, ctx.alias));
@@ -126,7 +173,7 @@ class Recorder {
       role: null,
       start_wall: now - Math.round(t * 1000), first_t: t, last_t: t, last_wall: now, max_gap: 0,
       cw_prev: 0, cw_bought: 0, item1: null, snap8: null, snap14: null, saved14: false, saved_at: 0,
-      deaths: [], adc_deaths: [], objectives: [], seen: [], win: null, duration: null,
+      deaths: [], adc_deaths: [], objectives: [], ev: [], seen: [], win: null, duration: null,
     };
   }
 
@@ -146,10 +193,18 @@ class Recorder {
         killer: autopsy.matchPlayer([p], ev.KillerName) === p });
     }
     const lastAdc = this.rec.adc_deaths.filter((x) => x <= t).slice(-1)[0];
+    const db = ctx.db;
+    const value = (p) => (db ? itemsOf(p).reduce((sum, i) => sum + db.total(i), 0) : 0);
+    // Vida en los 25 s anteriores: [segundos antes de morir (negativo), % de vida]
+    const hpTrace = this.buffer.filter((x) => x.hp != null && x.t <= t + 0.5 && x.t >= t - 25).map((x) => [Math.round(x.t - t), x.hp]);
     const d = {
       t, gold: s.gold || 0, my_level: s.level || me.level || 1,
+      role: POSITION_ROLE[me.position] || null,
+      my_items: value(me), allies_dead: s.allies_dead != null ? s.allies_dead : null,
+      hp_trace: hpTrace.length ? hpTrace : null,
       killer_type: autopsy.killerType(ev.KillerName, players),
-      attackers: attackers.map(({ champ, level, jungle, killer }) => ({ champ, level, jungle, killer: !!killer })),
+      attackers: attackers.map(({ p, champ, level, jungle, killer }) => ({ champ, level, jungle, killer: !!killer,
+        pos: POSITION_ROLE[p.position] || null, items: value(p) })),
       adc_died_before: lastAdc === undefined ? null : Math.round(t - lastAdc),
       objective_near: false,
     };
