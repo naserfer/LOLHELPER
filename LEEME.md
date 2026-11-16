@@ -56,3 +56,11 @@ Cada muerte se revisa como lo haría un coach:
 - **Tu progreso, qué te hace perder y lo que hiciste bien:** aparecen cuando hay suficientes partidas para decirlo.
 
 Las partidas grabadas antes de esta versión se siguen analizando como antes. Las nuevas traen todo.
+
+## Compra del inicio
+Al empezar la partida, la app te dice qué comprar del inicio y cuenta lo que ya tenés:
+- **Support:** ítem de support + 2 pociones. Si ya compraste el ítem, te pide las 2 pociones.
+- **Jungla:** la mascota (**Scorchclaw Pup** para Nocturne y Diana, la que elige el 87% y el 59% en Master+ según op.gg) + poción.
+- **Mid y top:** el Doran's que corresponde + pociones.
+
+Después de 1:30 deja de insistir, porque ya estás en línea o en tu primer campamento.

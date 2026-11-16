@@ -50,6 +50,10 @@ const ULT_NOTES = {
   Gwen: 'W la hace intocable desde afuera del área: entrá con ella.',
   Gangplank: 'R cubre área en todo el mapa; sus barriles hacen mucho daño.',
 };
+const STARTS = require('../../data/starts.json');
+const START_WINDOW = 90;   // segundos: compra del inicio (después ya estás en línea o en tu primer campamento)
+const PETS = new Set(['Scorchclaw Pup', 'Gustwalker Hatchling', 'Mosstomper Seedling']);
+
 const BUILD_RULES = {
   Malphite: {
     boots: { ad: 'Plated Steelcaps', ap: "Mercury's Treads", default: 'Plated Steelcaps' },
@@ -399,6 +403,29 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
     }
   }
 
+  // Inicio de partida: lo que falta del inicio de tu pool (mascota de jungla, ítem de support, Doran's, pociones),
+  // contando cuántas pociones ya tenés. Solo mientras todo lo que tenés sea parte del inicio.
+  const startCfg = supCfg || pool.find((c) => c.name === myChamp && c.role === myRole) || pool.find((c) => c.name === myChamp);
+  if (startCfg && startCfg.start && startCfg.start.length && gtime < START_WINDOW) {
+    const have = {};
+    for (const it of me.items || []) { const n = db.name(it.itemID); have[n] = (have[n] || 0) + (it.count || 1); }
+    const inStart = new Set(startCfg.start);
+    const onlyStart = Object.keys(have).every((n) => inStart.has(n) || TRINKETS.has(n));
+    if (onlyStart) {
+      const need = {};
+      for (const n of startCfg.start) need[n] = (need[n] || 0) + 1;
+      const missingItems = [];
+      for (const [n, k] of Object.entries(need)) for (let i = 0; i < k - (have[n] || 0); i++) if (db.buyable(n)) missingItems.push(n);
+      if (missingItems.length) {
+        const cost = missingItems.reduce((sum, n) => sum + db.total(db.idOf(n)), 0);
+        const target = missingItems[0];
+        buy = { target, items: missingItems, missing: Math.max(0, cost - gold), cost, complete: true, also: [], start: true };
+        reasons[target] = PETS.has(target) ? ['pet'] : ['start'];
+        queue = [target, ...queue.filter((x) => x !== target)].slice(0, 4);
+      }
+    }
+  }
+
   // La evolución se elige gratis en el menú cuando el ítem ya es Bounty of Worlds.
   // No entra en la cola de oro: la compra de componentes sigue igual.
   let supUpgrade = null;
@@ -558,6 +585,12 @@ function reasonText(item, view) {
     if (k === 'vs_lane') { if (view.lane) parts.push(`rush recomendado contra ${view.lane.champ}`); }
     else if (k === 'boots') parts.push('botas según el daño rival');
     else if (k === 'sup_item') parts.push('ítem de support (te da oro y wards)');
+    else if (k === 'start') parts.push('inicio de partida');
+    else if (k === 'pet') {
+      const p = STARTS.pets[`${view.me.champ}|${view.role}`];
+      parts.push(p && p.item === item ? `mascota: la usa el ${String(p.pick).replace('.', ',')}% de los ${view.me.champ} en Master+ (op.gg, ${String(p.games).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} partidas)`
+        : 'mascota del inicio de tu build');
+    }
     else {
       const src = (view.cond_src || {})[k];
       let txt = REASON[k] || k;

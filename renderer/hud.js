@@ -37,7 +37,7 @@ function build() {
   } else if (b && b.mode === 'full') {
     buy.innerHTML = `<div class="panel buy-full"><div class="row"><span class="k">${b.missing ? 'Próxima compra' : h.dead ? 'Al revivir comprá' : 'Comprá'}</span><span class="cost" data-live="cost">${b.missing ? `faltan ${b.missing}` : `${b.cost} de oro`}</span></div>
       <div class="row" style="margin-top:4px">${b.items.map((n, i) => (i ? '<span class="plus">+</span>' : '') + icon(n, i ? 30 : 36)).join('')}</div>
-      <div class="why">${esc(b.complete ? `Completa ${b.target}` : `Hacia ${b.target}`)}${b.why ? ` · ${esc(b.why)}` : ''}</div></div>`;
+      <div class="why">${esc(b.start ? 'Inicio de partida' : b.complete ? `Completa ${b.target}` : `Hacia ${b.target}`)}${b.why ? ` · ${esc(b.why)}` : ''}</div></div>`;
   } else if (b) {
     const pct = Math.max(0, Math.min(100, 100 * (1 - b.missing / Math.max(1, b.cost))));
     buy.innerHTML = `<div class="panel buy-mini"><div class="row">${icon(b.items[0], 22)}<span class="miss" data-live="miss">faltan ${b.missing}</span></div><div class="bar"><i data-live="bar" style="width:${pct}%"></i></div></div>`;

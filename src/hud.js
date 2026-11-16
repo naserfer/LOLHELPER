@@ -23,7 +23,7 @@ function hudPayload(v) {
     const can = b.missing === 0;
     buy = {
       items: b.items.concat(b.extra ? [b.extra] : []), target: b.target, cost: b.cost, missing: b.missing,
-      complete: !!b.complete, mode: can || v.me.dead ? 'full' : 'mini',
+      complete: !!b.complete, start: !!b.start, mode: can || v.me.dead ? 'full' : 'mini',
       why: (v.why || {})[b.target] || '',
     };
   }

@@ -206,7 +206,7 @@ function drawGame(v) {
     A += `<div class="card hi"${ok ? '' : ' style="border-color:var(--line)"'}><div class="row"><span class="k" style="color:${ok ? 'var(--gold)' : 'var(--dim)'}">${ok ? 'Comprá ahora' : 'Próxima compra'}</span>${ok ? `<span class="right">${pill(`${b.cost} de oro`, 'gold')}</span>` : ''}</div>
       <div class="icons sp8">${buys.map((n, i) => (i ? '<span class="arrow">+</span>' : '') + icon('item', n, i === 0 ? 46 : 38, { border: ok ? 'var(--gold)' : 'var(--gold-d)' })).join('')}</div>
       <div class="t sp8">${esc(buys.join(' + '))}</div>${ok ? '' : `<div class="bad small" data-live="missing" style="font-weight:700">Te faltan ${b.missing} de oro</div>`}
-      <div class="row sp8">${icon('item', b.target, 24)}<div class="grow"><div style="font-weight:700">${b.complete ? 'Completa' : 'Hacia'} ${esc(b.target)}</div><div class="small dim">Por qué: ${esc((v.why || {})[b.target] || 'parte de la build')}</div>
+      <div class="row sp8">${icon('item', b.target, 24)}<div class="grow"><div style="font-weight:700">${b.start ? 'Inicio de partida' : `${b.complete ? 'Completa' : 'Hacia'} ${esc(b.target)}`}</div><div class="small dim">Por qué: ${esc((v.why || {})[b.target] || 'parte de la build')}</div>
       ${(b.also || []).map((nx) => `<div class="small dim">Con lo que sobra avanzás ${esc(nx)}: ${esc((v.why || {})[nx] || '')}</div>`).join('')}</div></div></div>`;
   } else A += '<div class="empty good">Build completa. Si sobra oro: Control Ward y elixires.</div>';
   const up = v.sup_upgrade;

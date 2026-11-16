@@ -62,6 +62,7 @@ data/
   items.json            Lista fija de ítems vigentes (ver "Lista de ítems"); se actualiza a mano
   bot_lane.json         Plan de bot: perfiles de ADC, aportes de cada support, combos y support vs ADC (Lolalytics)
   bitty_lolalytics.json Bitty: matchups de Lolalytics (mismo rol, por tier) y su campeón contra cada línea rival
+  starts.json           Mascota de jungla por campeón (op.gg Master+, % de partidas que la eligen)
   demo_*.json           Sesiones y partidas de ejemplo para --demo
 tools/datos/            Scripts que generan pool*.json a partir de datos crudos (top, support, bitty)
 test/                   Todas las pruebas (ver "Pruebas")
@@ -146,6 +147,7 @@ Para actualizar datos a un parche nuevo:
 Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo parche.
 
 ## Algoritmos clave
+- **Inicio de partida (`ingame.analyzeGame`):** hasta 1:30 y mientras todo lo que tenés sea parte del inicio, recomienda lo que falta del `start` de tu pool (mascota, ítem de support, Doran's, pociones), contando las pociones del inventario (`count`). Así, con el ítem de support comprado, pide las 2 pociones. La mascota explica por qué con `data/starts.json`.
 - **Compra (`itemdb.planPurchase`):** calcula el costo restante descontando los componentes que ya tenés. Si no te alcanza para el ítem completo, busca la mejor combinación de componentes que sí podés pagar. Si sobra oro, encadena el siguiente ítem y suma una Control Ward si te alcanza.
 - **Reglas (`wincons.learn`):** para cada número busca el mejor corte con al menos 7 partidas por lado. Las winrates se encogen hacia 50% (prior 5/5). Una regla vale solo si supera el 95% del máximo que sale con resultados mezclados al azar (300 permutaciones, con todos los números a la vez). Las que no llegan pero tienen p ≤ 0,3 se muestran como `PISTA`.
   - Reglas **tempranas** (`EARLY`, foto del 14): se aprenden por rol. Las partidas antiguas (65%) entrenan; las posteriores (35%) validan. Hacen falta 20 partidas de entrenamiento y al menos 5 victorias y 5 derrotas posteriores (31 partidas completas por rol como mínimo). Solo se activan reglas con al menos 5 partidas a cada lado del corte, diferencia favorable en validación y `p ≤ 0,05` tras permutar resultados entre todas las candidatas.
@@ -168,6 +170,7 @@ Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo p
 - `test/botlane.js`: plan de bot (fuentes, fallbacks, combos solo con kit, historial con muestra chica, sin números en partida).
 - `test/player.js`: elegir jugador la primera vez y que cada uno use su carpeta.
 - `test/bitty_plus.js`: mezcla de fuentes, plan de jungla/mid, guías de Locke y Zaahen y foto del minuto 8.
+- `test/start_items.js`: inicio de partida (support con el ítem ya comprado → 2 pociones, mascota de jungla con su dato, Doran's + pociones en mid).
 - `test/coach.js`: autopsia de coach (vida, cambios, sacrificios, costo, nivel por rol, foco por costo, progreso, compatibilidad con grabaciones viejas).
 - `test/new_features.js`: pruebas pensadas para fallar si la idea está mal: causa al revés, autopsia, grabación con cortes y que no titile.
 - `test/e2e.js` y `test/bitty_test.js`: de punta a punta contra un cliente y un juego simulados por HTTPS (`test/fake_riot.js`; la API en vivo usa el puerto 2999 de verdad).
