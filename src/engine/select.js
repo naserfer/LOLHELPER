@@ -241,5 +241,23 @@ function analyzeSupport(session, champs, pool, dyn, archLabel, adcArch, personal
   };
 }
 
+// Una frase de cómo se gana esta partida. No toca el score ni los bans.
+// Support: pelear si el matchup es positivo, la sinergia no baja de -0,5 y el arquetipo inicia.
+// Línea: pelear si el matchup es positivo.
+function gamePlan(v) {
+  if (!v || !v.focus) return null;
+  const f = v.focus;
+  const mu = f.lane ? f.lane[1].score : null;
+  if (v.mode === 'support') {
+    const syn = f.syn ? f.syn[1].delta : null;
+    const arch = (f.cfg && f.cfg.arch) || f.arch || '';
+    const starts = arch === 'engage' || arch === 'roamer' || arch === 'mage';
+    const fight = mu > 0 && (syn === null || syn >= -0.5) && starts;
+    const who = v.ally_adc ? ` con ${v.ally_adc}` : '';
+    return fight ? `Ganás peleando${who}. Buscá el all-in.` : `Aguantá${who}. No pelees hasta el 6.`;
+  }
+  return mu > 0 ? 'Ganás peleando: presioná la línea.' : 'Aguantá: no pelees hasta igualar nivel.';
+}
+
 const analyzeTop = (s, c, p) => analyzeLane(s, c, p, 'top');
-module.exports = { ADCS, analyzeTop, analyzeLane, analyzeSupport, supportGuide, planFor, BUILD_LABEL };
+module.exports = { ADCS, analyzeTop, analyzeLane, analyzeSupport, supportGuide, planFor, gamePlan, BUILD_LABEL };

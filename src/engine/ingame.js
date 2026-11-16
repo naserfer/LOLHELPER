@@ -2,9 +2,22 @@
 // Vista en partida: lee la Live Client Data API del juego (https://127.0.0.1:2999), detecta tu campeón
 // y tu rival, y calcula qué comprar con tu oro actual. Solo lee lo que el propio juego expone.
 const { norm, Counter, sortBy } = require('./util');
-const { supportGuide } = require('./select');
+const { supportGuide, ADCS } = require('./select');
+const autopsy = require('./autopsy');
 
 const LIVE_URL = 'https://127.0.0.1:2999/liveclientdata/allgamedata';
+
+// Próximo cañón. Wave 1 a los 65 s, después cada 30. Cañón en la 3.ª y cada 3 hasta el
+// minuto 15, cada 2 hasta el 25, y después todas. Sin cuenta regresiva en el texto.
+function nextCannon(t) {
+  for (let n = 1; n < 80; n++) {
+    const tw = 65 + (n - 1) * 30;
+    if (tw < t) continue;
+    const cannon = tw < 900 ? n % 3 === 0 : tw < 1500 ? n % 2 === 0 : true;
+    if (cannon) return tw;
+  }
+  return null;
+}
 
 const ANTIHEAL = new Set(["Executioner's Calling", 'Bramble Vest', 'Thornmail', 'Mortal Reminder', 'Chempunk Chainsword',
   'Oblivion Orb', 'Morellonomicon', 'Chemtech Putrifier']);
@@ -114,6 +127,26 @@ const SHIELDERS = new Set(['Lulu', 'Janna', 'Karma', 'Milio', 'Seraphine', 'Sona
 const SUPPORT_ITEMS = new Set(['World Atlas', 'Runic Compass', 'Bounty of Worlds', 'Celestial Opposition', 'Dream Maker',
   'Solstice Sleigh', "Zaz'Zak's Realmspike", 'Bloodsong']);
 const SUPPORT_UPGRADED = new Set([...SUPPORT_ITEMS].filter((x) => x !== 'World Atlas' && x !== 'Runic Compass'));
+const SUPPORT_FINAL = new Set(['Celestial Opposition', 'Dream Maker', 'Solstice Sleigh', "Zaz'Zak's Realmspike", 'Bloodsong']);
+// Campeones que curan o escudan a un aliado: son los que prenden la burbuja de Dream Maker.
+const HEAL_SHIELD = new Set(['Nami', 'Lulu', 'Janna', 'Soraka', 'Sona', 'Milio', 'Karma', 'Yuumi',
+  'Renata Glasc', 'Seraphine', 'Rakan', 'Lux', 'Morgana', 'Bard']);
+const PICK_HOOK = new Set(['Blitzcrank', 'Thresh']);
+const POKE_ENCHANT = new Set(['Karma', 'Seraphine']);
+const SHIELD_MAGE = new Set(['Lux', 'Morgana']);
+const UPGRADE_ITEM = {
+  blood: 'Bloodsong', zaz: "Zaz'Zak's Realmspike", zaz_tank: "Zaz'Zak's Realmspike",
+  dream: 'Dream Maker', dream_carry: 'Dream Maker', celestial: 'Celestial Opposition', sleigh: 'Solstice Sleigh',
+};
+const UPGRADE_WHY = {
+  blood: 'después de una habilidad, tu auto marca al rival y recibe más daño de todos',
+  zaz: 'tu habilidad explota y suma daño mágico',
+  zaz_tank: 'el rival se está armando tanque: la explosión pega un % de su vida máxima',
+  dream: 'cuando curás o escudás, la burbuja le baja el daño a ese aliado',
+  dream_carry: 'tu escudo o curación le pone la burbuja a tu ADC, que pega con autos',
+  celestial: 'entrás desde la niebla: el primer golpe deja una zona que los frena',
+  sleigh: 'cada control que pegás da velocidad y cura a los aliados de al lado',
+};
 const SUP_SITU = {
   engage: [['Thornmail', { heal: 3, auto: 2 }], ['Frozen Heart', { auto: 3, ad_heavy: 1 }],
     ["Randuin's Omen", { crit: 3 }], ['Abyssal Mask', { ap_heavy: 3 }], ['Kaenic Rookern', { ap_fed: 3 }],
@@ -142,6 +175,24 @@ function supportRules(cfg) {
   else if (grp === 'mage') b = { ad: boots, ap: boots !== "Sorcerer's Shoes" ? "Mercury's Treads" : boots, default: boots };
   else b = { ad: boots, ap: boots, default: boots };
   return { boots: b, options: opts, group: grp };
+}
+
+// Evolución gratis de Bounty of Worlds. Sale del kit (qué pasiva podés prender) y del
+// contexto de esta partida. Es análisis de las pasivas, no una guía de un pro.
+function supportUpgrade(cfg, cond) {
+  cond = cond || {};
+  const name = cfg.name;
+  const arch = cfg.arch;
+  let key;
+  if (FIGHTERS.has(name) || arch === 'marksman') key = 'blood';
+  else if (name === 'Bard' && cond.ally_auto) key = 'dream_carry';
+  else if (name === 'Bard') key = 'celestial';
+  else if (SHIELD_MAGE.has(name) && cond.ally_auto && !cond.tanky) key = 'dream_carry';
+  else if (arch === 'mage' || (arch === 'enchanter' && !HEAL_SHIELD.has(name)) || (POKE_ENCHANT.has(name) && cond.tanky)) key = cond.tanky ? 'zaz_tank' : 'zaz';
+  else if (arch === 'enchanter' || (name === 'Rakan' && cond.ally_auto)) key = 'dream';
+  else if (PICK_HOOK.has(name) && cond.squishy) key = 'celestial';
+  else key = 'sleigh';
+  return { item: UPGRADE_ITEM[key], key, why: UPGRADE_WHY[key] };
 }
 
 const REASON = {
@@ -346,6 +397,17 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
     }
   }
 
+  // La evolución se elige gratis en el menú cuando el ítem ya es Bounty of Worlds.
+  // No entra en la cola de oro: la compra de componentes sigue igual.
+  let supUpgrade = null;
+  if (supCfg) {
+    const names = myItems.map((i) => db.name(i));
+    if (!names.some((n) => SUPPORT_FINAL.has(n))) {
+      const pick = supportUpgrade(supCfg, cond);
+      supUpgrade = { item: pick.item, why: pick.why, key: pick.key, ready: names.includes('Bounty of Worlds') };
+    }
+  }
+
   const alerts = [];
   const events = [];
   if (lane) {
@@ -360,6 +422,85 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
     if (itemsOf(lane).some((i) => ANTIHEAL.has(db.name(i))) && myChamp === 'Illaoi') alerts.push(['neutral', `${laneName} compró antiheal: tus curaciones rinden menos.`]);
     if (lane.isDead) alerts.push(['good', `${laneName} está muerto: pusheá la wave o volvé a base.`]);
   }
+  // Cualquier rival, una vez por ítem. El primer sondeo solo anota lo que ya traían.
+  const seen = new Set(prev.legend_seen || []);
+  const first = !prev.legend_ready;
+  const fresh = [];
+  for (const e of enemies) {
+    const name = pc(e);
+    const val = (threats.find((t) => t.name === name) || {}).value || 0;
+    for (const id of itemsOf(e)) {
+      if (!db.isLegendary(id)) continue;
+      if (first || seen.has(id)) { if (first) seen.add(id); continue; }
+      fresh.push({ id, name, lane: !!(laneName && name === laneName), value: val });
+    }
+  }
+  const orders = [];
+  if (fresh.length) {
+    fresh.sort((a, b) => (b.lane - a.lane) || (b.value - a.value) || (a.id - b.id));
+    const pick = fresh[0];
+    seen.add(pick.id);
+    orders.push({ pri: 3, text: `${pick.name} completó ${db.name(pick.id)}. No pelees.`, until: gtime + 20 });
+  }
+  const legendSeen = [...seen];
+
+  // ADC aliado acaba de caer: 15 s, solo support, y solo el cambio de vivo a muerto.
+  let adcSeen = !!prev.adc_seen;
+  let adcDead = !!prev.adc_dead;
+  if (myRole === 'utility' && prev.track_adc !== false && !me.isDead) {
+    const adcP = allies.find((a) => a.position === 'BOTTOM')
+      || allies.find((a) => !a.position && ADCS.has(pc(a)));
+    if (adcP) {
+      const dead = !!adcP.isDead;
+      if (adcSeen && !adcDead && dead) orders.push({ pri: 1, text: `${pc(adcP)} cayó. No pelees.`, until: gtime + 15 });
+      adcSeen = true;
+      adcDead = dead;
+    }
+  }
+
+  // Jungla enemiga vista en un kill. Sin coordenadas: la línea es la de la víctima.
+  const jgSeen = new Set(prev.jg_seen || []);
+  const jg = enemies.find((e) => e.position === 'JUNGLE');
+  if (jg) {
+    const spotOf = { TOP: 'top', MIDDLE: 'mid', BOTTOM: 'bot' };
+    const mine = { TOP: 'top', MIDDLE: 'mid', BOTTOM: 'bot', UTILITY: 'bot' }[me.position] || '';
+    for (const ev of ((g.events || {}).Events || [])) {
+      if (ev.EventName !== 'ChampionKill') continue;
+      const key = `${ev.EventName}|${ev.EventTime}|${ev.VictimName || ''}|${ev.KillerName || ''}`;
+      if (jgSeen.has(key)) continue;
+      jgSeen.add(key);
+      const victim = autopsy.matchPlayer(players, ev.VictimName);
+      const killer = autopsy.matchPlayer(players, ev.KillerName);
+      const assists = (ev.Assisters || []).map((n) => autopsy.matchPlayer(players, n)).filter(Boolean);
+      let where = '';
+      if (victim && victim !== jg && (killer === jg || assists.includes(jg))) where = victim.position || '';
+      else if (victim === jg && killer && killer.position && killer.position !== 'JUNGLE') where = killer.position;
+      const spot = spotOf[where];
+      if (!spot) continue;
+      const text = mine === spot ? `Jungla enemigo en ${spot}. Retrocedé.` : `Jungla enemigo en ${spot}. Podés jugar adelante.`;
+      orders.push({ pri: 2, text, until: (ev.EventTime || gtime) + 20 });
+    }
+  }
+
+  // Aliado vivo que le saca 1500 de oro al resto. El ítem de support no cuenta. Si es tu ADC, nada.
+  const worth = (p) => itemsOf(p).reduce((s, id) => s + (SUPPORT_ITEMS.has(db.name(id)) ? 0 : db.total(id)), 0)
+    + 300 * ((p.scores || {}).kills || 0);
+  const ranked = allies.filter((a) => !a.isDead).map((a) => ({
+    name: pc(a), w: worth(a), adc: a.position === 'BOTTOM' || (!a.position && ADCS.has(pc(a))),
+  })).sort((a, b) => b.w - a.w);
+  if (ranked.length >= 2 && !ranked[0].adc && ranked[0].w >= ranked[1].w + 1500) {
+    orders.push({ pri: 5, text: `Jugá para ${ranked[0].name}. Va adelante.` });
+  }
+
+  // Cañón a 25 s o menos, y te alcanza para cerrar o el rival de línea está muerto. Si vos estás muerto, no se dice.
+  if (!me.isDead) {
+    const nc = nextCannon(gtime);
+    if (nc != null && nc - gtime <= 25) {
+      if (buy && buy.complete && buy.missing === 0 && buy.target) orders.push({ pri: 4, text: `Cañón en camino. Pusheá y basá: te alcanza para ${buy.target}.` });
+      else if (lane && lane.isDead && laneName) orders.push({ pri: 4, text: `${laneName} está muerto. Empujá y basá.` });
+    }
+  }
+
   if (supCfg) {
     const namesInv = new Set(myItems.map((i) => db.name(i)));
     if ([...namesInv].some((n) => SUPPORT_UPGRADED.has(n)) && namesInv.has('Stealth Ward')) alerts.push(['neutral', 'Tu ítem de support ya mejoró: cambiá el trinket a Oracle Lens y limpiá wards.']);
@@ -403,6 +544,8 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
       items: itemsOf(enemyAdcP).map((i) => db.name(i)).filter((n) => !TRINKETS.has(n)), kda: kdaOf(enemyAdcP) } : null,
     queue, reasons, cond_src: condSrc, ap_share: apShare, threats: threats.slice(0, 5),
     alerts: alerts.slice(0, 5), events, lane_items_raw: lane ? itemsOf(lane) : [], objectives,
+    sup_upgrade: supUpgrade, orders, legend_seen: legendSeen, legend_ready: true,
+    jg_seen: [...jgSeen], adc_seen: adcSeen, adc_dead: adcDead,
   };
 }
 
@@ -423,4 +566,4 @@ function reasonText(item, view) {
   return parts.join('; ') || 'parte de la build';
 }
 
-module.exports = { LIVE_URL, analyzeGame, reasonText, playerChamp, spellKey, findMe, itemsOf, SUPPORT_ITEMS, SUPPORT_UPGRADED };
+module.exports = { LIVE_URL, analyzeGame, reasonText, playerChamp, spellKey, findMe, itemsOf, supportUpgrade, nextCannon, SUPPORT_ITEMS, SUPPORT_UPGRADED };

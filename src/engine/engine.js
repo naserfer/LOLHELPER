@@ -10,6 +10,7 @@ const ingame = require('./ingame');
 const { History } = require('./history');
 const wincons = require('./wincons');
 const autopsy = require('./autopsy');
+const scout = require('./scout');
 const { Recorder, completeEarly, earlyRow, T14 } = require('./recorder');
 
 function migrateHistory(oldDir, newDir) {
@@ -21,8 +22,12 @@ function migrateHistory(oldDir, newDir) {
   } catch (e) { /* no había nada que migrar */ }
 }
 
-const EARLY_NEED = 20;            // partidas completas para confirmar reglas tempranas
+const EARLY_NEED = wincons.VALIDATED_NEED;
 const STALE_GAME_MS = 20000;
+const ROLE_CANON = { support: 'utility', utility: 'utility', middle: 'mid', mid: 'mid', bottom: 'adc', adc: 'adc' };
+const HISTORY_ROLE = { utility: 'support', adc: 'adc' };
+const canonicalRole = (role) => ROLE_CANON[String(role || '').toLowerCase()] || String(role || '').toLowerCase();
+const historyRole = (role) => HISTORY_ROLE[canonicalRole(role)] || canonicalRole(role);
 
 class Engine {
   constructor({ dataDir, userDir, demo = null }) {
@@ -60,6 +65,9 @@ class Engine {
     this.lastView = null;
     this.lastGame = null;
     this.gamePrev = {};
+    this.heldOrders = [];
+    this.scoutLine = null;
+    this.scoutKey = '';
     this.gameEvents = [];
     this.gameId = null;
     this.ddLoaded = false;
@@ -110,18 +118,57 @@ class Engine {
 
   // Agrega lo que la UI necesita y no puede calcular sola (plan del pick elegido).
   decorate(v) {
-    if (v && v.focus) v.plan = select.planFor(v.focus, v.build_key);
+    if (v && v.focus) {
+      v.plan = select.planFor(v.focus, v.build_key);
+      v.win_line = select.gamePlan(v);
+    }
     return v;
+  }
+
+  // Las grabaciones nuevas guardan la posición del juego. En las antiguas, el rol
+  // se puede recuperar solo cuando el campeón pertenece a un único pool del perfil.
+  coachRoleForRec(rec) {
+    const explicit = canonicalRole(rec && rec.role);
+    if (explicit && Object.keys(this.roles).some((role) => canonicalRole(role) === explicit)) return explicit;
+    const champ = norm((rec || {}).champ);
+    if (!champ) return null;
+    const matches = Object.entries(this.roles).filter(([, cfg]) => cfg.pool.some((c) => norm(c.name) === champ));
+    return matches.length === 1 ? canonicalRole(matches[0][0]) : null;
   }
 
   // ------------------------------------------------------------- partida en vivo
   gameStep(g, now) {
     const hint = this.lastView ? this.lastView.lane_enemy : null;
+    this.gamePrev.track_adc = this.profile.track_adc !== false;
     const gv = ingame.analyzeGame(g, this.pool, this.dd.itemdb, this.dd.dmgByName, this.dd.alias, hint, this.gamePrev,
       [this.supPool, this.supDyn]);
     if (!gv) return null;
     const rec = this.recorder.onPoll(g, { db: this.dd.itemdb, alias: this.dd.alias, gameId: this.gameId, now, trackAdc: this.profile.track_adc });
-    if (gv.lane) this.gamePrev = { lane_name: gv.lane.champ, lane_items: gv.lane_items_raw };
+    if (gv.legend_seen) {
+      this.gamePrev.legend_seen = gv.legend_seen;
+      this.gamePrev.legend_ready = true;
+      delete gv.legend_seen;
+    }
+    if (gv.jg_seen) { this.gamePrev.jg_seen = gv.jg_seen; delete gv.jg_seen; }
+    if ('adc_dead' in gv) {
+      this.gamePrev.adc_seen = gv.adc_seen;
+      this.gamePrev.adc_dead = gv.adc_dead;
+      delete gv.adc_seen;
+      delete gv.adc_dead;
+    }
+    if (gv.lane) {
+      this.gamePrev.lane_name = gv.lane.champ;
+      this.gamePrev.lane_items = gv.lane_items_raw;
+    }
+    const born = (gv.orders || []).filter((o) => o.until != null);
+    const standing = (gv.orders || []).filter((o) => o.until == null);
+    this.heldOrders = (this.heldOrders || []).filter((o) => gv.time <= o.until);
+    for (const o of born) {
+      if (!this.heldOrders.some((h) => h.pri === o.pri && h.text === o.text)) this.heldOrders.push(o);
+    }
+    gv.orders = this.heldOrders.concat(standing);
+    if (gv.time < 25 && this.scoutLine) gv.orders.push({ pri: 7, text: this.scoutLine });
+    if (gv.time < 25 && this.lastView && this.lastView.win_line) gv.win_line = this.lastView.win_line;
     const t = gv.time;
     for (const ev of gv.events) this.gameEvents.push([t, ev]);
     this.gameEvents = this.gameEvents.filter(([et]) => t - et < 75 && et <= t);
@@ -131,7 +178,8 @@ class Engine {
       const last = r.deaths[r.deaths.length - 1];
       if (last && t - last.t < 12 && t >= last.t) gv.death = Object.assign({ t: last.t }, autopsy.tipFor(last));
       gv.rules_live = this.liveRules(g, gv, r, rec.now);
-      gv.rules_early = !!(this.coach && this.coach.early && this.coach.early.ready);
+      const early = (this.coach && this.coach.earlyByRole || {})[canonicalRole(gv.role)];
+      gv.rules_early = !!(early && early.ready && early.rules.length);
     }
     gv.why = {};
     for (const it of new Set([...(gv.queue || []), ...((gv.buy || {}).also || [])])) gv.why[it] = ingame.reasonText(it, gv);
@@ -140,7 +188,7 @@ class Engine {
 
   liveRules(g, gv, r, now) {
     const coach = this.coach || {};
-    const early = coach.early;
+    const early = (coach.earlyByRole || {})[canonicalRole(gv.role)];
     const t = gv.time;
     if (early && early.ready && early.rules.length && t <= T14 + 60) {
       const out = [];
@@ -176,12 +224,13 @@ class Engine {
     }
     // Reglas de partida completa (menos confiables): solo las que se miden en vivo.
     const hs = this.history.summary;
-    if (!hs || !hs.rules || !hs.rules.length) return [];
+    const historyModel = hs && (hs.rules_by_role || {})[historyRole(gv.role)];
+    if (!historyModel || !historyModel.rules || !historyModel.rules.length) return [];
     const minutes = Math.max(1, t / 60);
     const vals = { deaths: now.d, kp: now.team_kills ? 100 * (now.k + now.a) / now.team_kills : null,
       vision_pm: minutes >= 5 ? now.ward / minutes : null };
     const out = [];
-    for (const rule of hs.rules) {
+    for (const rule of historyModel.rules) {
       const sp = wincons.FULL[rule.key];
       const v = vals[rule.key];
       if (!sp.live || v === null || v === undefined) continue;
@@ -201,23 +250,37 @@ class Engine {
   computeCoach(force = false) {
     const recs = this.recorder.loadAll();
     const hs = this.history.summary;
-    const key = `${this.history.version}|${recs.length}|${recs.map((r) => `${r.id}:${r.deaths.length}:${r.win}`).join(',')}`;
+    const key = `${this.history.version}|${recs.length}|${recs.map((r) => `${r.id}:${r.deaths.length}:${r.win}:${r.role || ''}`).join(',')}`;
     if (!force && key === this.coachKey && this.coach) return this.coach;
     if (hs && hs.index) this.recorder.linkResults(recs, hs.index);
     const usable = recs.filter((r) => completeEarly(r) && r.win !== null && r.win !== undefined);
-    const early = { have: usable.length, need: EARLY_NEED, ready: usable.length >= EARLY_NEED, rules: [] };
-    if (early.ready) early.rules = wincons.learn(usable.map(earlyRow), wincons.EARLY, 7);
+    const earlyByRole = {};
+    for (const [configuredRole, cfg] of Object.entries(this.roles)) {
+      const role = canonicalRole(configuredRole);
+      const roleRows = usable.filter((r) => this.coachRoleForRec(r) === role)
+        .slice().sort((a, b) => (a.start_wall || 0) - (b.start_wall || 0));
+      const model = wincons.learnValidated(roleRows.map(earlyRow), wincons.EARLY, 7);
+      earlyByRole[role] = Object.assign({ role, label: cfg.label }, model);
+    }
+    const early = earlyByRole[canonicalRole(this.settings.rol_por_defecto)] || Object.values(earlyByRole)[0]
+      || Object.assign({ role: '', label: '' }, wincons.learnValidated([], wincons.EARLY));
     const aut = autopsy.summarize(recs);
     const lastRec = recs[0] || null;
     let last = null;
     if (lastRec) {
       const deaths = lastRec.deaths.slice().sort((a, b) => a.t - b.t).map((d) => Object.assign({ t: d.t }, autopsy.tipFor(d)));
-      last = { champ: lastRec.champ, win: lastRec.win, deaths, complete: completeEarly(lastRec),
+      const role = this.coachRoleForRec(lastRec);
+      const roleModel = role ? earlyByRole[role] : null;
+      last = { champ: lastRec.champ, role, role_label: roleModel && roleModel.label, win: lastRec.win, deaths, complete: completeEarly(lastRec),
         snap14: lastRec.snap14, item1: lastRec.item1, review_early: null };
-      if (early.ready && early.rules.length && completeEarly(lastRec)) last.review_early = wincons.review(early.rules, earlyRow(lastRec), wincons.EARLY);
+      if (roleModel && roleModel.ready && roleModel.rules.length && completeEarly(lastRec)) {
+        last.review_early = wincons.review(roleModel.rules, earlyRow(lastRec), wincons.EARLY);
+      }
     }
-    this.coach = { early, autopsy: aut, last, recorded: recs.length,
-      early_rules_text: early.rules.map((r) => Object.assign({ text: wincons.ruleText(r, wincons.EARLY), wr_ok: wincons.wrOf(r.ok), wr_no: wincons.wrOf(r.no) }, r)) };
+    this.coach = { early, earlyByRole, autopsy: aut, last, recorded: recs.length,
+      early_rules_text: Object.fromEntries(Object.entries(earlyByRole).map(([role, model]) => [role,
+        model.rules.map((r) => Object.assign({ text: wincons.ruleText(r, wincons.EARLY),
+          wr_ok: wincons.wrOf(r.ok), wr_no: wincons.wrOf(r.no) }, r))])) };
     this.coachKey = key;
     return this.coach;
   }
@@ -228,8 +291,42 @@ class Engine {
     return {
       state: this.history.state, games: s.games, wins: s.wins, mates: s.mates, champs: s.champs, with_adc: s.with_adc,
       rules: s.rules.map((r) => Object.assign({ text: wincons.ruleText(r), wr_ok: wincons.wrOf(r.ok), wr_no: wincons.wrOf(r.no) }, r)),
+      rules_by_role: Object.fromEntries(Object.entries(s.rules_by_role || {}).map(([role, model]) => [role, Object.assign({}, model, {
+        rules: model.rules.map((r) => Object.assign({ text: wincons.ruleText(r), wr_ok: wincons.wrOf(r.ok), wr_no: wincons.wrOf(r.no) }, r)),
+        candidates: model.candidates.map((r) => Object.assign({ text: wincons.ruleText(r),
+          wr_ok: wincons.wrOf(r.validation.ok), wr_no: wincons.wrOf(r.validation.no) }, r)),
+      })])),
       rules_n: s.rules_n, rules_role: s.rules_role, last_review: s.last_review,
     };
+  }
+
+  // Scout del lobby, sin frenar el pick. Un 404 de un jugador se saltea.
+  kickScout(session) {
+    const players = [...(session.myTeam || []), ...(session.theirTeam || [])];
+    const key = players.map((p) => `${p.puuid || ''}:${p.championId || p.championPickIntent || 0}:${p.assignedPosition || ''}`).join('|');
+    if (key === this.scoutKey) return;
+    this.scoutKey = key;
+    const local = players.find((p) => p.cellId === session.localPlayerCellId);
+    const mine = (session.myTeam || []).filter((p) => p.puuid && p !== local);
+    Promise.all(mine.map((p) => this.scoutOne(p))).then((rows) => {
+      if (this.scoutKey !== key) return;
+      this.scoutLine = scout.report(rows.filter(Boolean));
+    }).catch(() => {});
+  }
+  async scoutOne(p) {
+    let res;
+    try { res = await this.lcu.get(`/lol-match-history/v1/products/lol/${encodeURIComponent(p.puuid)}/matches?begIndex=0&endIndex=19`); }
+    catch (e) { return null; }
+    const list = ((res || {}).games || {}).games || [];
+    const games = [];
+    for (const row of list.slice(0, 20)) {
+      if (!row.gameId) continue;
+      let g;
+      try { g = await this.lcu.get(`/lol-match-history/v1/games/${row.gameId}`); } catch (e) { continue; }
+      const one = g && scout.fromHistoryGame(g, p.puuid, (cid) => this.champName(cid));
+      if (one) games.push(one);
+    }
+    return { role: scout.roleOf(p.assignedPosition), champ: this.champName(p.championId || p.championPickIntent || 0), games };
   }
 
   // ------------------------------------------------------------- paso principal
@@ -245,6 +342,8 @@ class Engine {
     if (g) {
       if (!this.wasInGame) {
         this.wasInGame = true;
+        this.gamePrev = {};
+        this.heldOrders = [];
         this.gameId = null;
         this.lcu.get('/lol-gameflow/v1/session').then((s) => { this.gameId = ((s || {}).gameData || {}).gameId || null; }).catch(() => {});
       }
@@ -287,6 +386,8 @@ class Engine {
       return { view: null, status: ['idle', 'Esperando champ select'] };
     }
     const view = this.decorate(this.selectView(session));
+    view.scout = this.scoutLine || null;
+    this.kickScout(session);
     this.lastView = view;
     return { view, status: ['live', 'En champ select'] };
   }

@@ -22,6 +22,14 @@ function run(cmd, args) {
 }
 
 async function findCredentials() {
+  // LOL_PATH pisa todo: si está, no se busca el cliente de verdad (las pruebas usan uno falso).
+  if (process.env.LOL_PATH) {
+    try {
+      const parts = fs.readFileSync(path.join(process.env.LOL_PATH, 'lockfile'), 'utf8').trim().split(':');
+      if (parts.length >= 4) return [parts[2], parts[3]];
+    } catch (e) { /* el falso ya cerró */ }
+    return null;
+  }
   let out = '';
   if (process.platform === 'win32') {
     out = await run('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command',

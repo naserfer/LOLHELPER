@@ -10,7 +10,7 @@ const wrc = (wr) => (wr >= 51.5 ? 'good' : wr <= 48.5 ? 'bad' : 'neutral');
 const DMG = { AD: 'var(--ad)', AP: 'var(--ap)', MIX: 'var(--mix)', '?': 'var(--muted)' };
 const DIFF = { easy: ['FÁCIL', 'green'], skill: ['PAREJO', 'gold'], hard: ['DIFÍCIL', 'red'], xhard: ['MUY DIFÍCIL', 'red'] };
 const BUILD_LABEL = { default: 'estándar', vs_ad: 'vs equipo AD', vs_ap: 'vs equipo AP' };
-const ROLE_TXT = { support: 'support', adc: 'ADC', top: 'top', mid: 'mid', middle: 'mid', jungle: 'jungla', todos: 'todos los roles' };
+const ROLE_TXT = { support: 'support', utility: 'support', adc: 'ADC', bottom: 'ADC', top: 'top', mid: 'mid', middle: 'mid', jungle: 'jungla', todos: 'todos los roles' };
 const ROLE_TAG = { top: 'TOP', jungle: 'JG', middle: 'MID', mid: 'MID' };
 
 let ICONS = {};
@@ -83,6 +83,8 @@ function drawSelect(v) {
     A += '</div></div>';
   }
 
+  if (v.win_line) A += `<div class="card hi"><div class="t">${esc(v.win_line)}</div></div>`;
+  if (v.scout) A += `<div class="card"><div class="small">${esc(v.scout)}</div></div>`;
   A += sec(sup ? 'Tu support' : 'Tu pick', sup ? 'mejores 5' : '');
   v.recs.forEach((r, i) => {
     const ok = r.status === 'ok', best = i === 0 && ok;
@@ -159,6 +161,13 @@ function drawGame(v) {
       <div class="row sp8">${icon('item', b.target, 24)}<div class="grow"><div style="font-weight:700">${b.complete ? 'Completa' : 'Hacia'} ${esc(b.target)}</div><div class="small dim">Por qué: ${esc((v.why || {})[b.target] || 'parte de la build')}</div>
       ${(b.also || []).map((nx) => `<div class="small dim">Con lo que sobra avanzás ${esc(nx)}: ${esc((v.why || {})[nx] || '')}</div>`).join('')}</div></div></div>`;
   } else A += '<div class="empty good">Build completa. Si sobra oro: Control Ward y elixires.</div>';
+  const up = v.sup_upgrade;
+  if (up) {
+    A += `<div class="card hi"><div class="row"><span class="k" style="color:var(--gold)">${up.ready ? 'Evolucioná el ítem de support' : 'Evolución de support'}</span><span class="right">${pill(up.ready ? 'GRATIS' : 'ANÁLISIS', up.ready ? 'gold' : 'dark')}</span></div>
+      <div class="row sp8">${icon('item', up.item, 46, { border: 'var(--gold)' })}<div class="grow"><div class="t">${esc(up.item)}</div>
+      <div class="small dim">${up.ready ? 'Ya está lista: la elegís en el menú del ítem, sin gastar oro.' : 'Cuando pase a Bounty of Worlds, la elegís gratis en el menú del ítem.'}</div>
+      <div class="small sp4">Por qué: ${esc(up.why)}</div></div></div></div>`;
+  }
   if ((v.queue || []).length > 1) A += sec('Después') + `<div class="pad">${items(v.queue.slice(1), 32, true)}</div>`;
 
   const rl = v.rules_live || [];
@@ -206,22 +215,23 @@ function drawCoach(status) {
     const rv = last.review_early;
     if (rv) {
       A += `<div class="t">Cumpliste ${rv.met} de ${rv.total} de tu plan hasta el 14</div>${rv.items.map((it) => `<div class="line"><b class="${it.ok ? 'good' : 'bad'}">${it.ok ? '✓' : '✗'}</b><span class="grow">${esc(it.rule)}</span><span class="dim">hiciste ${esc(it.value)}</span></div>`).join('')}`;
-      if (rv.key_miss) A += `<div class="neutral sp8" style="font-weight:700">Para la próxima: ${esc(rv.key_miss.rule)}. Cumpliéndola ganás ${pct(rv.key_miss.wr_ok)}, si no ${pct(rv.key_miss.wr_no)}.</div>`;
+      if (rv.key_miss) A += `<div class="neutral sp8" style="font-weight:700">Para la próxima: ${esc(rv.key_miss.rule)}. En las partidas posteriores dio ${pct(rv.key_miss.wr_ok)} cuando la cumpliste y ${pct(rv.key_miss.wr_no)} cuando no.</div>`;
     } else if (last.snap14) {
       const s = last.snap14;
       A += `<div class="k">Hasta el minuto 14</div><div class="row wrap sp4 small" style="gap:4px 14px"><span>Muertes <b>${s.d14}</b></span><span>Visión <b>${Math.round(s.vis14)}</b></span><span>Control Wards <b>${s.cw14}</b></span><span>Oro <b>${Math.round(s.gold14).toLocaleString('es')}</b></span><span>Participación <b>${pct(s.kp14)}</b></span>${last.item1 ? `<span>1er legendario <b>${Number(last.item1).toFixed(1)} min</b></span>` : ''}</div>`;
     } else A += '<div class="small dim">El overlay no estaba abierto al minuto 14 de esta partida.</div>';
     if (last.deaths.length) {
-      A += `<div class="k sp12">Autopsia: ${last.deaths.length} muerte${last.deaths.length > 1 ? 's' : ''}</div><div class="death">${last.deaths.map((d) => `<span class="tm">${fmtT(d.t)}</span><div><b class="${d.primary === 'clara' ? 'dim' : 'bad'}">${esc(d.title)}</b><div class="small dim">${esc(d.text)}</div></div>`).join('')}</div>`;
+      A += `<div class="k sp12">Autopsia: ${last.deaths.length} muerte${last.deaths.length > 1 ? 's' : ''}</div><div class="death">${last.deaths.map((d) => `<span class="tm">${fmtT(d.t)}</span><div><b class="${d.primary === 'clara' ? 'dim' : 'bad'}">${esc(d.title)}</b><div class="small dim">${d.facts ? `${esc(d.facts)}. ` : ''}${esc(d.text)}</div></div>`).join('')}</div>`;
     } else A += '<div class="good small sp8">No moriste en toda la partida.</div>';
     A += '</div>';
   }
 
   // Por qué morís (todas las partidas grabadas)
   const au = c.autopsy;
-  A += sec('Por qué morís', au && au.deaths ? `${au.deaths} muertes · ${au.games} partidas` : '');
+  A += sec('Por qué morís', au && au.deaths ? `${au.deaths} muertes · ${au.games} partidas${au.early ? ` · ${au.early} antes del 14` : ''}` : '');
   if (au && au.deaths) {
     A += '<div class="pad">';
+    if (au.next) A += `<div class="card hi" style="margin-top:0"><div class="k">Para la próxima</div><div class="t sp4">${esc(au.next.text)}</div></div>`;
     for (const p of au.patterns.slice(0, 5)) {
       const cmp = p.in_wins !== null && p.in_losses !== null ? `<span class="muted"> · por partida: ${p.in_losses.toFixed(1)} en derrotas, ${p.in_wins.toFixed(1)} en victorias</span>` : '';
       A += `<div class="pat"><div class="row"><b>${esc(p.title)}</b><span class="right ${p.pct >= 30 ? 'bad' : 'neutral'}" style="font-weight:800">${Math.round(p.pct)}%</span></div><div class="bar"><i style="width:${p.pct}%;background:${p.pct >= 30 ? 'var(--bad)' : 'var(--gold)'}"></i></div><div class="small dim sp4">${esc(p.tip)}${cmp}</div></div>`;
@@ -230,24 +240,59 @@ function drawCoach(status) {
     A += '</div>';
   } else A += '<div class="empty">Se llena solo: jugá con el overlay abierto y cada muerte queda analizada.</div>';
 
-  // Reglas tempranas (las confiables)
-  const e = c.early || { have: 0, need: 20, ready: false, rules: [] };
-  B += sec('Tu plan hasta el minuto 14', e.ready ? `${e.have} partidas` : '');
-  if (e.ready) {
-    if ((c.early_rules_text || []).length) {
-      B += '<div class="pad">' + c.early_rules_text.map((r) => `<div class="line"><b class="grow">${esc(r.text)}</b>${r.conf === 'pista' ? pill('PISTA', 'dark') : ''}<b class="good">${pct(r.wr_ok)} vs ${pct(r.wr_no)}</b></div><div class="small dim">Cumpliéndola ganás ${pct(r.wr_ok)} (${r.ok[1]} partidas); si no, ${pct(r.wr_no)} (${r.no[1]}).${r.conf === 'pista' ? ' Todavía sin confirmar.' : ''}</div>`).join('') + '</div>';
-    } else B += '<div class="empty">Con tus partidas no aparece un patrón claro antes del 14. Seguimos midiendo.</div>';
-  } else {
-    const faltan = Math.max(0, e.need - e.have);
-    B += `<div class="card" style="margin-top:0"><div class="row"><b>Faltan ${faltan} partida${faltan === 1 ? '' : 's'} completa${faltan === 1 ? '' : 's'}</b><span class="right dim">${e.have}/${e.need}</span></div><div class="prog sp8"><i style="width:${100 * e.have / e.need}%"></i></div>
-      <div class="small dim sp8">Cuentan las partidas en las que el overlay estuvo abierto desde el principio hasta el minuto 14. Con eso aprende qué hacés distinto antes del 14 cuando ganás: son cosas que controlás vos, no consecuencias de ir ganando.</div></div>`;
-  }
+  // Reglas tempranas: cada rol aprende por separado y solo activa reglas que se
+  // sostienen en partidas posteriores a las usadas para entrenarlas.
+  const earlyModels = Object.values(c.earlyByRole || {});
+  B += sec('Tu plan hasta el minuto 14', 'aprendido y validado por rol');
+  if (earlyModels.length) {
+    for (const e of earlyModels) {
+      const title = ROLE_TXT[e.role] || e.label || e.role;
+      B += `<div class="card" style="margin-top:0"><div class="row"><b>${esc(title)}</b><span class="right dim">${e.have}/${e.need} partidas</span></div>`;
+      const rules = (c.early_rules_text || {})[e.role] || [];
+      if (rules.length) {
+        B += rules.map((r) => `<div class="line sp8"><b class="grow">${esc(r.text)}</b>${pill('SE SOSTUVO', 'good')}</div><div class="small dim">En partidas posteriores: ${pct(r.wr_ok)} al cumplirla (${r.ok[1]}), ${pct(r.wr_no)} al no cumplirla (${r.no[1]}).</div>`).join('');
+      } else if (e.have < 20) {
+        const need = Math.max(0, 20 - e.have);
+        B += `<div class="small dim sp8">Faltan ${need} partidas completas de ${esc(title)} para la muestra inicial. Después valido el patrón con partidas posteriores.</div>`;
+      } else if (e.train_n < 20) {
+        B += `<div class="small dim sp8">Estoy separando las partidas de ${esc(title)} para aprender con las anteriores y validar con las posteriores (${e.train_n}/20 de entrenamiento).</div>`;
+      } else if (e.validation_wins < 5 || e.validation_losses < 5) {
+        B += `<div class="small dim sp8">Validación posterior: ${e.validation_wins} victorias y ${e.validation_losses} derrotas; hacen falta 5 de cada para evaluar las reglas.</div>`;
+      } else if (e.candidates && e.candidates.some((r) => r.validation.status === 'pendiente')) {
+        B += '<div class="small dim sp8">Hay patrones en revisión; todavía faltan partidas posteriores en alguno de sus dos grupos para validarlos.</div>';
+      } else if (e.candidates && e.candidates.length) {
+        B += '<div class="small dim sp8">Los patrones iniciales no se sostuvieron en las partidas posteriores. Sigo midiendo.</div>';
+      } else {
+        B += '<div class="small dim sp8">Todavía no aparece un patrón claro en tus partidas de este rol.</div>';
+      }
+      B += '</div>';
+    }
+    B += '<div class="small muted sp8">Solo cuentan partidas completas con resultado y rol identificable. Las anteriores sin rol se recuperan si el campeón pertenece a un único pool.</div>';
+  } else B += '<div class="empty">El coach necesita un perfil con roles configurados.</div>';
 
-  // Reglas de partida completa (menos confiables)
-  if ((h.rules || []).length) {
-    B += sec('Condiciones de partida completa', 'menos confiables');
-    B += '<div class="pad">' + h.rules.map((r) => `<div class="line"><span class="grow">${esc(r.text)}</span>${r.conf === 'pista' ? pill('PISTA', 'dark') : ''}<b class="neutral">${pct(r.wr_ok)} vs ${pct(r.wr_no)}</b></div>`).join('')
-      + `<div class="small muted sp8">Salen de ${h.rules_n} partidas (${esc(ROLE_TXT[h.rules_role] || h.rules_role)}). Usan números de toda la partida, que pueden ser consecuencia de ir ganando y no causa.</div></div>`;
+  // Reglas de partida completa, también separadas por rol y verificadas en partidas posteriores.
+  const fullModels = Object.entries(h.rules_by_role || {});
+  if (fullModels.length) {
+    B += sec('Condiciones de partida completa', 'menos confiables · validadas por rol');
+    for (const [role, model] of fullModels) {
+      const title = ROLE_TXT[role] || role;
+      B += `<div class="card" style="margin-top:0"><div class="row"><b>${esc(title)}</b><span class="right dim">${model.have} partidas</span></div>`;
+      if (model.rules.length) {
+        B += model.rules.map((r) => `<div class="line sp8"><span class="grow">${esc(r.text)}</span><b class="neutral">${pct(r.wr_ok)} vs ${pct(r.wr_no)}</b></div><div class="small dim">Partidas posteriores: ${r.ok[1]} cumpliéndola y ${r.no[1]} sin cumplirla.</div>`).join('');
+      } else if (model.have < 20) {
+        B += `<div class="small dim sp8">Faltan ${20 - model.have} partidas de ${esc(title)} para la muestra inicial; después valido con partidas posteriores.</div>`;
+      } else if (model.train_n < 20) {
+        B += `<div class="small dim sp8">Separando entrenamiento y validación de ${esc(title)} (${model.train_n}/20 de entrenamiento).</div>`;
+      } else if (model.validation_wins < 5 || model.validation_losses < 5) {
+        B += `<div class="small dim sp8">Validación posterior: ${model.validation_wins} victorias y ${model.validation_losses} derrotas; hacen falta 5 de cada.</div>`;
+      } else if (model.candidates && model.candidates.some((r) => r.validation.status === 'pendiente')) {
+        B += '<div class="small dim sp8">Hay condiciones en revisión; todavía faltan partidas posteriores en alguno de sus dos grupos.</div>';
+      } else {
+        B += '<div class="small dim sp8">Los patrones iniciales no se sostuvieron en partidas posteriores.</div>';
+      }
+      B += '</div>';
+    }
+    B += '<div class="small muted sp8">Los números de la partida completa pueden ser consecuencia de ir ganando, no la causa.</div>';
   }
 
   // Historial

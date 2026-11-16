@@ -12,6 +12,7 @@ const T14 = 840;
 const MAX_GAP = 60;        // si el overlay no leyó la partida por más de esto antes del 14, no sirve para reglas
 const MAX_FIRST_SEEN = 120;
 const CONTROL_WARD = 2055;
+const POSITION_ROLE = { TOP: 'top', JUNGLE: 'jungle', MIDDLE: 'mid', BOTTOM: 'adc', UTILITY: 'utility' };
 
 class Recorder {
   constructor(dir) {
@@ -36,6 +37,7 @@ class Recorder {
       || t < this.rec.last_t - 30 || this.rec.champ !== champ;
     if (newGame) this._start(t, champ, ctx, now);
     const r = this.rec;
+    if (!r.role && POSITION_ROLE[me.position]) r.role = POSITION_ROLE[me.position];
     if (!r.gameId && ctx.gameId) r.gameId = ctx.gameId;
     if (t < T14) r.max_gap = Math.max(r.max_gap, t - r.last_t);
     r.last_t = t;
@@ -111,6 +113,7 @@ class Recorder {
     this.buffer = [];
     this.rec = {
       v: 1, id: ctx.gameId ? `g${ctx.gameId}` : `w${now}`, gameId: ctx.gameId || null, champ,
+      role: null,
       start_wall: now - Math.round(t * 1000), first_t: t, last_t: t, last_wall: now, max_gap: 0,
       cw_prev: 0, cw_bought: 0, item1: null, snap14: null, saved14: false, saved_at: 0,
       deaths: [], adc_deaths: [], objectives: [], seen: [], win: null, duration: null,
@@ -129,13 +132,14 @@ class Recorder {
       if (!p || attackers.some((a) => a.p === p)) continue;
       const spells = ['summonerSpellOne', 'summonerSpellTwo'].map((k) => spellKey((p.summonerSpells || {})[k]));
       attackers.push({ p, champ: playerChamp(p, ctx.alias), level: p.level || 1,
-        jungle: p.position === 'JUNGLE' || spells.includes('SummonerSmite') });
+        jungle: p.position === 'JUNGLE' || spells.includes('SummonerSmite'),
+        killer: autopsy.matchPlayer([p], ev.KillerName) === p });
     }
     const lastAdc = this.rec.adc_deaths.filter((x) => x <= t).slice(-1)[0];
     const d = {
       t, gold: s.gold || 0, my_level: s.level || me.level || 1,
       killer_type: autopsy.killerType(ev.KillerName, players),
-      attackers: attackers.map(({ champ, level, jungle }) => ({ champ, level, jungle })),
+      attackers: attackers.map(({ champ, level, jungle, killer }) => ({ champ, level, jungle, killer: !!killer })),
       adc_died_before: lastAdc === undefined ? null : Math.round(t - lastAdc),
       objective_near: false,
     };

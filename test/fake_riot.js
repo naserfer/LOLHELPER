@@ -8,9 +8,26 @@ const { execFileSync } = require('child_process');
 
 function cert() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'cert'));
-  execFileSync('openssl', ['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-days', '2', '-subj', '/CN=127.0.0.1',
-    '-keyout', path.join(dir, 'k.pem'), '-out', path.join(dir, 'c.pem')], { stdio: 'ignore' });
-  return { key: fs.readFileSync(path.join(dir, 'k.pem')), cert: fs.readFileSync(path.join(dir, 'c.pem')) };
+  const key = path.join(dir, 'k.pem');
+  const crt = path.join(dir, 'c.pem');
+  const args = ['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-days', '2', '-subj', '/CN=127.0.0.1', '-keyout', key, '-out', crt];
+  const bins = ['openssl'];
+  if (process.platform === 'win32') {
+    bins.push('C:\\Program Files\\Git\\usr\\bin\\openssl.exe', 'C:\\Program Files (x86)\\Git\\usr\\bin\\openssl.exe');
+  }
+  for (const bin of bins) {
+    try {
+      execFileSync(bin, args, { stdio: 'ignore' });
+      return { key: fs.readFileSync(key), cert: fs.readFileSync(crt) };
+    } catch (e) { /* este openssl no está */ }
+  }
+  if (process.platform === 'win32') {
+    const pfx = path.join(dir, 'c.pfx');
+    const cmd = `$c = New-SelfSignedCertificate -Subject 'CN=127.0.0.1' -DnsName '127.0.0.1' -KeyExportPolicy Exportable -NotAfter (Get-Date).AddDays(2) -CertStoreLocation Cert:\\CurrentUser\\My; $p = ConvertTo-SecureString -String 'pickhelper' -Force -AsPlainText; Export-PfxCertificate -Cert $c -FilePath '${pfx.replace(/'/g, "''")}' -Password $p | Out-Null; Remove-Item "Cert:\\CurrentUser\\My\\$($c.Thumbprint)"`;
+    execFileSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', cmd], { stdio: 'ignore' });
+    return { pfx: fs.readFileSync(pfx), passphrase: 'pickhelper' };
+  }
+  throw new Error('hace falta openssl para el certificado de prueba');
 }
 
 const CH = { Thresh: 412, Jinx: 222, "Kai'Sa": 145, Leona: 89, 'Lee Sin': 64, Ahri: 103, Garen: 86, Malphite: 54, Darius: 122, Orianna: 61, 'Master Yi': 11,

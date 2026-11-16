@@ -13,7 +13,7 @@ Botones de la barra: alfiler (siempre arriba), minimizar, pantalla completa en e
 - **Champ select:** supports recomendados por matchup, sinergia con tu ADC (op.gg Emerald+, parche 26.22) y tu propio historial. Para top, tu pool Malphite/Garen/Illaoi.
 - **En partida:** qué comprar exactamente con tu oro, guía de línea, rival, alertas y objetivos.
 - **Autopsia de muertes (nuevo):** cada vez que morís, te dice por qué (oro sin gastar, la jungla rival, inferioridad numérica, bajo torre, tu ADC ya había caído, abajo de nivel, pelea de objetivo). Después de cada partida ves la autopsia completa y el resumen de por qué morís más seguido.
-- **Tu plan hasta el minuto 14 (nuevo):** el overlay graba lo que hacés hasta el 14 (muertes, visión, Control Wards, oro, primer ítem). Con 20 partidas completas aprende qué hacés distinto antes del 14 cuando ganás. Mientras tanto te muestra cuántas faltan y las reglas viejas marcadas como "menos confiables".
+- **Tu plan hasta el minuto 14:** el overlay graba lo que hacés hasta el 14 (muertes, visión, Control Wards, oro, primer ítem). Aprende por rol: usa las partidas anteriores para buscar patrones y las posteriores para comprobar si se repiten. Requiere 20 partidas de entrenamiento y al menos 5 victorias y 5 derrotas para validar; hasta entonces muestra cuánto falta. Las condiciones de partida completa también se separan por rol y se validan con partidas posteriores.
 
 Una partida cuenta como completa si el overlay estuvo abierto desde el principio y no perdió la lectura por más de un minuto antes del 14.
 

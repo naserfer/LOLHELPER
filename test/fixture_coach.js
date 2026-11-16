@@ -14,11 +14,11 @@ function install(engine, mode) {
   const dir = engine.recorder.dir;
   for (const f of fs.readdirSync(dir)) fs.unlinkSync(path.join(dir, f));
   const r = rng(4);
-  const n = mode === 'few' ? 7 : 26;
+  const n = mode === 'few' ? 7 : 70;
   const champs = ['Thresh', 'Leona', 'Lulu', 'Nautilus'];
   for (let i = 0; i < n; i++) {
-    const d14 = Math.floor(r() * 4);
-    const win = r() < (d14 <= 1 ? 0.75 : 0.3);
+    const d14 = i % 2 === 0 ? 0 : 3;
+    const win = i % 2 === 0;
     const deaths = [];
     const nd = d14 + Math.floor(r() * 4);
     for (let k = 0; k < nd; k++) {
@@ -30,7 +30,7 @@ function install(engine, mode) {
           : [{ champ: "Kai'Sa", level: kind > 0.8 && kind <= 0.92 ? 10 : 7, jungle: false }],
         adc_died_before: kind > 0.45 && kind < 0.55 ? 4 : null, objective_near: kind > 0.4 && kind < 0.45 });
     }
-    const rec = { v: 1, id: `g${9000 + i}`, gameId: 9000 + i, champ: champs[i % 4], start_wall: Date.now() - (i + 1) * 3600e3,
+    const rec = { v: 1, id: `g${9000 + i}`, gameId: 9000 + i, champ: champs[i % 4], role: 'utility', start_wall: Date.now() - (i + 1) * 3600e3,
       first_t: 15, last_t: 1800, max_gap: 3, cw_bought: 3, item1: 12 + r() * 6,
       snap14: { d14, kp14: 30 + r() * 40, vis14: 14 + r() * 14 + (win ? 4 : 0), cw14: Math.floor(r() * 4), gold14: 3600 + r() * 1400,
         dg14: deaths.filter((d) => d.t < 840 && d.gold >= 1000).length },

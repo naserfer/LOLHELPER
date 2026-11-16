@@ -71,14 +71,20 @@ function summarize(games, puuid, champName) {
   const rows = (d, minG = 1) => Object.entries(d).filter(([, v]) => v.g >= minG)
     .map(([k, v]) => Object.assign({}, v, { key: k })).sort((a, b) => b.g - a.g || b.w - a.w);
   const mainRole = Object.keys(roles).sort((a, b) => roles[b] - roles[a])[0] || '';
-  const same = feats.filter((r) => r.role === mainRole);
-  const base = same.length >= 2 * wincons.MIN_SIDE + 6 ? same : feats;
-  const rules = wincons.learn(base, wincons.FULL);
-  const last = feats.length && rules.length ? wincons.review(rules, feats[0]) : null;
+  const rulesByRole = {};
+  for (const roleName of new Set(feats.map((r) => r.role).filter(Boolean))) {
+    // games llega del historial en orden nuevo → viejo. Validamos siempre en las
+    // partidas posteriores a las usadas para aprender.
+    const chronological = feats.filter((r) => r.role === roleName).slice().reverse();
+    rulesByRole[roleName] = wincons.learnValidated(chronological, wincons.FULL, 11);
+  }
+  const mainModel = rulesByRole[mainRole] || wincons.learnValidated([], wincons.FULL);
+  const lastForRole = feats.find((r) => r.role === mainRole);
+  const last = lastForRole && mainModel.rules.length ? wincons.review(mainModel.rules, lastForRole) : null;
   const byChamp = {};
   for (const [k, v] of Object.entries(champs)) byChamp[norm(k)] = v;
   return {
-    rules, rules_n: base.length, rules_role: base === same ? mainRole : 'todos', last_review: last,
+    rules: mainModel.rules, rules_n: mainModel.have, rules_role: mainRole, rules_by_role: rulesByRole, last_review: last,
     games: tot.g, wins: tot.w, mates: rows(mates, 2).slice(0, 8), champs: rows(champs).slice(0, 8),
     with_adc: rows(withAdc).slice(0, 8), pairs: pair, by_champ: byChamp, with_adc_map: withAdc, roles, index,
   };

@@ -60,22 +60,52 @@ function classify(death) {
   return { labels, primary };
 }
 
-function tipFor(death) {
-  const c = classify(death);
-  const L = LABELS[c.primary];
-  let text = L.tip;
-  if (c.primary === 'oro') text = `Moriste con ${death.gold} de oro: con +1000, volvé a base antes de pelear.`;
-  if (c.primary === 'superado') text = `Te agarraron ${(death.attackers || []).length}: no entres sin tu equipo cerca.`;
-  if (c.primary === 'nivel') {
-    const d = (death.attackers || []).reduce((m, a) => Math.max(m, a.level || 0), 0) - (death.my_level || 0);
-    text = `Peleaste ${d} niveles abajo: esperá a igualar o a tu equipo.`;
-  }
-  if (c.primary !== 'oro' && c.labels.includes('oro')) text += ` Y tenías ${death.gold} de oro sin gastar.`;
-  return { primary: c.primary, title: L.title, text, labels: c.labels };
+function factsOf(death) {
+  const a = death.attackers || [];
+  const killer = a.find((x) => x.killer);
+  const ordered = killer ? [killer, ...a.filter((x) => x !== killer)] : a;
+  const names = ordered.slice(0, 3).map((x) => `${x.champ} ${x.level}`).join(', ');
+  const bits = [];
+  if (names) bits.push(names);
+  else if (death.killer_type === 'turret') bits.push('la torre');
+  if (death.my_level) bits.push(`vos ${death.my_level}`);
+  if ((death.gold || 0) >= GOLD_LIMIT) bits.push(`${death.gold} de oro`);
+  return bits.join(' · ');
 }
 
-// Resumen a lo largo de tus partidas grabadas.
-// recs: [{deaths:[...], win: true|false|null}]
+function actionFor(death, primary) {
+  const a = death.attackers || [];
+  const j = a.find((x) => x.jungle);
+  if (primary === 'jungla') return j ? `${j.champ} estaba en la pelea. Ward en río antes de avanzar.` : LABELS.jungla.tip;
+  if (primary === 'oro') return `Tenías ${death.gold} de oro: volvé a base antes de pelear.`;
+  if (primary === 'superado') return `Eran ${a.length} contra vos. No entres sin tu equipo.`;
+  if (primary === 'nivel') {
+    const d = a.reduce((m, x) => Math.max(m, x.level || 0), 0) - (death.my_level || 0);
+    return `El más alto te sacaba ${d} niveles. Si era un solo, de support es normal.`;
+  }
+  if (primary === 'adc') return 'Tu ADC ya había caído. Retirate.';
+  if (primary === 'torre') return 'Estabas bajo torre. No entres si otro no recibe el daño.';
+  if (primary === 'objetivo') return 'Era pelea de objetivo. Llegá antes, con visión.';
+  return LABELS.clara.tip;
+}
+
+function tipFor(death) {
+  const c = classify(death);
+  let text = actionFor(death, c.primary);
+  if (c.primary !== 'oro' && c.labels.includes('oro')) text += ` Y tenías ${death.gold} de oro sin gastar.`;
+  return { primary: c.primary, title: LABELS[c.primary].title, text, facts: factsOf(death), labels: c.labels };
+}
+
+const NEXT = {
+  jungla: (n, tot) => `La jungla rival estuvo en ${n} de ${tot} muertes. Antes de pasar el río, ward.`,
+  oro: (n, tot) => `${n} de ${tot} muertes fueron con oro sin gastar. Volvé a base antes de pelear.`,
+  superado: (n, tot) => `${n} de ${tot} muertes fueron en inferioridad. No entres si son 3 o más.`,
+  adc: (n, tot) => `En ${n} de ${tot} tu ADC ya había caído. Cuando cae, retirate.`,
+  torre: (n, tot) => `${n} de ${tot} fueron bajo torre. No entres si otro no tankea.`,
+  objetivo: (n, tot) => `${n} de ${tot} fueron en un objetivo. Llegá antes y con visión.`,
+  nivel: (n, tot) => `${n} de ${tot} te agarraron 2 niveles arriba. Si era el support rival, no pelees; si era un solo, es el ritmo de la línea.`,
+};
+
 function summarize(recs) {
   const games = recs.filter((r) => r.deaths);
   const all = [];
@@ -88,16 +118,17 @@ function summarize(recs) {
     for (const l of c.labels) count[l]++;
     prim[c.primary]++;
   }
-  // Muertes por partida con cada causa, en victorias vs derrotas.
   const byRes = (win) => games.filter((r) => r.win === win);
   const perGame = (list, label) => (list.length
     ? list.reduce((s, r) => s + r.deaths.filter((d) => classify(d).labels.includes(label)).length, 0) / list.length : null);
   const W = byRes(true), Lo = byRes(false);
   const patterns = Object.keys(LABELS).filter((k) => k !== 'clara' && count[k] > 0).map((k) => ({
-    key: k, title: LABELS[k].title, tip: LABELS[k].tip, n: count[k], pct: n ? 100 * count[k] / n : 0,
+    key: k, title: LABELS[k].title, tip: `${count[k]} de ${n}. ${NEXT[k](count[k], n)}`, n: count[k], pct: n ? 100 * count[k] / n : 0,
     in_wins: perGame(W, k), in_losses: perGame(Lo, k),
   })).sort((a, b) => b.n - a.n);
-  return { games: games.length, deaths: n, wins: W.length, losses: Lo.length, patterns, primary: prim,
+  const headline = patterns.find((p) => p.key !== 'nivel') || patterns[0] || null;
+  const next = headline ? { key: headline.key, text: NEXT[headline.key](headline.n, n) } : null;
+  return { games: games.length, deaths: n, wins: W.length, losses: Lo.length, patterns, primary: prim, next,
     early: all.filter(({ d }) => d.t < 840).length };
 }
 

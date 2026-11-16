@@ -11,6 +11,10 @@ const MIN_SIDE = 7;
 const MIN_GAP = 12.0;
 const PRIOR = 5;
 const PERMS = 300;
+const TRAIN_RATIO = 0.65;
+const TRAIN_MIN = 20;
+const VALIDATION_MIN_SIDE = 5;
+const VALIDATED_NEED = Math.ceil(TRAIN_MIN / TRAIN_RATIO);
 
 // Números de toda la partida (historial del cliente). Pueden ser consecuencia de ir ganando.
 const FULL = {
@@ -127,6 +131,85 @@ function ruleText(r, spec = FULL) {
 const wrOf = ([w, g]) => (g ? 100 * w / g : 0);
 const check = (r, v) => (r.dir === '<=' ? v <= r.t : v >= r.t);
 
+// Aprende con las partidas viejas y mide el patrón en las más nuevas. Las filas deben
+// venir en orden cronológico (vieja → nueva). Solo una regla que se sostenga fuera de
+// la muestra de entrenamiento queda habilitada para el coach en vivo.
+function learnValidated(rows, spec = FULL, seed = 1) {
+  const trainN = Math.floor(rows.length * TRAIN_RATIO);
+  const training = rows.slice(0, trainN);
+  const validation = rows.slice(trainN);
+  const trainWins = training.filter((r) => r.win).length;
+  const trainLosses = training.length - trainWins;
+  const validationWins = validation.filter((r) => r.win).length;
+  const validationLosses = validation.length - validationWins;
+  const ready = training.length >= TRAIN_MIN
+    && validationWins >= VALIDATION_MIN_SIDE && validationLosses >= VALIDATION_MIN_SIDE;
+  const candidates = training.length >= TRAIN_MIN
+    ? learn(training, spec, seed)
+    : [];
+  const evaluated = candidates.map((rule) => {
+    let okW = 0, okN = 0, noW = 0, noN = 0;
+    const indexes = [];
+    for (let i = 0; i < validation.length; i++) {
+      const row = validation[i];
+      const value = row.f[rule.key];
+      if (value === undefined || value === null) continue;
+      indexes.push(i);
+      if (check(rule, value)) { okN++; okW += row.win ? 1 : 0; }
+      else { noN++; noW += row.win ? 1 : 0; }
+    }
+    const wrOk = wrOf([okW, okN]);
+    const wrNo = wrOf([noW, noN]);
+    const enough = okN >= VALIDATION_MIN_SIDE && noN >= VALIDATION_MIN_SIDE;
+    const status = !enough ? 'pendiente' : 'no_sostenida';
+    return Object.assign({}, rule, { validation: {
+      status, ok: [okW, okN], no: [noW, noN], wr_ok: wrOk, wr_no: wrNo,
+      gap: wrOk - wrNo, min_side: VALIDATION_MIN_SIDE, indexes,
+    } });
+  });
+  // Hay hasta cinco reglas candidatas; compara el mejor resultado de cada
+  // permutación para no confirmar una regla solo por probar varias.
+  const testable = evaluated.filter((r) => r.validation.status !== 'pendiente');
+  if (testable.length) {
+    const labels = validation.map((r) => r.win ? 1 : 0);
+    const shuffled = labels.slice();
+    const rnd = rng((seed || 1) + 1009);
+    const groups = testable.map((rule) => ({
+      rule,
+      good: new Set(rule.validation.indexes.filter((i) => check(rule, validation[i].f[rule.key]))),
+      indexes: rule.validation.indexes,
+    }));
+    const nullMax = [];
+    for (let p = 0; p < PERMS; p++) {
+      shuffle(shuffled, rnd);
+      let maxGap = 0;
+      for (const group of groups) {
+        let okW = 0, okN = 0, noW = 0, noN = 0;
+        for (const i of group.indexes) {
+          if (group.good.has(i)) { okN++; okW += shuffled[i]; }
+          else { noN++; noW += shuffled[i]; }
+        }
+        maxGap = Math.max(maxGap, wrOf([okW, okN]) - wrOf([noW, noN]));
+      }
+      nullMax.push(maxGap);
+    }
+    for (const rule of testable) {
+      const p = (1 + nullMax.filter((gap) => gap >= rule.validation.gap).length) / (PERMS + 1);
+      rule.validation.p = Math.round(p * 1000) / 1000;
+      if (rule.validation.gap > 0 && p <= 0.05) rule.validation.status = 'sostenida';
+    }
+  }
+  for (const rule of evaluated) delete rule.validation.indexes;
+  const rules = evaluated.filter((r) => r.validation.status === 'sostenida').map((r) =>
+    Object.assign({}, r, { train: { ok: r.ok, no: r.no }, ok: r.validation.ok, no: r.validation.no }));
+  return {
+    have: rows.length, need: VALIDATED_NEED,
+    train_n: training.length, train_wins: trainWins, train_losses: trainLosses,
+    validation_n: validation.length, validation_wins: validationWins, validation_losses: validationLosses,
+    ready, rules, candidates: evaluated,
+  };
+}
+
 function review(rules, row, spec = FULL) {
   const items = [];
   for (const r of rules) {
@@ -140,4 +223,5 @@ function review(rules, row, spec = FULL) {
   return { win: row.win, champ: row.champ, items, met: items.filter((i) => i.ok).length, total: items.length, key_miss: key };
 }
 
-module.exports = { FULL, EARLY, MIN_SIDE, features, learn, ruleText, wrOf, check, review, fmtNum };
+module.exports = { FULL, EARLY, MIN_SIDE, TRAIN_RATIO, TRAIN_MIN, VALIDATION_MIN_SIDE, VALIDATED_NEED,
+  features, learn, learnValidated, ruleText, wrOf, check, review, fmtNum };

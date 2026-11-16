@@ -143,5 +143,39 @@ for (let i = 0; i < 100; i++) {
 console.log(`T4  redibujos en 100 lecturas sin cambios reales: ${renders}`);
 ok(renders <= 1, 'la ventana no se redibuja si no cambió nada importante');
 
+// ---------- T5: legendario de cualquier rival, una vez, y el primero no avisa
+const ldb = new ItemDB({
+  3031: { name: 'Infinity Edge', gold: { total: 3400, purchasable: true }, maps: { 11: true }, tags: ['Damage'] },
+  3089: { name: "Rabadon's Deathcap", gold: { total: 3600, purchasable: true }, maps: { 11: true }, tags: ['SpellDamage'] },
+  3190: { name: 'Locket of the Iron Solari', gold: { total: 2200, purchasable: true }, maps: { 11: true }, tags: ['Health'] },
+  9999: { name: 'Boots of Test', gold: { total: 2500, purchasable: true }, maps: { 11: true }, tags: ['Boots'] },
+});
+function legGame(items) {
+  const me = player('Naser', 'Thresh', 'ORDER', 'UTILITY', 8, ['SummonerFlash', 'SummonerDot'], 'riot');
+  const leo = player('Leo', 'Leona', 'CHAOS', 'UTILITY', 8, ['SummonerFlash', 'SummonerIgnite'], 'riot');
+  const ahri = player('Mid', 'Ahri', 'CHAOS', 'MIDDLE', 9, ['SummonerFlash', 'SummonerDot'], 'riot');
+  const adc = player('Tuki', 'Jinx', 'ORDER', 'BOTTOM', 8, ['SummonerFlash', 'SummonerHeal'], 'riot');
+  const put = (p, ids) => { p.items = (ids || []).map((itemID) => ({ itemID })); };
+  put(leo, items.Leona);
+  put(ahri, items.Ahri);
+  return {
+    activePlayer: { riotId: 'Naser#LAS', currentGold: 100 },
+    allPlayers: [me, adc, leo, ahri],
+    gameData: { gameMode: 'CLASSIC', mapNumber: 11, gameTime: 600 },
+    events: { Events: [] },
+  };
+}
+const runLeg = (items, prev) => analyzeGame(legGame(items), sp.pool, ldb, {}, {}, null, prev || {}, [sp.pool, sp.dyn]);
+const first = runLeg({ Ahri: [3031] }, {});
+ok(!(first.orders || []).length, 'el primer sondeo no avisa aunque el rival ya tenga un legendario');
+const second = runLeg({ Ahri: [3031, 3089] }, { legend_seen: first.legend_seen, legend_ready: true });
+ok(second.orders.length === 1 && second.orders[0].text === "Ahri completó Rabadon's Deathcap. No pelees.", `el ítem nuevo avisa: ${(second.orders[0] || {}).text}`);
+const third = runLeg({ Ahri: [3031, 3089] }, { legend_seen: second.legend_seen, legend_ready: true });
+ok(!(third.orders || []).length, 'el mismo ítem no se avisa dos veces');
+const boots = runLeg({ Ahri: [3031, 9999] }, { legend_seen: first.legend_seen, legend_ready: true });
+ok(!(boots.orders || []).length, 'unas botas caras no cuentan como legendario');
+const both = runLeg({ Leona: [3190], Ahri: [3031, 3089] }, { legend_seen: first.legend_seen, legend_ready: true });
+ok(both.orders.length === 1 && both.orders[0].text.startsWith('Leona completó'), `si cierran dos, gana el de tu línea: ${(both.orders[0] || {}).text}`);
+
 console.log(failed ? `\n${failed} prueba(s) fallaron` : '\nTodas las pruebas pasaron');
 process.exit(failed ? 1 : 0);

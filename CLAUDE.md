@@ -100,8 +100,9 @@ Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo p
 ## Algoritmos clave
 - **Compra (`itemdb.planPurchase`):** calcula el costo restante descontando los componentes que ya tenés. Si no te alcanza para el ítem completo, busca la mejor combinación de componentes que sí podés pagar. Si sobra oro, encadena el siguiente ítem y suma una Control Ward si te alcanza.
 - **Reglas (`wincons.learn`):** para cada número busca el mejor corte con al menos 7 partidas por lado. Las winrates se encogen hacia 50% (prior 5/5). Una regla vale solo si supera el 95% del máximo que sale con resultados mezclados al azar (300 permutaciones, con todos los números a la vez). Las que no llegan pero tienen p ≤ 0,3 se muestran como `PISTA`.
-  - Reglas **tempranas** (`EARLY`, foto del 14): son las confiables. Se activan con 20 partidas "completas" (overlay abierto desde antes del minuto 2 y sin cortes de más de 60 s antes del 14).
-  - Reglas de **partida completa** (`FULL`): se muestran como "menos confiables", porque pueden ser consecuencia de ir ganando.
+  - Reglas **tempranas** (`EARLY`, foto del 14): se aprenden por rol. Las partidas antiguas (65%) entrenan; las posteriores (35%) validan. Hacen falta 20 partidas de entrenamiento y al menos 5 victorias y 5 derrotas posteriores (31 partidas completas por rol como mínimo). Solo se activan reglas con al menos 5 partidas a cada lado del corte, diferencia favorable en validación y `p ≤ 0,05` tras permutar resultados entre todas las candidatas.
+  - Reglas de **partida completa** (`FULL`): también se separan y validan por rol con el mismo criterio. Se muestran como "menos confiables", porque sus números pueden ser consecuencia de ir ganando.
+  - Las grabaciones nuevas guardan `role`. Para grabaciones viejas sin rol se infiere solo si el campeón pertenece a un único pool del perfil; las ambiguas no entrenan el coach.
 - **Autopsia:** las etiquetas son `torre`, `jungla`, `superado` (3 o más), `adc` (cayó ≤12 s antes), `nivel` (+2), `oro` (≥1000) y `objetivo` (dentro de −10/+45 s de un dragón, barón o heraldo). Si ninguna aplica, es `clara`. La principal se elige por prioridad. Los nombres de los eventos se comparan con `riotId`, `riotIdGameName` y `summonerName`, con o sin `#TAG`.
 - **Eventos:** se deduplican por contenido (`nombre|tiempo|víctima|asesino`), no solo por `EventID`.
 

@@ -2,3 +2,5 @@ node_modules/
 dist/
 dist-bitty/
 *.log
+__pycache__/
+*.pyc

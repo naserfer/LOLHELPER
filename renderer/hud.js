@@ -27,7 +27,13 @@ function build() {
   if (!h) { for (const e of [buy, rule, death]) { e.innerHTML = ''; e.classList.add('hide'); } return; }
   // compra
   const b = h.buy;
-  if (b && b.mode === 'full') {
+  if (b && b.upgrade) {
+    const gold = (b.items || []).filter((n) => n !== b.upgrade);
+    buy.innerHTML = `<div class="panel buy-full"><div class="row"><span class="k">Evolucioná</span><span class="cost">gratis</span></div>
+      <div class="row" style="margin-top:4px">${icon(b.upgrade, 36)}</div>
+      <div class="why">${esc(b.upgrade)}${b.why ? ` · ${esc(b.why)}` : ''}</div>
+      ${gold.length ? `<div class="why">Con el oro: ${esc(gold.join(' + '))} · <span data-live="miss">${b.missing ? `faltan ${b.missing}` : 'alcanza'}</span></div>` : ''}</div>`;
+  } else if (b && b.mode === 'full') {
     buy.innerHTML = `<div class="panel buy-full"><div class="row"><span class="k">${b.missing ? 'Próxima compra' : h.dead ? 'Al revivir comprá' : 'Comprá'}</span><span class="cost" data-live="cost">${b.missing ? `faltan ${b.missing}` : `${b.cost} de oro`}</span></div>
       <div class="row" style="margin-top:4px">${b.items.map((n, i) => (i ? '<span class="plus">+</span>' : '') + icon(n, i ? 30 : 36)).join('')}</div>
       <div class="why">${esc(b.complete ? `Completa ${b.target}` : `Hacia ${b.target}`)}${b.why ? ` · ${esc(b.why)}` : ''}</div></div>`;
@@ -42,15 +48,17 @@ function build() {
   rule.classList.toggle('hide', !r);
   // muerte
   const d = h.death;
-  death.innerHTML = d ? `<div class="panel death"><div class="k">Moriste · ${esc(d.title)}</div><div style="margin-top:3px">${esc(d.text)}</div></div>` : '';
-  death.classList.toggle('hide', !d);
+  const call = h.call;
+  death.innerHTML = d ? `<div class="panel death"><div class="k">Moriste · ${esc(d.title)}</div><div style="margin-top:3px">${esc(d.text)}</div></div>`
+    : call ? `<div class="panel death"><div>${esc(call)}</div></div>` : '';
+  death.classList.toggle('hide', !d && !call);
 }
 function live() {
   if (!H) return;
   const set = (sel, txt) => { const e = document.querySelector(sel); if (e && e.textContent !== txt) e.textContent = txt; };
   const b = H.buy;
   if (b) {
-    set('[data-live="miss"]', `faltan ${b.missing}`);
+    set('[data-live="miss"]', b.missing ? `faltan ${b.missing}` : 'alcanza');
     set('[data-live="cost"]', b.missing ? `faltan ${b.missing}` : `${b.cost} de oro`);
     const bar = document.querySelector('[data-live="bar"]');
     if (bar) bar.style.width = `${Math.max(0, Math.min(100, 100 * (1 - b.missing / Math.max(1, b.cost))))}%`;
