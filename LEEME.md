@@ -22,3 +22,6 @@ Solo usa la API del cliente y la API en vivo del juego (las mismas que usan las 
 
 ## Dónde guarda tus datos
 `%APPDATA%\Pick Helper` (historial, partidas grabadas, ajustes). Borrando esa carpeta empieza de cero.
+
+## Lista de ítems
+La app solo te recomienda comprar ítems que estén en `data/items.json` (parche 16.22.1, sacada de Data Dragon de Riot). Cuando salga un parche que saque o agregue ítems, editá ese archivo: borrá los que ya no existen y sumá los nuevos con su id y nombre en inglés. Después tenés que volver a armar el `.exe`.

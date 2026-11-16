@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { norm } = require('./util');
 const { ItemDB } = require('./itemdb');
+const ITEM_LIST = require('../../data/items.json');
 
 const DD = 'https://ddragon.leagueoflegends.com';
 
@@ -53,7 +54,7 @@ class DataDragon {
       this.dmgByName[norm(c.name)] = kind;
       this.urls[this.key('champion', c.name)] = `${DD}/cdn/${v}/img/champion/${c.image.full}`;
     }
-    this.itemdb = new ItemDB(item.data);
+    this.itemdb = new ItemDB(item.data).setList(ITEM_LIST);
     for (const it of Object.values(item.data)) {
       const best = this.itemdb.idOf(it.name);
       if (best !== null) this.urls[this.key('item', it.name)] = `${DD}/cdn/${v}/img/item/${best}.png`;
@@ -113,4 +114,4 @@ class DataDragon {
   }
 }
 
-module.exports = { DataDragon, DD };
+module.exports = { DataDragon, DD, ITEM_LIST };

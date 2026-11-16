@@ -152,7 +152,7 @@ const SUP_SITU = {
     ["Randuin's Omen", { crit: 3 }], ['Abyssal Mask', { ap_heavy: 3 }], ['Kaenic Rookern', { ap_fed: 3 }],
     ['Redemption', { default: 1 }], ["Mikael's Blessing", { cc: 2 }]],
   enchanter: [["Mikael's Blessing", { cc: 3 }], ['Redemption', { default: 2 }],
-    ['Chemtech Putrifier', { heal: 3 }], ['Staff of Flowing Water', { ally_ap: 2 }],
+    ['Staff of Flowing Water', { ally_ap: 2 }],
     ['Ardent Censer', { ally_auto: 2 }], ['Locket of the Iron Solari', { ap_fed: 2 }]],
   mage: [["Zhonya's Hourglass", { ad_fed: 3 }], ["Banshee's Veil", { ap_fed: 3 }],
     ['Morellonomicon', { heal: 3 }], ['Void Staff', { tanky: 3 }], ["Rabadon's Deathcap", { default: 1 }]],
@@ -356,13 +356,15 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
 
     const haveNames = new Set(myItems.map((i) => norm(db.name(i))));
     const hasT2 = myItems.some((i) => db.isBoots(i) && db.total(i) > 300);
-    for (const it of order) {
-      if (haveNames.has(norm(it))) continue;
-      if (it === boots && hasT2) continue;
-      if (db.idOf(it) === null) continue;
+    for (const it0 of order) {
+      const it = db.toBuy(it0);
+      if (haveNames.has(norm(it)) || haveNames.has(norm(it0))) continue;
+      if (it0 === boots && hasT2) continue;
+      if (!db.buyable(it) || queue.includes(it)) continue;
+      if (it !== it0) reasons[it] = reasons[it0];
       queue.push(it);
     }
-    if (supCfg && !myItems.some((i) => SUPPORT_ITEMS.has(db.name(i))) && db.idOf('World Atlas')) {
+    if (supCfg && !myItems.some((i) => SUPPORT_ITEMS.has(db.name(i))) && db.buyable('World Atlas')) {
       queue.unshift('World Atlas');
       reasons['World Atlas'] = ['sup_item'];
     }
@@ -391,7 +393,7 @@ function analyzeGame(g, pool, db, champDmg, alias, laneHint, prev, sup) {
         }
       }
       const left = gold - (missing === 0 ? buy.cost : 0);
-      if (missing === 0 && left >= 75 && !myItems.some((i) => norm(db.name(i)) === 'controlward') && db.idOf('Control Ward')) {
+      if (missing === 0 && left >= 75 && !myItems.some((i) => norm(db.name(i)) === 'controlward') && db.buyable('Control Ward')) {
         buy.extra = 'Control Ward';
       }
     }
@@ -566,4 +568,4 @@ function reasonText(item, view) {
   return parts.join('; ') || 'parte de la build';
 }
 
-module.exports = { LIVE_URL, analyzeGame, reasonText, playerChamp, spellKey, findMe, itemsOf, supportUpgrade, nextCannon, SUPPORT_ITEMS, SUPPORT_UPGRADED };
+module.exports = { BUILD_RULES, SUP_SITU, LIVE_URL, analyzeGame, reasonText, playerChamp, spellKey, findMe, itemsOf, supportUpgrade, nextCannon, SUPPORT_ITEMS, SUPPORT_UPGRADED };

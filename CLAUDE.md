@@ -55,6 +55,7 @@ data/
   profile.json          Perfil activo ({ "id": "naser" }); build_win.sh lo cambia al armar
   profiles/*.json       Roles, pools y demos de cada perfil
   pool*.json            Datos por campeón (ver "Formato de datos")
+  items.json            Lista fija de ítems vigentes (ver "Lista de ítems"); se actualiza a mano
   demo_*.json           Sesiones y partidas de ejemplo para --demo
 tools/datos/            Scripts que generan pool*.json a partir de datos crudos (top, support, bitty)
 test/                   Todas las pruebas (ver "Pruebas")
@@ -95,6 +96,13 @@ Para actualizar datos a un parche nuevo:
 3. Correr el `build*.py` que corresponda; escribe en `data/`.
 4. Correr las pruebas.
 
+## Lista de ítems (data/items.json)
+- La app **solo recomienda comprar** ítems que estén en `data/items.json` y que Data Dragon marque como comprables en la Grieta (`ItemDB.buyable`). Precios y recetas siguen saliendo de Data Dragon.
+- Motivo: Riot deja ítems sacados dentro de `item.json` con `purchasable: false` (ej. Chemtech Putrifier en 16.22.1) y `idOf` los aceptaba igual.
+- `transforma`: ítems que no se compran sino que se transforman (Diadem of Songs ← Whispering Circlet, Muramana ← Manamune…). Si una build los pide, se recomienda el ítem base (`ItemDB.toBuy`).
+- El usuario la quiere **actualizar a mano**, no que se baje sola en cada partida. Al cambiar de parche: borrar los ítems que salieron, sumar los nuevos (`"id": "Nombre en inglés"`), cambiar `patch` y correr `node test/items_list.js`, que avisa si algún ítem que usa el código o los `pool*.json` ya no está en la lista.
+- Sin lista (`ItemDB` creado a mano en pruebas) se comporta como antes, para que la prueba de equivalencia con Python no cambie.
+
 Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo parche.
 
 ## Algoritmos clave
@@ -109,6 +117,7 @@ Op.gg muestra el parche como `16.22`; el jugador lo llama `26.22`. Es el mismo p
 ## Pruebas
 `DISPLAY=:9 npm test`, con Xvfb levantado: `Xvfb :9 -screen 0 2560x1440x24 &`. Corre:
 - `test/golden/compare.js`: la versión JS da exactamente lo mismo que la Python (395 casos). Usa `items_golden.json` congelado; **no lo modifiques**. Para agregar ítems de prueba usá `test/items_test.json`.
+- `test/items_list.js`: la lista de ítems es coherente y no se recomienda nada que ya no se compre.
 - `test/new_features.js`: pruebas pensadas para fallar si la idea está mal: causa al revés, autopsia, grabación con cortes y que no titile.
 - `test/e2e.js` y `test/bitty_test.js`: de punta a punta contra un cliente y un juego simulados por HTTPS (`test/fake_riot.js`; la API en vivo usa el puerto 2999 de verdad).
 - `test/ui.js` y `test/ui_bitty.js`: cada pantalla a 340, 460, 800 y 1600 px. Verifica que no haya errores JS, que nada se salga de la ventana, cuántas columnas hay y el texto esperado.

@@ -5,6 +5,8 @@ const { norm, Counter, cmpTuple } = require('./util');
 class ItemDB {
   constructor(itemsJson) {
     this.items = new Map();
+    this.allow = null; // nombres (norm) de data/items.json; null = sin lista (pruebas de equivalencia)
+    this.transforms = new Map();
     this.byName = new Map();
     for (const [sid, it] of Object.entries(itemsJson || {})) {
       const iid = parseInt(sid, 10);
@@ -24,6 +26,21 @@ class ItemDB {
     const k = norm(name);
     if (this.byName.get(k)) return this.byName.get(k);
     return this.byName.get('~' + k) ?? null;
+  }
+  // Lista fija de ítems vigentes (data/items.json), mantenida a mano.
+  setList(list) {
+    if (!list || !list.items) return this;
+    this.allow = new Set(Object.values(list.items).map(norm));
+    this.transforms = new Map(Object.entries(list.transforms || list.transforma || {}).map(([k, v]) => [norm(k), v]));
+    return this;
+  }
+  // Ítem que hay que comprar para llegar a name (Diadem of Songs -> Whispering Circlet).
+  toBuy(name) { return this.transforms.get(norm(name)) || name; }
+  // ¿Se puede recomendar comprarlo? Con lista: tiene que estar en ella y ser comprable en la Grieta.
+  buyable(name) {
+    if (!this.allow) return this.idOf(name) !== null;
+    const k = norm(name);
+    return this.allow.has(k) && !!this.byName.get(k);
   }
   name(iid) { return (this.items.get(iid) || {}).name || `#${iid}`; }
   total(iid) { return ((this.items.get(iid) || {}).gold || {}).total || 0; }
