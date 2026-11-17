@@ -411,7 +411,7 @@ function drawCoach(status) {
   const pid = (S.profile || {}).id;
   const NAMES = { naser: 'Naser', bitty: 'Bitty', mauri: 'Mauri', renzito: 'Renzito' };
   const others = Object.keys(NAMES).filter((k) => k !== pid);
-  if (pid) B += `<div class="pad row wrap sp8"><span class="small dim grow">Jugador: <b style="color:var(--gold-l)">${esc(NAMES[pid] || pid)}</b> (cada uno con sus datos)</span>${others.map((o) => `<button class="btn" data-switch="${o}">Cambiar a ${NAMES[o]}</button>`).join('')}</div>`;
+  if (pid) B += `<div class="pad row wrap sp8"><span class="small dim grow" style="flex-basis:100%">Jugador: <b style="color:var(--gold-l)">${esc(NAMES[pid] || pid)}</b> (cada uno con sus datos)</span>${others.map((o) => `<button class="btn" data-switch="${o}">Cambiar a ${NAMES[o]}</button>`).join('')}</div>`;
   B += hudSettings();
   const cs = S.clips || {};
   const clipsOn = (S.settings || {}).clips_enabled !== false;
