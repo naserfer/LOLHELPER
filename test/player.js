@@ -20,12 +20,16 @@ player.saveChoice(ad, 'naser');
 ok(JSON.parse(fs.readFileSync(player.choiceFile(ad), 'utf8')).otra === 1, 'guardar la elección no borra otras claves');
 let threw = false; try { player.saveChoice(ad, 'cualquiera'); } catch (e) { threw = true; }
 ok(threw, 'no acepta jugadores inventados');
+ok(player.userDataFor(ad, 'renzito') === path.join(ad, 'Pick Helper Renzito'), 'Renzito tiene su carpeta (no pisa la de Naser)');
+const rz = JSON.parse(fs.readFileSync(path.join(root, 'data', 'profiles', 'renzito.json'), 'utf8'));
+ok(Object.keys(rz.roles).join() === 'utility' && rz.roles.utility.pool === 'pool_support.json' && rz.roles.utility.kind === 'support',
+  'Renzito: solo support, con todos los supports (el mismo pool que Naser)');
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 ok(pkg.productName === 'Pick Helper' && pkg.build.appId === 'py.naser.pickhelper', 'productName y appId sin cambios');
 
 // --- ventana real (necesita DISPLAY)
 if (process.env.DISPLAY) {
-  for (const [size, pick] of [['340x420', 'bitty'], ['440x420', 'naser']]) {
+  for (const [size, pick] of [['340x560', 'bitty'], ['440x560', 'renzito']]) {
     const ad2 = fs.mkdtempSync(path.join(os.tmpdir(), 'appdata'));
     const out = path.join(os.tmpdir(), `choose_${Math.random().toString(36).slice(2)}.json`);
     try {
@@ -33,8 +37,8 @@ if (process.env.DISPLAY) {
         `--choosepick=${pick}`, `--size=${size}`], { cwd: root, timeout: 60000, stdio: 'ignore', env: Object.assign({}, process.env, { PH_PROFILE: '' }) });
     } catch (e) { /* se revisa abajo */ }
     const r = fs.existsSync(out) ? JSON.parse(fs.readFileSync(out, 'utf8')) : null;
-    ok(r && /Quién sos/.test(r.text) && /Naser/.test(r.text) && /Bitty/.test(r.text) && /Support/.test(r.text) && /Jungla/.test(r.text),
-      `${size}: pregunta quién sos (Naser support, Bitty jungla)`);
+    ok(r && /Quién sos/.test(r.text) && ['Naser', 'Bitty', 'Mauri', 'Renzito', 'Support', 'Jungla'].every((t) => r.text.includes(t)),
+      `${size}: pregunta quién sos (Naser, Bitty, Mauri y Renzito)`);
     ok(r && r.wide === 0, `${size}: nada se sale de la ventana`);
     ok(r && r.saved === pick, `${size}: al elegir ${pick} queda guardado (${r && r.saved})`);
   }
@@ -51,6 +55,19 @@ if (process.env.DISPLAY) {
   ok(brand && /BITTY/.test(brand), `con Bitty elegido abre su perfil (${brand})`);
   ok(fs.existsSync(path.join(ad3, 'Pick Helper Bitty', 'settings.json')) && !fs.existsSync(path.join(ad3, 'Pick Helper', 'settings.json')),
     'los datos de Bitty van a "Pick Helper Bitty"');
+  // Abrir el .exe con otro ya abierto (por ejemplo escondido en la bandeja): la copia nueva se cierra sola, sin error.
+  const { spawn } = require('child_process');
+  const ad4 = fs.mkdtempSync(path.join(os.tmpdir(), 'appdata'));
+  player.saveChoice(ad4, 'naser');
+  const env4 = Object.assign({}, process.env, { PH_PROFILE: '', LOL_PATH: '/nonexistent' });
+  const first = spawn(path.join(root, 'node_modules', '.bin', 'electron'), ['.', '--no-sandbox', `--appdata=${ad4}`, '--offline=test/offline.json'], { cwd: root, stdio: 'ignore', env: env4 });
+  execFileSync('sleep', ['6']);
+  let code = null, errOut = '';
+  try { execFileSync(path.join(root, 'node_modules', '.bin', 'electron'), ['.', '--no-sandbox', `--appdata=${ad4}`, '--offline=test/offline.json'], { cwd: root, timeout: 30000, env: env4, stdio: ['ignore', 'ignore', 'pipe'] }); code = 0; }
+  catch (e) { code = e.status; errOut = String(e.stderr || ''); }
+  ok(code === 0 && !/destroyed|Uncaught/i.test(errOut), `segunda copia: se cierra sola y sin error (código ${code})`);
+  ok(first.exitCode === null, 'la primera copia sigue abierta');
+  first.kill();
 }
 if (failed) { console.log(`player: ${failed} fallas`); process.exit(1); }
 console.log('player: todo OK');

@@ -38,7 +38,7 @@ En champ select, con tu support elegido, aparece **Plan de bot con tu ADC**:
 En partida ves el mismo plan sin números. En el overlay aparece una línea corta al empezar (hasta 1:30) y otra al llegar al 6.
 
 ## Quién sos
-La primera vez que abrís la app te pregunta si sos **Naser** (support), **Bitty** (jungla y mid) o **Mauri** (jungla, Udyr). Cada uno tiene sus propios datos. Para cambiar, andá a Ajustes → "Cambiar a …".
+La primera vez que abrís la app te pregunta si sos **Naser** (support), **Bitty** (jungla y mid), **Mauri** (jungla, Udyr) o **Renzito** (support, todos los supports). Cada uno tiene sus propios datos. Para cambiar, andá a Ajustes → "Cambiar a …".
 
 ## Arranca con Windows y queda en la bandeja
 - Al prender la PC, la app se abre sola, **escondida**, con su ícono abajo a la derecha (al lado del reloj; si no lo ves, tocá la flechita ^).

@@ -409,7 +409,7 @@ function drawCoach(status) {
   const roles = (S.profile || {}).roles || { utility: 'Support', top: 'Top' };
   B += `${sec('Ajustes')}<div class="pad row"><span class="small dim grow">Rol cuando no hay rol asignado (normales, blind)</span><span class="seg">${Object.entries(roles).map(([k, lab]) => `<button data-role="${k}" class="${role === k ? 'on' : ''}">${esc(lab)}</button>`).join('')}</span></div>`;
   const pid = (S.profile || {}).id;
-  const NAMES = { naser: 'Naser', bitty: 'Bitty', mauri: 'Mauri' };
+  const NAMES = { naser: 'Naser', bitty: 'Bitty', mauri: 'Mauri', renzito: 'Renzito' };
   const others = Object.keys(NAMES).filter((k) => k !== pid);
   if (pid) B += `<div class="pad row wrap sp8"><span class="small dim grow">Jugador: <b style="color:var(--gold-l)">${esc(NAMES[pid] || pid)}</b> (cada uno con sus datos)</span>${others.map((o) => `<button class="btn" data-switch="${o}">Cambiar a ${NAMES[o]}</button>`).join('')}</div>`;
   B += hudSettings();

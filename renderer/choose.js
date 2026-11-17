@@ -1,7 +1,7 @@
 'use strict';
 /* Primera vez: elegir quién usa la app. Cada jugador mantiene su propia carpeta de datos. */
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const NAME = { naser: 'Naser', bitty: 'Bitty', mauri: 'Mauri' };
+const NAME = { naser: 'Naser', bitty: 'Bitty', mauri: 'Mauri', renzito: 'Renzito' };
 document.getElementById('b-close').onclick = () => window.ph.chooseClose();
 window.ph.players().then((list) => {
   document.getElementById('list').innerHTML = list.map((p) => `<button data-pick="${esc(p.id)}">

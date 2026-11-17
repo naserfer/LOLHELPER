@@ -16,6 +16,7 @@ Hay **dos builds**, que comparten el mismo código y se separan por *perfil*:
 | `naser` | Naser (dueño del proyecto), Plat 3 | support (+ top) | 31 supports; top: Malphite, Garen, Illaoi | op.gg Emerald+ | `PickHelper.exe` · `%APPDATA%\Pick Helper` |
 | `bitty` | Bitty (amigo), Master | jungla, mid | Nocturne y Diana (jungla), Diana (mid) | op.gg Master+ + Lolalytics (Master+ y Emerald+) | `PickHelper-Bitty.exe` · `%APPDATA%\Pick Helper Bitty` |
 | `mauri` | Mauri (amigo), rango sin confirmar | jungla | Udyr (AD o AP) | op.gg Emerald+ + Lolalytics (Emerald+ y Master+ a mitad) | el mismo `PickHelper.exe` · `%APPDATA%\Pick Helper Mauri` |
+| `renzito` | Renzito (amigo), rango sin confirmar | support | los 31 supports (mismo `pool_support.json` que Naser, sin top) | op.gg Emerald+ | el mismo `PickHelper.exe` · `%APPDATA%\Pick Helper Renzito` |
 
 ## Preferencias del usuario (importan)
 - Todo en **español rioplatense/paraguayo con voseo** ("comprá", "jugá"). Textos cortos y concretos.
@@ -250,6 +251,11 @@ Flags útiles de la app:
 - Carpetas del usuario: `settings.json`, `partidas/` (una grabación por partida, formato `v:1`), `historial/` y `ddragon/`.
 - La versión 2.0 guardaba el historial en `cache/`, que en Windows es **la misma carpeta que `Cache/` de Chromium** (no distingue mayúsculas). `engine.js` lo copia a `historial/` sin borrar el original. No vuelvas a usar `cache/`.
 - Los ajustes se guardan con merge (`saveSettings`): nunca reescribas el archivo entero desde cero.
+
+## Una sola copia abierta
+- `requestSingleInstanceLock`: si ya hay un Pick Helper abierto (por ejemplo escondido en la bandeja), la copia nueva hace `app.exit(0)` y `whenReady` no arranca nada. Antes hacía `app.quit()` y seguía: armaba ventanas mientras se cerraba y en Windows saltaba "Object has been destroyed".
+- `process.on('uncaughtException')` anota los errores del proceso principal en `<userData>/errores.log` con la pila completa, en vez del cartel de Electron. Si el usuario reporta algo raro, pedile ese archivo.
+- `tick` no corre mientras se cierra (`quitting`) y `setHudGrab` no toca un HUD destruido (PowerShell avisa "Tab suelto" al morir).
 
 ## Trampas conocidas
 - `npx asar extract-file <app.asar> package.json` **pisa el package.json del proyecto** si lo corrés en la raíz. Extraé en una carpeta temporal.

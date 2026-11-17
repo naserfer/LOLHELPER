@@ -27,7 +27,20 @@ if (!TESTING) {
 }
 
 protocol.registerSchemesAsPrivileged([{ scheme: 'pickhelper', privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true } }]);
-if (!app.requestSingleInstanceLock() && !arg('demo')) app.quit();
+// Si ya hay un Pick Helper abierto (por ejemplo escondido en la bandeja), esta copia le avisa y se cierra al toque,
+// sin crear ventanas. Antes hacía app.quit() y seguía arrancando: armaba ventanas mientras se cerraba y saltaba
+// "Object has been destroyed".
+const GOT_LOCK = app.requestSingleInstanceLock() || !!arg('demo');
+// Un error suelto en el proceso principal no tiene que mostrarle un cartel al jugador ni cerrar la app: se anota en
+// errores.log (en la carpeta de datos de Windows) con la pila completa, para poder arreglarlo.
+process.on('uncaughtException', (err) => {
+  try {
+    const dir = app.getPath('userData');
+    fs.mkdirSync(dir, { recursive: true });
+    fs.appendFileSync(path.join(dir, 'errores.log'), `${new Date().toISOString()} ${(err && err.stack) || err}\n`);
+  } catch (e) { /* sin disco: nada */ }
+});
+if (!GOT_LOCK) app.exit(0);
 
 let win = null;
 let engine = null;
@@ -36,7 +49,7 @@ let quitting = false;
 let wasSelect = false;
 // Windows la abre así al prender la PC: arranca escondida, con el ícono en la bandeja.
 const STARTED_HIDDEN = process.argv.includes(startup.HIDDEN_ARG) && !TESTING;
-const PLAYER_NAME = { naser: 'Naser', bitty: 'Bitty', mauri: 'Mauri' };
+const PLAYER_NAME = { naser: 'Naser', bitty: 'Bitty', mauri: 'Mauri', renzito: 'Renzito' };
 let lastSig = null;
 let lastIconsV = -1;
 let busy = false;
@@ -120,7 +133,8 @@ function setHudEdit(on) {
 // Tab apretado: el overlay atrapa el mouse solo sobre un recuadro (el renderer avisa con hud-grab-capture);
 // en el resto de la pantalla los clics siguen yendo al juego. Nunca toma el foco.
 function setHudGrab(on) {
-  if (hudEdit || !hud || !hudReady) on = false;
+  if (!hud || hud.isDestroyed()) { hudGrab = false; return; }   // al cerrar, PowerShell avisa "Tab suelto" con el HUD ya cerrado
+  if (hudEdit || !hudReady) on = false;
   if (on && !hud.isVisible()) on = false;
   if (on === hudGrab) return;
   hudGrab = on;
@@ -157,7 +171,7 @@ function liveBits(v) {
 }
 
 async function tick() {
-  if (busy) return;
+  if (busy || quitting) return;   // cerrando: no tocar ventanas que ya se destruyeron
   busy = true;
   try {
     const offline = arg('offline') ? JSON.parse(fs.readFileSync(String(arg('offline')), 'utf8')) : null;
@@ -187,7 +201,7 @@ async function tick() {
 // Primera vez: ventanita "¿Quién sos?". Devuelve el id elegido.
 function chooseplayer() {
   return new Promise((resolve) => {
-    const w = new BrowserWindow({ width: 440, height: 490, minWidth: 340, minHeight: 300, frame: false, backgroundColor: '#010A13', show: false,
+    const w = new BrowserWindow({ width: 440, height: 560, minWidth: 340, minHeight: 300, frame: false, backgroundColor: '#010A13', show: false,
       title: 'Pick Helper', icon: path.join(__dirname, 'renderer', 'icon.png'),
       webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false } });
     if (arg('size')) { const [sw, sh] = String(arg('size')).split('x').map(Number); w.setBounds({ x: 0, y: 0, width: sw, height: sh }); }
@@ -274,6 +288,7 @@ function clipTick(view, status) {
   }
 }
 app.whenReady().then(async () => {
+  if (!GOT_LOCK) return;
   if (PLAYER.ask) {
     const { id, win: w } = await chooseplayer();
     process.env.PH_PROFILE = id;
@@ -518,4 +533,4 @@ function maybeCelebrate() {
 app.on('before-quit', () => { quitting = true; });
 app.on('second-instance', () => showWin());
 app.on('window-all-closed', () => app.quit());
-app.on('will-quit', () => { globalShortcut.unregisterAll(); stopKeyWatch(); });
+app.on('will-quit', () => { try { globalShortcut.unregisterAll(); stopKeyWatch(); } catch (e) { /* cerrando */ } });
